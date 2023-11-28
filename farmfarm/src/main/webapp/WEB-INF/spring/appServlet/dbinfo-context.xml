@@ -4,14 +4,28 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
-	<!-- 1번 mariadb datasource 설정 -->	
+	
+	<!-- 2단계 mariadbinfo.properties 추가 후, 밑의 bean 추가와, 1단계 datasource 값 수정  -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="/WEB-INF/spring/appServlet/mariadbinfo.properties" />
+		<property name="fileEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	    <property name="driverClassName" value="${mariadb.jdbc.driverClassName}" />
+	    <property name="url" value="${mariadb.jdbc.url}" />
+	    <property name="username" value="${mariadb.jdbc.username}" />
+	    <property name="password" value="${mariadb.jdbc.password}" />
+	</bean>
+	
+	<!-- 1단계 mariadb datasource 설정 
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	    <property name="driverClassName" value="org.mariadb.jdbc.Driver" />
 	    <property name="url" value="jdbc:mariadb://127.0.0.1:3306/farmfarm" />
 	    <property name="username" value="farmfarm" />
 	    <property name="password" value="farmfarm" />
 	</bean>
-	
+	-->	
 	
 	
 	
