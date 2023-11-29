@@ -15,7 +15,7 @@
 	</properties>
 	<dependencies>
 		
-		<!-- mybatis 신규 추가 
+		<!-- mybatis 신규 추가 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
@@ -25,7 +25,7 @@
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
 			<version>2.0.6</version>
-		</dependency> -->
+		</dependency>
 		
 		<!-- mariadb 추가 -->
 		<!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->

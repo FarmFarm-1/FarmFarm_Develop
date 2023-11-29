@@ -1,12 +1,15 @@
 package com.farmfarm.controller.hwasoo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
-@RequestMapping("/funding")
-public class ProductController {
+public class MainController {
 	
+	@GetMapping("/")
+	public String showmain() {
+		return "index";
+	}
 	
 }

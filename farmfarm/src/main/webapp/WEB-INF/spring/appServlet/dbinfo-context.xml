@@ -5,6 +5,21 @@
 	">
 	
 	
+	<!-- 3단계 mabatis 적용 -->
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation"
+			value="classpath:mybatis/sql-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:mybatis/mappers/*.xml" />
+	</bean>
+
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+		
 	<!-- 2단계 mariadbinfo.properties 추가 후, 밑의 bean 추가와, 1단계 datasource 값 수정  -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="/WEB-INF/spring/appServlet/mariadbinfo.properties" />
