@@ -15,6 +15,20 @@
 	</properties>
 	<dependencies>
 		
+		<!-- jdbc의 loggin용 신규 추가 -->
+		<dependency>
+		    <groupId>org.bgee.log4jdbc-log4j2</groupId>
+		    <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
+		    <version>1.16</version>
+		</dependency>
+		
+		<!-- 커넥션풀 신규 추가 -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>5.1.0</version>
+		</dependency>
+
 		<!-- mybatis 신규 추가 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>

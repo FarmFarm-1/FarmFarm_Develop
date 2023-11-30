@@ -4,6 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 	">
 	
+	<!-- 5단계 sql logging을 위한 log4dbc.log4j2 설정(datasource를 래핑하여 로깅하는 기능 + hikariConfig의 driver class와 url 값 수정 + propeties 추가-->
+	<!-- 검색 : https://kimvampa.tistory.com/63 -->
+	
+	
+	<!-- 4단계 커넥션풀 적용 (hikaricp) + 기존 bean id=datasource를 hikariConfig로 변경 + class 변경 + propertyname 수정 -->
+	<!-- 검색 : https://kimvampa.tistory.com/57 -->
+	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+		<constructor-arg ref="hikariConfig"></constructor-arg>
+	</bean>
 	
 	<!-- 3단계 mabatis 적용 -->
 	<bean id="sqlSessionFactory"
@@ -26,9 +35,10 @@
 		<property name="fileEncoding" value="UTF-8" />
 	</bean>
 	
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> -->
+	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
 	    <property name="driverClassName" value="${mariadb.jdbc.driverClassName}" />
-	    <property name="url" value="${mariadb.jdbc.url}" />
+	    <property name="jdbcUrl" value="${mariadb.jdbc.url}" />
 	    <property name="username" value="${mariadb.jdbc.username}" />
 	    <property name="password" value="${mariadb.jdbc.password}" />
 	</bean>
@@ -41,9 +51,5 @@
 	    <property name="password" value="farmfarm" />
 	</bean>
 	-->	
-	
-	
-	
-	
 
 </beans>

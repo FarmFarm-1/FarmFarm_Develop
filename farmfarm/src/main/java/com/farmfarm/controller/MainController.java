@@ -1,4 +1,4 @@
-package com.farmfarm.controller.hwasoo;
+package com.farmfarm.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
