@@ -15,9 +15,12 @@ public class UserDAO {
 	SqlSession sqlSession;
 	String namespace = "com.farmfarm.UsersVO.";
 	
+	public UsersVO loginUser(UsersVO vo) {
+		return sqlSession.selectOne(namespace+"loginUser",vo);
+	}
+	
 	public int userInsert(UsersVO vo) {
 		int result =0;
-		
 		result = sqlSession.insert(namespace+"userInsert",vo);
 		return result;
 	}
@@ -25,4 +28,5 @@ public class UserDAO {
 	public List<UsersVO> getAllUsers() {
 		return sqlSession.selectList(namespace+"getAllUsers");
 	}
+	
 }

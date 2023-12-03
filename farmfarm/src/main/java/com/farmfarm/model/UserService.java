@@ -13,6 +13,10 @@ public class UserService {
 	@Autowired
 	UserDAO dao;
 	
+	public UsersVO loginUser(UsersVO vo) {
+		return dao.loginUser(vo);
+	}
+	
 	public int testInsert(UsersVO vo) {
 		return dao.userInsert(vo);
 	}
@@ -20,4 +24,5 @@ public class UserService {
 	public List<UsersVO> getAllUsers() {
 		return dao.getAllUsers();
 	}
+
 }
