@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 import com.farmfarm.dto.UsersVO;
 
 @Service
-public class UserService {
+public class TestService {
 	
 	@Autowired
-	UserDAO dao;
+	TestDAO dao;
 	
 	public int testInsert(UsersVO vo) {
-		return dao.userInsert(vo);
+		return dao.testInsert(vo);
 	}
 
 	public List<UsersVO> getAllUsers() {

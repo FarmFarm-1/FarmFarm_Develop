@@ -10,26 +10,26 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.farmfarm.dto.FarmersVO;
-import com.farmfarm.model.FarmerService;
+import com.farmfarm.dto.UsersVO;
+import com.farmfarm.model.TestService;
 
 @Controller
-@RequestMapping("/farmer")
-public class FarmerLoginController {
+@RequestMapping("/test")
+public class TestController {
 	
 	@Autowired
-	FarmerService service;
-	Logger logger = LoggerFactory.getLogger(FarmerLoginController.class);
+	TestService service;
+	Logger logger = LoggerFactory.getLogger(TestController.class);
 	
-	@PostMapping("/farmerInput")
-	public String inputfarmerTest(FarmersVO vo) {
+	@PostMapping("/testInput")
+	public String inputUserTest(UsersVO vo) {
 		service.testInsert(vo);
 		return "redirect:/";
 	}
 	
-	@GetMapping("/getAllFarmers")
-	public List<FarmersVO> getAllFarmers() {
+	@GetMapping("/getAllUsers")
+	public List<UsersVO> getAllUsers() {
 		
-		return service.getAllFarmers();
+		return service.getAllUsers();
 	}
 }
