@@ -9,13 +9,13 @@ import org.springframework.stereotype.Repository;
 import com.farmfarm.dto.UsersVO;
 
 @Repository
-public class TestDAO {
+public class UserDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "com.farmfarm.UsersVO.";
 	
-	public int testInsert(UsersVO vo) {
+	public int userInsert(UsersVO vo) {
 		int result =0;
 		
 		result = sqlSession.insert(namespace+"userInsert",vo);
