@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>fundingList</title>
+<title>fundingDetail</title>
 </head>
 <body>
 	

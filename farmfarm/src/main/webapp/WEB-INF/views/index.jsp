@@ -67,12 +67,9 @@
 	<button onclick="getAllFarmers()">farmer 테이블을 로그로 보기</button>
 	
 	<hr>
-	<form id="fundingListForm" action="/funding/fundingList" method="get">
-	    <input type="submit" value="펀딩 리스트">
-	</form>
-	<form id="auctionListForm" action="/auction/auctionList" method="get">
-	    <input type="submit" value="옥션 리스트">
-	</form>
+	<c:set var="cpath" value="${pageContext.request.contextPath}" />
+	<button onclick="location.href='${cpath}/funding/fundingList';">펀딩리스트</button>
+	<button onclick="location.href='${cpath}/auction/auctionList';">옥션리스트</button>
 	<script>
 		let message = "${message}";
 		if(message!="") {
