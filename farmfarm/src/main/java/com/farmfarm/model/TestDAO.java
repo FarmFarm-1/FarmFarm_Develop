@@ -16,7 +16,7 @@ public class TestDAO {
 	String namespace = "com.farmfarm.UsersVO.";
 	
 	public int testInsert(UsersVO vo) {
-		int result =0;
+		int result = 0;
 		
 		result = sqlSession.insert(namespace+"userInsert",vo);
 		return result;
