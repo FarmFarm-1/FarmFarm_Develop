@@ -11,8 +11,38 @@
 		select * from farm_and_product where product_status = '경매중'
 	</select>
 	
-	<select id="auctionInfo" parameterType="String" resultType="Farm_and_productVO">
-		select * from farm_and_product where product_serial_num = #{product_serial_num}
+	<select id="auctionInfo" parameterType="String" resultType="map">
+		SELECT 
+			PR.product_serial_num, PR.product_kind, PR.product_name, PR.farmer_phone,
+			PR.farmer_serial_num, PR.farm_name, PR.farm_introduction, PR.farm_square_footage,
+			PR.expected_planting_date, PR.expected_harvest_date, PR.auction_thumb_img_url,
+			PR.auction_product_img_url, PR.farm_address, FA.farmer_email, FA.farmer_name,
+			AU.harvest_amount, AU.starting_price, AU.auction_deadline, CU.update_date
+		from farm_and_product AS PR
+		LEFT OUTER JOIN
+			farmers AS FA ON (PR.farmer_serial_num = FA.farmer_serial_num)
+		LEFT OUTER JOIN
+			auction_reg_info AS AU ON (PR.product_serial_num = AU.product_serial_num)
+		LEFT OUTER JOIN
+			cultivating_product_detail AS CU ON (PR.product_serial_num = CU.product_serial_num)
+		
+		where
+			PR.product_serial_num = #{product_serial_num} 
+			AND PR.product_status='경매중'
+			AND CU.cultivate_status='수확완료'
+	</select>
+	
+	<select id="auctionHistorySelectAll" parameterType="String" resultType="Auction_historyVO">
+		SELECT *
+		FROM auction_history
+		WHERE product_serial_num=#{product_serial_num}
+	</select>
+	
+	<select id="maxAndCntAuctionInfo" parameterType="String" resultType="map">
+		SELECT MAX(user_price) AS max_auction_price, COUNT(*) AS participant_cnt
+		FROM auction_history
+		WHERE 
+			product_serial_num = #{product_serial_num}
 	</select>
 	
 </mapper>

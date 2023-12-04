@@ -25,6 +25,8 @@ public class AuctionController {
 	@GetMapping("/auctionDetail")
 	public String auctionDetail(String product_serial_num,Model model) {
 		model.addAttribute("auctionInfo", productService.auctionInfo(product_serial_num));
+		model.addAttribute("auctionHistoryInfo", productService.auctionHistorySelectAll(product_serial_num));
+		model.addAttribute("maxAndCntInfo", productService.maxAndCntAuctionInfo(product_serial_num));
 		return "auction/auctionDetail";
 	}
 
