@@ -9,7 +9,11 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String showmain() {
-		return "index";
+		return "loginIndex";
 	}
 	
+	@GetMapping("/signup.do")
+	public String showSignUp() {
+		return "signUp/signUp";
+	}
 }
