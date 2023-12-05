@@ -1,4 +1,23 @@
-@charset "UTF-8";
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+:root {
+	--main-color: #D4ECC0;
+	--farm-green: #64A346;
+}
 
 html {
 	font-size:62.5%;
@@ -10,12 +29,10 @@ html {
 ul, li {
 	list-style: none;
 }
-input {
-	border: none;
-}
 body {
   width: 144rem;
-}.mainpage--eS1 {
+}
+.main-div {
   width: 100%;
   overflow: hidden;
   position: relative;
@@ -24,182 +41,133 @@ body {
   flex-direction: column;
   background-color: #ffffff;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 {
-  margin-bottom: 2.71rem;
-  width: 100%;
-  height: 141.9473rem;
+.main-div .productDetail-div {
+  margin: 0rem 15rem 14.4rem 15rem;
+  width: calc(100% - 30rem);
+  height: 131.5rem;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+.main-div .productDetail-div .left-div {
+  margin-right: 8.0757rem;
+  width: 65.4918rem;
+  flex-shrink: 0;
+}
+.main-div .productDetail-div .left-div .product-detail-img {
+  margin-bottom: 4.8659rem;
+  width: 65.4918rem;
+  height: 41.7341rem;
   position: relative;
-  flex-shrink: 0;
+  background-size: 137.135% 100%;
+  background-position: -10.1625rem -0rem;
+  border-radius: 1.355rem;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 {
-  width: 144rem;
-  height: 17.4rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf {
+.main-div .productDetail-div .left-div .showmore-btn {
+  margin-right: 0.0001rem;
   box-sizing: border-box;
-  padding: 3.3rem 17.4rem 2.3rem 17.4rem;
-  width: 100%;
-  height: 17.3rem;
+  padding: 1.624rem 24.464rem 0.873rem 27.853rem;
+  width: calc(100% - 0.0001rem);
+  display: flex;
+  align-items: center;
+  border: solid 0.0903rem #64a246;
   background-color: #ffffff;
-  flex-shrink: 0;
+  border-radius: 0.3613rem;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord {
-  width: 20.4rem;
-  height: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-cv4h-Z57 {
-  margin: 0rem 10.4rem 1.8rem 0rem;
-  width: calc(100% - 10.4rem);
-  display: flex;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-cv4h-Z57 .image-22-Rt1 {
-  margin: 0rem 0.539rem 0.5rem 0rem;
-  width: 4.4608rem;
-  height: 5.8rem;
-  object-fit: cover;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-cv4h-Z57 .item--h4q {
-  font-size: 4.1076rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #2d2d2d;
-  font-family: Gmarket Sans, 'Source Sans Pro';
+.main-div .productDetail-div .left-div .showmore-btn .item--Mv5 {
+  margin-right: 3.493rem;
+  text-align: center;
+  font-size: 1.8067rem;
+  font-weight: 800;
+  line-height: 1.2125;
+  color: #64a246;
+  font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-k2kx-aPX {
-  margin-bottom: 0.5rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-k2kx-aPX .item--VWV {
-  margin-right: 5rem;
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #7a7a7a;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-k2kx-aPX .item--zy3 {
-  margin-right: 5.2rem;
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #2d2d2d;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .auto-group-k2kx-aPX .item--JTw {
-  display: flex;
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #7a7a7a;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .auto-group-tnvs-tjf .group-144-ord .line-24-C3X {
-  margin-right: 0.4rem;
-  width: 4.2rem;
-  height: 0;
+.main-div .productDetail-div .left-div .showmore-btn .arrow-see-more {
+  margin-bottom: 0.2678rem;
+  width: 1.0817rem;
+  height: 0.5378rem;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .header-mQ9 .rectangle-101-G3P {
-  width: 100%;
-  height: 0.1rem;
-  background-color: #d9d9d9;
+.main-div .productDetail-div .right-div {
+  width: 40.4325rem;
+  height: 100%;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .material-symbols-bookmark-outline-BAM {
-  width: 2.168rem;
-  height: 2.168rem;
-  position: absolute;
-  left: 88.813rem;
-  top: 45.2rem;
-  overflow: hidden;
+.main-div .productDetail-div .right-div .productinfo-div {
+  margin: 0rem 0.153rem 1.235rem 0.132rem;
+  width: calc(100% - 0.285rem);
+  display: flex;
+  flex-direction: column;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .wheat-18458351280-TNm {
-  width: 65.4918rem;
-  height: 41.7341rem;
-  position: relative;
-  left: 15rem;
-  top: 30.7rem;
-  background-size: 137.135% 100%;
-  background-position: -10.1625rem -0rem;
-  background-image: url('../assets/wheat-18458351280-Ved.png');
-  border-radius: 1.355rem;
+.main-div .productDetail-div .right-div .productinfo-div .farmerinfoline1 {
+  margin: 0rem 0.212rem 1.365rem 0rem;
+  width: calc(100% - 0.2124rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .kg-q8R {
-  width: 39.7rem;
-  height: 4.4rem;
-  position: absolute;
-  left: 88rem;
-  top: 30.7rem;
-  font-size: 3.6rem;
+.main-div .productDetail-div .right-div .productinfo-div .farmerinfoline1 .product_name {
+  font-size: 2.168rem;
   font-weight: 700;
   line-height: 1.2125;
   color: #2d2d2d;
   font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-577--iCD {
-  width: 9.3rem;
-  height: 2.7rem;
-  position: absolute;
-  left: 88rem;
-  top: 37.3rem;
-  font-size: 1.8067rem;
-  font-weight: 700;
-  line-height: 1.2102272343;
-  color: #2d2d2d;
+.main-div .productDetail-div .right-div .productinfo-div .farmerinfoline1 .shareicon-class {
+  margin-top: 0.01rem;
+  width: 2.0135rem;
+  height: 2.0325rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.farm-introduction-class {
+  text-align: left;
+  font-size: 1.355rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #828282;
   font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  display: flex;
-  align-items: baseline;
+  padding: 1rem 0 1rem 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-577--iCD .item-577--iCD-sub-0 {
-  font-size: 2.168rem;
+.main-div .productDetail-div .right-div .funding-participant-info {
+  margin: 0rem 0rem 2rem 0.032rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2.71rem;
+}
+.main-div .productDetail-div .right-div .funding-participant-info .funding-paticipant {
+  margin-bottom: 1.3844rem;
+  width: 17.6296rem;
+  height: 2.5rem;
+  position: relative;
+  border-radius: 2.71rem;
+  display: flex;
+  align-items: center;
+}
+.main-div .productDetail-div .right-div .funding-participant-info .funding-paticipant .participant-cnt {
+  height: 2.5rem;
+  margin-right: 0.4rem;
+  position: relative;
+  left: 0;
+  top: 0;
+  font-size: 2rem;
   font-weight: 800;
   line-height: 1.2125;
   color: #2d2d2d;
   font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-577--iCD .item-577--iCD-sub-1 {
-  font-size: 1.4453rem;
-  font-weight: 700;
-  line-height: 1.2125;
-  color: #2d2d2d;
-  font-family: Inter, 'Source Sans Pro';
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-90-XBb {
-  width: 7.588rem;
-  height: 1.9874rem;
-  position: absolute;
-  left: 98.2077rem;
-  top: 37.7517rem;
+.main-div .productDetail-div .right-div .funding-participant-info .funding-paticipant .due-day {
+  width: 7.5172rem;
+  height: 1.9873rem;
+  top: 0.2rem;
   font-size: 1.2647rem;
   font-weight: 700;
   line-height: 1.2125;
@@ -213,820 +181,363 @@ body {
   border-radius: 2.71rem;
   box-shadow: 0 0.3613rem 0.3613rem rgba(0, 0, 0, 0.25);
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-33207900-4aq {
-  width: 22.1rem;
-  height: 3rem;
-  position: absolute;
-  left: 88.0903rem;
-  top: 41.1844rem;
-  font-size: 2.168rem;
-  font-weight: 500;
-  line-height: 1.2102272167;
+.funding-paticipate-info {
+  align-items: center;
+  display: flex;	
+}
+.funding-max-price {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2102272034;
   color: #2d2d2d;
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
   display: flex;
   align-items: baseline;
+  flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-33207900-4aq .item-33207900-4aq-sub-0 {
-  font-size: 1.1743rem;
-  font-weight: 700;
-  line-height: 1.2125;
-  color: #2d2d2d;
+.small-unit {
+  position: relative;
+  font-size: 1.5rem;
   font-family: Inter, 'Source Sans Pro';
+  margin-right: 2rem; 
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-33207900-4aq .item-33207900-4aq-sub-1 {
-  font-size: 2.439rem;
-  font-weight: 700;
-  line-height: 1.2125;
-  color: #2d2d2d;
-  font-family: Inter, 'Source Sans Pro';
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-33207900-4aq .item-33207900-4aq-sub-2 {
-  font-size: 1.4453rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #2d2d2d;
-  font-family: Inter, 'Source Sans Pro';
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-104-1RX {
-  width: 62.4205rem;
-  height: 46.7928rem;
-  position: absolute;
-  left: 16.626rem;
-  top: 84.8098rem;
-  background-color: #d9d9d9;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-90-h3T {
-  width: 65.3112rem;
-  height: 4.6974rem;
-  position: absolute;
-  left: 15.1806rem;
-  top: 130.0669rem;
-  border: solid 0.0903rem #64a246;
+.main-div .productDetail-div .right-div .farmerinfo-div {
+  margin: 0rem 0rem 3.5rem 0.032rem;
   box-sizing: border-box;
-  background-color: #ffffff;
-  border-radius: 0.3613rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-91-LcD {
-  width: 13.1501rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 42.945rem;
-  top: 131.6911rem;
-  display: flex;
+  padding: 1.355rem 2.356rem 1.4rem 1.8rem;
+  width: calc(100% - 0.0325rem);
   align-items: center;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-91-LcD .item--2E9 {
-  margin-right: 3.4715rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 800;
-  line-height: 1.2125;
-  color: #64a246;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-91-LcD .outline-chevron-down-5CR {
-  margin-bottom: 0.2678rem;
-  width: 1.0787rem;
-  height: 0.5378rem;
-  object-fit: contain;
-  vertical-align: top;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--MQq {
-  width: 10.7rem;
-  height: 2.5rem;
-  position: absolute;
-  left: 17.509rem;
-  top: 81.8288rem;
-  text-align: center;
-  font-size: 1.9873rem;
-  font-weight: 800;
-  line-height: 1.2125;
-  color: #2d2d2d;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-105-MJM {
-  width: 40.5598rem;
-  height: 10.9304rem;
-  position: absolute;
-  left: 88.3613rem;
-  top: 91.5411rem;
+  display: flex;
+  flex-direction: column;
   border: solid 0.0903rem #64a246;
-  box-sizing: border-box;
   border-radius: 0.3613rem;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-117-RZ7 {
-  width: 40.5598rem;
-  height: 17.073rem;
-  position: absolute;
-  left: 88.3613rem;
-  top: 105.2718rem;
-  border: solid 0.0903rem #64a246;
-  box-sizing: border-box;
-  border-radius: 0.3613rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .material-symbols-bookmark-outline-LRB {
-  width: 2.168rem;
-  height: 2.168rem;
-  position: absolute;
-  left: 88rem;
-  top: 45.2rem;
-  overflow: hidden;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-70-4MB {
-  width: 40.5598rem;
-  height: 42.2761rem;
-  position: absolute;
-  left: 88.3613rem;
-  top: 46.4646rem;
-  border: solid 0.0903rem #64a246;
-  box-sizing: border-box;
-  border-radius: 0.3613rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--Af7 {
-  width: 9.6rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 96.9307rem;
-  top: 48.6327rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #2d2d2d;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .ellipse-22-oxy {
-  width: 3.8843rem;
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame1 {
+  margin: 0rem 0rem 1.796rem 0.03rem;
+  width: calc(100% - 0.0296rem);
   height: 3.8843rem;
-  position: absolute;
-  left: 89.897rem;
-  top: 47.8197rem;
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-image: url('../assets/ellipse-22-bg.png');
-  border-radius: 1.9422rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--Vqo {
-  width: 6.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.297rem;
-  top: 59.4727rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--BTj {
-  width: 6.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.297rem;
-  top: 64.4411rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--t7F {
-  width: 7.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.597rem;
-  top: 69.4094rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--mwj {
-  width: 7.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.597rem;
-  top: 74.3777rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--Ur9 {
-  width: 7.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.597rem;
-  top: 79.3461rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--n69 {
-  width: 7.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.597rem;
-  top: 84.3144rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--gSR {
-  width: 3.3rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.747rem;
-  top: 54.5043rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--nkM {
-  width: 3.3rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.747rem;
-  top: 93.5284rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .kg-6m3 {
-  width: 5.6rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 111.9384rem;
-  top: 93.3478rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-800000-R2d {
-  width: 9.3rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 111.8384rem;
-  top: 98.4968rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--vEH {
-  width: 16.5rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.897rem;
-  top: 98.4968rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .api--zV3 {
-  width: 25rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.347rem;
-  top: 108.1625rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .rectangle-118-HDF {
-  width: 40.5598rem;
-  height: 17.073rem;
-  position: absolute;
-  left: 88.3613rem;
-  top: 124.8742rem;
-  border: solid 0.0903rem #64a246;
-  box-sizing: border-box;
-  border-radius: 0.3613rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--bUq {
-  width: 4.4rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 90.505rem;
-  top: 126.2292rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--J8M {
-  width: 6.6rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 103.6114rem;
-  top: 54.5043rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-71-bNM {
-  width: 22.1rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 102.7614rem;
-  top: 59.4727rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-2-Fho {
-  width: 4.1rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 102.1114rem;
-  top: 64.4411rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item--ZiV {
-  width: 3.3rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 102.7614rem;
-  top: 69.4094rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-20220909-GN1 {
-  width: 10rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 101.9614rem;
-  top: 74.3777rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-20230909-yGR {
-  width: 10.1rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 101.9114rem;
-  top: 79.3461rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .item-010-1234-5678-etM {
-  width: 13.6rem;
-  height: 2.2rem;
-  position: absolute;
-  left: 101.7307rem;
-  top: 84.0434rem;
-  text-align: center;
-  font-size: 1.8067rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD {
-  width: 32.4927rem;
-  height: 10.3817rem;
-  position: absolute;
-  left: 92.607rem;
-  top: 129.3005rem;
-  align-items: center;
   display: flex;
-  flex-direction: column;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-18qv-Tau {
-  margin: 0rem 0.063rem 0.361rem 0rem;
-  box-sizing: border-box;
-  padding: 0.452rem 0.537rem 0.278rem 0.632rem;
-  width: 32.4297rem;
-  display: flex;
-  align-items: center;
-  border: solid 0.0903rem #f4430c;
-  background-color: #ffffff;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-18qv-Tau .item--vjP {
-  margin: 0.271rem 4.259rem 0rem 0rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-18qv-Tau .item-800000-ddo {
-  margin: 0rem 4.001rem 0.271rem 0rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-18qv-Tau .item-23-11-23-11-13-55-Xz5 {
-  margin-bottom: 0.271rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-mqju-RJm {
-  margin: 0rem 0rem 0.549rem 0.632rem;
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-mqju-RJm .item--LAq {
-  margin: 0.361rem 4.259rem 0rem 0rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-mqju-RJm .item-780000-qtH {
-  margin-right: 4.1013rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-mqju-RJm .item-23-11-22-22-54-35-NNR {
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-slmt-hQh {
-  margin: 0rem 0.4rem 0.639rem 0.632rem;
-  width: calc(100% - 1.0323rem);
-  display: flex;
-  align-items: flex-start;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-slmt-hQh .item--oTj {
-  margin: 0.271rem 4.259rem 0rem 0rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-slmt-hQh .item-750000-VLZ {
-  margin-right: 4.1013rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-slmt-hQh .item-23-11-22-10-33-15-acu {
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-9g9k-H1X {
-  margin: 0rem 0.5rem 0rem 0.632rem;
-  width: calc(100% - 1.1323rem);
-  display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-9g9k-H1X .item--mxH {
-  margin-right: 4.259rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-9g9k-H1X .item-720000-t1K {
-  margin-right: 4.1013rem;
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-142-9aD .auto-group-9g9k-H1X .item-23-11-20-14-17-34-yHf {
-  font-size: 1.4453rem;
-  font-weight: 400;
-  line-height: 1.2125;
-  color: #000000;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 {
-  width: 38rem;
-  height: 4.4258rem;
-  position: absolute;
-  left: 91.1rem;
-  top: 10.7rem;
-  display: flex;
-  align-items: center;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq {
-  box-sizing: border-box;
-  padding: 0.594rem 2.63rem 0.524rem 0rem;
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame1 .farmerinfo-line1-div {
   height: 100%;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq .group-126-e2R {
-  margin-right: 0.4241rem;
-  width: 3.308rem;
-  height: 3.3081rem;
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame1 .farmerinfo-line1-div .farmer-image {
+  margin-right: 3.118rem;
+  width: 3.869rem;
+  height: 3.8843rem;
+  object-fit: contain;
+  vertical-align: top;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame1 .farmerinfo-line1-div .farmer-name-div {
+  margin-bottom: 0.1052rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #2d2d2d;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame1 .chaticon-img {
+  margin-bottom: 0.5108rem;
+  width: 2.2412rem;
+  height: 1.948rem;
+  position: relative;
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq .item--xoo {
-  margin: 0.279rem 1.774rem 0rem 0rem;
-  font-size: 1.8776rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #3d3d3d;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
+.main-div .productDetail-div .right-div .farmerinfo-div .farmerinfo-frame2 {
+  margin-right: 2.4473rem;
+  width: 33.7967rem;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq .group-128-eRj {
-  margin: 1.188rem 0rem 1.221rem 0rem;
-  width: 0.8482rem;
-  height: calc(100% - 2.4081rem);
-  position: relative;
-  border-radius: 0.2423rem;
-  flex-shrink: 0;
+.frame2-line1, .frame2-line2, .frame2-line3, .frame2-line4, .frame2-line5 {
+  margin: 0rem 15.5rem 2.292rem 0rem;
+  width: calc(100% - 15.5rem);
+  display: flex;
+  align-items: center;
 }
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq .group-128-eRj .rectangle-121-Z2u {
-  width: 0.8482rem;
-  height: 0.8482rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: #d16250;
-  border-radius: 0.2423rem;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .auto-group-zbfb-kSq .group-128-eRj .n-g7X {
-  width: 0.5rem;
-  height: 0.9rem;
-  position: absolute;
-  left: 0.1741rem;
-  top: 0;
-  text-align: center;
-  font-size: 0.7068rem;
-  font-weight: 800;
-  line-height: 1.2575;
-  color: #f5f5f5;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-kfzx-KY9 .group-153-4a1 .group-127-jbb {
-  box-sizing: border-box;
-  padding: 1.207rem 2.146rem 0.819rem 2.146rem;
-  width: 25.6161rem;
-  height: 100%;
-  font-size: 1.8776rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #f5f5f5;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  background-color: #64a246;
-  border-radius: 0.6706rem;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .item--a6R {
-  margin-left: 48.042rem;
-  text-align: center;
-  font-size: 1.9873rem;
-  font-weight: 800;
+.farm-name {
+  margin-right: 7.5rem;
+  font-size: 1.8067rem;
+  font-weight: 500;
   line-height: 1.2125;
   color: #000000;
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ {
+.farm-name-val, .farm-address-val, .farm-footage-val, .farm-kind-val, .crops-finish-val, .farmer-phone-val {
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.farm-address, .farm-footage {
+  margin: 0rem 5.297rem 0rem 0rem;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.farm-kind, .crops-finish, .farmer-phone {
+  margin: 0rem 3.5rem 0rem 0rem;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.frame2-line6 {
+  margin-right: 8.3967rem;
+  width: calc(100% - 8.3967rem);
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.crops-info-div {
+  margin: 0rem 0rem 3.47rem 0.032rem;
   box-sizing: border-box;
-  padding: 1.655rem 15.079rem 15.321rem 88.181rem;
+  padding: 1.807rem 1.8rem 1.386rem 1.8rem;
+  width: calc(100% - 0.0325rem);
+  height: 10.9304rem;
+  border: solid 0.0903rem #64a246;
+  border-radius: 0.3613rem;
+}
+.crops-inner-div {
+  width: 30.8663rem;
+  height: 100%;
+}
+.crops-line1{
+  margin: 0rem 3.593rem 2.3rem 0rem;
+  width: calc(100% - 3.5931rem);
+  display: flex;
+  align-items: center;
+}
+.crops-amount {
+  margin: 0.193rem 17.35rem 0rem 0rem;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.crops-amount-val {
+  text-align: center;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.crops-line2 {
   width: 100%;
-  align-items: flex-end;
+  display: flex;
+  align-items: center;
+}
+.kg-per-price {
+  margin: 0.193rem 3rem 0rem 0rem;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.kg-per-price-val {
+  margin-bottom: 0.0443rem;
+  text-align: center;
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.crops-api-info {
+  margin: 0rem 0rem 3.47rem 0.032rem;
+  box-sizing: border-box;
+  padding: 7.4rem 1.8rem 7.473rem 1.8rem;
+  width: calc(100% - 0.0325rem);
+  font-size: 1.8067rem;
+  font-weight: 500;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  border: solid 0.0903rem #64a246;
+  border-radius: 0.3613rem;
+}
+.auctionhisotry-tag {
+  margin: 0rem 0rem 0.9rem 0.1rem;
+  font-size: 1.9873rem;
+  font-weight: 700;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.auctionhistory-div {
+  margin: 0rem 0rem 3.47rem 0.032rem;
+  box-sizing: border-box;
+  padding: 1.807rem 1.8rem 1.386rem 1.8rem;
+  width: calc(100% - 0.0325rem);
+  display: flex;
+  flex-direction: column;
+  border: solid 0.0903rem #64a246;
+  border-radius: 0.3613rem;
+}
+.auctionhisotry-inner-layout {
+  margin: 0rem 1.956rem 0rem 2.429rem;
+  width: calc(100% - 4.3849rem);
+  align-items: center;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-n3su-y8Z {
-  margin: 0rem 0.271rem 3.162rem 0rem;
-  box-sizing: border-box;
-  padding: 0.542rem 1.792rem 0.571rem 37.477rem;
-  text-align: center;
+.auction-participant-info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.auction-participant-name {
+  margin: 0.271rem 4.228rem 0rem 0rem;
+  font-size: 1.4453rem;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.auction-participant-val {
+  margin-right: 3.9572rem;
+  font-size: 1.4453rem;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.auction-participate-date {
+  font-size: 1.4453rem;
+  font-weight: 400;
+  line-height: 1.2125;
+  color: #000000;
+  font-family: Inter, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.auction-input-tag {
+  margin: 0rem 0rem 0.9rem 0.1rem;
   font-size: 1.9873rem;
   font-weight: 800;
   line-height: 1.2125;
-  color: #686868;
+  color: #000000;
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
-  border: solid 0.0903rem #64a246;
-  background-color: #ffffff;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm {
-  width: 40.6501rem;
-  height: 5.691rem;
+.auction-price-form {
+  position: relative;	
+}
+.auction-price-input {
+  margin: 0rem 0rem 3.47rem 0.032rem;
+  box-sizing: border-box;
+  text-align: right;
+  width: calc(100% - 0.0325rem);
+  padding: 1.5rem 5rem 1.5rem 1rem;
+  border: solid 0.0903rem #64a246;
+  border-radius: 0.3613rem;
+  position: relative;
+  font-family: Inter, 'Source Sans Pro';
+  font-size: 2.3rem;
+  font-weight: 550;
+}
+.won-unit {
+  position: absolute;
+  right: 10px;
+  top: 16%;
+  color: darkgray;
+  font-family: Inter, 'Source Sans Pro';
+  font-size: 2.1rem;
+  font-weight: bold;
+}
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B {
+  margin-right: 0rem;
+  width: calc(100% - 0rem);
+  height: 5.7124rem;
   display: flex;
   align-items: center;
-  flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-nexv-X3b {
-  margin-right: 0.6323rem;
-  width: 5.5103rem;
-  height: 100%;
-  position: relative;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-nexv-X3b .item-1615-31w {
-  width: 3.1rem;
-  height: 1.6rem;
-  position: absolute;
-  left: 1.1744rem;
-  top: 3.1617rem;
-  font-size: 1.2647rem;
-  font-weight: 500;
-  line-height: 1.2125;
-  color: #a2a2a3;
-  font-family: Inter, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-nexv-X3b .rectangle-103-8p5 {
-  width: 5.5103rem;
-  height: 5.691rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border: solid 0.0903rem #a2a2a3;
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B .bookmarkbtn-RpZ {
+  margin: 0rem 2.183rem 0.021rem 0rem;
   box-sizing: border-box;
+  padding: 1.219rem 1.226rem 0.84rem 1.132rem;
+  width: 5.4589rem;
+  height: calc(100% - 0.0214rem);
+  border: solid 0.0903rem #a2a2a3;
   border-radius: 0.3613rem;
+  flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-nexv-X3b .outline-heart-qiV {
-  width: 1.8293rem;
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B .bookmarkbtn-RpZ .line1-uzd {
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B .bookmarkbtn-RpZ .line1-uzd .hearticon-fyo {
+  margin: 0rem 0rem 0.407rem 0.116rem;
+  width: 1.8122rem;
   height: 1.626rem;
-  position: absolute;
-  left: 1.8406rem;
-  top: 1.1292rem;
   object-fit: contain;
   vertical-align: top;
-}
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-8bxr-Ycu {
-  margin-right: 0.6324rem;
-  width: 5.5103rem;
-  height: 100%;
-  position: relative;
   flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-8bxr-Ycu .item-615-V2M {
-  width: 2.2rem;
-  height: 1.6rem;
-  position: absolute;
-  left: 1.6552rem;
-  top: 3.1617rem;
-  text-align: center;
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B .bookmarkbtn-RpZ .line1-uzd .item-1615-CTw {
   font-size: 1.2647rem;
   font-weight: 500;
   line-height: 1.2125;
   color: #a2a2a3;
   font-family: Inter, 'Source Sans Pro';
   white-space: nowrap;
+  flex-shrink: 0;
 }
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-8bxr-Ycu .rectangle-91-apV {
-  width: 5.5103rem;
-  height: 5.691rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  border: solid 0.0903rem #a2a2a3;
-  box-sizing: border-box;
-  border-radius: 0.3613rem;
-}
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .auto-group-8bxr-Ycu .outline-bookmark-uLy {
-  width: 1.084rem;
-  height: 1.5357rem;
-  position: absolute;
-  left: 2.2584rem;
-  top: 1.1744rem;
-  object-fit: contain;
-  vertical-align: top;
-}
-.mainpage--eS1 .auto-group-mefo-FCZ .auto-group-5zg9-QUm .frame-16-nvZ {
-  width: 28.3647rem;
-  height: 100%;
+.main-div .productDetail-div .right-div .auto-group-zfnd-73B .auctionconfirmbtn-51w {
+  margin-top: 0.0124rem;
+  width: 32.791rem;
+  height: calc(100% - 0.0124rem);
   overflow: hidden;
   position: relative;
   text-align: center;
@@ -1042,247 +553,4 @@ body {
   background-color: #64a246;
   border-radius: 0.3613rem;
   flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb {
-  box-sizing: border-box;
-  padding: 2.5rem 0rem 3.2rem 0rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(248, 248, 248, 0.9725490212);
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ {
-  margin: 0rem 0rem 1.3rem 16.2rem;
-  width: 6.147rem;
-  height: 5.05rem;
-  position: relative;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .inc-T9X {
-  width: 3.2rem;
-  height: 1.3rem;
-  position: absolute;
-  left: 1.2rem;
-  top: 3.75rem;
-  display: flex;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #64a246;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .item--u1X {
-  width: 3.1rem;
-  height: 3.2rem;
-  position: absolute;
-  left: 3.047rem;
-  top: 0.6703rem;
-  font-size: 2.5031rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #2d2d2d;
-  font-family: Gmarket Sans, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .image-22-LsX {
-  width: 2.7183rem;
-  height: 3.5344rem;
-  position: absolute;
-  left: 0;
-  top: 0;
-  object-fit: cover;
-  vertical-align: top;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .group-147-31F {
-  width: 0.6rem;
-  height: 0.7rem;
-  position: absolute;
-  left: 0.3rem;
-  top: 4.05rem;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .group-147-31F .c-vaq {
-  width: 0.3rem;
-  height: 0.7rem;
-  position: absolute;
-  left: 0.15rem;
-  top: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.5rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #64a246;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-}
-.mainpage--eS1 .footer-3bb .auto-group-o8ry-xiZ .group-147-31F .ellipse-30-Ys7 {
-  width: 0.6rem;
-  height: 0.6rem;
-  position: absolute;
-  left: 0;
-  top: 0.08rem;
-  border: solid 0.03rem #64a246;
-  box-sizing: border-box;
-  border-radius: 0.3rem;
-}
-.mainpage--eS1 .footer-3bb .auto-group-zqmp-QeR {
-  margin: 0rem 19.8rem 0.65rem 16.2rem;
-  width: calc(100% - 36rem);
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-zqmp-QeR .item--VQy {
-  margin-right: 89.1rem;
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #64a246;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-zqmp-QeR .about-farmfarm-xJZ {
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 700;
-  line-height: 1.2575;
-  color: #64a246;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd {
-  margin: 0rem 26.1rem 1.784rem 16.2rem;
-  width: calc(100% - 42.3rem);
-  display: flex;
-  align-items: flex-end;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd .item--23X {
-  margin: 0rem 49.4rem 0.4rem 0rem;
-  max-width: 45.5rem;
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #868686;
-  font-family: Pretendard, 'Source Sans Pro';
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd .auto-group-w6hk-Dfj {
-  row-gap: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd .auto-group-w6hk-Dfj .item--xNR {
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #868686;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd .auto-group-w6hk-Dfj .item--H9o {
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #868686;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .auto-group-tmuw-Hrd .auto-group-w6hk-Dfj .item--oP3 {
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #868686;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .line-51-iF7 {
-  margin: 0rem 0rem 2.416rem 0rem;
-  width: calc(100% - 0rem);
-  height: 0.1rem;
-  background-color: #d9d9d9;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 {
-  margin: 0rem 0rem 0.6rem 16.2rem;
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #686868;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  display: flex;
-  align-items: baseline;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-0 {
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-1 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #d9d9d9;
-  font-family: Pretendard, 'Source Sans Pro';
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-2 {
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-3 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #d9d9d9;
-  font-family: Pretendard, 'Source Sans Pro';
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-4 {
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-5 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #d9d9d9;
-  font-family: Pretendard, 'Source Sans Pro';
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-6 {
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-7 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #d9d9d9;
-  font-family: Pretendard, 'Source Sans Pro';
-}
-.mainpage--eS1 .footer-3bb .c-1153-4-77-ds-sw-4-SB7 .c-1153-4-77-ds-sw-4-SB7-sub-8 {
-}
-.mainpage--eS1 .footer-3bb .infofarmfarmkr-1661-1003-AAy {
-  margin-left: 16.2rem;
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #686868;
-  font-family: Pretendard, 'Source Sans Pro';
-  white-space: nowrap;
-  display: flex;
-  align-items: baseline;
-  flex-shrink: 0;
-}
-.mainpage--eS1 .footer-3bb .infofarmfarmkr-1661-1003-AAy .infofarmfarmkr-1661-1003-AAy-sub-0 {
-}
-.mainpage--eS1 .footer-3bb .infofarmfarmkr-1661-1003-AAy .infofarmfarmkr-1661-1003-AAy-sub-1 {
-  font-size: 1.3rem;
-  font-weight: 400;
-  line-height: 1.2575;
-  color: #d9d9d9;
-  font-family: Pretendard, 'Source Sans Pro';
-}
-.mainpage--eS1 .footer-3bb .infofarmfarmkr-1661-1003-AAy .infofarmfarmkr-1661-1003-AAy-sub-2 {
 }

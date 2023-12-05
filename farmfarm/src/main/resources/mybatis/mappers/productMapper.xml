@@ -17,7 +17,7 @@
 			PR.farmer_serial_num, PR.farm_name, PR.farm_introduction, PR.farm_square_footage,
 			PR.expected_planting_date, PR.expected_harvest_date, PR.auction_thumb_img_url,
 			PR.auction_product_img_url, PR.farm_address, FA.farmer_email, FA.farmer_name,
-			AU.harvest_amount, AU.starting_price, AU.auction_deadline, CU.update_date
+			AU.harvest_amount, AU.starting_price, AU.auction_deadline, CU.update_date,DATEDIFF(AU.auction_deadline,CURDATE()) AS dueDay
 		from farm_and_product AS PR
 		LEFT OUTER JOIN
 			farmers AS FA ON (PR.farmer_serial_num = FA.farmer_serial_num)

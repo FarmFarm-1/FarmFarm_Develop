@@ -68,8 +68,8 @@
 	
 	<hr>
 	<c:set var="cpath" value="${pageContext.request.contextPath}" />
-	<button onclick="location.href='${cpath}/funding/fundingList';">펀딩리스트</button>
-	<button onclick="location.href='${cpath}/auction/auctionList';">옥션리스트</button>
+	<button onclick="location.href='${pageContext.request.contextPath}/funding/fundingList';">펀딩리스트</button>
+	<button onclick="location.href='${pageContext.request.contextPath}/auction/auctionList';">옥션리스트</button>
 	<script>
 		let message = "${message}";
 		if(message!="") {
