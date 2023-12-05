@@ -16,6 +16,65 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C600%2C700%2C800" />
 <link rel="stylesheet" href="/styles/auctionDetail.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/js/auctionDetail.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$("#bookmark-layer").click(function() {
+        $.ajax({
+            url: '/your-endpoint-url',
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+                product_serial_num: 'your-product-serial-num',
+                user_serial_num: 'your-user-serial-num'
+            }),
+            success: function() {
+                let isHeartFilled = $('#heart-icon').toggleClass('filled').hasClass('filled');
+                if (isHeartFilled) {
+                    $('#heart-icon').attr('src', "/assets/filledhearticon.png");
+                } else {
+                    $('#heart-icon').attr('src', "/assets/hearticon.png");
+                }
+            }
+        });
+    });
+    
+    $('#auction-confirm-btn').click(function() {
+    	let input_price = $('#auction-price-input').val();
+    	let user_price = user_price.replace(/,/g, '');
+        $.ajax({
+            url: '/your-endpoint-url', // Replace with your endpoint URL
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({
+            	user_price : user_price,
+                product_serial_num: 'your-product-serial-num', // Replace with your product serial number
+                user_serial_num: 'your-user-serial-num' // Replace with your user serial number
+            }),
+            success: function() {
+                alert('입찰이 성공적으로 이루어졌습니다.');
+            },
+            error: function() {
+                alert('입찰에 실패했습니다. 다시 시도해주세요.');
+            }
+        });
+    });
+    $('#auction-price-input').on('input', function(e) {
+    	let input = e.target.value; 
+        if(input.length > 0) {
+        	let num = input.replace(/,/g, ''); // 콤마 제거
+        	if (!$.isNumeric(num)) {
+                alert('숫자만 입력해주세요.');
+                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
+            } else {
+                $(this).val(Number(num).toLocaleString('en')); // 천 단위로 콤마 추가
+            }
+        }
+    });
+});
+</script>
 </head>
 <body>
 	<div class="main-div">
@@ -73,9 +132,9 @@
 						</div>
 						<div class="frame2-line5">
 							<p class="crops-finish">수확 완료일</p>
-							<p class="crops-finish-val"><fmt:formatDate value="${auctionInfo.update_date}" type="date"/></p>
+							<p class="crops-finish-val"><fmt:formatDate value="${auctionInfo.update_date}" type="date" pattern="yyyy-MM-dd" /></p>
 						</div>
-						<%--<c:set var></c:set> --%>
+						
 						<div class="frame2-line6">
 							<p class="farmer-phone">파머 연락처</p>
 							<p class="farmer-phone-val">${auctionInfo.farmer_phone}</p>
@@ -98,11 +157,13 @@
 				<p class="auctionhisotry-tag">입찰현황</p>
 				<div class="auctionhistory-div">
 					<div class="auctionhisotry-inner-layout">
-						<div class="auction-participant-info">
-							<p class="auction-participant-name">서*현</p>
-							<p class="auction-participant-val">800,000원</p>
-							<p class="auction-participate-date">23-11-23 11:13:55</p>
-						</div>
+						<c:forEach items="${auctionHistoryInfo}" var="list">
+							<div class="auction-participant-info">
+								<p class="auction-participant-name">${list.user_name}</p>
+								<p class="auction-participant-val">${list.user_price}</p>
+								<p class="auction-participate-date"><fmt:formatDate value="${list.bid_date}" type="date" pattern="yyyy-MM-dd hh:mm:ss" /></p>
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 				<p class="auction-input-tag">경매할 포인트 입력</p>
@@ -110,14 +171,14 @@
 					<input id="auction-price-input" class="auction-price-input" type="text" pattern="[0-9]" value="0">
 					<label class="won-unit" for="auction-price-input">원</label>
 				</form>				
-				<div class="auto-group-zfnd-73B">
-					<div class="bookmarkbtn-RpZ">
-						<div class="line1-uzd">
-							<img class="hearticon-fyo" src="/assets/hearticon.png" />
-							<p class="item-1615-CTw">### 좋아요 수###</p>
+				<div class="last-layer">
+					<div class="bookmark-layer">
+						<div class="bookmark-btn">
+							<img id="heart-icon" class="heart-icon" src="/assets/hearticon.png" />
+							<p class="heart-num">### 좋아요 수###</p>
 						</div>
 					</div>
-					<button class="auctionconfirmbtn-51w">입찰하기</button>
+					<button class="auction-confirm-btn">입찰하기</button>
 				</div>
 			</div>
 		</div>

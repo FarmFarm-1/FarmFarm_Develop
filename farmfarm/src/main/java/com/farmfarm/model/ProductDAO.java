@@ -29,7 +29,7 @@ public class ProductDAO {
 		return sqlSession.selectOne(namespace+"auctionInfo",product_serial_num);
 	}
 	
-	public List<Auction_historyVO> auctionHistorySelectAll(String product_serial_num) {
+	public List<Map<String, Object>> auctionHistorySelectAll(String product_serial_num) {
 		return sqlSession.selectList(namespace+"auctionHistorySelectAll",product_serial_num);
 	}
 	

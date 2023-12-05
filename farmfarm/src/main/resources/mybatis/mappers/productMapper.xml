@@ -32,10 +32,15 @@
 			AND CU.cultivate_status='수확완료'
 	</select>
 	
-	<select id="auctionHistorySelectAll" parameterType="String" resultType="Auction_historyVO">
-		SELECT *
-		FROM auction_history
-		WHERE product_serial_num=#{product_serial_num}
+	<select id="auctionHistorySelectAll" parameterType="String" resultType="map">
+		SELECT 
+			A.user_price, A.bid_date, U.user_name
+		FROM 
+			auction_history AS A
+		LEFT OUTER JOIN 
+			users AS U ON(A.user_serial_num = U.user_serial_num)
+		WHERE
+			product_serial_num = #{product_serial_num}
 	</select>
 	
 	<select id="maxAndCntAuctionInfo" parameterType="String" resultType="map">
