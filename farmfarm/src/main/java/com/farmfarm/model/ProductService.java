@@ -27,7 +27,7 @@ public class ProductService {
 		return dao.auctionInfo(product_serial_num);
 	}
 	
-	public List<Auction_historyVO> auctionHistorySelectAll(String product_serial_num) {
+	public List<Map<String, Object>> auctionHistorySelectAll(String product_serial_num) {
 		return dao.auctionHistorySelectAll(product_serial_num);
 	}
 	
