@@ -1,6 +1,7 @@
 
 html {
 	font-size:62.5%;
+	zoom: 0.67;
 }
 * {
 	margin: 0;
@@ -110,7 +111,7 @@ input {
   position: absolute;
   left: 45.8rem;
   top: 0;
-  border: solid 0.0744rem #d9d9d9;
+  /* border: solid 0.0744rem #d9d9d9; */
   box-sizing: border-box;
   background-color: #eeeeee;
   border-radius: 1.4882rem;
