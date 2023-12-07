@@ -24,11 +24,11 @@
 			<div class="auto-group-npnm-LPo">
 
 				<div class="rectangle-90-p451">
-					<p class="item--3b31">농작물 재배를 위해 펀딩받고 싶어요!</p>
+					<p class="item--3b31">파머</p>
 				</div>
 
 				<div class="rectangle-98-XjB1">
-					<p class="item--MCR1">서포터</p>
+					<p class="item--MCR1">농작물을 투자/구매하고 싶어요!</p>
 				</div>
 
 				<div class="rectangle-89-trZ">

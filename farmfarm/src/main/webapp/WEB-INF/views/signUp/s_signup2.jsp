@@ -44,10 +44,10 @@
 			</div>
 			<div class="auto-group-ymdo-CSH">
 				<div class="rectangle-90-7p91">
-					<p class="item--eZB1">농작물 재배를 위해 펀딩받고 싶어요!</p>
+					<p class="item--eZB1">파머</p>
 				</div>
 				<div class="rectangle-98-tTX1">
-					<p class="item--jDF1">서포터</p>
+					<p class="item--jDF1">농작물을 투자/구매하고 싶어요!</p>
 				</div>
 				<!-- <div class="rectangle-89-bcq">
       			</div> -->

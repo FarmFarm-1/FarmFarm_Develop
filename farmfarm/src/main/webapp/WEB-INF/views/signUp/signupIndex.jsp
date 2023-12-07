@@ -68,11 +68,11 @@
 			<div id="here">
 				<div class="auto-group-pxyy-6gM">
 					<div class="rectangle-90-1YR1" onclick="f_signup1()">
-						<p class="item--fWV1">농작물 재배를 위해 펀딩받고 싶어요!</p>
+						<p class="item--fWV1">파머</p>
 					</div>
 
 					<div class="rectangle-97-LKo1">
-						<p class="item--NnH1">서포터</p>
+						<p class="item--NnH1">농작물을 투자/구매하고 싶어요!</p>
 					</div>
 
 					<div class="rectangle-89-e5b">
