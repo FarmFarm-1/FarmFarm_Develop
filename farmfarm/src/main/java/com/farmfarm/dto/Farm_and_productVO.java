@@ -21,6 +21,7 @@ public class Farm_and_productVO {
 	String farmer_phone;
 	String farmer_serial_num;
 	String farm_name;
+	String farm_address;
 	String farm_introduction;
 	int farm_square_footage;
 	Date expected_planting_date;

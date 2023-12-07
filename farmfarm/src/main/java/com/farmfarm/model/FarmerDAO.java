@@ -14,7 +14,7 @@ public class FarmerDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
-	String namespace = "com.farmfarm.FarmersVO.";
+	String namespace = "com.farmfarm.farmer.";
 	
 	public FarmersVO loginFarmer(FarmersVO vo) {
 		return sqlSession.selectOne(namespace+"loginFarmer",vo);
