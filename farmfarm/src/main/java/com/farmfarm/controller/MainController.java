@@ -12,18 +12,48 @@ public class MainController {
 		return "loginIndex";
 	}
 	
+	@GetMapping("/login.do")
+	public String showLogin() {
+		return "login/login";
+	}
+	
 	@GetMapping("/signup.do")
-	public String showSignUp1() {
-		return "signUp/signup1";
+	public String showSignUpIndex() {
+		return "signUp/signupIndex";
 	}
 	
-	@GetMapping("/signup2.do")
-	public String showSignUp2() {
-		return "signUp/signup21";
+	@GetMapping("/s_signup1.do")
+	public String showSSignup1() {
+		return "signUp/s_signup1";
 	}
 	
-	@GetMapping("/signup3.do")
+	@GetMapping("/s_signup2.do")
+	public String showSSignup2() {
+		return "signUp/s_signup2";
+	}
+	
+	@GetMapping("/s_signup3.do")
 	public String showSignUp3() {
-		return "signUp/signup31";
+		return "signUp/s_signup3";
+	}
+	
+	@GetMapping("/f_signup1.do")
+	public String showFSignUp1() {
+		return "signUp/f_signup1";
+	}
+	
+	@GetMapping("/f_signup2.do")
+	public String showFSignUp2() {
+		return "signUp/f_signup2";
+	}
+	
+	@GetMapping("/f_signup3.do")
+	public String showFSignUp3() {
+		return "signUp/f_signup3";
+	}
+	
+	@GetMapping("/signup_modal.do")
+	public String showModal() {
+		return "signUp/signupModal";
 	}
 }

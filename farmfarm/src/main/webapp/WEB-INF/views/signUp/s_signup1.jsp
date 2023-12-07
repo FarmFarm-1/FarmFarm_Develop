@@ -22,9 +22,18 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function signup2() {
+	function f_signup1() {
 		$.ajax({
-			url : "/signup2.do",
+			url : "/f_signup1.do",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
+	function s_signup2() {
+		$.ajax({
+			url : "/s_signup2.do",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -35,22 +44,22 @@
 <body>
 	<div class="mainpage--1tZ">
 		<div class="group-172-CfX">
-			<div class="auto-group-bzzh-Xxh">
+			<!-- <div class="auto-group-bzzh-Xxh">
 				<p class="item--Fth">회원가입</p>
-				<!-- <p class="item--Y77">
+				<p class="item--Y77">
 					<span class="item--Y77-sub-0">*</span> <span
 						class="item--Y77-sub-1">필수입력사항</span>
-				</p> -->
-			</div>
+				</p>
+			</div> -->
 
 			<div id="here">
 				<div class="auto-group-pxyy-6gM">
-					<div class="rectangle-90-1YR">
-						<p class="item--fWV">농작물 재배를 위해 펀딩받고 싶어요!</p>
+					<div class="rectangle-90-1YR1" onclick="f_signup1()">
+						<p class="item--fWV1">농작물 재배를 위해 펀딩받고 싶어요!</p>
 					</div>
 
-					<div class="rectangle-97-LKo">
-						<p class="item--NnH">서포터</p>
+					<div class="rectangle-97-LKo1">
+						<p class="item--NnH1">서포터</p>
 					</div>
 
 					<div class="rectangle-89-e5b">
@@ -123,7 +132,7 @@
 				<div class="auto-group-uuhw-Ws7">
 					<button onclick="location.href='login.do'" class="group-100-DFj">취소</button>
 					<!-- <div class="group-100-DFj">취소</div> -->
-					<button onclick="signup2()" id="nextButton" class="group-99-pWR">다음</button>
+					<button onclick="s_signup2()" id="nextButton" class="group-99-pWR">다음</button>
 					<!-- <button onclick="location.href='signup2.do'" id="nextButton"
 						class="group-99-pWR">다음</button> -->
 					<!-- <div class="group-99-pWR">다음</div> -->
@@ -134,34 +143,34 @@
 	</div>
 
 	<script>
-		const checkbox1 = document.getElementById("checkbox1");
-		const checkbox2 = document.getElementById("checkbox2");
-		const checkbox3 = document.getElementById("checkbox3");
-		const checkbox4 = document.getElementById("checkbox4");
-		const checkbox5 = document.getElementById("checkbox5");
-		const nextButton = document.getElementById("nextButton");
-		nextButton.disabled = true;
+		var scheckbox1 = document.getElementById("checkbox1");
+		var scheckbox2 = document.getElementById("checkbox2");
+		var scheckbox3 = document.getElementById("checkbox3");
+		var scheckbox4 = document.getElementById("checkbox4");
+		var scheckbox5 = document.getElementById("checkbox5");
+		var snextButton = document.getElementById("nextButton");
+		snextButton.disabled = true;
 
-		checkbox1.addEventListener('change', updateAgreeAllTermButton);
-		checkbox2.addEventListener('change', updateNextButtonState);
-		checkbox3.addEventListener('change', updateNextButtonState);
-		checkbox4.addEventListener('change', updateNextButtonState);
-		checkbox5.addEventListener('change', updateNextButtonState);
+		scheckbox1.addEventListener('change', updateAgreeAllTermButton);
+		scheckbox2.addEventListener('change', updateNextButtonState);
+		scheckbox3.addEventListener('change', updateNextButtonState);
+		scheckbox4.addEventListener('change', updateNextButtonState);
+		scheckbox5.addEventListener('change', updateNextButtonState);
 
 		function updateAgreeAllTermButton() {
 
-			if (checkbox1.checked) {
-				checkbox2.checked = true;
-				checkbox3.checked = true;
-				checkbox4.checked = true;
-				checkbox5.checked = true;
-				nextButton.disabled = true;
+			if (scheckbox1.checked) {
+				scheckbox2.checked = true;
+				scheckbox3.checked = true;
+				scheckbox4.checked = true;
+				scheckbox5.checked = true;
+				snextButton.disabled = true;
 			} else {
-				checkbox2.checked = false;
-				checkbox3.checked = false;
-				checkbox4.checked = false;
-				checkbox5.checked = false;
-				nextButton.disabled = false;
+				scheckbox2.checked = false;
+				scheckbox3.checked = false;
+				scheckbox4.checked = false;
+				scheckbox5.checked = false;
+				snextButton.disabled = false;
 			}
 
 			updateNextButtonState();
@@ -170,18 +179,19 @@
 
 		function updateNextButtonState() {
 			/* console.log(checkbox1.checked); */
-			if (checkbox2.checked == false || checkbox3.checked == false
-					|| checkbox4.checked == false || checkbox5.checked == false) {
-				checkbox1.checked = false;
+			if (scheckbox2.checked == false || scheckbox3.checked == false
+					|| scheckbox4.checked == false
+					|| scheckbox5.checked == false) {
+				scheckbox1.checked = false;
 			} else {
-				checkbox1.checked = true;
+				scheckbox1.checked = true;
 			}
 
-			const allCheckboxesChecked = checkbox2.checked && checkbox3.checked
-					&& checkbox4.checked;
-			nextButton.style.backgroundColor = allCheckboxesChecked ? '#64A346'
+			var allCheckboxesChecked = scheckbox2.checked && scheckbox3.checked
+					&& scheckbox4.checked;
+			snextButton.style.backgroundColor = allCheckboxesChecked ? '#64A346'
 					: '#a2a2a3';
-			nextButton.disabled = allCheckboxesChecked ? false : true;
+			snextButton.disabled = allCheckboxesChecked ? false : true;
 		}
 	</script>
 </body>

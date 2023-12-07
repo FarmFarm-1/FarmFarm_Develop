@@ -23,12 +23,12 @@
 		<div class="group-174-idK">
 			<div class="auto-group-npnm-LPo">
 
-				<div class="rectangle-90-p45">
-					<p class="item--3b3">농작물 재배를 위해 펀딩받고 싶어요!</p>
+				<div class="rectangle-90-p451">
+					<p class="item--3b31">농작물 재배를 위해 펀딩받고 싶어요!</p>
 				</div>
 
-				<div class="rectangle-98-XjB">
-					<p class="item--MCR">서포터</p>
+				<div class="rectangle-98-XjB1">
+					<p class="item--MCR1">서포터</p>
 				</div>
 
 				<div class="rectangle-89-trZ">
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="group-99-34Z">로그인</div>
+			<div onclick="location.href='login.do'" class="group-99-34Z">로그인</div>
 		</div>
 	</div>
 </body>

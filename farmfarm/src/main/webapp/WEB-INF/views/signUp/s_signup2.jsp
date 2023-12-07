@@ -22,9 +22,9 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript">
-	function signup3() {
+	function s_signup3() {
 		$.ajax({
-			url : "/signup3.do",
+			url : "/s_signup3.do",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -43,11 +43,11 @@
 				</p>
 			</div>
 			<div class="auto-group-ymdo-CSH">
-				<div class="rectangle-90-7p9">
-					<p class="item--eZB">농작물 재배를 위해 펀딩받고 싶어요!</p>
+				<div class="rectangle-90-7p91">
+					<p class="item--eZB1">농작물 재배를 위해 펀딩받고 싶어요!</p>
 				</div>
-				<div class="rectangle-98-tTX">
-					<p class="item--jDF">서포터</p>
+				<div class="rectangle-98-tTX1">
+					<p class="item--jDF1">서포터</p>
 				</div>
 				<!-- <div class="rectangle-89-bcq">
       			</div> -->
@@ -55,15 +55,20 @@
 				<form class="rectangle-89-bcq" method="get" id="signupForm"
 					style="display: block;">
 
-					<div class="rectangle-93-JTw"></div>
-					<div class="rectangle-95-dm7"></div>
-					<div class="ellipse-4-mcR"></div>
-					<div class="ellipse-5-gjP"></div>
-					<p class="item--QfP">약관 동의</p>
-					<p class="item--6o7">정보 입력</p>
-					<p class="item--mPT">가입 완료</p>
-					<img class="uim-check-abo" src="./assets/check_img.png" /> <img
-						class="group-101-ey3" src="./assets/orange_circle.png" />
+					<div class="term_status">
+						<div class="rectangle-93-JTw"></div>
+						<div class="rectangle-95-dm7"></div>
+						<div class="ellipse-4-mcR"></div>
+						<img class="uim-check-abo" src="./assets/check_img.png" /> <img
+							class="group-101-ey3" src="./assets/orange_circle.png" />
+						<div class="ellipse-5-gjP"></div>
+					</div>
+
+					<div class="term_status2">
+						<p class="item--QfP">약관 동의</p>
+						<p class="item--6o7">정보 입력</p>
+						<p class="item--mPT">가입 완료</p>
+					</div>
 
 					<div class="formmail-EQu">
 						<div class="group-97-ZCH">
@@ -86,7 +91,8 @@
 						</div>
 						<div class="auto-group-vdzx-t851">
 							<input type="text" name="certificationNumber"
-								class="group-98-dbT1" placeholder="인증번호를 입력해 주세요." required="required" />
+								class="group-98-dbT1" placeholder="인증번호를 입력해 주세요."
+								required="required" />
 							<!-- <div class="group-98-dbT1">인증번호를 입력해 주세요.</div> -->
 							<button class="group-96-GeR1" type="submit" form="signupForm">인증확인</button>
 							<!-- <div class="group-96-GeR1">인증확인</div> -->
@@ -99,7 +105,7 @@
 							<p class="item--B2d">*</p>
 						</div>
 						<input type="password" name="password" class="group-98-reZ"
-							placeholder="8~16자의 영문, 숫자, 특수기호" required="required"/>
+							placeholder="8~16자의 영문, 숫자, 특수기호" required="required" />
 						<!-- <div class="group-98-reZ">8~16자의 영문, 숫자, 특수기호</div> -->
 					</div>
 
@@ -109,7 +115,7 @@
 							<p class="item--tQD">*</p>
 						</div>
 						<input type="password" name="password" class="group-98-2FX"
-							placeholder="비밀번호를 한번 더 입력해 주세요." required="required"/>
+							placeholder="비밀번호를 한번 더 입력해 주세요." required="required" />
 						<!-- <div class="group-98-2FX">비밀번호를 한번 더 입력해 주세요.</div> -->
 					</div>
 
@@ -119,16 +125,16 @@
 							<p class="item--9Qh">*</p>
 						</div>
 						<input type="text" name="name" class="group-98-g9j"
-							placeholder="이름을 입력해 주세요." required="required"/>
+							placeholder="이름을 입력해 주세요." required="required" />
 						<!-- <div class="group-98-g9j">이름을 입력해 주세요.</div> -->
 					</div>
 				</form>
 			</div>
 
 			<div class="auto-group-sgld-ue5">
-				<button class="group-100-Q53" type="submit" form="signupForm">취소</button>
+				<button onclick="location.href='login.do'" class="group-100-Q53">취소</button>
 				<!-- <div class="group-100-Q53">취소</div> -->
-				<button onclick="signup3()" class="group-99-bQR">가입하기</button>
+				<button onclick="s_signup3()" class="group-99-bQR" type="submit" form="signupForm">가입하기</button>
 				<!-- <button onclick="location.href='signup3.do'" class="group-99-bQR">가입하기</button> -->
 				<!-- <div class="group-99-bQR">가입하기</div> -->
 			</div>

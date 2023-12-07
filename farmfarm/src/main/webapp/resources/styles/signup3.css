@@ -71,6 +71,16 @@ input {
 	border-radius: 1.4882rem;
 }
 
+.mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p451 {
+	width: 45.8rem;
+	height: 13.0963rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #eeeeee;
+	border-radius: 1.4882rem;
+}
+
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p45 .item--3b3
 	{
 	width: 29.4rem;
@@ -88,6 +98,23 @@ input {
 	white-space: nowrap;
 }
 
+.mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p451 .item--3b31
+	{
+	width: 29.4rem;
+	height: 3.1rem;
+	position: absolute;
+	left: 4.2rem;
+	top: 3rem;
+	text-align: center;
+	font-size: 2.4556rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	letter-spacing: 0.1228rem;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB {
 	width: 45.8rem;
 	height: 13.0963rem;
@@ -97,6 +124,18 @@ input {
 	/* border: solid 0.0744rem #d9d9d9; */
 	box-sizing: border-box;
 	background-color: #eeeeee;
+	border-radius: 1.4882rem;
+}
+
+.mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB1 {
+	width: 45.8rem;
+	height: 13.0963rem;
+	position: absolute;
+	left: 45.8rem;
+	top: 0;
+	/* border: solid 0.0744rem #d9d9d9; */
+	box-sizing: border-box;
+	background-color: #f6f6f6;
 	border-radius: 1.4882rem;
 }
 
@@ -112,6 +151,22 @@ input {
 	font-weight: 400;
 	line-height: 1.2575;
 	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB1 .item--MCR1
+	{
+	width: 4.5rem;
+	height: 3.1rem;
+	position: absolute;
+	left: 19.5rem;
+	top: 3rem;
+	text-align: center;
+	font-size: 2.4556rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
@@ -221,7 +276,7 @@ input {
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-89-trZ .term_status2
 	{
-	margin-left: 7rem;
+	margin-left: 15rem;
 	box-sizing: border-box;
 	width: 65rem;
 	height: 5rem;
@@ -238,7 +293,7 @@ input {
 	height: 2.9rem;
 	/* position: absolute; */
 	/* left: 9.5rem; */
-	margin-left: 6rem; top : 21rem;
+	margin-left: -2rem; top : 21rem;
 	text-align: center;
 	font-size: 2.2323rem;
 	font-weight: 400;
