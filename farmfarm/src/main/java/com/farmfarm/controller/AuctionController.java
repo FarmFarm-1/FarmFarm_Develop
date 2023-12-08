@@ -6,14 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.farmfarm.model.ProductService;
+import com.farmfarm.model.AuctionService;
 
 @Controller
 @RequestMapping("/auction")
 public class AuctionController {
 	
 	@Autowired
-	ProductService productService;
+	AuctionService productService;
 	
 	@GetMapping("/auctionList")
 	public String showAuctionList(Model model) {

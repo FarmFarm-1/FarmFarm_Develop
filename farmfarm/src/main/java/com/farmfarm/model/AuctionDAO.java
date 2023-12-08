@@ -9,15 +9,11 @@ import org.springframework.stereotype.Repository;
 import com.farmfarm.dto.Farm_and_productVO;
 
 @Repository
-public class ProductDAO {
+public class AuctionDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "com.farmfarm.Farm_and_productVO.";
-	
-	public List<Farm_and_productVO> fundingListSelectAll() {
-		return sqlSession.selectList(namespace+"fundingListSelectAll");
-	}
 
 	public List<Farm_and_productVO> auctionListSelectAll() {
 		return sqlSession.selectList(namespace+"auctionListSelectAll");
@@ -26,5 +22,4 @@ public class ProductDAO {
 	public Farm_and_productVO auctionInfo(String product_serial_num) {
 		return sqlSession.selectOne(namespace+"auctionInfo",product_serial_num);
 	}
-	
 }

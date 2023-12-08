@@ -22,7 +22,6 @@
 	href="${pageContext.request.contextPath }/resources/styles/fundinglist.css" />
 </head>
 <body>
-	${fundingInfo.farm_name } ${fundingInfo.farm_introduction }
 	<%@include file="../headerfooter/header.jsp"%>
 	<div class="mainpage--xso">
 		<div class="auto-group-2zxm-u2M">
@@ -78,7 +77,11 @@
 				<p class="item--XJd">펀딩할 포인트 선택</p>
 				<div class="auto-group-sfb3-AsP">
 					<div class="input_pct">
-						<input list="paylist" name="pay" id="pay" class="item-10-Dam">
+					<form id = "payForm" action = "${cpath}/funding/fundingDetail" method ="post">
+						<input list="paylist" type="number" name="pay" id="pay"
+							class="item-10-Dam" max="100">
+						<!-- select, textarea,  -->
+					</form>
 						<datalist id="paylist"></datalist>
 					</div>
 					<div class="Paydiv" id="Paydiv"></div>
@@ -91,8 +94,10 @@
 							src="${pageContext.request.contextPath }/resources/assets/fd_heart.png" />
 					</div>
 					<button class="frame-16-4mj"
-						onclick="location.href='${cpath}/funding/fundingDetail';">펀딩하기</button>
+						onclick="submitForm()">펀딩하기</button>
+						<%-- location.href='${cpath}/funding/fundingDetail'; --%>
 				</div>
+				
 			</div>
 		</div>
 	</div>
@@ -103,22 +108,39 @@
 		const payInput = document.getElementById("pay");
 		const payDiv = document.getElementById("Paydiv");
 		const payMoney = ${fundingInfo.target_total_amount};
+		var result = 0;
 
-		// Generate options within the specified range
 		for (let value = start; value <= end; value += 0.01) {
-			const roundedValue = parseFloat(value.toFixed(2)); // Round to two decimal places
+			const roundedValue = parseFloat(value.toFixed(2)); 
 			const option = document.createElement("option");
 			option.value = roundedValue;
 			datalist.appendChild(option);
 		}
 
-		// Listen for input value change
-		payInput.addEventListener("input", updatePayDiv);
+		payInput.addEventListener("input", function() {
+			let inputValue = parseFloat(payInput.value);
+			if (inputValue > end) {
+				alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
+				payInput.value = end;
+			} else if (payInput.value && inputValue.toFixed(2) != inputValue) {
+				alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+				payInput.value = inputValue.toFixed(2);
+			}
+			updatePayDiv();
+		});
 
 		function updatePayDiv() {
 			const selectedValue = parseFloat(payInput.value) || 0;
-			const result = Math.floor(selectedValue * (payMoney / 100));
-			payDiv.textContent = result + "포인트";
+			result = Math.floor(selectedValue * (payMoney / 100));
+	        const formattedResult = new Intl.NumberFormat('ko-KR').format(result);
+	        payDiv.innerHTML = formattedResult + "포인트";
+		}
+	</script>
+	<script>
+	
+		function submitForm(){
+			var form = document.getElementById("payForm");
+			form.submit();		
 		}
 	</script>
 	<%@include file="../headerfooter/footer.jsp"%>

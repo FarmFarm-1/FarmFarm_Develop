@@ -8,14 +8,10 @@ import org.springframework.stereotype.Service;
 import com.farmfarm.dto.Farm_and_productVO;
 
 @Service
-public class ProductService {
+public class AuctionService {
 	
 	@Autowired
-	ProductDAO dao;
-	
-	public List<Farm_and_productVO> fundingListSelectAll() {
-		return dao.fundingListSelectAll();
-	}
+	AuctionDAO dao;
 
 	public List<Farm_and_productVO> auctionListSelectAll() {
 		return dao.auctionListSelectAll();
@@ -24,5 +20,4 @@ public class ProductService {
 	public Farm_and_productVO auctionInfo(String product_serial_num) {
 		return dao.auctionInfo(product_serial_num);
 	}
-	
 }

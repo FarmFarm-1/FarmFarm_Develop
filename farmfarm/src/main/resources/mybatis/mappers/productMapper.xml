@@ -41,16 +41,33 @@
 		fp.funding_product_img_url,
 		fri.target_total_amount,
 		fh.user_funding_amount,
-		CAST(ROUND(fri.target_total_amount * 0.0001) AS SIGNED) AS minimum_funding_amount
+		CAST(ROUND(fri.target_total_amount * 0.0001) AS
+		SIGNED) AS minimum_funding_amount
 		FROM
 		farm_and_product fp
-		LEFT OUTER JOIN
-		funding_reg_info fri ON (fp.product_serial_num = fri.product_serial_num)
 		LEFT OUTER
 		JOIN
-		funding_history fh ON (fp.product_serial_num = fh.product_serial_num)
+		funding_reg_info fri ON (fp.product_serial_num =
+		fri.product_serial_num)
+		LEFT OUTER
+		JOIN
+		funding_history fh ON
+		(fp.product_serial_num = fh.product_serial_num)
 		LEFT OUTER JOIN
-		farmers fm ON (fp.farmer_serial_num = fm.farmer_serial_num)
-
+		farmers
+		fm ON (fp.farmer_serial_num = fm.farmer_serial_num)
+		
 	</select>
+
+<!-- 	<insert id="insertFunding" parameterType="String">
+		UPDATE funding_history
+		SET user_funding_amount = user_funding_amount = ?, user_funding_pct = #{pay}
+		user_funding_pct + ? ;
+		WHERE product_serial_num = 'PR2023120600001' 
+		;
+	</insert>
+	
+	<update id = "updateUserPoint" >
+	
+	</update> -->
 </mapper>
