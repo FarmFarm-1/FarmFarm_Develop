@@ -18,62 +18,121 @@
 <link rel="stylesheet" href="/styles/auctionDetail.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/auctionDetail.js" type="text/javascript"></script>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
 <script type="text/javascript">
-
-$(document).ready(function() {
-	$("#bookmark-layer").click(function() {
-        $.ajax({
-            url: '/your-endpoint-url',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                product_serial_num: 'your-product-serial-num',
-                user_serial_num: 'your-user-serial-num'
-            }),
-            success: function() {
-                let isHeartFilled = $('#heart-icon').toggleClass('filled').hasClass('filled');
+	$(document).ready(function() {
+		let serial_num = "${sessionScope.serial_num}";
+		let product_serial_num = "${auctionInfo.product_serial_num}";
+		
+		$(".bookmark-layer").click(function() {
+			if(serial_num.substring(0,2) === "us"){
+				let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
                 if (isHeartFilled) {
-                    $('#heart-icon').attr('src', "/assets/filledhearticon.png");
+                    addToMyCart();
+                    $("#heart-icon").attr("src", "/assets/heart_fill.png");
                 } else {
-                    $('#heart-icon').attr('src', "/assets/hearticon.png");
+                    deleteFromMyCart();
+                    $("#heart-icon").attr("src", "/assets/heart_empty.png");
                 }
-            }
-        });
-    });
-    
-    $('#auction-confirm-btn').click(function() {
-    	let input_price = $('#auction-price-input').val();
-    	let user_price = user_price.replace(/,/g, '');
-        $.ajax({
-            url: '/your-endpoint-url', // Replace with your endpoint URL
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-            	user_price : user_price,
-                product_serial_num: 'your-product-serial-num', // Replace with your product serial number
-                user_serial_num: 'your-user-serial-num' // Replace with your user serial number
-            }),
-            success: function() {
-                alert('입찰이 성공적으로 이루어졌습니다.');
-            },
-            error: function() {
-                alert('입찰에 실패했습니다. 다시 시도해주세요.');
-            }
-        });
-    });
-    $('#auction-price-input').on('input', function(e) {
-    	let input = e.target.value; 
-        if(input.length > 0) {
-        	let num = input.replace(/,/g, ''); // 콤마 제거
-        	if (!$.isNumeric(num)) {
-                alert('숫자만 입력해주세요.');
-                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
-            } else {
-                $(this).val(Number(num).toLocaleString('en')); // 천 단위로 콤마 추가
-            }
-        }
-    });
-});
+                
+			} else {
+				alert("서포터 회원으로 로그인 하세요."); 
+			}
+		});
+		
+		
+		function reloadMyCart() {
+			$.ajax({
+	            url: "${cpath}/mypage/reloadCart",
+	            type: "post",
+	            data : {"product_serial_num" : product_serial_num},
+	            success: function(res) {
+	            	$("#heart-num").text(res);
+	            }
+	        });
+		}
+		
+		function addToMyCart() {
+			$.ajax({
+	            url: "${cpath}/mypage/addcart",
+	            type: "post",
+	            data: {
+	                "product_serial_num" : product_serial_num,
+	                "user_serial_num" : serial_num
+	            },
+	            success: function(res) {
+	            	reloadMyCart();
+	            }
+	        });
+		}
+		
+		function deleteFromMyCart() {
+			$.ajax({
+	            url: "${cpath}/mypage/deletecart",
+	            type: "POST",
+	            data: {
+	                "product_serial_num" : product_serial_num,
+	                "user_serial_num" : serial_num
+	            },
+	            success: function(res) {
+	            	reloadMyCart();
+	            }
+	        });
+		}
+		
+	    $("#auction-confirm-btn").click(function() {
+	    	let input_price = $("#auction-price-input").val();
+	    	let user_price = user_price.replace(/,/g, "");
+	        $.ajax({
+	            url: "/your-endpoint-url", 
+	            type: "POST",
+	            contentType: "application/json",
+	            data: JSON.stringify({
+	            	user_price : user_price,
+	                product_serial_num: "your-product-serial-num", 
+	                user_serial_num: "your-user-serial-num" 
+	            }),
+	            success: function() {
+	                alert("add 성공");
+	            }
+	        });
+	    });
+	    $("#auction-price-input").on("input", formattingNum);
+	    $("#auction-price-input").on("keyup", pointChk);
+	    
+	    function formattingNum(e) {
+	    	let input = e.target.value; 
+	        if(input.length > 0) {
+	        	let num = input.replace(/,/g, ""); // 콤마 제거
+	        	if (!$.isNumeric(num)) {
+	                alert("숫자만 입력해주세요.");
+	                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
+	            } else {
+	                $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
+	            }
+	        }
+	    }
+	    function pointChk(e) {
+	    	let input = e.target.value;
+	    	if(input.length > 0) {
+	        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
+	        	if ($.isNumeric(inputNum)) {
+	                $.ajax({
+	                	url: "${cpath}/mypage/pointCheck",
+	                	type: "post",
+	                	data: {"inputNum" : inputNum},
+	                	success: function(res) {
+	                		if(res==="disable") {
+	                			$(".point-show").css("visibility", "visible");
+	                		} else {
+	                			$(".point-show").css("visibility", "hidden");
+	                		}
+	                	}
+	                });
+	            }
+	        }
+	    }
+	});
 </script>
 </head>
 <body>
@@ -148,8 +207,12 @@ $(document).ready(function() {
 							<p class="crops-amount-val"><fmt:formatNumber value="${auctionInfo.harvest_amount}"  pattern="#,###.#"/> kg</p>
 						</div>
 						<div class="crops-line2">
-							<p class="kg-per-price">단위당 단가(경매시작가)</p>
+							<p class="kg-per-price">단위당 단가</p>
 							<p class="kg-per-price-val"><fmt:formatNumber value="${auctionInfo.starting_price}"  pattern="#,###.#"/> 원</p>
+						</div>
+						<div class="crops-line3">
+							<p class="starting-price">경매 시작가</p>
+							<p class="starting-price-val"><fmt:formatNumber value="${auctionInfo.starting_price * auctionInfo.harvest_amount}"  pattern="#,###.#"/> 원</p>
 						</div>
 					</div>
 				</div>
@@ -160,22 +223,34 @@ $(document).ready(function() {
 						<c:forEach items="${auctionHistoryInfo}" var="list">
 							<div class="auction-participant-info">
 								<p class="auction-participant-name">${list.user_name}</p>
-								<p class="auction-participant-val">${list.user_price}</p>
+								<p class="auction-participant-val"><fmt:formatNumber value="${list.user_price}"  pattern="#,###.#"/></p>
 								<p class="auction-participate-date"><fmt:formatDate value="${list.bid_date}" type="date" pattern="yyyy-MM-dd hh:mm:ss" /></p>
 							</div>
 						</c:forEach>
 					</div>
 				</div>
 				<p class="auction-input-tag">경매할 포인트 입력</p>
-				<form class="auction-price-form" >
-					<input id="auction-price-input" class="auction-price-input" type="text" pattern="[0-9]" value="0">
+				<form action="${cpath}/mypage/" method="post" class="auction-price-form" >
+					<input id="auction-price-input" class="auction-price-input" type="text" value="0">
 					<label class="won-unit" for="auction-price-input">원</label>
-				</form>				
+				</form>
+				<div class="point-show">
+					<p>포인트 부족</p>
+				</div>
+							
 				<div class="last-layer">
 					<div class="bookmark-layer">
 						<div class="bookmark-btn">
-							<img id="heart-icon" class="heart-icon" src="/assets/hearticon.png" />
-							<p class="heart-num">### 좋아요 수###</p>
+							<c:set value="${myBookmarkShow}" var="myBookmark"/>
+							<c:choose>
+								<c:when test="${myBookmark == 1}" >
+								 	<img id="heart-icon" class="heart-icon filled" src="/assets/heart_fill.png" />
+								</c:when>
+								<c:otherwise>
+									<img id="heart-icon" class="heart-icon" src="/assets/heart_empty.png" />
+								</c:otherwise>
+							</c:choose>						
+							<p id="heart-num" class="heart-num">${bookmarkCnt}</p>
 						</div>
 					</div>
 					<button class="auction-confirm-btn">입찰하기</button>

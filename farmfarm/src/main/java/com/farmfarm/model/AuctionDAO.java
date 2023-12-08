@@ -1,5 +1,6 @@
 package com.farmfarm.model;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,9 +10,10 @@ import org.springframework.stereotype.Repository;
 
 import com.farmfarm.dto.Auction_historyVO;
 import com.farmfarm.dto.Farm_and_productVO;
+import com.farmfarm.dto.User_cartVO;
 
 @Repository
-public class ProductDAO {
+public class AuctionDAO {
 	
 	@Autowired
 	SqlSession sqlSession;
@@ -36,5 +38,27 @@ public class ProductDAO {
 	public Map<String, Object> maxAndCntAuctionInfo(String product_serial_num) {
 		return sqlSession.selectOne(namespace+"maxAndCntAuctionInfo", product_serial_num);
 	}
+
+	public int addMyCart(User_cartVO user_cartVO) {
+		return sqlSession.insert(namespace+"addMyCart", user_cartVO);
+	}
 	
+	public int deletecart(User_cartVO user_cartVO) {
+		return sqlSession.delete(namespace+"deletecart", user_cartVO);
+	}
+
+	public int bookmarkCnt(String product_serial_num) {
+		return sqlSession.selectOne(namespace+"bookmarkCnt",product_serial_num);
+	}
+
+	public int myBookmarkShow(String product_serial_num, String user_serial_num) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("user_serial_num", user_serial_num);
+		map.put("product_serial_num", product_serial_num);
+		return sqlSession.selectOne(namespace+"myBookmarkShow",map);
+	}
+
+	public int pointCheck(String user_serial_num) {
+		return sqlSession.selectOne(namespace+"pointCheck",user_serial_num);
+	}
 }

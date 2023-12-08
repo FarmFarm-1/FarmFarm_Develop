@@ -1,4 +1,19 @@
 @font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+/**/
+@font-face {
 	font-family: 'GmarketSansMedium';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
@@ -8,13 +23,15 @@
 }
 
 @font-face {
-	font-family: 'Pretendard-Regular';
+	font-family: 'LINESeedKR-Bd-Regular';
 	src:
-		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/LINESeedKR-Bd-Regular.woff')
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
 }
+
+
 
 :root { -
 	-main-color: #D4ECC0; -
@@ -23,6 +40,7 @@
 
 html {
 	font-size: 62.5%;
+	zoom: 0.67;
 }
 
 * {
@@ -92,7 +110,7 @@ body {
 	font-weight: 800;
 	line-height: 1.2125;
 	color: #64a246;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -135,7 +153,7 @@ body {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: TheJamsil5Bold, 'Source Sans Pro';
 }
 
 .main-div .productDetail-div .right-div .productinfo-div .farmerinfoline1 .shareicon-class
@@ -154,7 +172,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #828282;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	padding: 1rem 0 1rem 0;
 }
 
@@ -186,8 +204,8 @@ body {
 	font-size: 2rem;
 	font-weight: 800;
 	line-height: 1.2125;
-	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	color: #2d2222d2d;
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -195,19 +213,17 @@ body {
 	{
 	width: 7.5172rem;
 	height: 1.9873rem;
-	top: 0.2rem;
 	font-size: 1.2647rem;
 	font-weight: 700;
-	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: #b2d6a1;
 	border-radius: 2.71rem;
-	box-shadow: 0 0.3613rem 0.3613rem rgba(0, 0, 0, 0.25);
+	box-shadow: 0 0.1613rem 0.5rem rgba(0, 0, 0, 0.25);
 }
 
 .funding-paticipate-info {
@@ -220,7 +236,7 @@ body {
 	font-weight: 700;
 	line-height: 1.2102272034;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: baseline;
@@ -230,7 +246,7 @@ body {
 .small-unit {
 	position: relative;
 	font-size: 1.5rem;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	margin-right: 2rem;
 }
 
@@ -285,7 +301,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -322,7 +338,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -333,7 +349,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -344,7 +360,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -355,7 +371,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -373,7 +389,6 @@ body {
 	box-sizing: border-box;
 	padding: 1.807rem 1.8rem 1.386rem 1.8rem;
 	width: calc(100% - 0.0325rem);
-	height: 10.9304rem;
 	border: solid 0.0903rem #64a246;
 	border-radius: 0.3613rem;
 }
@@ -383,7 +398,7 @@ body {
 	height: 100%;
 }
 
-.crops-line1 {
+.crops-line1, .crops-line2 {
 	margin: 0rem 3.593rem 2.3rem 0rem;
 	width: calc(100% - 3.5931rem);
 	display: flex;
@@ -396,7 +411,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -407,36 +422,33 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
 
-.crops-line2 {
+.crops-line3 {
 	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
-.kg-per-price {
-	margin: 0rem 3rem 0rem 0rem;
+.kg-per-price, .starting-price {
+	margin: 0rem 6rem 0rem 0rem;
 	font-size: 1.8067rem;
-	font-weight: 500;
-	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
-	flex-shrink: 0;
 }
 
-.kg-per-price-val {
+.kg-per-price-val, .starting-price-val {
 	margin-bottom: 0.0443rem;
 	text-align: center;
 	font-size: 1.8067rem;
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -450,7 +462,7 @@ body {
 	font-weight: 500;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	border: solid 0.0903rem #64a246;
 	border-radius: 0.3613rem;
@@ -462,7 +474,7 @@ body {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -476,18 +488,35 @@ body {
 	flex-direction: column;
 	border: solid 0.0903rem #64a246;
 	border-radius: 0.3613rem;
+	height: 10rem;
+	overflow:auto;
+	white-space:nowrap;
 }
 
 .auctionhisotry-inner-layout {
-	margin: 0rem 1.956rem 0rem 2.429rem;
+	margin: 0rem 1.956rem 0rem 1rem;
 	width: calc(100% - 4.3849rem);
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
 }
 
+.auction-participant-info:first-child {
+/* 	border: 3px solid red;
+    border-radius: 0.3613rem; */
+    margin: 0 0 0.5rem 0;
+    width: max-content;
+    height: 100%;
+    display: flex;
+    line-height: 2rem;
+    white-space: nowrap;
+/*     padding: 1rem 1rem 1rem 1rem; */
+    background-color: #ffff5382
+}
+
 .auction-participant-info {
-	width: 100%;
+margin: 0 0 0.5rem 0;
+	width: max-content;
 	height: 100%;
 	display: flex;
 	line-height: 2rem;
@@ -497,18 +526,18 @@ body {
 .auction-participant-name {
 	margin-right: 4rem;
 	font-size: 1.4rem;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 }
 
 .auction-participant-val {
 	margin-right: 4rem;
 	font-size: 1.4rem;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 }
 
 .auction-participate-date {
 	font-size: 1.4rem;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 }
 
 .auction-input-tag {
@@ -517,7 +546,7 @@ body {
 	font-weight: 800;
 	line-height: 1.2125;
 	color: #000000;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -527,7 +556,6 @@ body {
 }
 
 .auction-price-input {
-	margin: 0rem 0rem 3.5rem 0.032rem;
 	box-sizing: border-box;
 	text-align: right;
 	width: calc(100% - 0.0325rem);
@@ -535,23 +563,34 @@ body {
 	border: solid 0.0903rem #64a246;
 	border-radius: 0.3613rem;
 	position: relative;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	font-size: 2.3rem;
 	font-weight: 550;
 }
 
 .won-unit {
 	position: absolute;
-	right: 10px;
-	top: 16%;
+	right: 5%;
+	top: 28%;
 	color: darkgray;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	font-size: 2.1rem;
 	font-weight: bold;
 }
 
+.point-show {
+	font-size: 2rem;
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
+	margin: 1rem 0rem 0rem 0rem;
+	visibility: hidden;
+	text-align: right;
+	font-weight: bolder;
+	color: #e0181880;
+}
+
 .last-layer {
 	margin-right: 0rem;
+	margin-top: 3rem;
 	width: calc(100% - 0rem);
 	height: 5.7124rem;
 	display: flex;
@@ -574,16 +613,16 @@ body {
 	flex-direction: column;
 }
 
-.heart-icon {
-	margin: 0rem 0rem 0.407rem 0.116rem;
-	height: 1.626rem;
+.heart-icon, .heart-icon .filled {
+	margin: 0rem 0rem 0.1rem 0.116rem;
+	height: 2.3rem;
 }
 
 .heart-num {
 	font-size: 1.2647rem;
 	line-height: 1.2125;
 	color: #a2a2a3;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -591,10 +630,10 @@ body {
 	width: 32.791rem;
 	height: calc(100% - 0.0124rem);
 	position: relative;
-	font-size: 1.4453rem;
+	font-size: 1.8rem;
 	font-weight: 800;
 	color: #ffffff;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: center;
@@ -603,4 +642,5 @@ body {
 	border-radius: 0.3613rem;
 	border-color : #64a246;
 	height: calc(100% - 0.0214rem);
+	letter-spacing: 0.3rem;
 }

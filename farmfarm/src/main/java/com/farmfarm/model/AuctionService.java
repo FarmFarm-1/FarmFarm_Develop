@@ -8,16 +8,13 @@ import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.Auction_historyVO;
 import com.farmfarm.dto.Farm_and_productVO;
+import com.farmfarm.dto.User_cartVO;
 
 @Service
-public class ProductService {
+public class AuctionService {
 	
 	@Autowired
-	ProductDAO dao;
-	
-	public List<Farm_and_productVO> fundingListSelectAll() {
-		return dao.fundingListSelectAll();
-	}
+	AuctionDAO dao;
 
 	public List<Farm_and_productVO> auctionListSelectAll() {
 		return dao.auctionListSelectAll();
@@ -33,6 +30,27 @@ public class ProductService {
 	
 	public Map<String, Object> maxAndCntAuctionInfo(String product_serial_num) {
 		return dao.maxAndCntAuctionInfo(product_serial_num);
+	}
+
+	public int addMyCart(User_cartVO user_cartVO) {
+		return dao.addMyCart(user_cartVO);
+	}
+	
+	public int deletecart(User_cartVO user_cartVO) {
+		return dao.deletecart(user_cartVO);
+	}
+
+	public int bookmarkCnt(String product_serial_num) {
+		return dao.bookmarkCnt(product_serial_num);
+	}
+
+	public int myBookmarkShow(String product_serial_num, String user_serial_num) {
+		return dao.myBookmarkShow(product_serial_num, user_serial_num);
+		
+	}
+
+	public int pointCheck(String user_serial_num) {
+		return dao.pointCheck(user_serial_num);
 	}
 	
 }
