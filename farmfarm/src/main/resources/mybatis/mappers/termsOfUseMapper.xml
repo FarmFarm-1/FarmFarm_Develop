@@ -9,5 +9,7 @@
 		FROM terms_of_use 
 		WHERE term_name = #{term_name}
 	</select>
+	
+	
 
 </mapper>
