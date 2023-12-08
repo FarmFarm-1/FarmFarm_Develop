@@ -14,6 +14,12 @@
 		<org.slf4j-version>1.7.30</org.slf4j-version>
 	</properties>
 	<dependencies>
+		<!-- json parser 신규 추가 -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
 		
 		<!-- jdbc의 loggin용 신규 추가 -->
 		<dependency>
