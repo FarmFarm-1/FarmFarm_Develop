@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.Auction_historyVO;
+import com.farmfarm.dto.Crops_quoteVO;
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.User_cartVO;
 
@@ -51,6 +52,15 @@ public class AuctionService {
 
 	public int pointCheck(String user_serial_num) {
 		return dao.pointCheck(user_serial_num);
+	}
+
+	public Crops_quoteVO cropsquoteInfo(String product_kind) {
+		return dao.cropsquoteInfo(product_kind);
+	}
+
+	public int auctionConfirm(Auction_historyVO auction_historyVO) {
+		
+		return dao.auctionConfirm(auction_historyVO);
 	}
 	
 }

@@ -11,35 +11,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mainpage/경매/상세 조회</title>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600%2C700%2C800" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C600%2C700%2C800" />
-<link rel="stylesheet" href="/styles/auctionDetail.css" />
+<link rel="stylesheet" href="${cpath}/styles/auctionDetail.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/js/auctionDetail.js" type="text/javascript"></script>
-<c:set value="${pageContext.request.contextPath}" var="cpath" />
+<script src="${cpath}/js/auctionDetail.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		let serial_num = "${sessionScope.serial_num}";
 		let product_serial_num = "${auctionInfo.product_serial_num}";
+		$("#auction-price-input").on("input", pointChk);
+		$("#auction-price-input").on("input", formattingNum);
 		
 		$(".bookmark-layer").click(function() {
 			if(serial_num.substring(0,2) === "us"){
 				let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
                 if (isHeartFilled) {
                     addToMyCart();
-                    $("#heart-icon").attr("src", "/assets/heart_fill.png");
+                    $("#heart-icon").attr("src", "${cpath}/assets/heart_fill.png");
                 } else {
                     deleteFromMyCart();
-                    $("#heart-icon").attr("src", "/assets/heart_empty.png");
+                    $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
                 }
-                
 			} else {
-				alert("서포터 회원으로 로그인 하세요."); 
+				alert("서포터 회원으로 로그인 하세요.");
 			}
 		});
 		
+		$("#auction-confirm-btn").click(function() {
+	    	if(serial_num.substring(0,2) === "us"){
+	    		let input_price = $("#auction-price-input").val();
+		    	let user_price = input_price.replace(/,/g, "");
+	    		if (user_price > ${maxAndCntInfo.max_auction_price}) {
+			        $.ajax({
+			            url: "${cpath}/auction/auctionConfirm",
+			            type: "POST",
+			            data: {
+			            		"user_serial_num" : serial_num,
+			            		"user_price" : user_price,
+			            		"product_serial_num" : product_serial_num
+			            	  },
+			            success: function(res) {
+			                if(res == 1) {
+			                	alert("성공");
+			                } else {
+			                	alert("실패");
+			                }
+			            },
+			            error: function(xhr, status, error) {
+			            	alert(xhr.responseText);
+			            }
+			        });
+	    		} else {
+	    			alert("높은 금액을 넣어라.");
+	    		}
+	    	} else {
+				alert("서포터 회원으로 로그인 하세요.");
+			}
+	    	location.reload(true);
+	    });
 		
 		function reloadMyCart() {
 			$.ajax({
@@ -79,26 +112,6 @@
 	            }
 	        });
 		}
-		
-	    $("#auction-confirm-btn").click(function() {
-	    	let input_price = $("#auction-price-input").val();
-	    	let user_price = user_price.replace(/,/g, "");
-	        $.ajax({
-	            url: "/your-endpoint-url", 
-	            type: "POST",
-	            contentType: "application/json",
-	            data: JSON.stringify({
-	            	user_price : user_price,
-	                product_serial_num: "your-product-serial-num", 
-	                user_serial_num: "your-user-serial-num" 
-	            }),
-	            success: function() {
-	                alert("add 성공");
-	            }
-	        });
-	    });
-	    $("#auction-price-input").on("input", formattingNum);
-	    $("#auction-price-input").on("keyup", pointChk);
 	    
 	    function formattingNum(e) {
 	    	let input = e.target.value; 
@@ -113,24 +126,29 @@
 	        }
 	    }
 	    function pointChk(e) {
-	    	let input = e.target.value;
-	    	if(input.length > 0) {
-	        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
-	        	if ($.isNumeric(inputNum)) {
-	                $.ajax({
-	                	url: "${cpath}/mypage/pointCheck",
-	                	type: "post",
-	                	data: {"inputNum" : inputNum},
-	                	success: function(res) {
-	                		if(res==="disable") {
-	                			$(".point-show").css("visibility", "visible");
-	                		} else {
-	                			$(".point-show").css("visibility", "hidden");
-	                		}
-	                	}
-	                });
-	            }
-	        }
+	    	if(serial_num.substring(0,2) === "us"){
+	    		let input = e.target.value;
+		    	if(input.length > 0) {
+		        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
+		        	if ($.isNumeric(inputNum)) {
+		                $.ajax({
+		                	url: "${cpath}/mypage/pointCheck",
+		                	type: "post",
+		                	data: {"inputNum" : inputNum},
+		                	success: function(res) {
+		                		if(res==="disable") {
+		                			$(".point-show").css("visibility", "visible");
+		                		} else {
+		                			$(".point-show").css("visibility", "hidden");
+		                		}
+		                	}
+		                });
+		            }
+		        }
+	    	} else {
+	    		alert("서포터 회원으로 로그인 하세요.");
+	    		e.target.value = "0";
+	    	}
 	    }
 	});
 </script>
@@ -139,18 +157,18 @@
 	<div class="main-div">
 		<div class="productDetail-div">
 			<div class="left-div">
-				<img class="product-detail-img" src="/assets/productdetailimg2.png">
+				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png">
 				<div class="showmore-btn">
 					<p class="item--Mv5">스토리 더보기</p>
 					<img class="arrow-see-more"
-						src="/assets/arrow_see_more.png" />
+						src="${cpath}/assets/arrow_see_more.png" />
 				</div>
 			</div>
 			<div class="right-div">
 				<div class="productinfo-div">
 					<div class="farmerinfoline1">
 						<p class="product_name">${auctionInfo.product_name}</p>
-						<img class="shareicon-class" src="/assets/shareicon.png" />
+						<img class="shareicon-class" src="${cpath}/assets/shareicon.png" />
 					</div>
 					<p class="farm-introduction-class">${auctionInfo.farm_introduction}</p>
 				</div>
@@ -167,10 +185,10 @@
 				<div class="farmerinfo-div">
 					<div class="farmerinfo-frame1">
 						<div class="farmerinfo-line1-div">
-							<img class="farmer-image" src="/assets/farmerimage.png" />
+							<img class="farmer-image" src="${cpath}/assets/farmerimage.png" />
 							<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
 						</div>
-						<img class="chaticon-img" src="/assets/chaticon.png" />
+						<img class="chaticon-img" src="${cpath}/assets/chaticon.png" />
 					</div>
 					<div class="farmerinfo-frame2">
 						<div class="frame2-line1">
@@ -216,7 +234,39 @@
 						</div>
 					</div>
 				</div>
-				<div class="crops-api-info">시세(api) 활용해서 값의 차이 제공</div>
+				<p class="cropsquote-tag">전일대비 손익</p>
+				<div class="crops-api-info">
+					<table>
+						<tr>
+							<td>현재 시세(1kg)</td>
+							<td>
+								<fmt:formatNumber value="${cropsquoteInfo.crops_quote}" pattern="#,###.#"/>
+							</td>
+						</tr>
+						<tr>
+							<td>도매 예상 구매가</td>
+							<td>
+								<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}"
+								pattern="#,###.#"/>
+							</td>
+						</tr>
+						<tr>
+							<td>낙찰 손익금</td>
+							<td>
+								<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount
+								 - maxAndCntInfo.max_auction_price}" pattern="#,###.#"/>
+						  	</td>
+						</tr>
+						<tr>
+							<td>낙찰 손익율</td>
+							<td>
+								<fmt:formatNumber value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
+							     - maxAndCntInfo.max_auction_price)
+							     /maxAndCntInfo.max_auction_price)}" type="percent"/>
+					      	</td>
+						</tr>
+					</table>
+				</div>
 				<p class="auctionhisotry-tag">입찰현황</p>
 				<div class="auctionhistory-div">
 					<div class="auctionhisotry-inner-layout">
@@ -230,10 +280,10 @@
 					</div>
 				</div>
 				<p class="auction-input-tag">경매할 포인트 입력</p>
-				<form action="${cpath}/mypage/" method="post" class="auction-price-form" >
-					<input id="auction-price-input" class="auction-price-input" type="text" value="0">
+				<div class="auction-price-form" >
+					<input id="auction-price-input" name="auctionInputPrice" class="auction-price-input" type="text" value="0">
 					<label class="won-unit" for="auction-price-input">원</label>
-				</form>
+				</div>
 				<div class="point-show">
 					<p>포인트 부족</p>
 				</div>
@@ -244,16 +294,16 @@
 							<c:set value="${myBookmarkShow}" var="myBookmark"/>
 							<c:choose>
 								<c:when test="${myBookmark == 1}" >
-								 	<img id="heart-icon" class="heart-icon filled" src="/assets/heart_fill.png" />
+								 	<img id="heart-icon" class="heart-icon filled" src="${cpath}/assets/heart_fill.png" />
 								</c:when>
 								<c:otherwise>
-									<img id="heart-icon" class="heart-icon" src="/assets/heart_empty.png" />
+									<img id="heart-icon" class="heart-icon" src="${cpath}/assets/heart_empty.png" />
 								</c:otherwise>
 							</c:choose>						
 							<p id="heart-num" class="heart-num">${bookmarkCnt}</p>
 						</div>
 					</div>
-					<button class="auction-confirm-btn">입찰하기</button>
+					<button id="auction-confirm-btn" class="auction-confirm-btn">입찰하기</button>
 				</div>
 			</div>
 		</div>

@@ -18,4 +18,11 @@
 		select * from users
 	</select>
 	
+	<select id="pointCheck" parameterType="hashMap" resultType="int">
+		select count(*) 
+		from users
+		where user_serial_num = #{user_serial_num}
+		and user_point >= #{user_point}
+	</select>
+	
 </mapper>

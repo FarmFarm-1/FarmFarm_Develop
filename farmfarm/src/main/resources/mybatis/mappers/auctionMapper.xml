@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.farmfarm.Farm_and_productVO">
+<mapper namespace="com.farmfarm.auction">
 	<select id="fundingListSelectAll" resultType="Farm_and_productVO">
 		select * from farm_and_product where product_status = '펀딩진행중'
 	</select>
@@ -87,4 +87,31 @@
 			user_serial_num = #{user_serial_num}
 	</select>
 	
+	<select id="maxAuctionPriceCheck" parameterType="Auction_historyVO" resultType="int">
+		<![CDATA[
+		select
+		case
+			when
+				(SELECT MAX(user_price)
+    			FROM auction_history
+    			where product_serial_num = #{product_serial_num}
+    		    )< #{user_price}
+   		    then 1
+   		    else 0
+		end
+    	]]>		  
+	</select>
+	
+	<insert id="auctionHistoryInsert" parameterType="Auction_historyVO">
+		insert into auction_history
+		(product_serial_num, user_serial_num, user_price)
+		values(#{product_serial_num}, #{user_serial_num}, #{user_price})
+	</insert>
+	
+	<update id="updateCurMaxPriceStatus" parameterType="Auction_historyVO">
+		update auction_history
+		set auction_status = 'X'
+		where product_serial_num = #{product_serial_num}
+		and auction_status= 'O'
+	</update>
 </mapper>
