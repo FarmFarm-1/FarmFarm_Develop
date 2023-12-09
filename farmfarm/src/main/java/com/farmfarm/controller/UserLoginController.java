@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.farmfarm.dto.FarmersVO;
 import com.farmfarm.dto.UsersVO;
 import com.farmfarm.model.UserService;
 

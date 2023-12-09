@@ -1,4 +1,4 @@
-package com.farmfarm.batch;
+package com.farmfarm.model;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -15,15 +15,12 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.farmfarm.model.AuctionService;
-
-public class CropsPriceInput {
-	@Autowired
-	AuctionService auctionService;
+@Service
+public class ScheduledTasksService {
 	
-	static LinkedList<LinkedHashMap<String, String>> jsonOutput() {
+	protected LinkedList<LinkedHashMap<String, String>> cropsQuoteFetch() {
 		LinkedList<LinkedHashMap<String, String>> resultData = new LinkedList<>();
 		try {
 			StringBuilder sb = new StringBuilder();
@@ -63,7 +60,7 @@ public class CropsPriceInput {
 			conn.disconnect();
 			String result = sb.toString();
 
-			// JSONObject
+			// JSON Parsing
 			JSONParser jsonParser = new JSONParser();
 			JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
 			JSONObject data = (JSONObject) jsonObject.get("data");
@@ -155,12 +152,9 @@ public class CropsPriceInput {
 					}
 					if(match) {
 			            LinkedHashMap<String, String> input = new LinkedHashMap<>();
-			            for(String key : pop.keySet()) {
-			            	input.put(key, (String)cur_jsonObject.get(key));
-			            }
-			            
+			            input.put("crops_kind", (String)cur_jsonObject.get("item_name"));
 			            String formattedPrice = ((String)cur_jsonObject.get("dpr1")).replace(",", "");
-			            input.put("price", formattedPrice);
+			            input.put("crops_quote", formattedPrice);
 			            resultData.add(input);
 			        }
 				}
@@ -169,10 +163,7 @@ public class CropsPriceInput {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println(resultData);
 		return resultData;
-	}
-	public static void main(String[] args) {
-		
-		LinkedList<LinkedHashMap<String, String>> data= jsonOutput();
 	}
 }
