@@ -3,41 +3,37 @@ package com.farmfarm.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.farmfarm.dto.User_cartVO;
 import com.farmfarm.model.AuctionService;
 
-@RestController
+@Controller
 @RequestMapping("/mypage")
 public class MyPageController {
 
 	@Autowired
 	AuctionService auctionService;
 	
-	
+	@ResponseBody
 	@PostMapping("/addcart")
 	public void addcart(User_cartVO user_cartVO) {
-		int result = auctionService.addMyCart(user_cartVO);
-		if(result == 1) {
-		}
-	}
-	@PostMapping("/deletecart")
-	public void deletecart(User_cartVO user_cartVO) {
-		int result = auctionService.deletecart(user_cartVO);
-		if(result == 1) {
-		}
+		auctionService.addMyCart(user_cartVO);	
 	}
 	
+	@ResponseBody
+	@PostMapping("/deletecart")
+	public void deletecart(User_cartVO user_cartVO) {
+		auctionService.deletecart(user_cartVO);
+	}
 	@ResponseBody
 	@PostMapping("/reloadCart")
 	public String reloadCart(String product_serial_num) {
 		return Integer.toString(auctionService.bookmarkCnt(product_serial_num));
 	}
-	
 	@ResponseBody
 	@PostMapping("/pointCheck")
 	public String beforeAuctionCfrm(int inputNum, HttpSession session) {

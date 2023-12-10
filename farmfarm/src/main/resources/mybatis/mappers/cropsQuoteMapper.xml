@@ -8,6 +8,11 @@
 		select crops_kind, crops_quote
 		from crops_quote
 		where crops_kind = #{product_kind}
+	</select>
 	
+	<select id="cropsInfoByKind" resultType="Crops_quoteVO" parameterType="Crops_quoteVO">
+		select crops_kind, crops_quote, regDate
+		from crops_quote
+		where crops_kind = #{crops_kind}
 	</select>
 </mapper>

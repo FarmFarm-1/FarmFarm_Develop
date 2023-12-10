@@ -20,9 +20,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="${cpath}/js/auctionDetail.js" type="text/javascript"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		let serial_num = "${sessionScope.serial_num}";
-		let product_serial_num = "${auctionInfo.product_serial_num}";
+	let serial_num = "${sessionScope.serial_num}";
+	let product_serial_num = "${auctionInfo.product_serial_num}";
+	$(document).ready(function() {	
 		$("#auction-price-input").on("input", pointChk);
 		$("#auction-price-input").on("input", formattingNum);
 		
@@ -160,7 +160,7 @@
     }
 	
 	function showChart() {
-    	location.href="${cpath}/auction/showChart";
+    	location.href="${cpath}/chart/area/rice";
     }
 </script>
 <jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />

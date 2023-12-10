@@ -98,7 +98,7 @@ public class AuctionDAO {
 		int auctionConfirm = sqlSession.insert(namespace_auction+"auctionHistoryInsert", auction_historyVO);
 		if(auctionConfirm != 1) {
 			throw new AuctionException("notInsertCompleted");
-		} 
+		}
 		
 		return auctionConfirm;
 	}

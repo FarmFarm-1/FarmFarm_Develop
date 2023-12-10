@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -79,12 +80,6 @@ public class AuctionController {
 	public ResponseEntity<String> auctionConfirm(Auction_historyVO auction_historyVO) {
 		String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
 		return ResponseEntity.ok(result);
-	}
-	
-	@GetMapping("/showChart")
-	public String showChart() {
-		
-		return "cropchart/cropquotechart";
 	}
 
 }
