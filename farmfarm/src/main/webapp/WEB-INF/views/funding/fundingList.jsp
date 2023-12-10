@@ -373,7 +373,7 @@
 		});
 		function clearSearch() {
 			document.getElementById('searchInput').value = '';
-			console.log(gtype);
+			/* console.log(gtype); */
 			/* gtype = 'all'; */  /*type 선택 후 order 두 번 누를 시 전체 정렬되는 문제 때문에 지움*/
 		}
 		

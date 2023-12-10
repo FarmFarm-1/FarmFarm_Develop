@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=5" />
 <meta name="theme-color" content="#000000" />
 
-<title>mainpage/펀딩/로그인 안함</title>
+<title>mainpage/경매</title>
 <link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -45,20 +45,20 @@
 
 				<div>
 					<div class="auto-group-r77t-U1b">
-						<p class="item--zkd">펀딩 라인업</p>
+						<p class="item--zkd">경매 라인업</p>
 						<button class="button_list"
-							onclick="location.href='${cpath}/funding/fundingList';">
+							onclick="location.href='${cpath}/auction/auctionList';">
 							<img class="mingcute-right-line-6of"
 								src="${cpath }/resources/assets/greater_than.png" />
 						</button>
 					</div>
 
-					<p class="item--s97">팜팜에서 핫한 펀딩을 만나보세요.</p>
+					<p class="item--s97">팜팜에서 핫한 경매를 만나보세요.</p>
 
 				</div>
 
 				<div class="item--uPK" id="fundingOrder">
-					<c:forEach items="${fundingListHot }" var="fundingItem"
+					<c:forEach items="${auctionListHot }" var="auctionItem"
 						varStatus="status">
 						<div class="funding_item">
 
@@ -67,72 +67,72 @@
 
 								<img class="corn-36630861280-1-daD"
 									src="${cpath }/resources/assets/tomatoes-55667411280.png" />
-								<div class="${fundingItem.d_day>=0?'active':'overlay'}">펀딩이
+								<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가
 									종료되었습니다</div>
 							</div>
 							<div class="bookmark-layer"
-								onclick="func('${fundingItem.product_serial_num }', ${status.index })">
+								onclick="func('${auctionItem.product_serial_num }', ${status.index })">
 								<div class="bookmark-btn">
 									<img id="heart-icon-${status.index}"
-										class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${fundingItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
+										class="${auctionItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
+										src="${auctionItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
 								</div>
 							</div>
 							<div class="group-86-zpV">
 								<div class="auto-group-turr-XpR">
-									<p class="item--FEd">${fundingItem.product_name}</p>
+									<p class="item--FEd">${auctionItem.product_name}</p>
 									<div class="auto-group-fwnd-MHf">
 										<div class="auto-group-ufyr-s17">
-											<p class="item--Cp5">최소금액</p>
+											<p class="item--Cp5">현 입찰가</p>
 										</div>
 										<div class="auto-group-do49-DjB">
-											<p class="item-10000-aJq">${fundingItem.min_amount}원</p>
+											<p class="item-10000-aJq">${auctionItem.current_price}원</p>
 										</div>
 									</div>
 									<div class="auto-group-jk2v-Anq">
 										<div class="auto-group-rqmx-fzV">
-											<p class="item--p6h">재배 예정일</p>
+											<p class="item--p6h">수확 완료일</p>
 										</div>
 										<div class="auto-group-sqjq-8Wh">
-											<p class="item-2023-6-15-gYD">${fundingItem.expected_planting_date}</p>
+											<p class="item-2023-6-15-gYD">${auctionItem.expected_harvest_date}</p>
 										</div>
 									</div>
 									<div class="auto-group-mvny-sMo">
 										<div class="auto-group-94eh-nzZ">
-											<p class="item--jeu">평수</p>
+											<p class="item--jeu">출하량</p>
 										</div>
 										<div class="auto-group-h2ld-LPo">
-											<p class="item-100-TDX">${fundingItem.farm_square_footage}평</p>
+											<p class="item-100-TDX">${auctionItem.harvest_amount}kg</p>
 										</div>
 									</div>
 
-									<div
-										class="${fundingItem.d_day>=0?'progress-bar':'progress-bar-none'}">
+									<%-- <div
+										class="${auctionItem.d_day>=0?'progress-bar':'progress-bar-none'}">
 										<div class="progress"
 											style="--percent: ${fundingItem.funding_pct}"></div>
-									</div>
+									</div> --%>
 								</div>
 								<div class="auto-group-bgvz-iHs">
 									<div class="auto-group-jebp-rQ5">
 
 										<p
-											class="${fundingItem.d_day>=0?'item-64--o4R':'item-64--o4R-1'}">
+											class="${auctionItem.d_day>=0?'item-64--o4R':'item-64--o4R-1'}">
 
-											<span class="item-64--o4R-sub-0">${fundingItem.funding_pct}%</span>
-											<span class="item-64--o4R-sub-1"> 달성</span>
+											<span class="item-64--o4R-sub-0">${auctionItem.participants}명</span>
+											<span class="item-64--o4R-sub-1"> 참여</span>
 										</p>
 									</div>
 									<div class="auto-group-kpa5-sM7">
 										<p class="item-15--Dfs">
 											<c:choose>
-												<c:when test="${fundingItem.d_day > 0}">
+												<c:when test="${auctionItem.d_day > 0}">
 
-													<span class="item-15--Dfs-sub-0" id="m">${fundingItem.d_day}일</span>
+													<span class="item-15--Dfs-sub-0" id="m">${auctionItem.d_day}일</span>
 													<span class="item-15--Dfs-sub-1"> 남음</span>
 
 												</c:when>
-												<c:when test="${fundingItem.d_day == 0}">
-													<span class="deadline_today">마감 임박</span>
+												<c:when test="${auctionItem.d_day == 0}">
+													<span class="deadline_today">오늘 종료</span>
 												</c:when>
 
 											</c:choose>

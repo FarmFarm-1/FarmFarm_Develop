@@ -21,7 +21,7 @@
 </script> -->
 
 
-<c:forEach items="${fundingList }" var="fundingItem">
+<c:forEach items="${fundingList }" var="fundingItem" varStatus="status">
 
 	<div class="funding_item">
 
@@ -36,9 +36,9 @@
 		<%-- <img class="vector-n7f"
 			src="${cpath }/resources/assets/vector-P4R.png" /> --%>
 		<div class="bookmark-layer"
-			onclick="func('${fundingItem.product_serial_num }')">
+			onclick="func('${fundingItem.product_serial_num }', ${status.index })">
 			<div class="bookmark-btn">
-				<img id="heart-icon"
+				<img id="heart-icon-${status.index}"
 					class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
 					src="${fundingItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
 				<%-- <c:choose>
@@ -129,24 +129,24 @@
 </c:forEach>
 
 <script>
-	let isHeartFilled ;
+	 
 
-	function func(product_serial_num) {
-
+	function func(product_serial_num, index) {
+		console.log(index);
 		console.log(serial_num);
 		console.log(product_serial_num);
 
 		if (serial_num.substring(0, 2) === "us") {
-			
-			console.log(isHeartFilled);
-			isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
-			console.log(isHeartFilled);
-			if (isHeartFilled) {
-				addToMyCart(product_serial_num);
-				/* $("#heart-icon").attr("src", "${cpath }/resources/assets/heart_thub.png"); */
-			} else {
+			let heartIcon = $("#heart-icon-" + index);
+			let isHeartFilledBeforeToggle = heartIcon.hasClass("filled");
+			heartIcon.toggleClass("filled");
+			let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
+			if (isHeartFilledBeforeToggle) {
+				heartIcon.attr("src", "${cpath }/resources/assets/heart_empty.png");
 				deleteFromMyCart(product_serial_num);
-				/* $("#heart-icon").attr("src", "${cpath }/resources/assets/heart_empty.png"); */
+			} else {
+				heartIcon.attr("src", "${cpath }/resources/assets/heart_thub.png");
+				addToMyCart(product_serial_num);
 			}
 
 		} else {

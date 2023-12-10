@@ -97,13 +97,6 @@ public class ProductDAO {
 		return sqlSession.selectList(namespace+"fundingSearch", input);
 	}
 
-	//auction
-	public List<Farm_and_productVO> auctionListSelectAll() {
-		return sqlSession.selectList(namespace+"auctionListSelectAll");
-	}
-
-	public Farm_and_productVO auctionInfo(String product_serial_num) {
-		return sqlSession.selectOne(namespace+"auctionInfo",product_serial_num);
-	}
+	
 	
 }
