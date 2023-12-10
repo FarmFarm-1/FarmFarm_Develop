@@ -76,7 +76,7 @@ public class AuctionController {
 	
 	@ResponseBody
 	@PostMapping("/auctionConfirm")
-	public ResponseEntity<String> auctionConfirm(@ModelAttribute Auction_historyVO auction_historyVO) {
+	public ResponseEntity<String> auctionConfirm(Auction_historyVO auction_historyVO) {
 		String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
 		return ResponseEntity.ok(result);
 	}

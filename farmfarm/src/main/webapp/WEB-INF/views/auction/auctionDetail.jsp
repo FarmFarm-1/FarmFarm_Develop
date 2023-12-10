@@ -45,7 +45,7 @@
 	    	if(serial_num.substring(0,2) === "us"){
 	    		let input_price = $("#auction-price-input").val();
 		    	let user_price = input_price.replace(/,/g, "");
-	    		if (user_price > ${ maxAndCntInfo.max_auction_price }) {
+	    		if (user_price > "${ maxAndCntInfo.max_auction_price }") {
 			        $.ajax({
 			            url: "${cpath}/auction/auctionConfirm",
 			            type: "POST",
@@ -62,7 +62,14 @@
 			                }
 			            },
 			            error: function(xhr, status, error) {
-			            	alert(xhr.responseText);
+			            	if(xhr.responseText == "notEnoughPoint") {
+			            		showModal("입찰 결과","포인트가 부족합니다.");
+			            	} else if (xhr.responseText == "notMaxAuctionraiser") {
+			            		showModal("입찰 결과","최고 금액이 아닙니다.");
+			            	} else {
+			            		showModal("입찰 결과","입찰에  실패하였습니다. 다시 시도해 주세요");
+			            	}
+			            	
 			            }
 			        });
 	    		} else {
@@ -72,6 +79,32 @@
 	    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
 	    });
+		
+		function pointChk(e) {
+	    	if(serial_num.substring(0,2) === "us"){
+	    		let input = e.target.value;
+		    	if(input.length > 0) {
+		        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
+		        	if ($.isNumeric(inputNum)) {
+		                $.ajax({
+		                	url: "${cpath}/mypage/pointCheck",
+		                	type: "post",
+		                	data: {"inputNum" : inputNum},
+		                	success: function(res) {
+		                		if(res==="disable") {
+		                			$(".point-show").css("visibility", "visible");
+		                		} else {
+		                			$(".point-show").css("visibility", "hidden");
+		                		}
+		                	}
+		                });
+		            }
+		        }
+	    	} else {
+	    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
+	    		e.target.value = "0";
+	    	}
+	    }
 	});
 	
 	function reloadMyCart() {
@@ -124,32 +157,6 @@
                 $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
             }
         }
-    }
-	
-	function pointChk(e) {
-    	if(serial_num.substring(0,2) === "us"){
-    		let input = e.target.value;
-	    	if(input.length > 0) {
-	        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
-	        	if ($.isNumeric(inputNum)) {
-	                $.ajax({
-	                	url: "${cpath}/mypage/pointCheck",
-	                	type: "post",
-	                	data: {"inputNum" : inputNum},
-	                	success: function(res) {
-	                		if(res==="disable") {
-	                			$(".point-show").css("visibility", "visible");
-	                		} else {
-	                			$(".point-show").css("visibility", "hidden");
-	                		}
-	                	}
-	                });
-	            }
-	        }
-    	} else {
-    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
-    		e.target.value = "0";
-    	}
     }
 	
 	function showChart() {
