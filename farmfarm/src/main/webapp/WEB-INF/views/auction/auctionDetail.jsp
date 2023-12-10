@@ -37,7 +37,7 @@
                     $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
                 }
 			} else {
-				alert("서포터 회원으로 로그인 하세요.");
+				showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
 		});
 		
@@ -45,7 +45,7 @@
 	    	if(serial_num.substring(0,2) === "us"){
 	    		let input_price = $("#auction-price-input").val();
 		    	let user_price = input_price.replace(/,/g, "");
-	    		if (user_price > ${maxAndCntInfo.max_auction_price}) {
+	    		if (user_price > ${ maxAndCntInfo.max_auction_price }) {
 			        $.ajax({
 			            url: "${cpath}/auction/auctionConfirm",
 			            type: "POST",
@@ -56,9 +56,9 @@
 			            	  },
 			            success: function(res) {
 			                if(res == 1) {
-			                	alert("성공");
+			                	showModal("입찰 결과","입찰 성공");
 			                } else {
-			                	alert("실패");
+			                	showModal("입찰 결과","입찰에  실패하였습니다. 다시 시도해 주세요");
 			                }
 			            },
 			            error: function(xhr, status, error) {
@@ -66,92 +66,97 @@
 			            }
 			        });
 	    		} else {
-	    			alert("높은 금액을 넣어라.");
+	    			showModal("경매 기능","최고가 금액 이상으로 입찰하세요.");
 	    		}
 	    	} else {
-				alert("서포터 회원으로 로그인 하세요.");
+	    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
-	    	location.reload(true);
 	    });
-		
-		function reloadMyCart() {
-			$.ajax({
-	            url: "${cpath}/mypage/reloadCart",
-	            type: "post",
-	            data : {"product_serial_num" : product_serial_num},
-	            success: function(res) {
-	            	$("#heart-num").text(res);
-	            }
-	        });
-		}
-		
-		function addToMyCart() {
-			$.ajax({
-	            url: "${cpath}/mypage/addcart",
-	            type: "post",
-	            data: {
-	                "product_serial_num" : product_serial_num,
-	                "user_serial_num" : serial_num
-	            },
-	            success: function(res) {
-	            	reloadMyCart();
-	            }
-	        });
-		}
-		
-		function deleteFromMyCart() {
-			$.ajax({
-	            url: "${cpath}/mypage/deletecart",
-	            type: "POST",
-	            data: {
-	                "product_serial_num" : product_serial_num,
-	                "user_serial_num" : serial_num
-	            },
-	            success: function(res) {
-	            	reloadMyCart();
-	            }
-	        });
-		}
-	    
-	    function formattingNum(e) {
-	    	let input = e.target.value; 
-	        if(input.length > 0) {
-	        	let num = input.replace(/,/g, ""); // 콤마 제거
-	        	if (!$.isNumeric(num)) {
-	                alert("숫자만 입력해주세요.");
-	                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
-	            } else {
-	                $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
+	});
+	
+	function reloadMyCart() {
+		$.ajax({
+            url: "${cpath}/mypage/reloadCart",
+            type: "post",
+            data : {"product_serial_num" : product_serial_num},
+            success: function(res) {
+            	$("#heart-num").text(res);
+            }
+        });
+	}
+	
+	function addToMyCart() {
+		$.ajax({
+            url: "${cpath}/mypage/addcart",
+            type: "post",
+            data: {
+                "product_serial_num" : product_serial_num,
+                "user_serial_num" : serial_num
+            },
+            success: function(res) {
+            	reloadMyCart();
+            }
+        });
+	}
+	
+	function deleteFromMyCart() {
+		$.ajax({
+            url: "${cpath}/mypage/deletecart",
+            type: "POST",
+            data: {
+                "product_serial_num" : product_serial_num,
+                "user_serial_num" : serial_num
+            },
+            success: function(res) {
+            	reloadMyCart();
+            }
+        });
+	}
+	
+	function formattingNum(e) {
+    	let input = e.target.value; 
+        if(input.length > 0) {
+        	let num = input.replace(/,/g, ""); // 콤마 제거
+        	if (!$.isNumeric(num)) {
+        		showModal("ㅎㅇ","숫자만 입력하세요.");
+                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
+            } else {
+                $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
+            }
+        }
+    }
+	
+	function pointChk(e) {
+    	if(serial_num.substring(0,2) === "us"){
+    		let input = e.target.value;
+	    	if(input.length > 0) {
+	        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
+	        	if ($.isNumeric(inputNum)) {
+	                $.ajax({
+	                	url: "${cpath}/mypage/pointCheck",
+	                	type: "post",
+	                	data: {"inputNum" : inputNum},
+	                	success: function(res) {
+	                		if(res==="disable") {
+	                			$(".point-show").css("visibility", "visible");
+	                		} else {
+	                			$(".point-show").css("visibility", "hidden");
+	                		}
+	                	}
+	                });
 	            }
 	        }
-	    }
-	    function pointChk(e) {
-	    	if(serial_num.substring(0,2) === "us"){
-	    		let input = e.target.value;
-		    	if(input.length > 0) {
-		        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
-		        	if ($.isNumeric(inputNum)) {
-		                $.ajax({
-		                	url: "${cpath}/mypage/pointCheck",
-		                	type: "post",
-		                	data: {"inputNum" : inputNum},
-		                	success: function(res) {
-		                		if(res==="disable") {
-		                			$(".point-show").css("visibility", "visible");
-		                		} else {
-		                			$(".point-show").css("visibility", "hidden");
-		                		}
-		                	}
-		                });
-		            }
-		        }
-	    	} else {
-	    		alert("서포터 회원으로 로그인 하세요.");
-	    		e.target.value = "0";
-	    	}
-	    }
-	});
+    	} else {
+    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
+    		e.target.value = "0";
+    	}
+    }
+	
+	function showChart() {
+    	location.href="${cpath}/auction/showChart";
+    }
 </script>
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 </head>
 <body>
 	<div class="main-div">
@@ -236,6 +241,7 @@
 				</div>
 				<p class="cropsquote-tag">전일대비 손익</p>
 				<div class="crops-api-info">
+					<p onclick="showChart()">확대버튼</p>
 					<table>
 						<tr>
 							<td>현재 시세(1kg)</td>

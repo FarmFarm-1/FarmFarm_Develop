@@ -80,5 +80,11 @@ public class AuctionController {
 		String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
 		return ResponseEntity.ok(result);
 	}
+	
+	@GetMapping("/showChart")
+	public String showChart() {
+		
+		return "cropchart/cropquotechart";
+	}
 
 }
