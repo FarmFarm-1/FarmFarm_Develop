@@ -21,6 +21,25 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+	document.addEventListener('keydown', onEnterLogin);
+
+	function onEnterLogin() {
+		var keyCode = window.event.keyCode;
+
+		if (keyCode == 13
+				&& window.getComputedStyle(document.querySelector('.modal')).display != 'none') {
+			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
+			console.log('modal on');
+			document.querySelector('.modal').style.display = 'none';
+			event.preventDefault(); // 이벤트 전파 방지
+			return;
+		}
+
+	}
+</script>
+
 <script type="text/javascript">
 	function f_signup1() {
 		$.ajax({
@@ -43,10 +62,13 @@
 	function showFullText(termName) {
 		$.ajax({
 			url : "/termContents.do", //DB에 가서 약관을 가져와
-			data : {"termName":termName},
+			data : {
+				"termName" : termName
+			},
 			success : function(responseData) {
-				 
-				document.querySelector('.modal').style.display='flex'; //모달을 띄위는 코드
+
+				document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
+				document.querySelector('#signUpModal .item--MHF').textContent = "이용약관";
 				$(".id-2-RY1").html(responseData);
 			}
 		});
@@ -107,9 +129,8 @@
 
 						<div class="group-103-H7s">
 							<input type="checkbox" id="checkbox2" class="checkbox2">
-							<label for="checkbox2" class="item--iys">회원가입 기본 약관(필수)</label> 
-							<label  onclick="showFullText('terms1')" class="item--Qrh">전문
-								보기</label>
+							<label for="checkbox2" class="item--iys">회원가입 기본 약관(필수)</label> <label
+								onclick="showFullText('terms1')" class="item--Qrh">전문 보기</label>
 							<!-- <img class="gg-check-o-Pwb" src="./assets/gray_small_circle.png" />
 						<div class="item--iys">회원가입 기본 약관(필수)</div>
 						<div class="item--Qrh">전문 보기</div> -->
@@ -118,7 +139,7 @@
 						<div class="group-104-XAd">
 							<input type="checkbox" id="checkbox3" class="checkbox3">
 							<label for="checkbox3" class="item--YLd">팜팜 이용약관(필수)</label> <label
-								 onclick="showFullText('sterms2')" class="item--2Wh">전문
+								onclick="showFullText('sterms2')" class="item--2Wh">전문
 								보기</label>
 							<!-- <img class="gg-check-o-dDf" src="./assets/gray_small_circle.png" />
 						<div class="item--YLd">팜팜 이용약관(필수)</div>
@@ -128,8 +149,7 @@
 						<div class="group-105-jR7">
 							<input type="checkbox" id="checkbox4" class="checkbox4">
 							<label for="checkbox4" class="item--NU5">개인정보 취급방침(필수)</label> <label
-								  onclick="showFullText('terms3')" class="item--GZT">전문
-								보기</label>
+								onclick="showFullText('terms3')" class="item--GZT">전문 보기</label>
 							<!-- <img class="gg-check-o-eY5" src="./assets/gray_small_circle.png" />
 						<div class="item--NU5">개인정보 취급방침(필수)</div>
 						<div class="item--GZT">전문 보기</div> -->

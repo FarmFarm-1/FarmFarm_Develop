@@ -89,10 +89,10 @@
 		
 	</script>
 	
-	<div class="modal" id="signUpModal">
+	<div class="modal" id="validationModal">
 		<div class="modal_body">
-			<p class="item--MHF">이용약관</p>
-			<p class="id-2-RY1">내용 db에서 가져옴</p>
+			<p class="alertTitle"></p>
+			<p class="alertContent"></p>
 			<div></div>
 			<div class="group-108-suo">확인</div>
 

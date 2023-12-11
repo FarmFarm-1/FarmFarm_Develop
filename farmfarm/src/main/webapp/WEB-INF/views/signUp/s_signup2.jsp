@@ -22,12 +22,35 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+	document.addEventListener('keydown', onEnterLogin);
+
+	function onEnterLogin() {
+		var keyCode = window.event.keyCode;
+
+		if (keyCode == 13
+				&& window.getComputedStyle(document.querySelector('.modal')).display != 'none') {
+			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
+			console.log('modal on');
+			document.querySelector('.modal').style.display = 'none';
+			event.preventDefault(); // 이벤트 전파 방지
+			return;
+		}
+
+	}
+</script>
+
 <script type="text/javascript">
 	//	const signUpBtn = document.getElementById('signUpBtn');
 
 	var email = document.getElementById('email');
 	var emailCheck = document.getElementById('email_check');
 	var cerNum = document.getElementById('cerNum');
+
+	var email_check_btn = document.getElementById('email_check_btn');
+	var check_cer_num_btn = document.getElementById('check_cer_num_btn');
+
 	var password = document.getElementById('password');
 	var passwordCheck = document.getElementById('passwordCheck');
 	var name = document.getElementById('name');
@@ -42,14 +65,14 @@
 	var cerNum_check_boolean = false;
 
 	function s_signup3() {
-	    consol);
-		$.ajax({e.log("s_signup3 on"
-			type: "POST",
+
+		$.ajax({
+			type : "POST",
 			url : "/s_signup3.do",
-			data: {
+			data : {
 				"email" : $("#email").val(),
-				"password":  $("#password").val(),
-				"name": $("#name").val()
+				"password" : $("#password").val(),
+				"name" : $("#name").val()
 			},
 			success : function(responseData) {
 				$("#here").html(responseData);
@@ -58,6 +81,7 @@
 	}
 
 	function email_check() {
+
 		$.ajax({
 			url : "/emailCheck.do",
 			type : "POST",
@@ -67,20 +91,31 @@
 			success : function(result) {
 				if (result == "") {
 					//인증 번호 전송
-					console.log('전송');
+					/* alert('인증번호를 전송했습니다.'); */
+					document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
+					document.querySelector('#signUpModal .item--MHF').textContent = "인증번호를 전송했습니다.";
+					document.querySelector('#signUpModal .id-2-RY1').textContent = "이메일을 확인해주세요.";
+					
 					send_cer_num();
 					email_check_boolean = true;
+					check_cer_num_btn.style.display = 'flex';
 				} else {
 					// 모달 출력
-					console.log('모달(이미 있는 이메일입니다.)');
+					/* alert('이미 존재하는 이메일입니다.'); */
+					document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
+					document.querySelector('#signUpModal .item--MHF').textContent = "이미 존재하는 이메일입니다.";
+					document.querySelector('#signUpModal .id-2-RY1').textContent = "이메일을 다시 입력해주세요.";
+
 					email_check_boolean = false;
 
 				}
 			}
 		});
+
 	}
 
 	function send_cer_num() {
+
 		$.ajax({
 			url : "/sendCerNum.do",
 			type : "POST",
@@ -94,11 +129,11 @@
 
 			}
 		});
+
 	}
 
 	function check_cer_num() {
 		//const cerNum_check = document.getElementById('cerNum_check_text');
-
 		var inputCerNum = $("#cerNum").val(); //입력한 인증번호
 		console.log(inputCerNum);
 		console.log(cerNum);
@@ -108,18 +143,34 @@
 			// 인증 성공 warn text 2 flex
 			//인증성공하면 초로객으로 인증성공 문구 보이게함
 			cerNum_check.style.visibility = 'visible';
+			document.getElementById('cerNum').disabled = true;
 			//isCerSuccess = true;
 			cerNum_check_boolean = true;
 			allInputCheck();
 		} else {
-			console.log('불일치');
+			document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
+			console.log(document.querySelector('#signUpModal .item--MHF'));
+			document.querySelector('#signUpModal .item--MHF').textContent = "인증을 실패하였습니다.";
+			document.querySelector('#signUpModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
+			
 			cerNum_check_boolean = false;
+			console.log('불일치');
 			// modal 인증 실패
+			/* alert('인증 실패하였습니다. 다시 확인해주세요'); */
+			//이거 안나옴ㅠ
+			
+			
+			
 
 		}
 	}
 
 	function allInputCheck() {
+		var name = document.getElementById('name');
+		console.log(email.value);
+		console.log(password.value);
+		console.log(name.value);
+
 		/* 		const email = document.getElementById('email');
 		 const cerNum = document.getElementById('cerNum');
 		 const password = document.getElementById('password');
@@ -133,13 +184,18 @@
 		} else {
 			signUpBtn.disabled = false;
 		} */
-		
+
 		//input이 다 체워지고 이메일 인증 성공하고 인증번호 일치하면 가입하기 버튼 활성화됨 
-		if (email.value != "" && cerNum.value != "" && password.value != ""
-				&& passwordCheck.value != "" && name.value != "" && cerNum_check_boolean && email_check_boolean) {
+		//email유효성검사, 인증하기 버튼 눌렀음, 인증확인 버튼 눌렀음, 비밀번호유효성검사, 
+		if (isEmail(email.value) && cerNum.value != ""
+				&& isPassword(password.value) && name.value != ""
+				&& password.value == passwordCheck.value
+				&& cerNum_check_boolean && email_check_boolean) {
 			signUpBtn.disabled = false;
+			signUpBtn.style.backgroundColor = '#64A346';
 		} else {
 			signUpBtn.disabled = true;
+			signUpBtn.style.backgroundColor = '#a2a2a3';
 		}
 
 	}
@@ -156,6 +212,7 @@
 			email.style.borderColor = '#EF4444';
 			// 입력창 하단의 경고 텍스트 보이게
 			emailCheck.style.visibility = 'visible';
+			email_check_btn.disabled = true;
 		}
 		// 이메일 형태에 적합하게 입력된 경우
 		else {
@@ -165,11 +222,12 @@
 			emailCheck.style.visibility = 'hidden';
 
 			email_check_boolean = true;
+			email_check_btn.disabled = false;
 
 			// 로그인 버튼 활성화 여부를 체크하는 함수 선언
-			allInputCheck();
 
 		}
+		allInputCheck();
 	}
 
 	function isEmail(asValue) {
@@ -183,11 +241,23 @@
 		//const password = document.getElementById('password');
 		//const password_check = document.getElementById('password_check_text');
 		// 입력창의 값이 이메일 형태와 맞지 않게 입력된 경우
+
+		if (password.value != passwordCheck.value) {
+			password_check_text2.style.visibility = 'hidden';
+
+		} else {
+			if (passwordCheck.value != '') {
+				password_check_text2.style.visibility = 'visible';
+			}
+
+		}
 		if (!isPassword(password.value)) {
 			// 이메일 입력창의 테두리 빨간색으로 변경
 			password.style.borderColor = '#EF4444';
 			// 입력창 하단의 경고 텍스트 보이게
 			password_check_text1.style.visibility = 'visible';
+
+			allInputCheck();
 		}
 		// 이메일 형태에 적합하게 입력된 경우
 		else {
@@ -212,12 +282,20 @@
 		//const password_check = document.getElementById('passwordCheck');
 		//const password_check_text = document.getElementById('password_check_text2');
 
-		// 입력창의 값이 이메일 형태와 맞지 않게 입력된 경우
+		// 입력한 비밀번호 값이 비밀번호 확인 값과 같을 때
 		if (password.value == passwordCheck.value) {
-			password_check_text2.style.visibility = 'visible';
+			if (passwordCheck.value != '') {
+				password_check_text2.style.visibility = 'visible';
+			}
+
+			allInputCheck();
+
+		} else {
+			password_check_text2.style.visibility = 'hidden';
+
+			allInputCheck();
 
 		}
-		allInputCheck();
 
 	}
 </script>
@@ -243,7 +321,7 @@
 
 
 				<form class="rectangle-89-bcq" method="post" id="signupForm"
-					 style="display: block;">
+					style="display: block;">
 
 					<div class="term_status">
 						<div class="rectangle-93-JTw"></div>
@@ -266,10 +344,11 @@
 							<p class="item--AC5">*</p>
 						</div>
 						<div class="auto-group-vdzx-t85">
-							<input onkeyup="printEmail()" type="text" name="user_email" id="email"
-								class="group-98-dbT" placeholder="이메일 형식으로 입력해주세요."
-								required="required" />
-							<input type="button" onclick="email_check()" class="group-96-GeR" value="인증하기"/>
+							<input onkeyup="printEmail()" type="text" name="user_email"
+								id="email" class="group-98-dbT" placeholder="이메일 형식으로 입력해주세요."
+								required="required" /> <input type="button"
+								id="email_check_btn" onclick="email_check()"
+								class="group-96-GeR" value="인증하기" />
 						</div>
 						<span id="email_check" class="warn_text"> 유효한 이메일 주소를
 							입력하세요.</span>
@@ -283,8 +362,9 @@
 						<div class="auto-group-vdzx-t851">
 							<input type="text" name="cerNum" id="cerNum"
 								class="group-98-dbT1" placeholder="인증번호를 입력해 주세요."
-								required="required" />
-							<input type="button" onclick="check_cer_num()" class="group-96-GeR1" value="인증확인">
+								required="required" /> <input type="button"
+								id="check_cer_num_btn" onclick="check_cer_num()"
+								class="group-96-GeR1" value="인증확인">
 						</div>
 						<span id="cerNum_check_text" class="warn_text2"> 인증성공 </span>
 					</div>
@@ -319,17 +399,23 @@
 							<div class="item--dSM">이름</div>
 							<p class="item--9Qh">*</p>
 						</div>
-						<input type="text" name="user_name" id="name" class="group-98-g9j"
-							placeholder="이름을 입력해 주세요." required="required" />
+						<!-- <input onkeyup="printEmail()" type="text" name="user_email" id="email"
+								class="group-98-dbT" placeholder="이메일 형식으로 입력해주세요."
+								required="required" /> -->
+						<input onkeyup="allInputCheck()" type="text" name="user_name"
+							id="name" class="group-98-g9j" placeholder="이름을 입력해 주세요."
+							required="required" />
 						<!-- <div class="group-98-g9j">이름을 입력해 주세요.</div> -->
 					</div>
 
 					<div class="auto-group-sgld-ue5">
-						<input type="button" onclick="location.href='login.do'" class="group-100-Q53" value="취소"/>
+						<input type="button" onclick="location.href='login.do'"
+							class="group-100-Q53" value="취소" />
 						<!-- <div class="group-100-Q53">취소</div> -->
 						<!-- <button onclick="s_signup3()" id="signUpBtn" name="signUpBtn"
 					class="group-99-bQR" type="submit" form="signupForm">가입하기</button> -->
-						<button id="signUpBtn" type="button" onclick="s_signup3()" name="signUpBtn" class="group-99-bQR">가입하기</button> 
+						<button id="signUpBtn" type="button" onclick="s_signup3()"
+							name="signUpBtn" class="group-99-bQR">가입하기</button>
 						<!-- <button onclick="location.href='signup3.do'" class="group-99-bQR">가입하기</button> -->
 						<!-- <div class="group-99-bQR">가입하기</div> -->
 					</div>

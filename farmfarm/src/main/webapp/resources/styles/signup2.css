@@ -582,6 +582,7 @@ input {
 
 .mainpage--jfs .group-173-qRP .auto-group-ymdo-CSH .rectangle-89-bcq .formmail-EQu1 .auto-group-vdzx-t851 .group-96-GeR1
 	{
+	
 	margin: 0.819rem 0rem 0.744rem 0rem;
 	width: 13.6172rem;
 	height: calc(100% - 1.5626rem);
@@ -592,7 +593,7 @@ input {
 	color: #64a246;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
-	display: flex;
+	display: none;
 	align-items: center;
 	justify-content: center;
 	border: solid 0.1488rem #64a246;
@@ -833,7 +834,7 @@ input {
 }
 
 .mainpage--jfs .group-173-qRP .auto-group-sgld-ue5 .group-99-bQR {
-	width: 27.3089rem;
+	width: 26.3089rem;
 	height: 100%;
 	text-align: center;
 	font-size: 2.8276rem;
@@ -845,9 +846,10 @@ input {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: solid 0.0744rem #64a246;
+	/* border: solid 0.0744rem #64a246; */
 	box-sizing: border-box;
-	background-color: #64a246;
+	/* background-color: #64a246; */
+	background-color: #a2a2a3;
 	border-radius: 0.3721rem;
 	flex-shrink: 0;
 }
