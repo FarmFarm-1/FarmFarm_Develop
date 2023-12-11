@@ -13,7 +13,7 @@ public class ChartService {
 	@Autowired
 	ChartDAO chartDAO;
 
-	public Crops_quoteVO cropsInfoByKind(String crops_kind) {
+	public List<Crops_quoteVO> cropsInfoByKind(String crops_kind) {
 		return chartDAO.cropsInfoByKind(crops_kind);
 	}
 	

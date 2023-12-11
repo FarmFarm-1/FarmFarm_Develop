@@ -15,12 +15,15 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduledTasksService {
-	
-	protected LinkedList<LinkedHashMap<String, String>> cropsQuoteFetch() {
+
+	Logger logger = LoggerFactory.getLogger(ScheduledTasksService.class);
+	protected LinkedList<LinkedHashMap<String, String>> cropsQuoteDataFetchAndSaveOrNull() {
 		LinkedList<LinkedHashMap<String, String>> resultData = new LinkedList<>();
 		try {
 			StringBuilder sb = new StringBuilder();
@@ -28,11 +31,10 @@ public class ScheduledTasksService {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Calendar c1 = Calendar.getInstance();
 			c1.add(Calendar.DATE, -1);
-			String yesterday = sdf.format(c1.getTime());
-
+			String regDay = sdf.format(c1.getTime());			
 			String dailySalesList = "https://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList"
 					+ "&p_product_cls_code=02" 
-					+ "&p_regday=" + yesterday 
+					+ "&p_regday="+regDay
 					+ "&p_convert_kg_yn=Y"
 					+ "&p_item_category_code=100" 
 					+ "&p_cert_key=479dabdd-7aa2-43d5-9b8f-6e4712d863f2"
@@ -44,7 +46,8 @@ public class ScheduledTasksService {
 			conn.setInstanceFollowRedirects(true);
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			System.out.println(conn.getResponseCode());
+			logger.warn(url+"");
+			logger.warn(Integer.toString(conn.getResponseCode()));
 
 			// API 응답메시지를 불러와서 문자열로 저장
 			BufferedReader rd;
@@ -59,12 +62,16 @@ public class ScheduledTasksService {
 			rd.close();
 			conn.disconnect();
 			String result = sb.toString();
-
+			logger.warn(result);
+			
 			// JSON Parsing
 			JSONParser jsonParser = new JSONParser();
-			JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
-			JSONObject data = (JSONObject) jsonObject.get("data");
-			JSONArray priceInfo = (JSONArray) data.get("item");
+			JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
+			if(jsonObject.get("data") instanceof JSONArray) {//에러코드를 확인해서 처리 -> 오류일 경우 처리
+				return null;
+			}
+			JSONObject data = (JSONObject)jsonObject.get("data");
+			JSONArray priceInfo = (JSONArray)data.get("item");
 			// 입력 조건 생성
 			String rank_code = "04";
 			String rice_item_name = "쌀";
@@ -151,10 +158,15 @@ public class ScheduledTasksService {
 						}
 					}
 					if(match) {
+						String priceCheck = (String)cur_jsonObject.get("dpr1");
+						if(priceCheck.equals("-")) {
+							return null;
+						}
 			            LinkedHashMap<String, String> input = new LinkedHashMap<>();
 			            input.put("crops_kind", (String)cur_jsonObject.get("item_name"));
 			            String formattedPrice = ((String)cur_jsonObject.get("dpr1")).replace(",", "");
 			            input.put("crops_quote", formattedPrice);
+			            input.put("regDay", regDay);
 			            resultData.add(input);
 			        }
 				}
@@ -163,7 +175,7 @@ public class ScheduledTasksService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(resultData);
+		logger.info(resultData+"");
 		return resultData;
 	}
 }

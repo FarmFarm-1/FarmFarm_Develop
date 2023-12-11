@@ -9,7 +9,7 @@
 		(crops_kind, crops_quote, regDate)
 		values
 		<foreach collection="list" item="item" separator=",">
-		(#{item.crops_kind}, #{item.crops_quote}, CURDATE() - INTERVAL 1 DAY)
+		(#{item.crops_kind}, #{item.crops_quote}, #{item.regDay})
 		</foreach>
 	</insert>
 

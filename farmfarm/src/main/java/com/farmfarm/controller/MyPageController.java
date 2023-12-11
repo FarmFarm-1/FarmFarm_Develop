@@ -29,6 +29,7 @@ public class MyPageController {
 	public void deletecart(User_cartVO user_cartVO) {
 		auctionService.deletecart(user_cartVO);
 	}
+	
 	@ResponseBody
 	@PostMapping("/reloadCart")
 	public String reloadCart(String product_serial_num) {

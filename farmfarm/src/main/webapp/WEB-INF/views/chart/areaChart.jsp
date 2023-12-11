@@ -11,41 +11,63 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 <script>
 	$(function() {
-		let selected_kind = "${cropsInfo.crops_kind}";
+		let priceList = ${priceList};
+		let dateList = ${dateList};
+		console.log(dateList);
 		
 		var data = {
-			series : [ {
-				name : 'series1',
-				data : [ 31, 40, 28, 51, 42, 109, 100 ]
-			}, {
-				name : 'series2',
-				data : [ 11, 32, 45, 32, 34, 52, 41 ]
-			} ],
+			series : [{
+				name : "${crops_kind}", 
+				data : priceList
+			}],
+			title: {
+		          text: '농작물 시세',
+		          align: 'left'
+	        },
+	        subtitle: {
+	          text: '${crops_kind}',
+	          align: 'left'
+	        },
 			chart : {
 				height : 500,
 				type : 'area'
 			},
 			dataLabels : {
-				enabled : false
+				enabled : true
 			},
 			stroke : {
 				curve : 'smooth'
 			},
-			xaxis : {
-				type : 'date',
-				categories : [ "22-05-02",
-						"22-05-03", "22-05-04",
-						"22-05-05", "22-05-06",
-						"22-05-07", "22-05-08" ]
-			},
-			tooltip : {
-				x : {
-					format : 'dd/MM/yy'
-				},
-			},
+			xaxis: {
+				type: 'String',
+				categories: dateList,
+	        },
+			annotations: {
+		          yaxis: [{
+		            y: 30,
+		            borderColor: '#999',
+		            label: {
+		              show: true,
+		              text: '평균 도매가',
+		              style: {
+		                color: "#fff",
+		                background: '#00E396'
+	                 }
+	            }
+          	}]},
+			fill: {
+		          type: 'gradient',
+		          gradient: {
+		            shadeIntensity: 1,
+		            opacityFrom: 0.7,
+		            opacityTo: 0.9,
+		            stops: [0, 100]
+		          }
+		    },
 		};
 		var chart = new ApexCharts(document.querySelector("#chart"), data);
 		chart.render();
+		 
 	});
 </script>
 </head>

@@ -69,7 +69,7 @@ public class AuctionDAO {
 	}
 
 	public Crops_quoteVO cropsquoteInfo(String product_kind) {
-		return sqlSession.selectOne(namespace_cropsQuote+"cropsquoteList", product_kind);
+		return sqlSession.selectOne(namespace_cropsQuote+"cropsquoteInfo", product_kind);
 	}
 	
 	@Transactional

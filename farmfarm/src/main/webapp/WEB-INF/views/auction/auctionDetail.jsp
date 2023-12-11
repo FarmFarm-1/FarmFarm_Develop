@@ -37,7 +37,7 @@
                     $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
                 }
 			} else {
-				showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
+				showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
 		});
 		
@@ -45,38 +45,42 @@
 	    	if(serial_num.substring(0,2) === "us"){
 	    		let input_price = $("#auction-price-input").val();
 		    	let user_price = input_price.replace(/,/g, "");
-	    		if (user_price > "${ maxAndCntInfo.max_auction_price }") {
-			        $.ajax({
-			            url: "${cpath}/auction/auctionConfirm",
-			            type: "POST",
-			            data: {
-			            		"user_serial_num" : serial_num,
-			            		"user_price" : user_price,
-			            		"product_serial_num" : product_serial_num
-			            	  },
-			            success: function(res) {
-			                if(res == 1) {
-			                	showModal("입찰 결과","입찰 성공");
-			                } else {
-			                	showModal("입찰 결과","입찰에  실패하였습니다. 다시 시도해 주세요");
-			                }
-			            },
-			            error: function(xhr, status, error) {
-			            	if(xhr.responseText == "notEnoughPoint") {
-			            		showModal("입찰 결과","포인트가 부족합니다.");
-			            	} else if (xhr.responseText == "notMaxAuctionraiser") {
-			            		showModal("입찰 결과","최고 금액이 아닙니다.");
-			            	} else {
-			            		showModal("입찰 결과","입찰에  실패하였습니다. 다시 시도해 주세요");
-			            	}
-			            	
-			            }
-			        });
-	    		} else {
-	    			showModal("경매 기능","최고가 금액 이상으로 입찰하세요.");
-	    		}
+		    	if(user_price< "${auctionInfo.starting_price * auctionInfo.harvest_amount}") {
+		    		if (user_price > "${ maxAndCntInfo.max_auction_price }") {
+				        $.ajax({
+				            url: "${cpath}/auction/auctionConfirm",
+				            type: "POST",
+				            data: {
+				            		"user_serial_num" : serial_num,
+				            		"user_price" : user_price,
+				            		"product_serial_num" : product_serial_num
+				            	  },
+				            success: function(res) {
+				                if(res == 1) {
+				                	showModal("입찰 결과","입찰 성공");
+				                } else {
+				                	showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+				                }
+				            },
+				            error: function(xhr, status, error) {
+				            	if(xhr.responseText == "notEnoughPoint") {
+				            		showModal("입찰 결과","포인트가 부족합니다.");
+				            	} else if (xhr.responseText == "notMaxAuctionraiser") {
+				            		showModal("입찰 결과","최고 금액이 아닙니다.");
+				            	} else {
+				            		showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+				            	}
+				            	
+				            }
+				        });
+		    		} else {
+		    			showModal("입력 오류","최고가 금액 이상으로 입찰하세요.");
+		    		}
+		    	} else {
+		    		showModal("입력 오류","경매 시작금액 이상으로 입찰하세요.");
+		    	}
 	    	} else {
-	    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
+	    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
 	    });
 		
@@ -101,7 +105,7 @@
 		            }
 		        }
 	    	} else {
-	    		showModal("회원가입이 필욯한 기능입니다.","서포터 회원으로 로그인 하세요.");
+	    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
 	    		e.target.value = "0";
 	    	}
 	    }
@@ -151,7 +155,7 @@
         if(input.length > 0) {
         	let num = input.replace(/,/g, ""); // 콤마 제거
         	if (!$.isNumeric(num)) {
-        		showModal("ㅎㅇ","숫자만 입력하세요.");
+        		showModal("입력 오류","숫자만 입력하세요.");
                 $(this).val(input.slice(0, -1)); // 마지막 문자 제거
             } else {
                 $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
@@ -160,8 +164,13 @@
     }
 	
 	function showChart() {
-    	location.href="${cpath}/chart/area/rice";
+    	location.href="${cpath}/chart/area/${auctionInfo.product_kind}";
     }
+	
+	function showMore() {
+		$(".left-div").children('.product-detail-img:not(:first)').toggle();
+		
+	}
 </script>
 <jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 </head>
@@ -170,8 +179,12 @@
 		<div class="productDetail-div">
 			<div class="left-div">
 				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png">
-				<div class="showmore-btn">
-					<p class="item--Mv5">스토리 더보기</p>
+				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png" style="display:none;">
+				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png" style="display:none;">
+				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png" style="display:none;">
+				<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png" style="display:none;">
+				<div class="showmore-btn" onclick="showMore()">
+					<p class="item--Mv5" >스토리 더보기</p>
 					<img class="arrow-see-more"
 						src="${cpath}/assets/arrow_see_more.png" />
 				</div>
@@ -216,7 +229,7 @@
 							<p class="farm-footage-val"><fmt:formatNumber value="${auctionInfo.farm_square_footage}"  pattern="#,###.#"/> 평</p>
 						</div>
 						<div class="frame2-line4">
-							<p class="farm-kind">농작물 이름</p>
+							<p class="farm-kind">농작물 종류</p>
 							<p class="farm-kind-val">${auctionInfo.product_kind}</p>
 						</div>
 						<div class="frame2-line5">
@@ -246,10 +259,14 @@
 						</div>
 					</div>
 				</div>
-				<p class="cropsquote-tag">전일대비 손익</p>
+				<p class="cropsquote-tag">시세대비 손익</p>
 				<div class="crops-api-info">
-					<p onclick="showChart()">확대버튼</p>
+					<img src="${cpath}/assets/search.png" onclick="showChart()">
 					<table>
+						<tr>
+							<td>측정 날짜</td>
+							<td><fmt:formatDate value="${cropsquoteInfo.regDate}" type="date" pattern="yyyy-MM-dd" /></td>
+						</tr>
 						<tr>
 							<td>현재 시세(1kg)</td>
 							<td>

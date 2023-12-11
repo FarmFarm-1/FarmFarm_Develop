@@ -1,5 +1,7 @@
 package com.farmfarm.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,8 +16,8 @@ public class ChartDAO {
 	
 	String namespace = "com.farmfarm.Crops_quoteVO.";
 
-	public Crops_quoteVO cropsInfoByKind(String crops_kind) {
-		return sqlSession.selectOne(namespace+"cropsInfoByKind",crops_kind);
+	public List<Crops_quoteVO> cropsInfoByKind(String crops_kind) {
+		return sqlSession.selectList(namespace+"cropsInfoByKind",crops_kind);
 	}
 	
 	
