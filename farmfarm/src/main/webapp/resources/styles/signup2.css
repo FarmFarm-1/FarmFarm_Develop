@@ -34,7 +34,7 @@ input {
 .warn_text2 {
 	/* 텍스트 안보이게 설정 */
 	visibility: hidden;
-	/* visibility: flex;  */
+	/* visibility: flex; */
 	/* 텍스트 크기, 굵기, 색 설정 */
 	font-size: 17px;
 	font-weight: 800;
@@ -127,7 +127,7 @@ input {
 .mainpage--jfs .group-173-qRP .auto-group-ymdo-CSH {
 	margin-bottom: 6.4736rem;
 	width: 100%;
-	height: 96.5856rem;
+	height: 120rem;
 	position: relative;
 	flex-shrink: 0;
 }
@@ -248,7 +248,7 @@ input {
 
 .mainpage--jfs .group-173-qRP .auto-group-ymdo-CSH .rectangle-89-bcq {
 	width: 91.6rem;
-	height: 105rem;
+	height: 103rem;
 	position: absolute;
 	left: 0;
 	top: 9.0782rem;
@@ -659,6 +659,7 @@ input {
 	font-size: 2.2323rem;
 	font-weight: 400;
 	line-height: 1.2575;
+	border: 1.5px solid;
 	color: #686868;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
@@ -802,7 +803,7 @@ input {
 }
 
 .mainpage--jfs .group-173-qRP .auto-group-sgld-ue5 {
-	margin: 15rem 0rem 5rem 34.006rem;
+	margin: 90rem 0rem 5rem 34.006rem;
 	width: calc(100% - 34.0059rem);
 	height: 8.1852rem;
 	display: flex;

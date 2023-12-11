@@ -42,7 +42,7 @@
 
 	function showFullText(termName) {
 		$.ajax({
-			url : "/termContent.do", //DB에 가서 약관을 가져와
+			url : "/termContents.do", //DB에 가서 약관을 가져와
 			data : {"termName":termName},
 			success : function(responseData) {
 				 

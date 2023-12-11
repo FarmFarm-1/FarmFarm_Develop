@@ -21,6 +21,9 @@
 <body>
 	<div class="mainpage--BGh">
 		<div class="group-174-idK">
+
+			<p class="item--rDj">회원가입</p>
+
 			<div class="auto-group-npnm-LPo">
 
 				<div class="rectangle-90-p451">

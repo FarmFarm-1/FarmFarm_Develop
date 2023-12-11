@@ -1,7 +1,6 @@
 package com.farmfarm.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -27,7 +26,7 @@ public class SignUpController {
 	@Autowired
 	SignUpService sService;
 	
-	@GetMapping(value = "/termContent.do", produces = "text/plain;charset=utf-8")
+	@GetMapping(value = "/termContents.do", produces = "text/plain;charset=utf-8")
 	public  @ResponseBody  String getTermContent(@RequestParam("termName")  String term_name, Model model) {
 		TermsOfUseVO vo = tService.getTermContent(term_name);
 		return vo.getTerm_content();
@@ -44,5 +43,36 @@ public class SignUpController {
 		sService.sendCerNum(response, email);
 		
 	}
-
+	
+	@PostMapping("/s_signup3.do")
+	public String userSignUpPost(String email, String password, String name, HttpServletResponse response) {
+		System.out.println("in");
+		
+		UsersVO u = new UsersVO();
+		
+		u.setUser_email(email);
+		u.setUser_pw(password);
+		u.setUser_name(name);
+		
+		int result = sService.userSignUp(u);
+		
+		if(result > 0) {
+			System.out.println("회원가입 성공");
+			return "signUp/s_signup3";
+		}else {
+			System.out.println("회원가입 실패");
+			return "redirect:/login.do";
+		}
+		
+	}
+	
+	/*
+	 * @PostMapping("/s_signup3.do") public String userSignUpPost(UsersVO users) {
+	 * System.out.println("in"); int result = sService.userSignUp(users);
+	 * System.out.println(users.getUser_email());
+	 * System.out.println(users.getUser_pw());
+	 * System.out.println(users.getUser_name()); if(result > 0) {
+	 * System.out.println("회원가입 성공"); }else { System.out.println("회원가입 실패"); return
+	 * "redirect:/login.do"; } return "signUp/s_signup3"; }
+	 */
 }

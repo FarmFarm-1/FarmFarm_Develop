@@ -9,6 +9,8 @@ import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.farmfarm.dto.UsersVO;
+
 @Service
 public class SignUpService {
 
@@ -80,7 +82,10 @@ public class SignUpService {
 		
 	}
 	
-	
+	//users 회원가입
+	public int userSignUp(UsersVO users) {
+		return dao.userSignUp(users);
+	}
 	
 
 }
