@@ -83,7 +83,7 @@
 <body>
 	<script>
 		document.addEventListener('click', function(event) {
-			document.querySelector('.modal').style.display = 'none';
+			document.querySelector('#validationModal').style.display = 'none';
 		 });
      
 		
@@ -91,8 +91,8 @@
 	
 	<div class="modal" id="validationModal">
 		<div class="modal_body">
-			<p class="alertTitle"></p>
-			<p class="alertContent"></p>
+			<p class="item--MHF"></p>
+			<p class="id-2-RY1"></p>
 			<div></div>
 			<div class="group-108-suo">확인</div>
 

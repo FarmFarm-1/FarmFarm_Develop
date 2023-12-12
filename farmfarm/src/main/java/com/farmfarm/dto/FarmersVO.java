@@ -10,11 +10,10 @@ import lombok.Data;
 @NoArgsConstructor
 @AllArgsConstructor*/
 @Data
-public class UsersVO {
-	String user_serial_num;
-	String user_email;
-	String user_pw;
-	String user_name;
-	int user_point;
-	Date user_join_date; 
+public class FarmersVO {
+	String farmer_serial_num;
+	String farmer_email;
+	String farmer_pw;
+	String farmer_name;
+	Date farmer_join_date; 
 }

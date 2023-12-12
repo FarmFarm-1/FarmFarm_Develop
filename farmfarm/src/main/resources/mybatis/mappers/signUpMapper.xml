@@ -8,9 +8,7 @@
 		INSERT INTO users(user_email, user_pw, user_name) VALUES (#{user_email}, #{user_pw}, #{user_name})
 	</insert>
 	
-	<insert id="farmerSignUp" parameterType="String"> //FarmersVO
-		SELECT count(*) 
-		FROM users 
-		WHERE user_email = #{email}
+	<insert id="farmerSignUp" parameterType="FarmersVO">
+		INSERT INTO farmers(farmer_email, farmer_pw, farmer_name) VALUES (#{farmer_email}, #{farmer_pw}, #{farmer_name})
 	</insert>
 </mapper>

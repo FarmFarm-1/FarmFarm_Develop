@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.farmfarm.dto.FarmersVO;
 import com.farmfarm.dto.TermsOfUseVO;
 import com.farmfarm.dto.UsersVO;
 import com.farmfarm.model.SignUpService;
@@ -46,7 +47,7 @@ public class SignUpController {
 	
 	@PostMapping("/s_signup3.do")
 	public String userSignUpPost(String email, String password, String name, HttpServletResponse response) {
-		System.out.println("in");
+		System.out.println("user in");
 		
 		UsersVO u = new UsersVO();
 		
@@ -59,6 +60,28 @@ public class SignUpController {
 		if(result > 0) {
 			System.out.println("회원가입 성공");
 			return "signUp/s_signup3";
+		}else {
+			System.out.println("회원가입 실패");
+			return "redirect:/login.do";
+		}
+		
+	}
+	
+	@PostMapping("/f_signup3.do")
+	public String farmerSignUpPost(String email, String password, String name, HttpServletResponse response) {
+		System.out.println("farmer in");
+		
+		FarmersVO f = new FarmersVO();
+		
+		f.setFarmer_email(email);
+		f.setFarmer_pw(password);
+		f.setFarmer_name(name);
+		
+		int result = sService.farmerSignUp(f);
+		
+		if(result > 0) {
+			System.out.println("회원가입 성공");
+			return "signUp/f_signup3";
 		}else {
 			System.out.println("회원가입 실패");
 			return "redirect:/login.do";

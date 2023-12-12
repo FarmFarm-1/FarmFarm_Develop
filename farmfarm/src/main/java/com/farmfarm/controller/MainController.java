@@ -13,6 +13,11 @@ public class MainController {
 		return "loginIndex";
 	}
 	
+	@GetMapping("/cerNumModal.do")
+	public String cerNumModal() {
+		return "signUp/validationModal";
+	}
+	
 	@GetMapping("/login.do")
 	public String showLogin() {
 		return "login/login";

@@ -30,10 +30,10 @@
 		var keyCode = window.event.keyCode;
 
 		if (keyCode == 13
-				&& window.getComputedStyle(document.querySelector('.modal')).display != 'none') {
+				&& window.getComputedStyle(document.querySelector('#validationModal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
 			console.log('modal on');
-			document.querySelector('.modal').style.display = 'none';
+			document.querySelector('#validationModal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
 			return;
 		}
@@ -44,6 +44,7 @@
 <script type="text/javascript">
 	//	const signUpBtn = document.getElementById('signUpBtn');
 
+	const vModal = document.getElementById('validationModal');
 	var email = document.getElementById('email');
 	var emailCheck = document.getElementById('email_check');
 	var cerNum = document.getElementById('cerNum');
@@ -92,19 +93,29 @@
 				if (result == "") {
 					//인증 번호 전송
 					/* alert('인증번호를 전송했습니다.'); */
-					document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
-					document.querySelector('#signUpModal .item--MHF').textContent = "인증번호를 전송했습니다.";
-					document.querySelector('#signUpModal .id-2-RY1').textContent = "이메일을 확인해주세요.";
+					
+					vModal.style.display = 'flex';
+					//document.getElementById('signUpModal').style.display = 'flex'; //모달을 띄위는 코드
+					/* vModal.textContent = "인증번호를 전송했습니다.";
+					vModal.textContent = "이메일을 확인해주세요."; */
+					
+					document.querySelector('#validationModal .item--MHF').textContent = "인증번호를 전송했습니다.";
+					document.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 확인해주세요.";
+
 					
 					send_cer_num();
+					
 					email_check_boolean = true;
+					
 					check_cer_num_btn.style.display = 'flex';
+					
 				} else {
 					// 모달 출력
 					/* alert('이미 존재하는 이메일입니다.'); */
-					document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
-					document.querySelector('#signUpModal .item--MHF').textContent = "이미 존재하는 이메일입니다.";
-					document.querySelector('#signUpModal .id-2-RY1').textContent = "이메일을 다시 입력해주세요.";
+					vModal.style.display = 'flex'; //모달을 띄위는 코드
+					
+					document.querySelector('#validationModal .item--MHF').textContent = "이미 존재하는 이메일입니다.";
+					document.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 다시 입력해주세요.";
 
 					email_check_boolean = false;
 
@@ -148,21 +159,39 @@
 			cerNum_check_boolean = true;
 			allInputCheck();
 		} else {
-			document.querySelector('.modal').style.display = 'flex'; //모달을 띄위는 코드
-			console.log(document.querySelector('#signUpModal .item--MHF'));
-			document.querySelector('#signUpModal .item--MHF').textContent = "인증을 실패하였습니다.";
-			document.querySelector('#signUpModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
+			check_cer_num_modal();
+			/* console.log(document.querySelector('#validationModal').style.display);
+			//vModal.style.display = 'flex'; //모달을 띄위는 코드
+			
+			document.querySelector('#validationModal').style.display = 'flex';
+			console.log(document.querySelector('#validationModal').style.display);
+
+			document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
+			document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
 			
 			cerNum_check_boolean = false;
 			console.log('불일치');
 			// modal 인증 실패
 			/* alert('인증 실패하였습니다. 다시 확인해주세요'); */
-			//이거 안나옴ㅠ
-			
-			
-			
-
+			//이거 안나옴ㅠ */
 		}
+	}
+	
+	function check_cer_num_modal(){
+		$.ajax({
+			url : "/cerNumModal.do",
+			success : function(responseData) {
+
+				document.querySelector('#validationModal').style.display = 'flex';
+				console.log(document.querySelector('#validationModal').style.display);
+
+				document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
+				document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
+				
+				cerNum_check_boolean = false;
+				console.log('불일치');
+			}
+		});
 	}
 
 	function allInputCheck() {
@@ -193,9 +222,11 @@
 				&& cerNum_check_boolean && email_check_boolean) {
 			signUpBtn.disabled = false;
 			signUpBtn.style.backgroundColor = '#64A346';
+			signUpBtn.style.border = 'solid 0.0744rem #64a246';
 		} else {
 			signUpBtn.disabled = true;
 			signUpBtn.style.backgroundColor = '#a2a2a3';
+			signUpBtn.style.border = 'solid 0.0744rem #a2a2a3';
 		}
 
 	}
@@ -399,40 +430,20 @@
 							<div class="item--dSM">이름</div>
 							<p class="item--9Qh">*</p>
 						</div>
-						<!-- <input onkeyup="printEmail()" type="text" name="user_email" id="email"
-								class="group-98-dbT" placeholder="이메일 형식으로 입력해주세요."
-								required="required" /> -->
 						<input onkeyup="allInputCheck()" type="text" name="user_name"
 							id="name" class="group-98-g9j" placeholder="이름을 입력해 주세요."
 							required="required" />
-						<!-- <div class="group-98-g9j">이름을 입력해 주세요.</div> -->
 					</div>
 
 					<div class="auto-group-sgld-ue5">
 						<input type="button" onclick="location.href='login.do'"
 							class="group-100-Q53" value="취소" />
-						<!-- <div class="group-100-Q53">취소</div> -->
-						<!-- <button onclick="s_signup3()" id="signUpBtn" name="signUpBtn"
-					class="group-99-bQR" type="submit" form="signupForm">가입하기</button> -->
 						<button id="signUpBtn" type="button" onclick="s_signup3()"
 							name="signUpBtn" class="group-99-bQR">가입하기</button>
-						<!-- <button onclick="location.href='signup3.do'" class="group-99-bQR">가입하기</button> -->
-						<!-- <div class="group-99-bQR">가입하기</div> -->
 					</div>
 				</form>
 
 			</div>
-
-			<!-- <div class="auto-group-sgld-ue5">
-				<button onclick="location.href='login.do'" class="group-100-Q53">취소</button>
-				<div class="group-100-Q53">취소</div>
-				<button onclick="s_signup3()" id="signUpBtn" name="signUpBtn"
-					class="group-99-bQR" type="submit" form="signupForm">가입하기</button>
-				<button onclick="location.href='s_signup3Post.do'" id="signUpBtn"
-					name="signUpBtn" class="group-99-bQR" type="submit">가입하기</button>
-				<button onclick="location.href='signup3.do'" class="group-99-bQR">가입하기</button>
-				<div class="group-99-bQR">가입하기</div>
-			</div> -->
 
 		</div>
 

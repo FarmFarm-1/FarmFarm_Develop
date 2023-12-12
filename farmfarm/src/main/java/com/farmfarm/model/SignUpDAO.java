@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.farmfarm.dto.FarmersVO;
 import com.farmfarm.dto.UsersVO;
 
 @Repository
@@ -27,6 +28,17 @@ public class SignUpDAO {
 		int result = 0; //insert가 제대로 됬는지 확인
 		try {
 			result = sqlSession.insert(namespace2 + "userSignUp", users);
+		}catch(Exception e){
+			
+		}
+		System.out.println(result);
+		return result;
+	}
+
+	public int farmerSignUp(FarmersVO farmers) {
+		int result = 0; //insert가 제대로 됬는지 확인
+		try {
+			result = sqlSession.insert(namespace2 + "farmerSignUp", farmers);
 		}catch(Exception e){
 			
 		}

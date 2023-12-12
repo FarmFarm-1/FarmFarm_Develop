@@ -8,8 +8,8 @@
 	zoom: 0.67;
 }
 
-.modal {
-	z-index:2;
+.modal2 {
+	z-index:2; 
 	position: absolute;
 	display: none;
 	justify-content: center;
@@ -20,11 +20,11 @@
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal_body {
+.modal_body2 {
 	position: absolute;
 	top: 50%;
-	width: 700px;
-	height: 500px;
+	width: 1000px;
+	height: 800px;
 	padding: 40px;
 	text-align: center;
 	background-color: rgb(255, 255, 255);
@@ -33,8 +33,8 @@
 	transform: translateY(-50%);
 }
 
-.modal_body .item--MHF {
-	margin: 10rem 0rem 6.2rem 0.4rem;
+.modal_body2 .item--MHF {
+	margin: 5.5rem 2rem 5.5rem 5rem;
 	text-align: center;
 	font-size: 3.7rem;
 	font-weight: 700;
@@ -46,8 +46,8 @@
 	flex-shrink: 0;
 }
 
-.modal_body .id-2-RY1 {
-	margin-bottom: 8.6rem;
+.modal_body2 .id-2-RY1 {
+	margin-bottom: 10rem;
 	text-align: center;
 	font-size: 2.4rem;
 	font-weight: 400;
@@ -57,8 +57,8 @@
 	flex-shrink: 0;
 }
 
-.modal_body .group-108-suo {
-	margin: 0rem 0rem 0rem 24.5rem;
+.modal_body2 .group-108-suo {
+	margin: 0rem 0rem 0rem 42rem;
 	width: 20rem;
 	height: 8.2572rem;
 	text-align: center;
@@ -82,16 +82,18 @@
 
 <body>
 	<script>
+		
 		document.addEventListener('click', function(event) {
-			document.querySelector('.modal').style.display = 'none';
+			document.querySelector('#signUpModal').style.display = 'none';
 		 });
-     
+		
+		
 		
 	</script>
 	
-	<div class="modal" id="signUpModal">
-		<div class="modal_body">
-			<p class="item--MHF">이용약관</p>
+	<div class="modal2" id="signUpModal">
+		<div class="modal_body2">
+			<p class="item--MHF"></p>
 			<p class="id-2-RY1">내용 db에서 가져옴</p>
 			<div></div>
 			<div class="group-108-suo">확인</div>
