@@ -90,7 +90,7 @@
 					<div class="ellipse-10-XTT"></div>
 				</div>
 				<div class="auto-group-sjok-3gh">
-					<div class="item--C3o">
+					<div class="item--C3o" onclick="location.href='signup.do';">
 						<span class="item--C3o-sub-0">팜팜 처음 오셨나요? </span> <span>&nbsp;&nbsp;</span>
 						<span class="item--C3o-sub-1">바로 회원가입하기 </span>
 					</div>

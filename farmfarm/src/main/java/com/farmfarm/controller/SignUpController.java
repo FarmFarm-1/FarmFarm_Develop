@@ -34,6 +34,50 @@ public class SignUpController {
 		
 	}
 	
+	
+	
+	
+	@GetMapping("/cerNumModal.do")
+	public String cerNumModal() {
+		return "signUp/validationModal";
+	}
+	
+	
+	@GetMapping("/s_signup1.do")
+	public String showSSignup1() {
+		return "signUp/s_signup1";
+	}
+	
+	@GetMapping("/s_signup2.do")
+	public String showSSignup2() {
+		return "signUp/s_signup2";
+	}
+	
+	
+	@GetMapping("/f_signup1.do")
+	public String showFSignUp1() {
+		return "signUp/f_signup1";
+	}
+	
+	@GetMapping("/f_signup2.do")
+	public String showFSignUp2() {
+		return "signUp/f_signup2";
+	}
+	
+	@GetMapping("/f_signup3.do")
+	public String showFSignUp3() {
+		return "signUp/f_signup3";
+	}
+	
+	@GetMapping("/signup_modal.do")
+	public String showModal() {
+		return "signUp/signupModal";
+	}
+
+	
+	
+	
+	
 	@PostMapping("/emailCheck.do")
 	public void emailCheck(String email, HttpServletResponse response) throws IOException {
 		sService.emailCheck(response, email);
@@ -58,10 +102,8 @@ public class SignUpController {
 		int result = sService.userSignUp(u);
 		
 		if(result > 0) {
-			System.out.println("회원가입 성공");
 			return "signUp/s_signup3";
 		}else {
-			System.out.println("회원가입 실패");
 			return "redirect:/login.do";
 		}
 		
@@ -80,22 +122,12 @@ public class SignUpController {
 		int result = sService.farmerSignUp(f);
 		
 		if(result > 0) {
-			System.out.println("회원가입 성공");
 			return "signUp/f_signup3";
 		}else {
-			System.out.println("회원가입 실패");
 			return "redirect:/login.do";
 		}
 		
 	}
 	
-	/*
-	 * @PostMapping("/s_signup3.do") public String userSignUpPost(UsersVO users) {
-	 * System.out.println("in"); int result = sService.userSignUp(users);
-	 * System.out.println(users.getUser_email());
-	 * System.out.println(users.getUser_pw());
-	 * System.out.println(users.getUser_name()); if(result > 0) {
-	 * System.out.println("회원가입 성공"); }else { System.out.println("회원가입 실패"); return
-	 * "redirect:/login.do"; } return "signUp/s_signup3"; }
-	 */
+	
 }
