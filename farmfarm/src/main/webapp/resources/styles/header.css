@@ -1,0 +1,147 @@
+@charset "UTF-8";
+
+html {
+	font-size:62.5%;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+/* body {
+  width: 144rem;
+} */ 
+.header {
+  box-sizing: border-box;
+  /* padding-bottom: 77.407rem; */
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+.header .header_div {
+  margin-bottom: 5rem;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.header .header_div .header_main {
+  box-sizing: border-box;
+  padding: 3rem 15rem 3rem 15rem;
+  width: 100%;
+  /* height: 17.3rem; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  flex-shrink: 0;
+}
+.header .header_div .header_main .header_title_menu {
+  /* margin-right: 78.2rem; */
+  width: 20.5rem;
+  height: 100%;
+  flex-shrink: 0;
+}
+.header .header_div .header_main .header_title_menu .header_title a{
+  margin: 0rem 15rem 2.5rem 0rem;
+  width: calc(100% - 6rem);
+  display: flex;
+  align-items: flex-end;
+  text-decoration: none;
+}
+.header .header_div .header_main .header_title_menu .header_title .logo_img {
+  /* margin: 0.5rem 0.5rem 0.5rem 0.5rem; */
+  margin: auto;
+  width: 4.5rem;
+  height: 5rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+  filter:drop-shadow(2px 2px 2px rgb(169,169,169));
+}
+.header .header_div .header_main .header_title_menu .header_title .logo_name {
+  font-size: 4.5rem;
+  font-weight: 550;
+  text-shadow: 3px 3px 3px rgb(211,211,211);
+  line-height: 1.2575;
+  color: #2d2d2d;
+  font-family: Gmarket Sans, 'Source Sans Pro';
+  white-space: nowrap;
+  margin: auto;
+  flex-shrink: 0;
+}
+.header .header_div .header_main .header_title_menu .header_menu {
+  margin: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.header .header_div .header_main .header_title_menu .header_menu .menu_funding a{
+  margin-right: 5rem;
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #2d2d2d;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.header .header_div .header_main .header_title_menu .header_menu .menu_auction a{
+  margin-right: 5rem;
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #7a7a7a;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.header .header_div .header_main .header_title_menu .header_menu .menu_myFarm a{
+  display: flex;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #7a7a7a;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+.header .header_div .header_main .header_join_login {
+	display: flex;
+  	font-family: Inter, 'Source Sans Pro';
+	font-size:2rem;
+	line-height: 1.2;
+	color: #686868;
+	position: absolute;
+    left: 160rem;
+}
+.header .header_div .header_main .header_join_login li + li:before {
+	content:"|";
+	padding: 0 10px;
+}
+.header .header_div .header_main .header_join_login a {
+	font-size:2rem;
+	font-weight: 400;
+    text-decoration: none;
+	line-height: 1.2;
+	color: #686868;
+	cursor: pointer;
+}
+.header .header_div .header_line {
+  width: 100%;
+  height: 0.2rem;
+  background-color: #d9d9d9;
+  flex-shrink: 0;
+}
