@@ -6,5 +6,6 @@
 	<typeAliases>
 		<typeAlias type="com.farmfarm.dto.UsersVO" alias="UsersVO"/>
 		<typeAlias type="com.farmfarm.dto.FarmersVO" alias="FarmersVO"/>
+		<typeAlias type="com.farmfarm.dto.TermsOfUseVO" alias="TermsOfUseVO"/>
 	</typeAliases>
 </configuration>

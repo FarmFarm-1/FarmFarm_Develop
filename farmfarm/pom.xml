@@ -16,7 +16,8 @@
 	</properties>
 	<dependencies>
 
-		<!-- 임시 메일 전송 api -->
+		<!-- 메일 전송 -->
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>

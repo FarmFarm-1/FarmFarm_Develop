@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.emailCheck">
+
+	<select id="emailCheckUser" parameterType="String" resultType="Integer">
+		SELECT count(*) 
+		FROM users 
+		WHERE user_email = #{email}
+	</select>
+	
+	<select id="emailCheckFarmer" parameterType="String" resultType="Integer">
+		SELECT count(*) 
+		FROM farmers
+		WHERE farmer_email = #{email}
+	</select>
+	
+</mapper>
