@@ -1,3 +1,21 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
 html {
 	font-size: 62.5%;
 	zoom: 0.67;
@@ -474,7 +492,7 @@ input {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../image/white_rectangle.png');
+	background-image: url('../assets/white_rectangle.png');
 	border: 1.5px solid;
 	border-radius: 0.5209rem;
 	flex-shrink: 0;
@@ -575,7 +593,7 @@ input {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../image/white_rectangle.png');
+	background-image: url('../assets/white_rectangle.png');
 	border-radius: 0.5209rem;
 	flex-shrink: 0;
 }
@@ -667,7 +685,7 @@ input {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../image/white_rectangle.png');
+	background-image: url('../assets/white_rectangle.png');
 	border-radius: 0.5209rem;
 }
 
@@ -734,7 +752,7 @@ input {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../image/white_rectangle.png');
+	background-image: url('../assets/white_rectangle.png');
 	border-radius: 0.5209rem;
 }
 
@@ -799,7 +817,7 @@ input {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../image/white_rectangle.png');
+	background-image: url('../assets/white_rectangle.png');
 	border-radius: 0.5209rem;
 }
 

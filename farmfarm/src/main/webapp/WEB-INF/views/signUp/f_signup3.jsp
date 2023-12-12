@@ -9,13 +9,10 @@
 <meta name="theme-color" content="#000000" />
 <title>mainpage/회원가입/파머/가입완료</title>
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />
+	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Pretendard%3A400%2C700" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
+	
 <link rel="stylesheet" href="./styles/signup3.css" />
 </head>
 <body>
