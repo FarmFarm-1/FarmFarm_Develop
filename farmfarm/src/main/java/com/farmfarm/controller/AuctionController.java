@@ -99,7 +99,7 @@ public class AuctionController {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionSearch(input);
 		
 		System.out.println(auctionList);
-		model.addAttribute("fundingList", auctionList);
+		model.addAttribute("auctionList", auctionList);
 		return "auction/auctionList_ajax";
 	}
 

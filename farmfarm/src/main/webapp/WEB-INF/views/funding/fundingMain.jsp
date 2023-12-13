@@ -3,6 +3,7 @@
 <%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -13,7 +14,7 @@
 <meta name="theme-color" content="#000000" />
 
 <title>mainpage/펀딩/로그인 안함</title>
-<link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
+<link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -22,7 +23,7 @@
 	<div class="mainpage--54h">
 
 		<!-- header -->
-
+<%@include file ="../common/header.jsp" %>
 
 		<div class="auto-group-rv6m-jsK">
 			<div class="auto-group-v9bk-T2d">
@@ -31,9 +32,9 @@
 						class="item--ZLZ-sub-1">팜팜</span>
 				</p>
 				<img class="twemoji-ear-of-corn-CXw"
-					src="${cpath }/resources/assets/twemoji-ear-of-corn-4KX.png">
+					src="${cpath }/assets/twemoji-ear-of-corn-4KX.png">
 				<img class="twemoji-ear-of-corn-Uds"
-					src="${cpath }/resources/assets/twemoji-ear-of-corn-SVK.png">
+					src="${cpath }/assets/twemoji-ear-of-corn-SVK.png">
 				<div class="rectangle-72-Vmw"></div>
 				<p class="item--R9o">농작물의 주인이 되는 가장 쉬운 방법</p>
 
@@ -49,7 +50,7 @@
 						<button class="button_list"
 							onclick="location.href='${cpath}/funding/fundingList';">
 							<img class="mingcute-right-line-6of"
-								src="${cpath }/resources/assets/greater_than.png" />
+								src="${cpath }/assets/greater_than.png" />
 						</button>
 					</div>
 
@@ -66,7 +67,7 @@
 							<div class="img_wrap">
 
 								<img class="corn-36630861280-1-daD"
-									src="${cpath }/resources/assets/tomatoes-55667411280.png" />
+									src="${cpath }/assets/tomatoes-55667411280.png" />
 								<div class="${fundingItem.d_day>=0?'active':'overlay'}">펀딩이
 									종료되었습니다</div>
 							</div>
@@ -75,7 +76,7 @@
 								<div class="bookmark-btn">
 									<img id="heart-icon-${status.index}"
 										class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${fundingItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
+										src="${fundingItem.is_cart eq '0' ?'/assets/heart_empty.png':'/assets/heart_thub.png' }" />
 								</div>
 							</div>
 							<div class="group-86-zpV">
@@ -166,10 +167,10 @@ function func(product_serial_num, index) {
 		let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
 		
 		if (isHeartFilledBeforeToggle) {
-			heartIcon.attr("src", "${cpath }/resources/assets/heart_empty.png");
+			heartIcon.attr("src", "${cpath }/assets/heart_empty.png");
 			deleteFromMyCart(product_serial_num);
 		} else {
-			heartIcon.attr("src", "${cpath }/resources/assets/heart_thub.png");
+			heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
 			addToMyCart(product_serial_num);
 		}
 

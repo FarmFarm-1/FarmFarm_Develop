@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.User_cartVO;
 
 @Service

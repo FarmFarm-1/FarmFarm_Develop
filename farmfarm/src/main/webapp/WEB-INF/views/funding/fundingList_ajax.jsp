@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
+<link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 
 <!-- <script>
 	overlay();
@@ -28,27 +28,27 @@
 		<div class="img_wrap">
 
 			<img class="corn-36630861280-1-daD"
-				src="${cpath }/resources/assets/tomatoes-55667411280.png" />
+				src="${cpath }/assets/tomatoes-55667411280.png" />
 			<div class="${fundingItem.d_day>=0?'active':'overlay'}">펀딩이
 				종료되었습니다</div>
 		</div>
 
 		<%-- <img class="vector-n7f"
-			src="${cpath }/resources/assets/vector-P4R.png" /> --%>
+			src="${cpath }/assets/vector-P4R.png" /> --%>
 		<div class="bookmark-layer"
 			onclick="func('${fundingItem.product_serial_num }', ${status.index })">
 			<div class="bookmark-btn">
 				<img id="heart-icon-${status.index}"
 					class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-					src="${fundingItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
+					src="${fundingItem.is_cart eq '0' ?'/assets/heart_empty.png':'/assets/heart_thub.png' }" />
 				<%-- <c:choose>
 					<c:when test="${myBookmark == 1}">
 						<img id="heart-icon" class="heart-icon filled"
-							src="${cpath }/resources/assets/heart_thub.png" />
+							src="${cpath }/assets/heart_thub.png" />
 					</c:when>
 					<c:otherwise>
 						<img id="heart-icon" class="heart-icon"
-							src="${cpath }/resources/assets/heart_empty.png" />
+							src="${cpath }/assets/heart_empty.png" />
 					</c:otherwise>
 				</c:choose> --%>
 			</div>
@@ -142,10 +142,10 @@
 			heartIcon.toggleClass("filled");
 			let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
 			if (isHeartFilledBeforeToggle) {
-				heartIcon.attr("src", "${cpath }/resources/assets/heart_empty.png");
+				heartIcon.attr("src", "${cpath }/assets/heart_empty.png");
 				deleteFromMyCart(product_serial_num);
 			} else {
-				heartIcon.attr("src", "${cpath }/resources/assets/heart_thub.png");
+				heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
 				addToMyCart(product_serial_num);
 			}
 

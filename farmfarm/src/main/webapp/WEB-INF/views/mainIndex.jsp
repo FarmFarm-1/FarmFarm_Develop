@@ -71,6 +71,8 @@
 	<c:set var="cpath" value="${pageContext.request.contextPath}" />
 	<button onclick="location.href='${cpath}/funding/fundingMain';">펀딩리스트</button>
 	<button onclick="location.href='${cpath}/auction/auctionMain';">옥션리스트</button>
+	<button onclick="location.href='${cpath}/mypage/fundingList';">마이페이지 회원</button>
+	<button onclick="location.href='${cpath}/mypage/projectList';">마이페이지 파머</button>
 	<script>
 		let message = "${message}";
 		if (message != "") {

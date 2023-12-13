@@ -3,6 +3,8 @@
 <%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,7 @@
 <meta name="theme-color" content="#000000" />
 
 <title>mainpage/경매</title>
-<link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
+<link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -31,9 +33,9 @@
 						class="item--ZLZ-sub-1">팜팜</span>
 				</p>
 				<img class="twemoji-ear-of-corn-CXw"
-					src="${cpath }/resources/assets/twemoji-ear-of-corn-4KX.png">
+					src="${cpath }/assets/twemoji-ear-of-corn-4KX.png">
 				<img class="twemoji-ear-of-corn-Uds"
-					src="${cpath }/resources/assets/twemoji-ear-of-corn-SVK.png">
+					src="${cpath }/assets/twemoji-ear-of-corn-SVK.png">
 				<div class="rectangle-72-Vmw"></div>
 				<p class="item--R9o">농작물의 주인이 되는 가장 쉬운 방법</p>
 
@@ -49,7 +51,7 @@
 						<button class="button_list"
 							onclick="location.href='${cpath}/auction/auctionList';">
 							<img class="mingcute-right-line-6of"
-								src="${cpath }/resources/assets/greater_than.png" />
+								src="${cpath }/assets/greater_than.png" />
 						</button>
 					</div>
 
@@ -60,13 +62,14 @@
 				<div class="item--uPK" id="fundingOrder">
 					<c:forEach items="${auctionListHot }" var="auctionItem"
 						varStatus="status">
+						
 						<div class="funding_item">
 
 
 							<div class="img_wrap">
 
 								<img class="corn-36630861280-1-daD"
-									src="${cpath }/resources/assets/tomatoes-55667411280.png" />
+									src="${cpath }/assets/tomatoes-55667411280.png" />
 								<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가
 									종료되었습니다</div>
 							</div>
@@ -75,7 +78,7 @@
 								<div class="bookmark-btn">
 									<img id="heart-icon-${status.index}"
 										class="${auctionItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${auctionItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
+										src="${auctionItem.is_cart eq '0' ?'/assets/heart_empty.png':'/assets/heart_thub.png' }" />
 								</div>
 							</div>
 							<div class="group-86-zpV">
@@ -86,7 +89,8 @@
 											<p class="item--Cp5">현 입찰가</p>
 										</div>
 										<div class="auto-group-do49-DjB">
-											<p class="item-10000-aJq">${auctionItem.current_price}원</p>
+										
+											<p class="item-10000-aJq"><fmt:formatNumber value="${auctionItem.current_price}" pattern="#,###"/>원</p>
 										</div>
 									</div>
 									<div class="auto-group-jk2v-Anq">
@@ -102,7 +106,7 @@
 											<p class="item--jeu">출하량</p>
 										</div>
 										<div class="auto-group-h2ld-LPo">
-											<p class="item-100-TDX">${auctionItem.harvest_amount}kg</p>
+											<p class="item-100-TDX-auction">${auctionItem.harvest_amount}kg</p>
 										</div>
 									</div>
 
@@ -166,10 +170,10 @@ function func(product_serial_num, index) {
 		let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
 		
 		if (isHeartFilledBeforeToggle) {
-			heartIcon.attr("src", "${cpath }/resources/assets/heart_empty.png");
+			heartIcon.attr("src", "${cpath }/assets/heart_empty.png");
 			deleteFromMyCart(product_serial_num);
 		} else {
-			heartIcon.attr("src", "${cpath }/resources/assets/heart_thub.png");
+			heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
 			addToMyCart(product_serial_num);
 		}
 

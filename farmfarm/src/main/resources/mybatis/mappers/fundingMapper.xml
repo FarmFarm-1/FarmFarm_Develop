@@ -95,7 +95,8 @@
 		ON
 		farm_and_product.product_serial_num = user_cart.product_serial_num
 		WHERE
-		farm_and_product.product_status ='펀딩진행중'
+		farm_and_product.product_status ='펀딩진행중' AND
+		DATEDIFF(funding_reg_info.funding_deadline, NOW()) >= 0
 		GROUP BY
 		farm_and_product.product_serial_num
 		ORDER BY

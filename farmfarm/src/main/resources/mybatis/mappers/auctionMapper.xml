@@ -371,7 +371,6 @@
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.funding_thumb_img_url,
 		ifnull(user_cart.user_serial_num,0) is_cart
-
 		FROM farm_and_product
 		LEFT
 		OUTER JOIN auction_history
@@ -419,7 +418,8 @@
 		user_cart.product_serial_num
 		WHERE
 		farm_and_product.product_status
-		='경매중'
+		='경매중' AND
+		DATEDIFF(auction_reg_info.auction_deadline, NOW()) >= 0
 		GROUP BY
 		farm_and_product.product_serial_num
 		ORDER BY

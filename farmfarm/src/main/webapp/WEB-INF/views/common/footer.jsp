@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/styles/footer.css" />
+	href="${pageContext.request.contextPath }/styles/footer.css" />
 <footer class="footer">
 	<div class="line">
 		<!-- footer_center -->
@@ -12,7 +12,7 @@
 					<div class="logo">
 						<div>
 							<div class="img_wrap">
-								<img src="${pageContext.request.contextPath }/resources/assets/logo.png" />
+								<img src="${pageContext.request.contextPath }0/assets/logo.png" />
 							</div>
 							팜팜
 						</div>

@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
 html {
 	font-size:62.5%;
 }
@@ -50,11 +68,12 @@ ul, li {
   flex-shrink: 0;
 }
 .header .header_div .header_main .header_title_menu .header_title a{
-  margin: 0rem 15rem 2.5rem 0rem;
+  margin: 1rem 15rem 2.5rem 0rem;
   width: calc(100% - 6rem);
   display: flex;
   align-items: flex-end;
   text-decoration: none;
+  cursor: pointer;
 }
 .header .header_div .header_main .header_title_menu .header_title .logo_img {
   /* margin: 0.5rem 0.5rem 0.5rem 0.5rem; */
@@ -78,7 +97,7 @@ ul, li {
   flex-shrink: 0;
 }
 .header .header_div .header_main .header_title_menu .header_menu {
-  margin: 0.5rem;
+  margin: 3rem 0.5rem 0.5rem 0.5rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -89,11 +108,13 @@ ul, li {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2575;
-  color: #2d2d2d;
+  /* color: #2d2d2d; */
+  color: #7a7a7a;
   font-family: Pretendard, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
   text-decoration: none;
+  cursor: pointer;
 }
 .header .header_div .header_main .header_title_menu .header_menu .menu_auction a{
   margin-right: 5rem;
@@ -106,6 +127,7 @@ ul, li {
   white-space: nowrap;
   flex-shrink: 0;
   text-decoration: none;
+  cursor: pointer;
 }
 .header .header_div .header_main .header_title_menu .header_menu .menu_myFarm a{
   display: flex;
@@ -117,17 +139,19 @@ ul, li {
   white-space: nowrap;
   flex-shrink: 0;
   text-decoration: none;
+  cursor: pointer;
 }
 .header .header_div .header_main .header_join_login {
-	display: flex;
   	font-family: Inter, 'Source Sans Pro';
 	font-size:2rem;
 	line-height: 1.2;
 	color: #686868;
 	position: absolute;
     left: 160rem;
+    /* display : flex; */
+    display : none;
 }
-.header .header_div .header_main .header_join_login li + li:before {
+.header .header_div .header_main .header_join_login a + a:before {
 	content:"|";
 	padding: 0 10px;
 }
@@ -137,6 +161,197 @@ ul, li {
     text-decoration: none;
 	line-height: 1.2;
 	color: #686868;
+	cursor: pointer;
+}
+.header .header_div .header_main .header_user_login {
+	display : none;
+	margin-top : 7rem;
+	height : 5rem;
+	align-items: center;
+	position: absolute;
+    left: 140rem;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div {
+	box-sizing: border-box;
+	padding: 0.5rem 0rem 0.5rem 0rem;
+	width: 26.5%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div .messageBox_img {
+	margin-right: 0.5rem;
+	width: 3.308rem;
+	height: 3.308rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div .messageBox_text {
+	margin: 0rem 1rem 0rem 0rem;
+	font-size: 1.8776rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #3d3d3d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div .newMessage {
+	display: none;
+	margin: 1rem 2rem 1rem 0rem;
+	width: 1.2rem;
+	height: calc(100% - 2.5rem);
+	height: 1.2rem;
+	position: relative;
+	border-radius: 0.25rem;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div .newMessage .red_rectangle{
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	/* right: 39.8rem; */
+	background-color: #d16250;
+	border-radius: 0.25rem;
+}
+
+.header .header_div .header_main .header_user_login .messageBox_div .newMessage .new_text{
+	width: 0.5rem;
+	height: 0.5rem;
+	position: relative;
+	top: 0.2rem;
+	right: -0.35rem;
+	z-index: 5;
+	text-align: center;
+	font-size: 0.7rem;
+	font-weight: 800;
+	line-height: 1.2575;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.header .header_div .header_main .header_user_login .userPoint_div {
+	position: relative;
+	left:2rem;
+	box-sizing: border-box;
+	padding: 1.2rem 0rem 1rem 0rem;
+	width: 25rem;
+	height: 100%;
+	font-size: 2rem;
+	text-align: center;
+	line-height: 1.2575;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #64a246;
+	border-radius: 0.5rem;
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+.header .header_div .header_main .header_farmer_login {
+	display : none;
+	margin-top : 7rem;
+	height : 5rem;
+	align-items: center;
+	position: absolute;
+    left: 145rem;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 {
+	box-sizing: border-box;
+	padding: 0.5rem 0rem 0.5rem 0rem;
+	width: 26.5%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 .messageBox_img2 {
+	margin-right: 0.5rem;
+	width: 3.308rem;
+	height: 3.308rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 .messageBox_text2 {
+	margin: 0rem 1rem 0rem 0rem;
+	font-size: 1.8776rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #3d3d3d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 .newMessage2 {
+	display: none;
+	margin: 1rem 2rem 1rem 0rem;
+	width: 1.2rem;
+	height: calc(100% - 2.5rem);
+	height: 1.2rem;
+	position: relative;
+	border-radius: 0.25rem;
+	flex-shrink: 0;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 .newMessage2 .red_rectangle2{
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	/* right: 39.8rem; */
+	background-color: #d16250;
+	border-radius: 0.25rem;
+}
+
+.header .header_div .header_main .header_farmer_login .messageBox_div2 .newMessage2 .new_text2{
+	width: 0.5rem;
+	height: 0.5rem;
+	position: relative;
+	top: 0.2rem;
+	right: -0.35rem;
+	z-index: 5;
+	text-align: center;
+	font-size: 0.7rem;
+	font-weight: 800;
+	line-height: 1.2575;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.header .header_div .header_main .header_farmer_login .myProject {
+	position: relative;
+	left:3rem;
+	box-sizing: border-box;
+	padding: 1.2rem 2rem 1rem 1.8rem;
+	/* width: 25rem; */
+	height: 100%;
+	font-size: 2rem;
+	text-align: center;
+	line-height: 1.2575;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #64a246;
+	border-radius: 0.5rem;
+	flex-shrink: 0;
 	cursor: pointer;
 }
 .header .header_div .header_line {

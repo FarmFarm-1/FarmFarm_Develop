@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=5" />
 <meta name="theme-color" content="#000000" />
 <title>mainpage/펀딩/로그인 안함</title>
-<link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
+<link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -32,7 +32,7 @@
 					<button
 						onclick="search(document.getElementById('searchInput').value)"
 						class="searchBtn">
-						<img class="searchIcon" src="${cpath }/resources/assets/search.png" />
+						<img class="searchIcon" src="${cpath }/assets/search.png" />
 					</button>
 				</div>
 
@@ -40,49 +40,49 @@
 					<button onclick="type1()" id="type1" class="crop_type">
 						<div class="nemo" id="nemo1">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_ALL.png">
+								src="${cpath }/assets/crop_type_ALL.png">
 						</div>
 						<p class="item">전체</p>
 					</button>
 					<button onclick="type2()" id="type2" class="crop_type">
 						<div class="nemo" id="nemo2">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_rice.png">
+								src="${cpath }/assets/crop_type_rice.png">
 						</div>
 						<p class="item">쌀</p>
 					</button>
 					<button onclick="type3()" id="type3" class="crop_type">
 						<div class="nemo" id="nemo3">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_bean.png">
+								src="${cpath }/assets/crop_type_bean.png">
 						</div>
 						<p class="item">콩</p>
 					</button>
 					<button onclick="type4()" id="type4" class="crop_type">
 						<div class="nemo" id="nemo4">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_beans.png">
+								src="${cpath }/assets/crop_type_beans.png">
 						</div>
 						<p class="item">팥</p>
 					</button>
 					<button onclick="type5()" id="type5" class="crop_type">
 						<div class="nemo" id="nemo5">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_green.png">
+								src="${cpath }/assets/crop_type_green.png">
 						</div>
 						<p class="item">녹두</p>
 					</button>
 					<button onclick="type6()" id="type6" class="crop_type">
 						<div class="nemo" id="nemo6">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_potato.png">
+								src="${cpath }/assets/crop_type_potato.png">
 						</div>
 						<p class="item">감자</p>
 					</button>
 					<button onclick="type7()" id="type7" class="crop_type">
 						<div class="nemo" id="nemo7">
 							<img class="crop_type_img"
-								src="${cpath }/resources/assets/crop_type_sweetpotato.png">
+								src="${cpath }/assets/crop_type_sweetpotato.png">
 						</div>
 						<p class="item">고구마</p>
 					</button>
@@ -375,6 +375,18 @@
 			document.getElementById('searchInput').value = '';
 			/* console.log(gtype); */
 			/* gtype = 'all'; */  /*type 선택 후 order 두 번 누를 시 전체 정렬되는 문제 때문에 지움*/
+		}
+		
+		//엔터키로 검색
+		document.addEventListener('keydown', onEnter);
+
+		function onEnter() {
+			var keyCode = window.event.keyCode;
+
+			if (keyCode == 13) { //엔테키 이면
+				console.log("enter");
+				search(document.getElementById('searchInput').value);
+			}
 		}
 		
 		

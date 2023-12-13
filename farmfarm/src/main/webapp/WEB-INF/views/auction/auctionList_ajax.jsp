@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${cpath }/resources/styles/fundingMain.css" />
+<link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 
 <!-- <script>
 	overlay();
@@ -28,7 +28,7 @@
 							<div class="img_wrap">
 
 								<img class="corn-36630861280-1-daD"
-									src="${cpath }/resources/assets/tomatoes-55667411280.png" />
+									src="${cpath }/assets/tomatoes-55667411280.png" />
 								<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가
 									종료되었습니다</div>
 							</div>
@@ -37,7 +37,7 @@
 								<div class="bookmark-btn">
 									<img id="heart-icon-${status.index}"
 										class="${auctionItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${auctionItem.is_cart eq '0' ?'/resources/assets/heart_empty.png':'/resources/assets/heart_thub.png' }" />
+										src="${auctionItem.is_cart eq '0' ?'/assets/heart_empty.png':'/assets/heart_thub.png' }" />
 								</div>
 							</div>
 							<div class="group-86-zpV">
@@ -119,10 +119,10 @@
 			heartIcon.toggleClass("filled");
 			let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
 			if (isHeartFilledBeforeToggle) {
-				heartIcon.attr("src", "${cpath }/resources/assets/heart_empty.png");
+				heartIcon.attr("src", "${cpath }/assets/heart_empty.png");
 				deleteFromMyCart(product_serial_num);
 			} else {
-				heartIcon.attr("src", "${cpath }/resources/assets/heart_thub.png");
+				heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
 				addToMyCart(product_serial_num);
 			}
 
