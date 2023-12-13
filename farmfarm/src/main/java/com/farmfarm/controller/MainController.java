@@ -29,6 +29,12 @@ public class MainController {
 	public String showSignUpIndex() {
 		return "signUp/signupIndex";
 	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("serial_num");
+		return "loginIndex";
+	}
 
 	// 메인 페이지
 	@GetMapping("/main")

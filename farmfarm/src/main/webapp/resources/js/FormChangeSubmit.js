@@ -79,7 +79,7 @@
 	            success: function (result) {
 	                // 로그인이 성공한 경우
 	                if (result === "true") {
-	                    location.href = "/login"; // 로그인 성공 시 이동할 페이지
+	                    location.href = "/"; // 로그인 성공 시 이동할 페이지
 	                }else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
@@ -108,7 +108,7 @@
 	            success: function (result) {
 	                // 로그인이 성공한 경우
 	                if (result === "true") {
-	                    location.href = "/login"; // 로그인 성공 시 이동할 페이지
+	                    location.href = "/"; // 로그인 성공 시 이동할 페이지
 	                } else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
