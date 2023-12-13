@@ -26,11 +26,9 @@
 		const email = document.getElementById('email').value;   
 		
 		
-		console.log( window.getComputedStyle(document.querySelector('.modal')).display);
 		
 		if (keyCode == 13 && window.getComputedStyle(document.querySelector('.modal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
-			console.log('modal on');
 			document.querySelector('.modal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
 			return;
@@ -38,10 +36,8 @@
 		
 		
 		if (keyCode == 13 && window.getComputedStyle(document.querySelector('.modal')).display == 'none') { //엔테키 이면
-			console.log('form enter');
 			
 			if (isEmail(email)){
-				console.log('isEmail ok!!');
 				submitEmail();
 			}
 		}
@@ -98,15 +94,17 @@
 		    if (isEmail(email)) {
 		        login_btn.disabled = false;
 		        login_btn.style.backgroundColor = '#64a246';
+		        login_btn.style.border = 'solid 0.0744rem #64a246';
 		    }
 		    else {        
 		        login_btn.disabled = true;
 		        login_btn.style.backgroundColor = '#a2a2a3';
+		        login_btn.style.border = 'solid 0.0744rem #a2a2a3';
 		    }
 		  }
 	function submitEmail(){
 		$.ajax({
-			url : "${cpath}/login/findPassword.do",
+			url : "${cpath}/login/findPassword",
 			type : "POST",
 			data : {
 				email : $("#email").val()
@@ -130,7 +128,7 @@
 		$("#findBtn").click(function() {
 
 			$.ajax({
-				url : "${cpath}/login/findPassword.do",
+				url : "${cpath}/login/findPassword",
 				type : "POST",
 				data : {
 					email : $("#email").val()
@@ -157,7 +155,10 @@
 </head>
 
 <body>
+<jsp:include
+		page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--2jF">
+		
 		<jsp:include page="basicModal.jsp" />
 
 		<div class="group">
@@ -185,7 +186,7 @@
 		</div>
 	</div>
 	<jsp:include
-		page="${pageContext.request.contextPath}/WEB-INF/views/footer.jsp" />
+		page="${cpath}/WEB-INF/views/footer.jsp" />
 
 
 </body>

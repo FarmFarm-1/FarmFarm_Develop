@@ -49,13 +49,13 @@ public class FarmersService {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);
 			email.setCharset(charSet);
-			email.setSSL(true);
+			email.setSSLOnConnect(true);
 			email.setHostName(hostSMTP);
 			email.setSmtpPort(465); //네이버 이용시 587
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			email.setTLS(true);
-			email.addTo(mail, charSet);
+			email.setStartTLSEnabled(true);
+			email.addTo(mail);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.farmfarm.dto.FarmersVO;
 import com.farmfarm.dto.UsersVO;
 
@@ -25,7 +24,7 @@ public class SignUpService {
 		if (check == 0) {
 			out.print("");
 		} else {
-			out.print("ÀÌ¹Ì µî·ÏµÈ ÀÌ¸ŞÀÏÀÔ´Ï´Ù.");
+			out.print("ì´ë¯¸ ë“±ë¡ëœ ì´ë©”ì¼ì…ë‹ˆë‹¤.");
 			out.close();
 		}
 
@@ -34,14 +33,14 @@ public class SignUpService {
 	public void sendCerNum(HttpServletResponse response, String mail) throws IOException {
 		PrintWriter out = response.getWriter();
 
-		// Mail Server ¼³Á¤
+		// Mail Server ì„¤ì •
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; // ³×ÀÌ¹ö ÀÌ¿ë½Ã smtp.naver.com
+		String hostSMTP = "smtp.gmail.com"; // ë„¤ì´ë²„ ì´ìš©ì‹œ smtp.naver.com
 		String hostSMTPid = "jieunjenny00@gmail.com";
 		String hostSMTPpwd = "sful kgka ozgg gzhg";
-		// º¸³»´Â »ç¶÷ EMail, Á¦¸ñ, ³»¿ë
+		// ë³´ë‚´ëŠ” ì‚¬ëŒ EMail, ì œëª©, ë‚´ìš©
 		String fromEmail = "farmfarm@google.com";
-		String fromName = "ÆÊÆÊ FarmFarm";
+		String fromName = "íŒœíŒœ FarmFarm";
 		String subject = "";
 		String msg = "";
 
@@ -50,29 +49,29 @@ public class SignUpService {
 			cerNum += (char) ((Math.random() * 26) + 97);
 		}
 
-		subject = "ÆÊÆÊ È¸¿ø°¡ÀÔ ÀÎÁõ¹øÈ£ ÀÔ´Ï´Ù.";
+		subject = "íŒœíŒœ íšŒì›ê°€ì… ì¸ì¦ë²ˆí˜¸ ì…ë‹ˆë‹¤.";
 		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 		msg += "<h3 style='color: blue;'>";
-		msg += "ÆÊÆÊ È¸¿ø°¡ÀÔ ÀÎÁõ¹øÈ£ ÀÔ´Ï´Ù. ÀÔ·ÂÈÄ ÀÎÁõÈ®ÀÎÀ» ´­·¯ÁÖ¼¼¿ä.</h3>";
-		msg += "<p>ÀÎÁõ¹øÈ£ : ";
+		msg += "íŒœíŒœ íšŒì›ê°€ì… ì¸ì¦ë²ˆí˜¸ ì…ë‹ˆë‹¤. ì…ë ¥í›„ ì¸ì¦í™•ì¸ì„ ëˆŒëŸ¬ì£¼ì„¸ìš”.</h3>";
+		msg += "<p>ì¸ì¦ë²ˆí˜¸ : ";
 		msg += cerNum + "</p></div>";
 
 		try {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);
 			email.setCharset(charSet);
-			email.setSSL(true);
+			email.setSSLOnConnect(true);
 			email.setHostName(hostSMTP);
-			email.setSmtpPort(465); // ³×ÀÌ¹ö ÀÌ¿ë½Ã 587
+			email.setSmtpPort(465); // ë„¤ì´ë²„ ì´ìš©ì‹œ 587
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			email.setTLS(true);
-			email.addTo(mail, charSet);
+			email.setStartTLSEnabled(true);
+			email.addTo(mail);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("¸ŞÀÏ¹ß¼Û ½ÇÆĞ : " + e);
+			System.out.println("ë©”ì¼ë°œì†¡ ì‹¤íŒ¨ : " + e);
 		}
 
 		out.print(cerNum);
@@ -80,12 +79,12 @@ public class SignUpService {
 
 	}
 
-	// users È¸¿ø°¡ÀÔ
+	// users íšŒì›ê°€ì…
 	public int userSignUp(UsersVO users) {
 		return dao.userSignUp(users);
 	}
 
-	// farmers È¸¿ø°¡ÀÔ
+	// farmers íšŒì›ê°€ì…
 	public int farmerSignUp(FarmersVO farmers) {
 		return dao.farmerSignUp(farmers);
 	}

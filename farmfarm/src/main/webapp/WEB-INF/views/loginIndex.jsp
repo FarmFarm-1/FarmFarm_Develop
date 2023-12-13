@@ -17,11 +17,14 @@
 </head>
 
 <body>
-	<h1>FarmFarm Login&SignUp</h1>
+	<jsp:include
+		page="header.jsp" />
+	
+	<h1>메인페이지 대용</h1>
 	<hr>
-	<button onclick="location.href='login.do'">로그인 페이지로 이동</button>
+	<button onclick="location.href='login'">로그인 페이지로 이동</button>
 	<hr>
-	<button onclick="location.href='signup.do'">회원가입 페이지로 이동</button>
+	<button onclick="location.href='signup'">회원가입 페이지로 이동</button>
 	<hr>
 	<h1>${path}</h1>
 	

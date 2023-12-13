@@ -40,13 +40,10 @@
 		var currentForm = document
 				.querySelector('.rectangle-98-HoK[style="display: block;"]');
 
-		console
-				.log(window.getComputedStyle(document.querySelector('.modal')).display);
-
+		
 		if (keyCode == 13
 				&& window.getComputedStyle(document.querySelector('.modal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
-			console.log('modal on');
 			document.querySelector('.modal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
 			return;
@@ -54,7 +51,6 @@
 
 		if (keyCode == 13
 				&& window.getComputedStyle(document.querySelector('.modal')).display == 'none') { //엔테키 이면
-			console.log('form enter');
 
 			if (currentForm.id === 'sloginForm') {
 				if (isEmail(u_email)
@@ -76,7 +72,10 @@
 	}
 </script>
 <body>
+	<jsp:include
+		page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--xA9">
+	
 		<jsp:include page="basicModal.jsp" />
 		<div class="group-165-Tpy">
 
@@ -90,7 +89,7 @@
 					<div class="ellipse-10-XTT"></div>
 				</div>
 				<div class="auto-group-sjok-3gh">
-					<div class="item--C3o" onclick="location.href='signup.do';">
+					<div class="item--C3o" onclick="location.href='signup';">
 						<span class="item--C3o-sub-0">팜팜 처음 오셨나요? </span> <span>&nbsp;&nbsp;</span>
 						<span class="item--C3o-sub-1">바로 회원가입하기 </span>
 					</div>
@@ -126,7 +125,7 @@
 					</div>
 					<div class="group-107-Axu">
 						<div class="item--CPo"
-							onclick="location.href='login/findPassword.do/user'">비밀번호
+							onclick="location.href='login/findPassword/user'">비밀번호
 							찾기 ></div>
 					</div>
 				</form>
@@ -153,7 +152,7 @@
 					</div>
 					<div class="group-107-Axu">
 						<div class="item--CPo"
-							onclick="location.href='login/findPassword.do/farmer'">비밀번호
+							onclick="location.href='login/findPassword/farmer'">비밀번호
 							찾기 ></div>
 					</div>
 				</form>

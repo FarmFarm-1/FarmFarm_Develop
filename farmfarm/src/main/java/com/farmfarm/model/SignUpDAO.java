@@ -25,7 +25,7 @@ public class SignUpDAO {
 	}
 	
 	public int userSignUp(UsersVO users) {
-		int result = 0; //insert가 제대로 됬는지 확인
+		int result = 0; 
 		try {
 			result = sqlSession.insert(namespace2 + "userSignUp", users);
 		}catch(Exception e){
@@ -36,7 +36,7 @@ public class SignUpDAO {
 	}
 
 	public int farmerSignUp(FarmersVO farmers) {
-		int result = 0; //insert가 제대로 됬는지 확인
+		int result = 0;
 		try {
 			result = sqlSession.insert(namespace2 + "farmerSignUp", farmers);
 		}catch(Exception e){

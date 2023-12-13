@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			<div onclick="location.href='login.do'" class="group-99-34Z">로그인</div>
+			<div onclick="location.href='login'" class="group-99-34Z">로그인</div>
 		</div>
 	</div>
 </body>

@@ -32,6 +32,7 @@ public class UsersService {
 		// 보내는 사람 EMail, 제목, 내용
 		String fromEmail = "farmfarm@google.com";
 		String fromName = "팜팜 FarmFarm";
+		
 		String subject = "";
 		String msg = "";
 
@@ -50,13 +51,13 @@ public class UsersService {
 			HtmlEmail email = new HtmlEmail();
 			email.setDebug(true);
 			email.setCharset(charSet);
-			email.setSSL(true);
+			email.setSSLOnConnect(true);
 			email.setHostName(hostSMTP);
 			email.setSmtpPort(465); //네이버 이용시 587
 
 			email.setAuthentication(hostSMTPid, hostSMTPpwd);
-			email.setTLS(true);
-			email.addTo(mail, charSet);
+			email.setStartTLSEnabled(true);
+			email.addTo(mail);
 			email.setFrom(fromEmail, fromName, charSet);
 			email.setSubject(subject);
 			email.setHtmlMsg(msg);

@@ -18,6 +18,7 @@ import com.farmfarm.dto.TermsOfUseVO;
 import com.farmfarm.dto.UsersVO;
 import com.farmfarm.model.SignUpService;
 import com.farmfarm.model.TermOfUseService;
+import com.farmfarm.model.pwdSha256;
 
 @Controller
 public class SignUpController {
@@ -27,7 +28,7 @@ public class SignUpController {
 	@Autowired
 	SignUpService sService;
 	
-	@GetMapping(value = "/termContents.do", produces = "text/plain;charset=utf-8")
+	@GetMapping(value = "/termContents", produces = "text/plain;charset=utf-8")
 	public  @ResponseBody  String getTermContent(@RequestParam("termName")  String term_name, Model model) {
 		TermsOfUseVO vo = tService.getTermContent(term_name);
 		return vo.getTerm_content();
@@ -35,41 +36,39 @@ public class SignUpController {
 	}
 	
 	
-	
-	
-	@GetMapping("/cerNumModal.do")
+	@GetMapping("/cerNumModal")
 	public String cerNumModal() {
 		return "signUp/validationModal";
 	}
 	
 	
-	@GetMapping("/s_signup1.do")
+	@GetMapping("/s_signup1")
 	public String showSSignup1() {
 		return "signUp/s_signup1";
 	}
 	
-	@GetMapping("/s_signup2.do")
+	@GetMapping("/s_signup2")
 	public String showSSignup2() {
 		return "signUp/s_signup2";
 	}
 	
 	
-	@GetMapping("/f_signup1.do")
+	@GetMapping("/f_signup1")
 	public String showFSignUp1() {
 		return "signUp/f_signup1";
 	}
 	
-	@GetMapping("/f_signup2.do")
+	@GetMapping("/f_signup2")
 	public String showFSignUp2() {
 		return "signUp/f_signup2";
 	}
 	
-	@GetMapping("/f_signup3.do")
+	@GetMapping("/f_signup3")
 	public String showFSignUp3() {
 		return "signUp/f_signup3";
 	}
 	
-	@GetMapping("/signup_modal.do")
+	@GetMapping("/signup_modal")
 	public String showModal() {
 		return "signUp/signupModal";
 	}
@@ -78,25 +77,27 @@ public class SignUpController {
 	
 	
 	
-	@PostMapping("/emailCheck.do")
+	@PostMapping("/emailCheck")
 	public void emailCheck(String email, HttpServletResponse response) throws IOException {
 		sService.emailCheck(response, email);
 	}
 	
-	@PostMapping("/sendCerNum.do")
+	@PostMapping("/sendCerNum")
 	public void sendCerNum(String email, HttpServletResponse response, HttpSession session) throws IOException {
 		sService.sendCerNum(response, email);
 		
 	}
 	
-	@PostMapping("/s_signup3.do")
+	@PostMapping("/s_signup3")
 	public String userSignUpPost(String email, String password, String name, HttpServletResponse response) {
 		System.out.println("user in");
 		
 		UsersVO u = new UsersVO();
 		
 		u.setUser_email(email);
-		u.setUser_pw(password);
+		
+		String encrytPw = pwdSha256.encrypt(password);
+		u.setUser_pw(encrytPw);
 		u.setUser_name(name);
 		
 		int result = sService.userSignUp(u);
@@ -104,19 +105,21 @@ public class SignUpController {
 		if(result > 0) {
 			return "signUp/s_signup3";
 		}else {
-			return "redirect:/login.do";
+			return "redirect:/login";
 		}
 		
 	}
 	
-	@PostMapping("/f_signup3.do")
+	@PostMapping("/f_signup3")
 	public String farmerSignUpPost(String email, String password, String name, HttpServletResponse response) {
 		System.out.println("farmer in");
 		
 		FarmersVO f = new FarmersVO();
 		
 		f.setFarmer_email(email);
-		f.setFarmer_pw(password);
+		
+		String encrytPw = pwdSha256.encrypt(password);
+		f.setFarmer_pw(encrytPw);
 		f.setFarmer_name(name);
 		
 		int result = sService.farmerSignUp(f);
@@ -124,7 +127,7 @@ public class SignUpController {
 		if(result > 0) {
 			return "signUp/f_signup3";
 		}else {
-			return "redirect:/login.do";
+			return "redirect:/login";
 		}
 		
 	}

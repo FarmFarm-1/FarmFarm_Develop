@@ -31,7 +31,6 @@ public class TestController {
 	
 	@GetMapping("/getAllUsers")
 	public List<UsersVO> getAllUsers() {
-		
 		return service.getAllUsers();
 	}
 }

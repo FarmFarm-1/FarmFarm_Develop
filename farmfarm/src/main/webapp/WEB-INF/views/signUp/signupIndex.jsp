@@ -31,7 +31,6 @@
 				&& window.getComputedStyle(document
 						.querySelector('#signUpModal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
-			console.log('modal on');
 			document.querySelector('#signUpModal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
 			return;
@@ -43,7 +42,7 @@
 <script type="text/javascript">
 	function f_signup1() {
 		$.ajax({
-			url : "/f_signup1.do",
+			url : "/f_signup1",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -52,7 +51,7 @@
 
 	function s_signup2() {
 		$.ajax({
-			url : "/s_signup2.do",
+			url : "/s_signup2",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -62,7 +61,7 @@
 	function showFullText(termName) {
 		$
 				.ajax({
-					url : "/termContents.do", //DB에 가서 약관을 가져와
+					url : "/termContents", //DB에 가서 약관을 가져와
 					data : {
 						"termName" : termName
 					},
@@ -77,6 +76,8 @@
 </script>
 
 <body>
+<jsp:include
+		page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--1tZ">
 		<jsp:include page="signupModal.jsp" />
 		<jsp:include page="validationModal.jsp" />
@@ -158,7 +159,7 @@
 				</div>
 
 				<div class="auto-group-uuhw-Ws7">
-					<button onclick="location.href='login.do'" class="group-100-DFj">취소</button>
+					<button onclick="location.href='login'" class="group-100-DFj">취소</button>
 					<button onclick="s_signup2()" id="nextButton" class="group-99-pWR">다음</button>
 				</div>
 			</div>
@@ -202,7 +203,6 @@
 		}
 
 		function updateNextButtonState() {
-			/* console.log(checkbox1.checked); */
 			if (checkbox2.checked == false || checkbox3.checked == false
 					 || checkbox4.checked == false) { //|| checkbox5.checked == false
 				checkbox1.checked = false;
@@ -217,4 +217,6 @@
 			nextButton.disabled = allCheckboxesChecked ? false : true;
 		}
 	</script>
+	<jsp:include
+		page="${pageContext.request.contextPath}/WEB-INF/views/footer.jsp" />
 </body>

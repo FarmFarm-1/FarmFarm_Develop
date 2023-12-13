@@ -29,7 +29,6 @@
 				&& window.getComputedStyle(document
 						.querySelector('#validationModal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
-			console.log('modal on');
 			document.querySelector('#validationModal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
 			return;
@@ -64,7 +63,7 @@
 
 	/* function f_signup3() {
 	$.ajax({
-		url : "/f_signup3.do",
+		url : "/f_signup3",
 		success : function(responseData) {
 			$("#here").html(responseData);
 		}
@@ -75,7 +74,7 @@
 
 		$.ajax({
 			type : "POST",
-			url : "/f_signup3.do",
+			url : "/f_signup3",
 			data : {
 				"email" : $("#email").val(),
 				"password" : $("#password").val(),
@@ -91,7 +90,7 @@
 
 		$
 				.ajax({
-					url : "/emailCheck.do",
+					url : "/emailCheck",
 					type : "POST",
 					data : {
 						"email" : $("#email").val()
@@ -138,13 +137,12 @@
 	function send_cer_num() {
 
 		$.ajax({
-			url : "/sendCerNum.do",
+			url : "/sendCerNum",
 			type : "POST",
 			data : {
 				"email" : $("#email").val()
 			},
 			success : function(result) {
-				console.log(result);
 				// 지금 인증번호가 왔는데
 				cerNum = result;
 
@@ -156,11 +154,9 @@
 	function check_cer_num() {
 		//const cerNum_check = document.getElementById('cerNum_check_text');
 		var inputCerNum = $("#cerNum").val(); //입력한 인증번호
-		console.log(inputCerNum);
-		console.log(cerNum);
 
 		if (inputCerNum == cerNum) {
-			console.log('성공');
+
 			// 인증 성공 warn text 2 flex
 			//인증성공하면 초로객으로 인증성공 문구 보이게함
 			cerNum_check.style.visibility = 'visible';
@@ -170,62 +166,27 @@
 			allInputCheck();
 		} else {
 			check_cer_num_modal();
-			/* console.log(document.querySelector('#validationModal').style.display);
-			//vModal.style.display = 'flex'; //모달을 띄위는 코드
-			
-			document.querySelector('#validationModal').style.display = 'flex';
-			console.log(document.querySelector('#validationModal').style.display);
-
-			document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
-			document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
-			
-			cerNum_check_boolean = false;
-			console.log('불일치');
-			// modal 인증 실패
-			/* alert('인증 실패하였습니다. 다시 확인해주세요'); */
-			//이거 안나옴ㅠ */
 		}
 	}
 
 	function check_cer_num_modal() {
 		$
 				.ajax({
-					url : "/cerNumModal.do",
+					url : "/cerNumModal",
 					success : function(responseData) {
 
 						document.querySelector('#validationModal').style.display = 'flex';
-						console
-								.log(document.querySelector('#validationModal').style.display);
-
 						document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
 						document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
 
 						cerNum_check_boolean = false;
-						console.log('불일치');
 					}
 				});
 	}
 
 	function allInputCheck() {
 		var name = document.getElementById('name');
-		console.log(email.value);
-		console.log(password.value);
-		console.log(name.value);
-
-		/* 		const email = document.getElementById('email');
-		 const cerNum = document.getElementById('cerNum');
-		 const password = document.getElementById('password');
-		 const passwordCheck = document.getElementById('passwordCheck');
-		 const name = document.getElementById('name');
-		 const signUpBtn = document.getElementById('signUpBtn'); */
-
-		//input이 입력이 하나라도 안되면 버튼 비활성화
-		/* if (email_check_boolean && cerNum_check_boolean && password.value!="" && passwordCheck.value!="" && name.value!="") {
-			signUpBtn.disabled = true;
-		} else {
-			signUpBtn.disabled = false;
-		} */
-
+		
 		//input이 다 체워지고 이메일 인증 성공하고 인증번호 일치하면 가입하기 버튼 활성화됨 
 		//email유효성검사, 인증하기 버튼 눌렀음, 인증확인 버튼 눌렀음, 비밀번호유효성검사, 
 		if (isEmail(email.value) && cerNum.value != ""
@@ -448,7 +409,7 @@
 					</div>
 
 					<div class="auto-group-sgld-ue5">
-						<input type="button" onclick="location.href='login.do'"
+						<input type="button" onclick="location.href='login'"
 							class="group-100-Q53" value="취소" />
 						<button id="signUpBtn" type="button" onclick="f_signup3()"
 							name="signUpBtn" class="group-99-bQR">가입하기</button>

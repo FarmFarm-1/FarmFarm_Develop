@@ -16,8 +16,14 @@
 	</properties>
 	<dependencies>
 
-		<!-- 메일 전송 -->
+		<!-- SHA 비밀번호 암호화 -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.15</version>
+		</dependency>
 
+		<!-- 메일 전송 -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>

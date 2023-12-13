@@ -71,7 +71,7 @@
 	        
 	        $.ajax({
 	            type: "POST",
-	            url: "login/userLogin.do",
+	            url: "login/userLogin",
 	            data: {
 	                "user_email": user_email,
 	                "user_pw": user_pw
@@ -79,7 +79,7 @@
 	            success: function (result) {
 	                // 로그인이 성공한 경우
 	                if (result === "true") {
-	                    location.href = "/login.do"; // 로그인 성공 시 이동할 페이지
+	                    location.href = "/login"; // 로그인 성공 시 이동할 페이지
 	                }else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
@@ -98,10 +98,9 @@
 			
 			var farmer_email = $("#farmer_email").val();
 	        var farmer_pw= $("#farmer_pw").val();
-	        console.log('login_check in farmer');
 	        $.ajax({
 	            type: "POST",
-	            url: "login/farmerLogin.do",
+	            url: "login/farmerLogin",
 	            data: {
 	                "farmer_email": farmer_email,
 	                "farmer_pw": farmer_pw
@@ -109,7 +108,7 @@
 	            success: function (result) {
 	                // 로그인이 성공한 경우
 	                if (result === "true") {
-	                    location.href = "/login.do"; // 로그인 성공 시 이동할 페이지
+	                    location.href = "/login"; // 로그인 성공 시 이동할 페이지
 	                } else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
