@@ -23,13 +23,14 @@ public class TestController {
 	
 	@PostMapping("/testInput")
 	public String inputUserTest(UsersVO vo) {
+		
+		System.out.println(vo.getUser_email());
 		service.testInsert(vo);
 		return "redirect:/";
 	}
 	
 	@GetMapping("/getAllUsers")
 	public List<UsersVO> getAllUsers() {
-		
 		return service.getAllUsers();
 	}
 }
