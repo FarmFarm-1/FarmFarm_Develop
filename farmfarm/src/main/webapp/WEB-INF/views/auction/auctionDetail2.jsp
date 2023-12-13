@@ -22,10 +22,10 @@
 <script type="text/javascript">
 	let serial_num = "${sessionScope.serial_num}";
 	let product_serial_num = "${auctionInfo.product_serial_num}";
-	let user_real_input_price = 0;
 	$(document).ready(function() {	
 		$("#auction-price-input").on("input", pointChk);
 		$("#auction-price-input").on("input", formattingNum);
+		
 		$(".bookmark-layer").click(function() {
 			if(serial_num.substring(0,2) === "us"){
 				let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
@@ -37,56 +37,58 @@
                     $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
                 }
 			} else {
-				showModal("로그인이 필요한 기능입니다.","로그인 바로가기");
+				showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
 		});
 		
 		$("#auction-confirm-btn").click(function() {
-			if(serial_num.substring(0,2) === "us"){
-				if(user_real_input_price - ${auctionInfo.starting_price * auctionInfo.harvest_amount} > 0) {
-					if (user_real_input_price - ${maxAndCntInfo.max_auction_price} > 0) {
-						$.ajax({
-							url: "${cpath}/auction/auctionConfirm",
-							type: "POST",
-							data: {
-									"user_serial_num" : serial_num,
-									"user_price" : user_real_input_price,
-									"product_serial_num" : product_serial_num
-									},
-							success: function(res) {
-								if(res == 1) {
-									showModal_success("입찰결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");
-								} else {
-									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
-								}
-							},
-							error: function(xhr, status, error) {
-								if(xhr.responseText == "notEnoughPoint") {
-									showModal("입찰 결과","포인트가 부족합니다");
-								} else if (xhr.responseText == "notMaxAuctionraiser") {
-									showModal("입찰 결과","최고 입찰 금액이 아닙니다");
-								} else {
-									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
-								}
-							}
-						});
-					} else {
-						showModal("입력 오류","최고 금액 이상으로 입찰하세요");
-					}	
-				}else {
-					showModal("입력 오류","경매 시작 금액 이상으로 입찰하세요.");
-				}	
-			} else {
-				showModal("로그인이 필요한 기능입니다.","로그인 바로가기");
+	    	if(serial_num.substring(0,2) === "us"){
+	    		let input_price = $("#auction-price-input").val();
+		    	let user_price = input_price.replace(/,/g, "");
+		    	if(user_price< "${auctionInfo.starting_price * auctionInfo.harvest_amount}") {
+		    		if (user_price > "${ maxAndCntInfo.max_auction_price }") {
+				        $.ajax({
+				            url: "${cpath}/auction/auctionConfirm",
+				            type: "POST",
+				            data: {
+				            		"user_serial_num" : serial_num,
+				            		"user_price" : user_price,
+				            		"product_serial_num" : product_serial_num
+				            	  },
+				            success: function(res) {
+				                if(res == 1) {
+				                	showModal("입찰 결과","입찰 성공");
+				                } else {
+				                	showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+				                }
+				            },
+				            error: function(xhr, status, error) {
+				            	if(xhr.responseText == "notEnoughPoint") {
+				            		showModal("입찰 결과","포인트가 부족합니다.");
+				            	} else if (xhr.responseText == "notMaxAuctionraiser") {
+				            		showModal("입찰 결과","최고 금액이 아닙니다.");
+				            	} else {
+				            		showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+				            	}
+				            	
+				            }
+				        });
+		    		} else {
+		    			showModal("입력 오류","최고가 금액 이상으로 입찰하세요.");
+		    		}
+		    	} else {
+		    		showModal("입력 오류","경매 시작금액 이상으로 입찰하세요.");
+		    	}
+	    	} else {
+	    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
 			}
-		});
+	    });
 		
 		function pointChk(e) {
 	    	if(serial_num.substring(0,2) === "us"){
 	    		let input = e.target.value;
 		    	if(input.length > 0) {
 		        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
-		        	user_real_input_price = Number(inputNum);
 		        	if ($.isNumeric(inputNum)) {
 		                $.ajax({
 		                	url: "${cpath}/mypage/pointCheck",
@@ -167,12 +169,13 @@
 	
 	function showMore() {
 		$(".product-detail-img:not(:first)").toggle();
+		
 	}	
 </script>
 </head>
 <body>
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<div class="container">
-		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="left-div">
 			<img class="product-thum-img" src="${cpath}/assets/productdetailimg2.png">
 			<p class="product-detail-tag">Info</p>
@@ -182,7 +185,8 @@
 			<img class="product-detail-img" src="${cpath}/assets/productdetailimg2.png" style="display:none;">
 			<div class="showmore-btn" onclick="showMore()">
 				<p class="show-more-text" >상품정보 더보기</p>
-				<img class="arrow-see-more" src="${cpath}/assets/arrow_see_more.png" />
+				<img class="arrow-see-more"
+					src="${cpath}/assets/arrow_see_more.png" />
 			</div>
 		</div>
 		<div class="right-div">
@@ -205,7 +209,7 @@
 					<p class="small-unit">최고 입찰가</p><p class="funding-max-price"><fmt:formatNumber value="${maxAndCntInfo.max_auction_price}"  pattern="#,###.#"/> 원</p>
 				</div>
 			</div>
-			<div class="frame-layout">
+			<div class="farmerinfo-div">
 				<div class="farmerinfo-frame1">
 					<div class="farmerinfo-line1-div">
 						<img class="farmer-image" src="${cpath}/assets/farmerimage.png" />
@@ -213,85 +217,89 @@
 					</div>
 					<img class="chaticon-img" src="${cpath}/assets/chaticon.png" />
 				</div>
-				<div class="frame-layer">
-					<div class="frame-line">
-						<p class="frame-tit">농장명</p>
-						<p class="frame-val">${auctionInfo.farm_name}</p>
+				<div class="farmerinfo-frame2">
+					<div class="frame2-line1">
+						<p class="farm-name">농장명</p>
+						<p class="farm-name-val">${auctionInfo.farm_name}</p>
 					</div>
-					<div class="frame-line">
-						<p class="frame-tit">농장 주소</p>
-						<p class="frame-val">${auctionInfo.farm_address}</p>
+					<div class="frame2-line2">
+						<p class="farm-address">농장 주소</p>
+						<p class="farm-address-val">${auctionInfo.farm_address}</p>
 					</div>
-					<div class="frame-line">
-						<p class="frame-tit">농장 면적</p>
-						<p class="frame-val"><fmt:formatNumber value="${auctionInfo.farm_square_footage}"  pattern="#,###.#"/> 평</p>
+					<div class="frame2-line3">
+						<p class="farm-footage">농장 면적</p>
+						<p class="farm-footage-val"><fmt:formatNumber value="${auctionInfo.farm_square_footage}"  pattern="#,###.#"/> 평</p>
 					</div>
-					<div class="frame-line">
-						<p class="frame-tit">농작물 종류</p>
-						<p class="frame-val">${auctionInfo.product_kind}</p>
+					<div class="frame2-line4">
+						<p class="farm-kind">농작물 종류</p>
+						<p class="farm-kind-val">${auctionInfo.product_kind}</p>
 					</div>
-					<div class="frame-line">
-						<p class="frame-tit">수확 완료일</p>
-						<p class="frame-val"><fmt:formatDate value="${auctionInfo.update_date}" type="date" pattern="yyyy-MM-dd" /></p>
+					<div class="frame2-line5">
+						<p class="crops-finish">수확 완료일</p>
+						<p class="crops-finish-val"><fmt:formatDate value="${auctionInfo.update_date}" type="date" pattern="yyyy-MM-dd" /></p>
 					</div>
 					
-					<div class="frame-line">
-						<p class="frame-tit">파머 연락처</p>
-						<p class="frame-val">${auctionInfo.farmer_phone}</p>
+					<div class="frame2-line6">
+						<p class="farmer-phone">파머 연락처</p>
+						<p class="farmer-phone-val">${auctionInfo.farmer_phone}</p>
 					</div>
 				</div>
 			</div>
-			<div class="frame-layout">
-				<div class="frame-line">
-					<p class="frame-tit">출하량</p>
-					<p class="frame-val"><fmt:formatNumber value="${auctionInfo.harvest_amount}"  pattern="#,###.#"/> kg</p>
-				</div>
-				<div class="frame-line">
-					<p class="frame-tit">단위당 단가</p>
-					<p class="frame-val"><fmt:formatNumber value="${auctionInfo.starting_price}"  pattern="#,###.#"/> 원</p>
-				</div>
-				<div class="frame-line">
-					<p class="frame-tit">경매 시작가</p>
-					<p class="frame-val"><fmt:formatNumber value="${auctionInfo.starting_price * auctionInfo.harvest_amount}"  pattern="#,###.#"/> 원</p>
-				</div>
-			
-			</div>
-			<p class="frame-tag">시세대비 손익</p>
-			<div class="frame-layout">
-				<div class="frame-line2">
-					<div class="frame-tit">측정 날짜</div>
-					<div class="frame-val"><fmt:formatDate value="${cropsquoteInfo.regDate}" type="date" pattern="yyyy-MM-dd" /></div>
-					<img class="reading-glasses-icon" src="${cpath}/assets/search.png" onclick="showChart()">
-				</div>
-	
-				<div class="frame-line">
-					<div class="frame-tit">현재 시세(1kg)</div>
-					<div class="frame-val"><fmt:formatNumber value="${cropsquoteInfo.crops_quote}" pattern="#,###.#"/></div>
-				</div>	
-				<div class="frame-line">
-					<div class="frame-tit">도매 예상 구매가</div>
-					<div class="frame-val">
-						<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}"
-						pattern="#,###.#"/>
+			<div class="crops-info-div">
+				<div class="crops-inner-div">
+					<div class="crops-line1">
+						<p class="crops-amount">출하량</p>
+						<p class="crops-amount-val"><fmt:formatNumber value="${auctionInfo.harvest_amount}"  pattern="#,###.#"/> kg</p>
+					</div>
+					<div class="crops-line2">
+						<p class="kg-per-price">단위당 단가</p>
+						<p class="kg-per-price-val"><fmt:formatNumber value="${auctionInfo.starting_price}"  pattern="#,###.#"/> 원</p>
+					</div>
+					<div class="crops-line3">
+						<p class="starting-price">경매 시작가</p>
+						<p class="starting-price-val"><fmt:formatNumber value="${auctionInfo.starting_price * auctionInfo.harvest_amount}"  pattern="#,###.#"/> 원</p>
 					</div>
 				</div>
-				<div class="frame-line">
-					<div class="frame-tit">낙찰 손익금</div>
-					<div class="frame-val">
-						<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount
-						 - maxAndCntInfo.max_auction_price}" pattern="#,###.#"/>
-				  	</div>
-				</div>
-				<div class="frame-line">
-					<div class="frame-tit">낙찰 손익율</div>
-					<div class="frame-val">
-						<fmt:formatNumber value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
-					     - maxAndCntInfo.max_auction_price)
-					     /maxAndCntInfo.max_auction_price)}" type="percent"/>
-			      	</div>
-				</div>
 			</div>
-			<p class="frame-tag">입찰현황</p>
+			<p class="cropsquote-tag">시세대비 손익</p>
+			<div class="crops-api-info">
+				<img src="${cpath}/assets/search.png" onclick="showChart()">
+				<table>
+					<tr>
+						<td>측정 날짜</td>
+						<td><fmt:formatDate value="${cropsquoteInfo.regDate}" type="date" pattern="yyyy-MM-dd" /></td>
+					</tr>
+					<tr>
+						<td>현재 시세(1kg)</td>
+						<td>
+							<fmt:formatNumber value="${cropsquoteInfo.crops_quote}" pattern="#,###.#"/>
+						</td>
+					</tr>
+					<tr>
+						<td>도매 예상 구매가</td>
+						<td>
+							<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}"
+							pattern="#,###.#"/>
+						</td>
+					</tr>
+					<tr>
+						<td>낙찰 손익금</td>
+						<td>
+							<fmt:formatNumber value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount
+							 - maxAndCntInfo.max_auction_price}" pattern="#,###.#"/>
+					  	</td>
+					</tr>
+					<tr>
+						<td>낙찰 손익율</td>
+						<td>
+							<fmt:formatNumber value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
+						     - maxAndCntInfo.max_auction_price)
+						     /maxAndCntInfo.max_auction_price)}" type="percent"/>
+				      	</td>
+					</tr>
+				</table>
+			</div>
+			<p class="auctionhisotry-tag">입찰현황</p>
 			<div class="auctionhistory-div">
 				<div class="auctionhisotry-inner-layout">
 					<c:forEach items="${auctionHistoryInfo}" var="list">
@@ -303,9 +311,9 @@
 					</c:forEach>
 				</div>
 			</div>
-			<p class="frame-tag">경매할 포인트 입력</p>
+			<p class="auction-input-tag">경매할 포인트 입력</p>
 			<div class="auction-price-form" >
-				<input id="auction-price-input" name="auctionInputPrice" class="auction-price-input" type="text" value="0" maxlength="11">
+				<input id="auction-price-input" name="auctionInputPrice" class="auction-price-input" type="text" value="0">
 				<label class="won-unit" for="auction-price-input">원</label>
 			</div>
 			<div class="point-show">

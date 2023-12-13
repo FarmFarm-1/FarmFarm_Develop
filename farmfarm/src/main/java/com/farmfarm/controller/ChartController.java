@@ -25,14 +25,16 @@ public class ChartController {
 	@GetMapping("/area/{crops_kind}")
 	public String showChart(@PathVariable("crops_kind") String crops_kind, Model model) {
 		List<Crops_quoteVO> cropsInfo= chartService.cropsInfoByKind(crops_kind);
+		int cropspriceAvg = chartService.cropsPriceAvg(crops_kind);
+		model.addAttribute("cropspriceAvg",cropspriceAvg);
 		model.addAttribute("crops_kind", cropsInfo.get(0).getCrops_kind());
+	
 		List<Integer> priceList = new ArrayList<>();
 		List<String> dateList = new ArrayList<>();
 		for(Crops_quoteVO vo:chartService.cropsInfoByKind(crops_kind)) {
 			priceList.add(vo.getCrops_quote());
 			dateList.add(vo.getRegDate().toString());
 		}
-		
 		ObjectMapper objectMapper = new ObjectMapper();
 		try {
 			String jsonPriceList = objectMapper.writeValueAsString(priceList);
@@ -44,6 +46,7 @@ public class ChartController {
 			e.printStackTrace();
 		}
 		return "chart/areaChart";
+		
 	}
 
 }

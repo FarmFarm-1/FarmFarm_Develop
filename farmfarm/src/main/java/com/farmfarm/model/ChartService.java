@@ -16,5 +16,9 @@ public class ChartService {
 	public List<Crops_quoteVO> cropsInfoByKind(String crops_kind) {
 		return chartDAO.cropsInfoByKind(crops_kind);
 	}
+
+	public int cropsPriceAvg(String crops_kind) {
+		return chartDAO.cropsPriceAvg(crops_kind);
+	}
 	
 }

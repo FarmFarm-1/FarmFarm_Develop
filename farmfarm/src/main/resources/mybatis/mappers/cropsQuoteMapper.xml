@@ -5,11 +5,9 @@
 <mapper namespace="com.farmfarm.Crops_quoteVO">
 
 	<select id="cropsquoteInfo" parameterType="String" resultType="Crops_quoteVO">
-		select crops_kind, crops_quote, regDate
+		select crops_kind, crops_quote, max(regDate) as regDate
 		from crops_quote
-		where crops_kind = #{crops_kind}
-		GROUP BY crops_kind
-		HAVING regDate = MAX(regDate)
+		where crops_kind = #{crops_kind};
 	</select>
 	
 	<select id="cropsInfoByKind" resultType="Crops_quoteVO" parameterType="Crops_quoteVO">
@@ -17,5 +15,11 @@
 		from crops_quote
 		where crops_kind = #{crops_kind}
 		order by regDate
+	</select>
+	
+	<select id="cropsPriceAvg" resultType="int" parameterType="Crops_quoteVO">
+		select AVG(crops_quote)
+		from crops_quote
+		where crops_kind = #{crops_kind}
 	</select>
 </mapper>

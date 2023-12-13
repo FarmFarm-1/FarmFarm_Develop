@@ -12,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -54,7 +51,7 @@ public class AuctionController {
 				int myBookmarkShow = auctionService.myBookmarkShow(product_serial_num, user_serial_num);
 				model.addAttribute("myBookmarkShow",myBookmarkShow);
 			}
-		}		
+		}
 		//폰넘버 출력 양식 변경
 		String farmer_phone_origin = (String)auctionInfo.get("farmer_phone");
 		String farmer_phone = farmer_phone_origin.replaceAll("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");

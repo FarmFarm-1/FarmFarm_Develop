@@ -19,6 +19,10 @@ public class ChartDAO {
 	public List<Crops_quoteVO> cropsInfoByKind(String crops_kind) {
 		return sqlSession.selectList(namespace+"cropsInfoByKind",crops_kind);
 	}
+
+	public int cropsPriceAvg(String crops_kind) {
+		return sqlSession.selectOne(namespace+"cropsPriceAvg",crops_kind);
+	}
 	
 	
 }
