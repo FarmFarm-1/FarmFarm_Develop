@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.farmfarm.dto.FarmersVO;
-import com.farmfarm.dto.UsersVO;
 
 @Repository
 public class FarmerDAO {
