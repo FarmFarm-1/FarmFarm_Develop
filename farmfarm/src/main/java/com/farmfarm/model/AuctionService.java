@@ -9,18 +9,14 @@ import org.springframework.stereotype.Service;
 import com.farmfarm.dto.Auction_historyVO;
 import com.farmfarm.dto.Crops_quoteVO;
 import com.farmfarm.dto.Farm_and_productVO;
-import com.farmfarm.dto.User_cartVO;
 
 @Service
 public class AuctionService {
-	
+
 	@Autowired
 	AuctionDAO dao;
-
-	public List<Farm_and_productVO> auctionListSelectAll() {
-		return dao.auctionListSelectAll();
-	}
-
+	
+	//hs code
 	public Map<String, Object> auctionInfo(String product_serial_num) {
 		return dao.auctionInfo(product_serial_num);
 	}
@@ -33,34 +29,46 @@ public class AuctionService {
 		return dao.maxAndCntAuctionInfo(product_serial_num);
 	}
 
-	public int addMyCart(User_cartVO user_cartVO) {
-		return dao.addMyCart(user_cartVO);
-	}
-	
-	public int deletecart(User_cartVO user_cartVO) {
-		return dao.deletecart(user_cartVO);
-	}
-
-	public int bookmarkCnt(String product_serial_num) {
-		return dao.bookmarkCnt(product_serial_num);
-	}
-
-	public int myBookmarkShow(String product_serial_num, String user_serial_num) {
-		return dao.myBookmarkShow(product_serial_num, user_serial_num);
-		
-	}
-
-	public int pointCheck(String user_serial_num) {
-		return dao.pointCheck(user_serial_num);
-	}
-
 	public Crops_quoteVO cropsquoteInfo(String product_kind) {
 		return dao.cropsquoteInfo(product_kind);
 	}
 
 	public int auctionConfirm(Auction_historyVO auction_historyVO) {
-		
 		return dao.auctionConfirm(auction_historyVO);
+	}
+
+	//jiwon code
+	// auction
+	public List<Map<String, Object>> auctionListSelectAll(String type) {
+		return dao.auctionListSelectAll(type);
+	}
+
+	public List<Map<String, Object>> auctionListSelectHot() {
+		return dao.auctionListSelectHot();
+	}
+
+	public List<Map<String, Object>> auctionListSelectSupport(String type) {
+		return dao.auctionListSelectSupport(type);
+	}
+
+	public List<Map<String, Object>> auctionListSelectClosing(String type) {
+		return dao.auctionListSelectClosing(type);
+	}
+
+	public List<Map<String, Object>> auctionListSelectAmount(String type) {
+		return dao.auctionListSelectAmount(type);
+	}
+
+	public List<Map<String, Object>> auctionListSelectRecent(String type) {
+		return dao.auctionListSelectRecent(type);
+	}
+
+	public List<Map<String, Object>> auctionListSelectByType(String type) {
+		return dao.auctionListSelectByType(type);
+	}
+	
+	public List<Map<String, Object>> auctionSearch(String input) {
+		return dao.auctionSearch(input);
 	}
 	
 }

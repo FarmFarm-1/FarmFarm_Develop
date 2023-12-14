@@ -38,10 +38,11 @@ public class UserLoginController {
 		if (result != null) {
 			session.setAttribute("serial_num", result.getUser_serial_num());
 			rttr.addFlashAttribute("message", "user 로그인 성공");
+			return "redirect:/";
 		} else {
 			rttr.addFlashAttribute("message", "user 로그인 실패");
+			return "redirect:/";
 		}
-		return "redirect:/";
 		
 	}
 	
