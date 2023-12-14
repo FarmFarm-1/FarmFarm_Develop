@@ -19,9 +19,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <script>
-	console.log('${sessionScope.serial_num}');
-	console.log('${sessionScope.headerSelect}');
-
 	var curUser = "${sessionScope.serial_num}";
 	var headerSelect = "${sessionScope.headerSelect}";
 
@@ -39,9 +36,6 @@
 				var menu_auction = document.querySelector('#menu_auction');
 				var menu_myFarm = document.querySelector('#menu_myFarm');
 
-				console.log(curUser);
-				console.log(headerSelect);
-
 				if (curUser == "") {
 					//header_join_login 띄움
 					header_join_login.style.display = 'flex';
@@ -57,13 +51,10 @@
 				}
 
 				if (headerSelect === "funding") {
-					console.log("펀딩");
 					menu_funding.style.color = '#2d2d2d';
 				} else if (headerSelect === "auction") {
-					console.log("경매");
 					menu_auction.style.color = '#2d2d2d';
 				} else if (headerSelect === "myFarm") {
-					console.log("마이팜");
 					menu_myFarm.style.color = '#2d2d2d';
 				}
 			});
@@ -95,17 +86,17 @@
 			<div class="header_main">
 				<div class="header_title_menu">
 					<div class="header_title">
-						<a onclick="location.href='main'"> <img class="logo_img"
+						<a onclick="location.href='${cpath}/main'"> <img class="logo_img"
 							src="${cpath }/assets/logo.png" />
 							<p class="logo_name">팜팜</p>
 						</a>
 					</div>
 					<div class="header_menu">
 						<div class="menu_funding">
-							<a id="menu_funding" onclick="location.href='funding'">펀딩</a>
+							<a id="menu_funding" onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
 						</div>
 						<div class="menu_auction">
-							<a id="menu_auction" onclick="location.href='auction'">경매</a>
+							<a id="menu_auction" onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
 						</div>
 						<div class="menu_myFarm">
 							<a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
@@ -114,12 +105,12 @@
 				</div>
 
 				<div class="header_join_login" id="header_join_login">
-					<a onclick="location.href='signup'">회원가입&nbsp;</a> <a
-						onclick="location.href='login'">로그인</a>
+					<a onclick="location.href='${cpath}/signup'">회원가입&nbsp;</a> <a
+						onclick="location.href='${cpath}/login'">로그인</a>
 				</div>
 
 				<div class="header_user_login" id="header_user_login">
-					<div class="messageBox_div" onclick="location.href='messageBox'">
+					<div class="messageBox_div" onclick="location.href='${cpath}/messageBox'">
 						<img class="messageBox_img" src="${cpath }/assets/messageBox.png">
 						<p class="messageBox_text">쪽지함</p>
 						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
@@ -128,13 +119,13 @@
 							<p class="new_text">N</p>
 						</div>
 					</div>
-					<div class="userPoint_div"  onclick="location.href='chargePoints'">
+					<div class="userPoint_div"  onclick="location.href='${cpath}/chargePoints'">
 						내 팜머니 : <span class="userPoints">1,000,000,000</span>p
 					</div>
 				</div>
 
 				<div class="header_farmer_login" id="header_farmer_login">
-					<div class="messageBox_div2" onclick="location.href='messageBox'">
+					<div class="messageBox_div2" onclick="location.href='${cpath}/messageBox'">
 						<img class="messageBox_img2" src="${cpath }/assets/messageBox.png">
 						<p class="messageBox_text2">쪽지함</p>
 						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
@@ -143,7 +134,7 @@
 							<p class="new_text2">N</p>
 						</div>
 					</div>
-					<div class="myProject" onclick="location.href='makeProject'">나의 프로젝트 만들기</div>
+					<div class="myProject" onclick="location.href='${cpath}/makeProject'">나의 프로젝트 만들기</div>
 				</div>
 			</div>
 		</div>

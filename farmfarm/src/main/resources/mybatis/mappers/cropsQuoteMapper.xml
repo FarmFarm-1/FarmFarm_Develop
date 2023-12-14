@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.Crops_quoteVO">
+
+	<select id="cropsquoteInfo" parameterType="String" resultType="Crops_quoteVO">
+		select crops_kind, crops_quote, max(regDate) as regDate
+		from crops_quote
+		where crops_kind = #{crops_kind};
+	</select>
+	
+	<select id="cropsInfoByKind" resultType="Crops_quoteVO" parameterType="Crops_quoteVO">
+		select crops_kind, crops_quote, regDate
+		from crops_quote
+		where crops_kind = #{crops_kind}
+		order by regDate
+	</select>
+	
+	<select id="cropsPriceAvg" resultType="int" parameterType="Crops_quoteVO">
+		select AVG(crops_quote)
+		from crops_quote
+		where crops_kind = #{crops_kind}
+	</select>
+</mapper>

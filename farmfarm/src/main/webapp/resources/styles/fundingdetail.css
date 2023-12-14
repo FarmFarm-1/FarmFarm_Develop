@@ -1,0 +1,395 @@
+@font-face {
+    font-family: 'TheJamsil5Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LINESeedKR-Bd';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/LINESeedKR-Bd.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'LINESeedKR-Bd-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/LINESeedKR-Bd-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+.farmfarm_container {
+	display: flex;
+	justify-content: center;
+	flex-direction: row-reverse;
+}
+
+.border_green {
+	border: 1px solid #64a346;
+	border-radius: 5px;
+	padding: 15px 20px;
+	box-sizing: border-box;
+	width: 42rem;
+	color: #000;
+	font-size: 15px;
+	margin-bottom: 20px;
+	color: #000;
+}
+
+.border_green:last-child {
+	margin-bottom: 0;
+}
+
+.funding_info_left {
+	padding: 10px;
+	margin-left: 40rem;
+	margin-right: 5rem;
+	display: flex;
+	flex-direction: column;
+	display: flex;
+}
+
+.farmfarm_container .funding_info_left .fd_introducepic {
+	width: 60rem;
+	height: 40rem;
+	background-size: 137.135% 100%;
+	background-position: -10.1625rem -0rem;
+	border-radius: 1.355rem;
+	margin-top: 10rem;
+	margin-bottom: 5rem;
+}
+
+.farmfarm_container .funding_info_left .project_story {
+	width: 10.7rem;
+	height: 2.5rem;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #2d2d2d;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	margin-bottom: 1rem;
+}
+
+.farmfarm_container .funding_info_left .fd_prostorypic {
+	width: 60rem;
+	height: 40rem;
+	background-size: 137.135% 100%;
+	background-position: -10.1625rem -0rem;
+	border-radius: 1.355rem;
+	margin-top: 5rem;
+}
+
+.farmfarm_container .funding_info_left .stroymoregroup {
+	width: 60rem;
+	height: 4.6973rem;
+	border: solid 0.0903rem #64a246;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	border-radius: 0.3613rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10rem;
+}
+
+.farmfarm_container .funding_info_left .stroymoregroup .grouptext {
+	width: 13.1501rem;
+	height: 2.2rem;
+	display: flex;
+	align-items: center;
+}
+
+.farmfarm_container .funding_info_left .stroymoregroup .grouptext .text
+	{
+	margin-right: 3.4715rem;
+	text-align: center;
+	font-size: 1.8067rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #64a246;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.farmfarm_container .funding_info_left .stroymoregroup .grouptext .fd_greencheck
+	{
+	margin-bottom: 0.2677rem;
+	width: 1.0787rem;
+	height: 0.5378rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+/*======================================================================*/
+.funding_info_right {
+	box-sizing: border-box;
+	padding: 10px;
+	margin-left: 5rem;
+	margin-right: 40rem;
+	margin-top: 10rem;
+}
+
+.funding_info_right .tit_wrap {
+	display: flex;
+	justify-content: space-between;
+}
+
+.funding_info_right .tit {
+	color: #2e2e2e;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 2rem;
+}
+
+.funding_info_right .funding_text {
+	display: flex;
+	color: #828282;
+	font-size: 12px;
+	font-weight: 600;
+	margin: 13px 0;
+}
+
+.funding_info_right .participation {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+}
+
+.funding_info_right .participation span {
+	color: #2e2e2e;
+}
+
+.funding_info_right .participation span:nth-of-type(1) {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.funding_info_right .participation span:nth-of-type(2) {
+	background-color: #b3d7a1;
+	padding: 3px 20px;
+	border: 1px solid #d0d0d0;
+	border-radius: 15px;
+	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+	font-size: 10px;
+	font-weight: bold;
+}
+
+.funding_info_right .auction_price {
+	margin: 13px 0 15px;
+	color: #2e2e2e;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.funding_info_right .detail_info .seller {
+	display: flex;
+	align-items: center;
+	margin-bottom: 15px;
+}
+
+.funding_info_right .detail_info .seller .img_wrap {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	margin-right: 10px;
+	overflow: hidden;
+	background-color: #ddd;
+	background-image: url("../assets/fd_farmer_pic.png");
+	background-size: 154% 100%;
+	background-position: -10.1625rem -0rem;
+}
+
+.funding_info_right .funding_detail>div {
+	display: flex;
+	margin-bottom: 15px;
+}
+
+.funding_info_right .funding_detail>div:last-child {
+	margin-bottom: 0;
+}
+
+.funding_info_right .funding_detail .detail_tit {
+	flex-basis: 120px;
+	margin-right: 20px;
+}
+
+.funding_info_right .insert_point {
+	position: relative;
+	padding: 0;
+	overflow: hidden;
+	margin-top: 13px;
+	margin-bottom: 25px;
+}
+
+.funding_info_right .insert_point input {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 5px 35px 5px 15px;
+	border: none;
+	box-sizing: border-box;
+	outline: none;
+	text-align: right;
+}
+
+.funding_info_right .insert_point span {
+	position: absolute;
+	top: 50%;
+	right: 15px;
+	font-weight: bold;
+	transform: translateY(-50%);
+}
+
+.funding_info_right .bookmark-layer {
+	display: flex;
+	gap: 10px;
+}
+
+/* .funding_info_right .bookmark-layer button {
+	border-radius: 5px;
+	cursor: pointer;
+} */
+.funding_info_right .bookmark-btn {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #a2a2a3;
+	text-align: center;
+	color: #a2a2a3;
+	font-size: 12px;
+	/* background-image: url("../assets/heart_empty.png"); */
+	background-position: center 5px;
+	background-repeat: no-repeat;
+	background-size: 23px 23px;
+	background-color: #fff;
+	border: 1px solid #a2a2a3;
+}
+
+.funding_info_right .btn_fund {
+	flex: 1;
+	color: #fff;
+	background-color: #B7B7B7;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: default;
+}
+
+/* .funding_info_right .btn_fund[disabled] {
+	cursor: default;
+}
+
+.btn_fund:hover:enabled {
+	background-color: #64A346;
+}
+ */
+.funding_info_right_bottom {
+	width: 42rem;
+}
+
+.farmfarm_container .funding_info_right .funding_info_right_bottom .input_group
+	{
+	margin-bottom: 1rem;
+	width: 100%;
+	height: 3.5526rem;
+	display: flex;
+	align-items: center;
+}
+
+.farmfarm_container .funding_info_right .funding_info_right_bottom .input_group .input_pct
+	{
+	margin-right: 2rem;
+	box-sizing: border-box;
+	width: 30%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	border: solid 0.0911rem #64a246;
+	background-color: #ffffff;
+	flex-shrink: 0;
+	height: 100%;
+}
+
+.farmfarm_container .funding_info_right .funding_info_right_bottom .input_group .input_pct .item-10-Dam
+	{
+	width: 100%;
+	/* margin-right: 1.4176rem; */
+	text-align:right;
+	padding-top:5px;
+	font-size: 1.8218rem;
+	font-weight: 400;
+	line-height: 1.2125;
+	color: #4e4c4c;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.farmfarm_container .funding_info_right .funding_info_right_bottom .input_group .input_pct .fd_greencheck
+	{
+	margin-bottom: 0.1731rem;
+	width: 1.0877rem;
+	height: 0.5423rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.farmfarm_container .funding_info_right .funding_info_right_bottom .input_group .Paydiv
+	{
+	box-sizing: border-box;
+	padding-top:10px;
+	width: 65.5%;
+	text-align:right;
+	height: 100%;
+	font-size: 1.8218rem;
+	font-weight: 700;
+	line-height: 1.2125;
+	color: #2d2d2d;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	border: solid 0.0911rem #64a246;
+	background-color: #ffffff;
+	flex-shrink: 0;
+}
+
+.bookmark-layer:hover {
+	cursor: pointer;
+}
+
+.bookmark-layer .bookmark-btn .img_heart_wrap {
+	width: 2rem;
+	margin-bottom: 5px;
+}
+
+.bookmark-layer .bookmark-btn .img_heart_wrap img {
+	display: block;
+	width: 100%;
+	margin: 10px 0px 0px 0px;
+}
+
+.point-show span{
+	font-size: 2rem;
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
+	margin: 1rem 0rem 1rem 31.5rem;
+	text-align: right;
+	font-weight: bolder;
+	color: #e0181880;
+	width:10.6rem;
+	display: none;
+}

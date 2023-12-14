@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.FundingDetail">
+	<select id="fundingListSelectAll"
+		resultType="Farm_and_productVO">
+		select * from farm_and_product where product_status =
+		'펀딩진행중'
+	</select>
+
+	<select id="fundingInfo2" parameterType="String"
+		resultType="Farm_and_productVO">
+		select * from farm_and_product where product_serial_num =
+		#{product_serial_num}
+	</select>
+
+	<select id="sumfunding" parameterType="map"
+		resultMap="fundingResultMap">
+		SELECT SUM(fh.user_funding_amout) AS sumfundingamount,
+		SUM(fh.user_funding_pct) AS sumfundingpct
+		FROM funding_history fh
+		LEFT
+		OUTER JOIN farm_and_product fp ON (fh.product_serial_num =
+		fp.product_serial_num)
+		WHERE fh.product_serial_num =
+		#{product_serial_num}
+	</select>
+
+	<resultMap id="fundingResultMap" type="map">
+		<result column="sumfundingamount" property="sumfundingamount"
+			javaType="int" />
+		<result column="sumfundingpct" property="sumfundingpct"
+			javaType="double" />
+	</resultMap>
+
+
+	<select id="fundingInfo" parameterType="String" resultType="map">
+		SELECT
+		fp.product_serial_num,
+		fp.product_name,
+		fp.product_kind,
+		fm.farmer_name,
+		fp.farm_introduction,
+		fp.farm_name,
+		fp.farm_address,
+		fp.farmer_phone,
+		fp.farm_square_footage,
+		fp.expected_planting_date,
+		fp.expected_harvest_date,
+		fp.funding_thumb_img_url,
+		fp.funding_product_img_url,
+		fri.target_total_amount,
+		DATEDIFF(fri.funding_deadline,CURDATE()) AS dueDay
+		FROM
+		farm_and_product fp
+		LEFT OUTER
+		JOIN
+		funding_reg_info fri ON
+		(fp.product_serial_num =
+		fri.product_serial_num)
+		LEFT OUTER JOIN
+		farmers
+		fm ON (fp.farmer_serial_num = fm.farmer_serial_num)
+		where
+		fp.product_serial_num = #{product_serial_num}
+		AND fp.product_status='펀딩진행중'
+	</select>
+
+	<select id="bookmarkCnt" parameterType="User_cartVO"
+		resultType="int">
+		select count(*)
+		from user_cart
+		where
+		product_serial_num=#{product_serial_num}
+	</select>
+
+	<select id="myBookmarkShow" parameterType="hashMap"
+		resultType="int">
+		select count(*)
+		from user_cart
+		where
+		product_serial_num=#{product_serial_num}
+		and
+		user_serial_num=#{user_serial_num}
+	</select>
+
+	<select id="pointCheck" parameterType="String" resultType="int">
+		select user_point
+		from users
+		where
+		user_serial_num = #{user_serial_num}
+	</select>
+
+	<select id="selectcnt" parameterType="map" resultType="int">
+		SELECT
+		COUNT(*)
+		FROM funding_history
+		WHERE
+		user_serial_num =
+		#{user_serial_num}
+		AND product_serial_num = #{product_serial_num}
+	</select>
+
+	<select id="fundingInfocnt" parameterType="String"
+		resultType="int">
+		SELECT COUNT(*) AS participant_cnt
+		FROM funding_history
+		WHERE
+		product_serial_num = #{product_serial_num}
+	</select>
+
+	<insert id="addMyCart" parameterType="User_cartVO">
+		insert into
+		user_cart(user_serial_num, product_serial_num)
+		values(#{user_serial_num}, #{product_serial_num})
+	</insert>
+
+	<delete id="deletecart" parameterType="User_cartVO">
+		delete from user_cart
+		where
+		user_serial_num = #{user_serial_num}
+		and
+		product_serial_num =
+		#{product_serial_num}
+	</delete>
+
+	<insert id="buyFunding" parameterType="map">
+		INSERT INTO
+		funding_history(product_serial_num,user_serial_num,user_funding_amout,user_funding_pct)
+		VALUES(#{product_serial_num},#{user_serial_num},#{payMoney},#{pay})
+	</insert>
+
+	<update id="updateFunding" parameterType="map">
+		UPDATE funding_history
+		SET
+		user_funding_amout = user_funding_amout + #{payMoney},
+		user_funding_pct = user_funding_pct + #{pay}
+		WHERE
+		user_serial_num =
+		#{user_serial_num}
+		AND product_serial_num = #{product_serial_num}
+	</update>
+
+</mapper>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.myPage">
+
+	<select id="myBookmarkShowList" parameterType="String"
+		resultType="String">
+		SELECT product_serial_num FROM user_cart WHERE
+		user_serial_num=#{user_serial_num}
+	</select>
+	
+	<insert id="addMyCart" parameterType="User_cartVO">
+		insert into user_cart(user_serial_num, product_serial_num)
+		values(#{user_serial_num}, #{product_serial_num})
+	</insert>
+	
+	<delete id="deletecart" parameterType="User_cartVO">
+		delete from user_cart
+		where 
+			user_serial_num = #{user_serial_num}
+		and 
+			product_serial_num = #{product_serial_num}
+	</delete>
+	
+	<select id="bookmarkCnt" parameterType="User_cartVO" resultType="int">
+		select count(*)
+		from user_cart
+		where 
+			product_serial_num=#{product_serial_num}
+	</select>
+	
+	<select id="myBookmarkShow" parameterType="hashMap" resultType="int">
+		select count(*)
+		from user_cart
+		where 
+			product_serial_num=#{product_serial_num}
+		and
+			user_serial_num=#{user_serial_num}
+	</select>
+	
+	<select id="pointCheck" parameterType="String" resultType="int">
+		select user_point
+		from users
+		where 
+			user_serial_num = #{user_serial_num}
+	</select>
+	
+	<select id="pointCheckForAuction" parameterType="hashMap" resultType="int">
+		select count(*) 
+		from users
+		where user_serial_num = #{user_serial_num}
+		and user_point >= #{user_point}
+	</select>
+	
+	<select id="myBookmarkShowByUser" parameterType="String" resultType="hashmap">
+		select product_serial_num
+		from user_cart
+		where 
+			user_serial_num = #{user_serial_num}
+	</select>
+	
+</mapper>
