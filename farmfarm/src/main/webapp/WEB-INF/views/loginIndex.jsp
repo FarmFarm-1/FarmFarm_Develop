@@ -22,5 +22,6 @@
 	<hr>
 	<button onclick="location.href='logout'">로그아웃</button>
 	<hr>
+	<button onclick= "location.href='myFarm'">마이팜 파머 테스트</button>
 </body>
 </html>

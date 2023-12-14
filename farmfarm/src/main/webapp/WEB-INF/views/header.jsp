@@ -67,6 +67,26 @@
 					menu_myFarm.style.color = '#2d2d2d';
 				}
 			});
+	
+	function selectMyFarm(){
+		var curUser = "${sessionScope.serial_num}";
+		
+		
+		if (curUser == "") {
+			//header_join_login 띄움
+			alert('로그인 해주세요.');
+		} else {
+			if (curUser.substring(0, 2) === "us") {
+				//header_user_login 띄움
+				location.href = '/myPageUser';
+
+			} else if (curUser.substring(0, 2) === "FA") {
+				//header_farmer_login 띄움
+				location.href = '/myPageFarmer';
+			}
+		}
+		
+	}
 </script>
 
 <body>
@@ -88,7 +108,7 @@
 							<a id="menu_auction" onclick="location.href='auction'">경매</a>
 						</div>
 						<div class="menu_myFarm">
-							<a id="menu_myFarm" onclick="location.href='myfarm'">마이팜</a>
+							<a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
 						</div>
 					</div>
 				</div>
