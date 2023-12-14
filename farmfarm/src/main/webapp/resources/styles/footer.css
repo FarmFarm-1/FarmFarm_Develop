@@ -2,6 +2,7 @@
 
 html {
 	font-size: 62.5%;
+	zoom: 0.67;
 }
 
 * {
@@ -17,13 +18,15 @@ input {
 	border: none;
 }
 .footer {
+	zoom: 1.25;
 	font-size: 10px;
 	box-sizing: border-box;
-	padding: 3.1rem 0;
+	justify-content: center;
+	padding: 3rem;
 	background: #f8f8f8;
 }
 .footer .footer_center {
-	width: 1440px;
+	width: 144rem;
 	margin: 0 auto;
 }
 .footer .line {
@@ -32,7 +35,7 @@ input {
 .footer .farm_noti {
 	display: flex;
 	justify-content: space-between;
-	padding: 0 17.5rem 2.5rem;
+	padding: 0rem 3rem 2rem;
 }
 .footer .farm_noti .logo {
 	color: 2e2e2e;
@@ -95,7 +98,7 @@ input {
     color: #868686;
 }
 .copyright {
-	padding: 2.4rem 17.5rem 0 17.5rem;
+	padding: 2rem 3rem 2rem;
 	color: #686868;
 	font-size: 13px;
 	line-height: 1.8rem;

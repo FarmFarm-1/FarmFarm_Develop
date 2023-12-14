@@ -36,6 +36,7 @@ public class MainController {
 		return "loginIndex";
 	}
 
+	/*아래는 헤더용 매핑입니다.*/
 	// 메인 페이지
 	@GetMapping("/main")
 	public String showMain(HttpSession session) {
@@ -56,14 +57,15 @@ public class MainController {
 		session.setAttribute("headerSelect", "auction");
 		return "/";
 	}
-
-	// 마이팜 페이지
-	@GetMapping("/myfarm")
-	public String showMyFarm(HttpSession session) {
+	
+	@GetMapping("/myPageFarmer")
+	public String showMyFarmFarmer(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
-		return "/";
+		session.removeAttribute("MyFarmer");
+		return "myPage/Farmer/menubar_farmer";
 	}
-
+	
+	
 	// 쪽지함 페이지
 	@GetMapping("/messageBox")
 	public String showMessageBox(HttpSession session) {
@@ -75,7 +77,13 @@ public class MainController {
 	@GetMapping("/makeProject")
 	public String showMakeProject(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
-		return "/";
+		session.setAttribute("MyFarmer", "makeProject");
+		return "myPage/Farmer/menubar_farmer";
+	}
+	
+	@GetMapping("/regPro")
+	public String regPro() {
+		return "myPage/Farmer/regProduct";
 	}
 
 	// 포인트 충전 페이지
