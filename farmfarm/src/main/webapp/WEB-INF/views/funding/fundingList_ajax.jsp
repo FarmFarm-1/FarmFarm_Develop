@@ -23,7 +23,7 @@
 
 <c:forEach items="${fundingList }" var="fundingItem" varStatus="status">
 
-	<div class="funding_item">
+	<div class="funding_item" onclick="location.href='${cpath}/funding/fundingDetail?product_serial_num=${fundingItem.product_serial_num}';">
 
 		<div class="img_wrap">
 
@@ -36,7 +36,7 @@
 		<%-- <img class="vector-n7f"
 			src="${cpath }/assets/vector-P4R.png" /> --%>
 		<div class="bookmark-layer"
-			onclick="func('${fundingItem.product_serial_num }', ${status.index })">
+			onclick="func(event,'${fundingItem.product_serial_num }', ${status.index })">
 			<div class="bookmark-btn">
 				<img id="heart-icon-${status.index}"
 					class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
@@ -131,7 +131,8 @@
 <script>
 	 
 
-	function func(product_serial_num, index) {
+	function func(event,product_serial_num, index) {
+		event.stopPropagation();
 		console.log(index);
 		console.log(serial_num);
 		console.log(product_serial_num);

@@ -13,9 +13,11 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
-
+		farm_and_product.funding_thumb_img_url
+		<!-- 
+		,ifnull(user_cart.user_serial_num,0) is_cart
+		 -->
+		 
 		FROM farm_and_product
 		LEFT
 		OUTER JOIN auction_history
@@ -45,9 +47,11 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.funding_thumb_img_url
+		<!-- ,
 		ifnull(user_cart.user_serial_num,0) is_cart
-
+		 -->
+		 
 		FROM farm_and_product
 		LEFT
 		OUTER JOIN auction_history
@@ -148,8 +152,12 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart,auction_reg_info.auction_deadline
+		farm_and_product.funding_thumb_img_url
+		<!-- 
+		,ifnull(user_cart.user_serial_num,0) is_cart
+		 -->
+		
+		,auction_reg_info.auction_deadline
 
 		FROM farm_and_product
 		LEFT OUTER JOIN auction_history
@@ -177,8 +185,9 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart,auction_reg_info.auction_deadline
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
+		,auction_reg_info.auction_deadline
 
 		FROM farm_and_product
 		LEFT OUTER JOIN auction_history
@@ -207,8 +216,9 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart,auction_reg_info.auction_deadline
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
+		,auction_reg_info.auction_deadline
 
 		FROM farm_and_product
 		LEFT OUTER JOIN auction_history
@@ -237,8 +247,9 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart,auction_reg_info.auction_deadline
+		farm_and_product.funding_thumb_img_url
+		<!--  ,ifnull(user_cart.user_serial_num,0) is_cart  -->
+		,auction_reg_info.auction_deadline
 
 		FROM farm_and_product
 		LEFT OUTER JOIN auction_history
@@ -270,8 +281,8 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
 
 		FROM farm_and_product
 		LEFT
@@ -302,8 +313,8 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
 
 		FROM farm_and_product
 		LEFT
@@ -334,8 +345,9 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
+		
 		FROM farm_and_product
 		LEFT
 		OUTER JOIN auction_history
@@ -367,8 +379,8 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
 
 		FROM farm_and_product
 		LEFT
@@ -390,6 +402,7 @@
 		ORDER BY
 		current_price DESC LIMIT 6
 	</select>
+	
 	<select id="auctionListSelectAll" resultType="map">
 		SELECT
 		farm_and_product.product_serial_num,
@@ -399,8 +412,8 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
-		ifnull(user_cart.user_serial_num,0) is_cart
+		farm_and_product.funding_thumb_img_url
+		<!-- ,ifnull(user_cart.user_serial_num,0) is_cart  -->
 
 		FROM farm_and_product
 		LEFT

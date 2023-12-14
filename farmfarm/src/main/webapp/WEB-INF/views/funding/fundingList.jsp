@@ -373,11 +373,8 @@
 		});
 		function clearSearch() {
 			document.getElementById('searchInput').value = '';
-			/* console.log(gtype); */
-			/* gtype = 'all'; */  /*type 선택 후 order 두 번 누를 시 전체 정렬되는 문제 때문에 지움*/
+			
 		}
-		
-		//엔터키로 검색
 		document.addEventListener('keydown', onEnter);
 
 		function onEnter() {
@@ -390,72 +387,5 @@
 		}
 		
 		
-		//cart
-		 /* $(document).ready(function() {
-			let serial_num = "${sessionScope.serial_num}";
-			let product_serial_num = "${fundingItem.product_serial_num}";
-			console.log(serial_num);
-			console.log(product_serial_num);
-		
-			$(".bookmark-layer").click(function() {
-				if(serial_num.substring(0,2) === "us"){
-					let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
-	                if (isHeartFilled) {
-	                    addToMyCart();
-	                    $("#heart-icon").attr("src", "/assets/heart_thub.png");
-	                } else {
-	                    deleteFromMyCart();
-	                    $("#heart-icon").attr("src", "/assets/heart_empty.png");
-	                }
-	                
-				} else {
-					alert("서포터 회원으로 로그인 하세요."); 
-				}
-			});
-			
-			
-			function reloadMyCart() {
-				$.ajax({
-		            url: "${cpath}/mypage/reloadCart",
-		            type: "post",
-		            data : {"product_serial_num" : product_serial_num},
-		            success: function(res) {
-		            	$("#heart-num").text(res);
-		            }
-		        });
-			}
-			
-			function addToMyCart() {
-				$.ajax({
-		            url: "${cpath}/mypage/addcart",
-		            type: "post",
-		            data: {
-		                "product_serial_num" : product_serial_num,
-		                "user_serial_num" : serial_num
-		            },
-		            success: function(res) {
-		            	reloadMyCart();
-		            }
-		        });
-			}
-			
-			function deleteFromMyCart() {
-				$.ajax({
-		            url: "${cpath}/mypage/deletecart",
-		            type: "POST",
-		            data: {
-		                "product_serial_num" : product_serial_num,
-		                "user_serial_num" : serial_num
-		            },
-		            success: function(res) {
-		            	reloadMyCart();
-		            }
-		        });
-			}
-			
-		})  */
-		
 	</script>
 </body>
-
-</html>

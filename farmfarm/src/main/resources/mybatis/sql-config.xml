@@ -3,6 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- DELETE TEST -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	
 	<typeAliases>
 		<typeAlias type="com.farmfarm.dto.UsersVO" alias="UsersVO" />
 		<typeAlias type="com.farmfarm.dto.FarmersVO" alias="FarmersVO" />
@@ -10,5 +16,8 @@
 		<typeAlias type="com.farmfarm.dto.Auction_historyVO" alias="Auction_historyVO" />
 		<typeAlias type="com.farmfarm.dto.User_cartVO" alias="User_cartVO" />
 		<typeAlias type="com.farmfarm.dto.Crops_quoteVO" alias="Crops_quoteVO" />
+		<typeAlias type="com.farmfarm.dto.Funding_historyVO" alias="Funding_historyVO" />
+		<typeAlias type="com.farmfarm.dto.Funding_reg_infoVO" alias="Funding_reg_infoVO" />
+
 	</typeAliases>
 </configuration>

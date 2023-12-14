@@ -26,7 +26,7 @@ public class UserLoginController {
 	
 	@GetMapping("/userLogout")
 	public String userLogout(HttpSession session, RedirectAttributes rttr) {
-		session.invalidate();
+		session.removeAttribute("serial_num");
 		rttr.addFlashAttribute("message", "user 로그아웃 성공");
 		return "redirect:/";
 	}

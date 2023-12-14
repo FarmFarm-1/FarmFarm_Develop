@@ -49,11 +49,4 @@ public class FarmerLoginController {
 		return "redirect:/";
 		
 	}
-	
-	
-	@GetMapping("/getAllFarmers")
-	public List<FarmersVO> getAllFarmers() {
-		
-		return service.getAllFarmers();
-	}
 }

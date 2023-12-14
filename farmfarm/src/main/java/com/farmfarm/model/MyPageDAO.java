@@ -40,4 +40,8 @@ public class MyPageDAO {
 	public List<String> myBookmarkShowList(String user_serial_num) {
 		return sqlSession.selectList(namespace_myPage+"myBookmarkShowList",user_serial_num);
 	}
+
+	public List<String> myBookmarkShowByUser(String user_serial_num) {
+		return sqlSession.selectList(namespace_myPage+"myBookmarkShowByUser",user_serial_num);
+	}
 }

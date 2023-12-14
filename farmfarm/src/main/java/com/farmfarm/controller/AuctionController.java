@@ -83,77 +83,139 @@ public class AuctionController {
 	
 	//jw code
 	@GetMapping("/auctionList")
-	public String showauctionList(Model model) {
+	public String showauctionList(Model model, HttpSession session) {
 		String type = null;
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectAll(type);
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList";
 	}
 	
 	@GetMapping("/auctionListByType")
-	public String auctionListByType(String type, Model model) {
+	public String auctionListByType(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectByType(type);
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	@GetMapping("/auctionMain")
-	public String showAuctionMain(Model model) {
+	public String showAuctionMain(Model model, HttpSession session) {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>)auctionService.auctionListSelectHot();
 		model.addAttribute("auctionListHot", auctionList);
+		
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionMain";
 	}
 	
 	@GetMapping("/orderAll")
-	public String showFilter1(String type, Model model) {
+	public String showFilter1(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectAll(type);
 		model.addAttribute("auctionList", auctionList);
-		System.out.println(model);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	 
 	@GetMapping("/orderSupport")
-	public String showFilter2(String type, Model model) {
+	public String showFilter2(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectSupport(type);
 		
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	@GetMapping("/orderClosing")
-	public String showFilter3(String type, Model model) {
+	public String showFilter3(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectClosing(type);
 		
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	@GetMapping("/orderAmount")
-	public String showFilter4(String type, Model model) {
+	public String showFilter4(String type, Model model, HttpSession session) {
 		
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectAmount(type);
 		
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	@GetMapping("/orderRecent")
-	public String showFilter5(String type, Model model) {
+	public String showFilter5(String type, Model model, HttpSession session) {
 		
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionListSelectRecent(type);
 		
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 	
 	@GetMapping("/auctionSearch")
-	public String auctionSearch(String input, Model model) {
+	public String auctionSearch(String input, Model model, HttpSession session) {
 		
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>) auctionService.auctionSearch(input);
 		
-		System.out.println(auctionList);
 		model.addAttribute("auctionList", auctionList);
+		String user_serial_num = (String)session.getAttribute("serial_num");
+		if(user_serial_num != null) {
+			if(user_serial_num.substring(0,2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser",myBookmarkShowByUser);
+			}
+		}
 		return "auction/auctionList_ajax";
 	}
 

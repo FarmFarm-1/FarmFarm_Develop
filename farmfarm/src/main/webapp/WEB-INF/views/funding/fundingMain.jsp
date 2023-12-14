@@ -45,10 +45,9 @@
 			<div class="group-156-QXX">
 
 				<div>
-					<div class="auto-group-r77t-U1b">
+					<div class="auto-group-r77t-U1b" onclick="location.href='${cpath}/funding/fundingList';">
 						<p class="item--zkd">펀딩 라인업</p>
-						<button class="button_list"
-							onclick="location.href='${cpath}/funding/fundingList';">
+						<button class="button_list">
 							<img class="mingcute-right-line-6of"
 								src="${cpath }/assets/greater_than.png" />
 						</button>

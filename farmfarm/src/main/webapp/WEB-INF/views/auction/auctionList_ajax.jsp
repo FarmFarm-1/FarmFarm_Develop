@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${cpath}/styles/fundingMain.css" />
@@ -12,11 +13,16 @@
 		<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가 종료되었습니다</div>
 	</div>
 	<div class="bookmark-layer"
-		onclick="func('${auctionItem.product_serial_num }', ${status.index })">
+		onclick="func(event,'${auctionItem.product_serial_num }', ${status.index })">
 		<div class="bookmark-btn">
-			<img id="heart-icon-${status.index}"
-				class="${auctionItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-				src="${auctionItem.is_cart eq '0' ?'/assets/heart_white_empty.png':'/assets/heart_thub.png' }" />
+			<c:choose>
+				<c:when test="${fn:contains(myBookmarkShowByUser, auctionItem.product_serial_num)}">
+					<img id="heart-icon-${status.index}" class="heart-icon filled" src="/assets/heart_thub.png" />
+				</c:when>
+				<c:otherwise>
+					<img id="heart-icon-${status.index}" class="heart-icon" src="${cpath}/assets/heart_white_empty.png" />
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<div class="group-86-zpV">
@@ -81,10 +87,8 @@
 <script>
 	 
 
-	function func(product_serial_num, index) {
-		console.log(index);
-		console.log(serial_num);
-		console.log(product_serial_num);
+	function func(event, product_serial_num, index) {
+		event.stopPropagation();
 
 		if (serial_num.substring(0, 2) === "us") {
 			let heartIcon = $("#heart-icon-" + index);
@@ -101,9 +105,10 @@
 
 		} else {
 			alert("서포터 회원으로 로그인 하세요.");
+			
 		}
 	}
-
+	<%-- 
 	function reloadMyCart(product_serial_num) {
 		$.ajax({
 			url : "${cpath}/mypage/reloadCart",
@@ -115,7 +120,7 @@
 				$("#heart-num").text(res);
 			}
 		});
-	}
+	}--%>
 
 	function addToMyCart(product_serial_num) {
 		$.ajax({
@@ -126,7 +131,7 @@
 				"user_serial_num" : serial_num
 			},
 			success : function(res) {
-				reloadMyCart(product_serial_num);
+				<%--reloadMyCart(product_serial_num); --%>
 			}
 		});
 	}
@@ -140,7 +145,7 @@
 				"user_serial_num" : serial_num
 			},
 			success : function(res) {
-				reloadMyCart(product_serial_num);
+				<%--reloadMyCart(product_serial_num); --%>
 			}
 		});
 	}

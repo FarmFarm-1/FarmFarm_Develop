@@ -23,6 +23,4 @@ public class ChartDAO {
 	public int cropsPriceAvg(String crops_kind) {
 		return sqlSession.selectOne(namespace+"cropsPriceAvg",crops_kind);
 	}
-	
-	
 }

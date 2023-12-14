@@ -46,4 +46,18 @@
 			user_serial_num = #{user_serial_num}
 	</select>
 	
+	<select id="pointCheckForAuction" parameterType="hashMap" resultType="int">
+		select count(*) 
+		from users
+		where user_serial_num = #{user_serial_num}
+		and user_point >= #{user_point}
+	</select>
+	
+	<select id="myBookmarkShowByUser" parameterType="String" resultType="hashmap">
+		select product_serial_num
+		from user_cart
+		where 
+			user_serial_num = #{user_serial_num}
+	</select>
+	
 </mapper>

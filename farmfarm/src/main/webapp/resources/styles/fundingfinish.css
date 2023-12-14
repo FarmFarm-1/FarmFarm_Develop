@@ -1,0 +1,65 @@
+.mainpage {
+	padding: 1.8rem 0rem 21.5rem 0rem;
+}
+
+.mainpage .fundingfinishtext {
+	margin: 5rem 0 2.5rem 0rem;
+	text-align: center;
+	font-size: 4.1721rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.4172rem;
+	color: #3d3d3d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+	justify-content: center;
+	position: relative;
+	align-items: center;
+}
+
+.mainpage .grayback {
+	width: 780px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+	background-color: #f7f7f7;
+	border-radius: 1.5171rem;
+	padding: 6rem;
+	display: flex; /* flex 레이아웃 적용 */
+	align-items: center; /* 수직 중앙 정렬 */
+	justify-content: center; /* 수평 중앙 정렬 */
+}
+
+.whiteback {
+	background-color: #fff;
+	padding: 12rem;
+}
+.whiteback div{
+	margin-bottom: 2rem;
+}
+
+.content_group {
+	font-family: "Abhaya Libre ExtraBold", "Source Sans Pro";
+	text-align: center;
+}
+
+.content_group .text_tit {
+	color:#3E3E3E;
+	font-size: 30px;
+	font-weight: 800;
+}
+
+.content_group .text_content {
+	font-size: 27px;
+	color: #A2A2A3;
+	font-weight: 400;
+}
+
+.imgclass img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:200px;
+    
+}

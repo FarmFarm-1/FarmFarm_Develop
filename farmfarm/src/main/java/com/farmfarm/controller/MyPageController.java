@@ -44,7 +44,7 @@ public class MyPageController {
 	}
 	@ResponseBody
 	@PostMapping("/pointCheck")
-	public String beforeAuctionCfrm(int inputNum, HttpSession session) {
+	public String beforePurchaseProcessCfrm(int inputNum, HttpSession session) {
 		String user_serial_num = (String) session.getAttribute("serial_num");
 		int user_point = myPageService.pointCheck(user_serial_num);
 		if(user_point >= inputNum) {

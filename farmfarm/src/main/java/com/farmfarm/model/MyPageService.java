@@ -42,4 +42,10 @@ public class MyPageService {
 		return myPageDAO.myBookmarkShowList(user_serial_num);
 	}
 
+	public List<String> myBookmarkShowByUser(String user_serial_num) {
+		return myPageDAO.myBookmarkShowByUser(user_serial_num);
+	}
+	
+	
+
 }

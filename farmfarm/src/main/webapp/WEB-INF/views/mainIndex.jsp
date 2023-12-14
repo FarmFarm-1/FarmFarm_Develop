@@ -58,10 +58,6 @@
 			type="submit" value="유저 로그인">
 	</form>
 
-	<hr>
-	<button onclick="getAllUsers()">user 테이블을 로그로 보기</button>
-	<button onclick="getAllFarmers()">farmer 테이블을 로그로 보기</button>
-	<hr>
 	<button onclick="location.href='${cpath}/funding/fundingMain';">펀딩리스트</button>
 	<button onclick="location.href='${cpath}/auction/auctionMain';">옥션리스트</button>
 	<button onclick="location.href='${cpath}/mypage/fundingList';">마이페이지 회원</button>
@@ -70,28 +66,6 @@
 		let message = "${message}";
 		if (message != "") {
 			alert(message);
-		}
-		function getAllUsers() {
-			$.ajax({
-				url: '${cpath}/user/getAllUsers',
-				type: 'GET',
-				success: function(response) {
-				},
-				error : function(error) {
-					console.log(error);
-				}
-			});
-		}
-		function getAllFarmers() {
-			$.ajax({
-				url: '${cpath}/farmer/getAllFarmers',
-				type: 'GET',
-				success: function(response) {
-				},
-				error : function(error) {
-					console.log(error);
-				}
-			});
 		}
 	</script>
 </body>

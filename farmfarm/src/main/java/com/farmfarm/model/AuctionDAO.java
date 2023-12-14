@@ -22,7 +22,7 @@ public class AuctionDAO {
 	
 	String namespace_auction = "com.farmfarm.Auction.";
 	String namespace_cropsQuote = "com.farmfarm.Crops_quoteVO.";
-	String namespace_user = "com.farmfarm.UsersVO.";
+	String namespace_myPage = "com.farmfarm.myPage.";
 	
 	//hs code
 	public Map<String, Object> auctionInfo(String product_serial_num) {
@@ -48,7 +48,7 @@ public class AuctionDAO {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("user_serial_num", auction_historyVO.getUser_serial_num());
 		map.put("user_point", auction_historyVO.getUser_price());
-		int pointEnoughChk = sqlSession.selectOne(namespace_user+"pointCheck", map);
+		int pointEnoughChk = sqlSession.selectOne(namespace_myPage+"pointCheckForAuction", map);
 		if (pointEnoughChk != 1) {
 			throw new AuctionException("notEnoughPoint");
 		}

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.Auction_historyVO;
 import com.farmfarm.dto.Crops_quoteVO;
-import com.farmfarm.dto.Farm_and_productVO;
 
 @Service
 public class AuctionService {

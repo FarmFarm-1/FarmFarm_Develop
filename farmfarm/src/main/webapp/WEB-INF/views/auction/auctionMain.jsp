@@ -2,9 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
@@ -45,10 +44,9 @@
 		<div class="body">
 			<div class="group-156-QXX">
 				<div>
-					<div class="auto-group-r77t-U1b">
+					<div class="auto-group-r77t-U1b" onclick="location.href='${cpath}/auction/auctionList';">
 						<p class="item--zkd">경매 라인업</p>
-						<button class="button_list"
-							onclick="location.href='${cpath}/auction/auctionList';">
+						<button class="button_list">
 							<img class="mingcute-right-line-6of"
 								src="${cpath }/assets/greater_than.png" />
 						</button>
@@ -62,17 +60,25 @@
 						
 						<div class="funding_item">
 							<div class="img_wrap">
-								<img class="corn-36630861280-1-daD"
-									src="${cpath }/assets/tomatoes-55667411280.png" />
-								<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가
-									종료되었습니다</div>
+								<img class="corn-36630861280-1-daD" src="${cpath}/assets/tomatoes-55667411280.png" />
+								<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가 종료되었습니다</div>
 							</div>
 							<div class="bookmark-layer"
 								onclick="func('${auctionItem.product_serial_num }', ${status.index })">
 								<div class="bookmark-btn">
+									<c:choose>
+										<c:when test="${fn:contains(myBookmarkShowByUser, auctionItem.product_serial_num)}">
+											<img id="heart-icon-${status.index}" class="heart-icon filled" src="/assets/heart_thub.png" />
+										</c:when>
+										<c:otherwise>
+											<img id="heart-icon-${status.index}" class="heart-icon" src="${cpath}/assets/heart_white_empty.png" />
+										</c:otherwise>
+									</c:choose>
+									<%-- 
 									<img id="heart-icon-${status.index}"
-										class="${auctionItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${auctionItem.is_cart eq '0' ?'/assets/heart_white_empty.png':'/assets/heart_thub.png' }" />
+										class="${auctionItem.is_cart eq sessionScope.serial_num ? 'heart-icon filled':'heart-icon' }"
+										src="${auctionItem.is_cart eq sessionScope.serial_num ?'/assets/heart_thub.png':'/assets/heart_white_empty.png' }" />
+									--%>	
 								</div>
 							</div>
 							<div class="group-86-zpV">
@@ -131,7 +137,6 @@
 				</div>
 			</div>
 		</div>
-		<%@include file="../common/footer.jsp"%>
 	</div>
 </body>
 <script>
