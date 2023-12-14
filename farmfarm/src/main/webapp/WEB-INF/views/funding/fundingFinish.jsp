@@ -18,31 +18,27 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Abhaya+Libre+ExtraBold%3A800" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/styles/fundingfinish.css" />
+	href="${pageContext.request.contextPath }/styles/fundingfinish.css" />
 </head>
 <body>
 	<%@include file="../headerfooter/header.jsp"%>
 	<div class="mainpage">
-		<!-- <div class="material-symbols-bookmark-outline-Fwb"></div> -->
-		<div class="img_text_group">
-			<div class="greyback">
-				<p class="text">펀딩완료</p>
-				<div class="auto-group-dqfs-68D">
-					<div class="group-123-d89">
-						<img
-							class="${pageContext.request.contextPath }/resources/assets/fd_white.png" />
+		<div class="fundingfinishtext">펀딩완료</div>
+		<!-- grayback -->
+		<div class="grayback">
+			<div class="whiteback">
+				<div class="imgclass">
+					<img src="${pageContext.request.contextPath }/assets/handfund.png" />
+				</div>
+				<div class="content_group">
+					<div class="text_tit">
+						펀딩이 정상적으로<br />완료되었습니다!
 					</div>
-					<div class="group-124-Ds3">
-						<p class="item--JNh">
-							펀딩이 정상적으로 <br /> 완료되었습니다!
-						</p>
-						<p class="item--Jn1">팜팜을 이용해주셔서 감사합니다.</p>
-					</div>
-					<img
-						class="${pageContext.request.contextPath }/resources/assets/handfund.png" />
+					<div class="text_content">팜팜을 이용해주셔서 감사합니다.</div>
 				</div>
 			</div>
 		</div>
+		<!-- //grayback -->
 	</div>
 	<%@include file="../headerfooter/footer.jsp"%>
 </body>

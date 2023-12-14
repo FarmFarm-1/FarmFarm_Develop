@@ -1,110 +1,276 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="UTF-8" />
-<link rel="icon" href="/favicon.ico" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#000000" />
-<title>mainpage/펀딩/구매 전 확인/버튼비활성</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundingList</title>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />
+	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Pretendard%3A400%2C700%2C800" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Abhaya+Libre+ExtraBold%3A800" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Inter%3A500%2C700%2C800" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/styles/fundingdetail.css" />
+<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-
 	<%@include file="../headerfooter/header.jsp"%>
-	<div class="body">
-		<div class="mainpage--869">
-			<div class="auto-group-wh8h-Ezy">
-				<p class="item--61b">펀딩하기</p>
-				<div class="auto-group-u5ho-Y8V">
-					<img class="fd_white"
-						src="${pageContext.request.contextPath }/resources/assets/fd_white.png" />
-					<div class="group-118-A9s">
-						<p class="item--HEV">주문 정보</p>
-						<div class="line-25-y7K"></div>
-						<div class="group-101-FsT">
-							<p class="item--o8H">상품명</p>
-							<p class="item--K6d">${fundingInfo.product_name}</p>
-						</div>
-						<div class="group-110-Hth">
-							<p class="item--25b">농장명</p>
-							<p class="item--wyF">${fundingInfo.farm_name}</p>
-						</div>
-						<div class="group-111-gA9">
-							<p class="item--DQy">농작물 이름</p>
-							<p class="item--KD7">${fundingInfo.product_kind }</p>
-						</div>
-						<p class="item--EUV">결제 포인트</p>
-						<div class="line-25-XyP"></div>
-						<div class="group-101-UNq">
-							<p class="item--DLR">목표 펀딩 금액</p>
-							<p class="item-10000--Xc1">
-								<fmt:formatNumber value="${fundingInfo.target_total_amount}"
-									pattern="#,###" />
-								포인트
-							</p>
-						</div>
-						<div class="group-101-dQ9">
-							<p class="item--kzZ">내 펀딩 비율</p>
-							<p class="item-1-sJV">${pay}</p>
-						</div>
-						<c:set var="totalAmount"
-							value="${fundingInfo.target_total_amount/100 * pay}" />
-						<div class="group-101-zP7">
-							<p class="item--8VK">최종 가격</p>
-							<p class="item-10000--rw7">
-								<fmt:formatNumber value="${totalAmount}"
-									pattern="#,###" />
-								포인트
-							</p>
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+	<div class="farmfarm_container">
+		<div class="funding_detail"></div>
+		<div class="funding_info_right">
+			<div class="tit_wrap">
+				<div class="tit">${fundingInfo.product_name }</div>
+			</div>
+			<p class="funding_text">${fundingInfo.farm_introduction}</p>
+			<div class="participation">
+				<span>577명 참여</span> <span>D - 14</span>
+			</div>
+			<div class="auction_price">
+				총 모금액
+				<fmt:formatNumber value="${fundingInfo.target_total_amount}"
+					pattern="#,###" />
+				원
+			</div>
+			<div class="detail_info border_green">
+				<div class="seller">
+					<div class="img_wrap"></div>
+					${fundingInfo.farmer_name } <span class="chat_open"></span>
+				</div>
+				<div class="funding_detail">
+					<div>
+						<div class="detail_tit">농장명</div>
+						<div class="content">${fundingInfo.farm_name }</div>
+					</div>
+					<div>
+						<div class="detail_tit">농장 주소</div>
+						<div class="content">${fundingInfo.farm_address }</div>
+					</div>
+					<div>
+						<div class="detail_tit">농장 면적</div>
+						<div class="content">
+							<fmt:formatNumber value="${fundingInfo.farm_square_footage}"
+								pattern="#,###" />
+							평
 						</div>
 					</div>
-					<div class="checkbox-pmT">
-						<div class="auto-group-h2nh-jNd">
-							<input type="checkbox" id="checkbox1" class="checkbox1">
-							<label for="checkbox1" class="item--wjb">주문 내용을 확인했으며, 펀딩
-								하는 것에 동의합니다.</label>
-						</div>
-						<div class="line-54-rrZ"></div>
-						<div class="auto-group-ziz3-cKw"></div>
+					<div>
+						<div class="detail_tit">농작물 이름</div>
+						<div class="content">${fundingInfo.product_kind }</div>
 					</div>
-					<button id="payButton" class="group-120-aMK"
-						onclick="location.href='${cpath}/funding/fundingFinish';">${fundingInfo.funding_amount}
-						포인트 결제하기</button>
+					<div>
+						<div class="detail_tit">재배 예정일</div>
+						<div class="content">${fundingInfo.expected_planting_date }</div>
+					</div>
+					<div>
+						<div class="detail_tit">수확 예정일</div>
+						<div class="content">${fundingInfo.expected_harvest_date }</div>
+					</div>
+					<div>
+						<div class="detail_tit">파머 연락처</div>
+						<div class="content">${fundingInfo.farmer_phone }</div>
+					</div>
+				</div>
+			</div>
+			<div class="funding_info_right_bottom">
+				<div class="tit">펀딩할 포인트 선택</div>
+				<div class="input_group">
+					<div class="input_pct">
+						<form id="payForm" action="${cpath}/funding/fundingBuy"
+							method="post">
+							<input list="paylist" type="number" name="pay" id="pay"
+								class="item-10-Dam" max="${sumfundingpct}"> <input
+								type="hidden" id="product_serial_num" name="product_serial_num"
+								value="${fundingInfo.product_serial_num}"> <input
+								type="hidden" id="payMoney" name="payMoney" value="${result}">
+						</form>
+						<datalist id="paylist"></datalist>
+					</div>
+					<div class="Paydiv" id="Paydiv"></div>
+				</div>
+				<div class="point-show">
+					<span id="point">포인트 부족</span>
+				</div>
+				<div class="bookmark-layer">
+					<div class="bookmark-btn">
+						<c:set value="${myBookmarkShow}" var="myBookmark" />
+						<c:choose>
+							<c:when test="${myBookmark == 1}">
+								<div class="img_heart_wrap">
+									<img id="heart-icon" class="heart-icon_filled"
+										src="${cpath}/assets/heart_fill.png" />
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="img_heart_wrap">
+									<img id="heart-icon" class="heart-icon"
+										src="${cpath}/assets/heart_empty.png" />
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<p id="heart-num" class="heart-num">${bookmarkCnt}</p>
+					</div>
+					<button class="btn_fund" id="btn_fund" onclick="submitForm()">펀딩하기</button>
+				</div>
+			</div>
+		</div>
+		<div class="funding_info_left">
+			<img class="fd_introducepic"
+				src="${cpath}/assets/fd_introducepic.png"></img>
+			<div class="funding_info_left_bottom">
+				<p class="project_story">프로젝트 스토리</p>
+				<img class="fd_prostorypic"
+					src="${cpath}/assets/fd_introducepic.png"></img> <img
+					class="fd_prostorypic" src="${cpath}/assets/fd_introducepic.png"
+					style="display: none;"></img> <img class="fd_prostorypic"
+					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
+				<img class="fd_prostorypic"
+					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
+				<img class="fd_prostorypic"
+					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
+				<img class="fd_prostorypic"
+					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
+				<div class="stroymoregroup" onclick="showMore()">
+					<div class="grouptext">
+						<p class="text">스토리 더보기</p>
+						<img class="fd_greencheck" src="${cpath}/assets/fd_greencheck.png" />
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<script>
-		const checkboxCheckbox1 = document.getElementById("checkbox1");
-		const payButton = document.getElementById("payButton");
-		payButton.disabled = true;
+		function showMore() {
+			$(".fd_prostorypic:not(:first)").toggle();
+		}
+		let serial_num = "${sessionScope.serial_num}";
+		let product_serial_num = "${fundingInfo.product_serial_num}";
 
-		checkboxCheckbox1.addEventListener('change', updatePayButtonState);
+		const start = 0.01;
+		const end = 100 - "${sumfundingpct}";
+		const datalist = document.getElementById("paylist");
+		const payInput = document.getElementById("pay");
+		const payDiv = document.getElementById("Paydiv");
+		const payMoney = "${fundingInfo.target_total_amount}";
+		const sumfundingpct = "${sumfundingpct}";
+		var result = 0;
 
-		function updatePayButtonState() {
-			payButton.style.backgroundColor = checkboxCheckbox1.checked ? '#64A346'
-					: '#b7b7b7';
-			payButton.style.cursor = checkboxCheckbox1.checked ? 'pointer'
-					: 'default';
-			payButton.disabled = checkboxCheckbox1.checked ? false : true;
+		for (let value = start; value <= end; value += 0.01) {
+			const roundedValue = parseFloat(value.toFixed(2));
+			const option = document.createElement("option");
+			option.value = roundedValue;
+			datalist.appendChild(option);
+		}
+		payInput.addEventListener("input", function() {
+			if (serial_num.substring(0, 2) === "us") {
+				let inputValue = parseFloat(payInput.value);
+				if (inputValue > end) {
+					alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
+					payInput.value = end;
+				} else if (payInput.value
+						&& inputValue.toFixed(2) != inputValue) {
+					alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+					payInput.value = inputValue.toFixed(2);
+				}
+				updatePayDiv();
+			} else {
+				showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
+			}
+		});
+
+		function updatePayDiv() {
+			var user_point = "${user_point}";
+			const selectedValue = parseFloat(payInput.value) || 0;
+			result = Math.floor(selectedValue * (payMoney / 100));
+			const formattedResult = new Intl.NumberFormat('ko-KR')
+					.format(result);
+			const point = document.querySelector("#point");
+			const fundingbtn = document.getElementById("btn_fund");
+
+			if (user_point >= result) {
+				point.style.display = 'none';
+				fundingbtn.disabled = false;
+				fundingbtn.style.backgroundColor = '#64A346';
+				fundingbtn.style.cursor = 'pointer';
+			} else {
+				point.style.display = 'flex';
+				fundingbtn.disabled = true;
+				fundingbtn.style.backgroundColor = '#b7b7b7';
+				fundingbtn.style.cursor = 'default';
+			}
+			payDiv.innerHTML = formattedResult + "포인트";
+			$("#payMoney").val(result);
+		}
+
+		function submitForm() {
+			var form = document.getElementById("payForm");
+			form.submit();
+		}
+		//================================================================================================
+		$(".bookmark-btn").click(
+				function() {
+					console.log(serial_num);
+					if (serial_num.substring(0, 2) === "us") {
+						let isHeartFilled = $("#heart-icon").toggleClass(
+								"filled").hasClass("filled");
+						if (isHeartFilled) {
+							addToMyCart();
+							$("#heart-icon").attr("src",
+									"${cpath}/assets/heart_fill.png");
+						} else {
+							deleteFromMyCart();
+							$("#heart-icon").attr("src",
+									"${cpath}/assets/heart_empty.png");
+						}
+					} else {
+						showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
+					}
+				});
+
+		function addToMyCart() {
+			$.ajax({
+				url : "${cpath}/mypage/addcart",
+				type : "post",
+				data : {
+					"product_serial_num" : product_serial_num,
+					"user_serial_num" : serial_num
+				},
+				success : function(res) {
+					reloadMyCart();
+				}
+			});
+		}
+
+		function deleteFromMyCart() {
+			$.ajax({
+				url : "${cpath}/mypage/deletecart",
+				type : "POST",
+				data : {
+					"product_serial_num" : product_serial_num,
+					"user_serial_num" : serial_num
+				},
+				success : function(res) {
+					reloadMyCart();
+				}
+			});
+		}
+
+		function reloadMyCart() {
+			$.ajax({
+				url : "${cpath}/mypage/reloadCart",
+				type : "post",
+				data : {
+					"product_serial_num" : product_serial_num
+				},
+				success : function(res) {
+					$("#heart-num").text(res);
+				}
+			});
 		}
 	</script>
 	<%@include file="../headerfooter/footer.jsp"%>
 </body>
+</html>

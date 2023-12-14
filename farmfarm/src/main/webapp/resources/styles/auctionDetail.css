@@ -16,28 +16,6 @@
 	font-style: normal;
 }
 
-:root { -
-	-main-color: #D4ECC0; -
-	-farm-green: #64A346;
-}
-
-html {
-	font-size: 62.5%;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-ul, li {
-	list-style: none;
-}
-
-body {
-	width: 144rem;
-}
-
 .main-div {
 	width: 100%;
 	overflow: hidden;

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.farmfarm.dto.FarmersVO;
 import com.farmfarm.dto.UsersVO;
 import com.farmfarm.model.UserService;
 
@@ -27,7 +26,7 @@ public class UserLoginController {
 	
 	@GetMapping("/userLogout")
 	public String userLogout(HttpSession session, RedirectAttributes rttr) {
-		session.removeAttribute("user_serial_num");
+		session.invalidate();
 		rttr.addFlashAttribute("message", "user 로그아웃 성공");
 		return "redirect:/";
 	}
@@ -37,7 +36,7 @@ public class UserLoginController {
 	public String loginUserTest(UsersVO vo, HttpSession session, RedirectAttributes rttr) {
 		UsersVO result = service.loginUser(vo);
 		if (result != null) {
-			session.setAttribute("user_serial_num", result.getUser_serial_num());
+			session.setAttribute("serial_num", result.getUser_serial_num());
 			rttr.addFlashAttribute("message", "user 로그인 성공");
 		} else {
 			rttr.addFlashAttribute("message", "user 로그인 실패");

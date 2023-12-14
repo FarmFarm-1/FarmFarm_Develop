@@ -1,186 +1,205 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
-<html>
 <head>
-<meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="theme-color" content="#000000" />
-<title>mainpage/경매/상세 조회</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C600%2C700%2C800" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C600%2C700%2C800" />
-<link rel="stylesheet" href="/styles/auctionDetail.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="/js/auctionDetail.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#bookmark-layer").click(function() {
-	        $.ajax({
-	            url: '/mypage/addcart',
-	            type: 'POST',
-	            contentType: 'application/json',
-	            data: JSON.stringify({
-	                product_serial_num: 'your-product-serial-num',
-	                user_serial_num: 'your-user-serial-num'
-	            }),
-	            success: function() {
-	                let isHeartFilled = $('#heart-icon').toggleClass('filled').hasClass('filled');
-	                if (isHeartFilled) {
-	                    $('#heart-icon').attr('src', "/assets/filledhearticon.png");
-	                } else {
-	                    $('#heart-icon').attr('src', "/assets/hearticon.png");
-	                }
-	            }
-	        });
-	    });
-	    
-	    $('#auction-confirm-btn').click(function() {
-	    	let input_price = $('#auction-price-input').val();
-	    	let user_price = user_price.replace(/,/g, '');
-	        $.ajax({
-	            url: '/your-endpoint-url', // Replace with your endpoint URL
-	            type: 'POST',
-	            contentType: 'application/json',
-	            data: JSON.stringify({
-	            	user_price : user_price,
-	                product_serial_num: 'your-product-serial-num', // Replace with your product serial number
-	                user_serial_num: 'your-user-serial-num' // Replace with your user serial number
-	            }),
-	            success: function() {
-	                alert('입찰이 성공적으로 이루어졌습니다.');
-	            },
-	            error: function() {
-	                alert('입찰에 실패했습니다. 다시 시도해주세요.');
-	            }
-	        });
-	    });
-	    $('#auction-price-input').on('input', function(e) {
-	    	let input = e.target.value; 
-	        if(input.length > 0) {
-	        	let num = input.replace(/,/g, ''); // 콤마 제거
-	        	if (!$.isNumeric(num)) {
-	                alert('숫자만 입력해주세요.');
-	                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
-	            } else {
-	                $(this).val(Number(num).toLocaleString('en')); // 천 단위로 콤마 추가
-	            }
-	        }
-	    });
-	});
-</script>
+	href="${pageContext.request.contextPath }/resources/styles/jaeho.css" />
+</head>
+<title>AuctionList</title>
 </head>
 <body>
-	<div class="main-div">
-		<div class="productDetail-div">
-			<div class="left-div">
-				<img class="product-detail-img" src="/assets/productdetailimg2.png">
-				<div class="showmore-btn">
-					<p class="item--Mv5">스토리 더보기</p>
-					<img class="arrow-see-more"
-						src="/assets/arrow_see_more.png" />
+	<%@include file="../headerfooter/header.jsp"%>
+	<div class="farmfarm_container">
+		<div class="funding_detail"></div>
+		<div class="funding_info_right">
+			<div class="tit_wrap">
+				<div class="tit">${fundingInfo.product_name }</div>
+			</div>
+			<p class="funding_text">${fundingInfo.farm_introduction }</p>
+			<div class="participation">
+				<span>577명 참여</span> <span>D - 14</span>
+			</div>
+			<div class="auction_price">
+				총 모금액
+				<fmt:formatNumber value="${fundingInfo.target_total_amount}"
+					pattern="#,###" />
+				원
+			</div>
+			<div class="detail_info border_green">
+				<div class="seller">
+					<div class="img_wrap"></div>
+					<%-- <img src="${pageContext.request.contextPath }/resources/assets/fd_farmer_pic.png" alt="profile"/> --%>
+
+					${fundingInfo.farmer_name } <span class="chat_open"></span>
+				</div>
+				<div class="auction_detail">
+					<div>
+						<div class="detail_tit">농장명</div>
+						<div class="content">${fundingInfo.farm_name }</div>
+					</div>
+					<div>
+						<div class="detail_tit">농장 주소</div>
+						<div class="content">${fundingInfo.farm_address }</div>
+					</div>
+					<div>
+						<div class="detail_tit">농장 면적</div>
+						<div class="content">
+							<fmt:formatNumber value="${fundingInfo.farm_square_footage}"
+								pattern="#,###" />
+							평
+						</div>
+					</div>
+					<div>
+						<div class="detail_tit">농작물 이름</div>
+						<div class="content">${fundingInfo.product_kind }</div>
+					</div>
+					<div>
+						<div class="detail_tit">재배 예정일</div>
+						<div class="content">${fundingInfo.expected_planting_date }</div>
+					</div>
+					<div>
+						<div class="detail_tit">수확 예정일</div>
+						<div class="content">${fundingInfo.expected_harvest_date }</div>
+					</div>
+					<div>
+						<div class="detail_tit">파머 연락처</div>
+						<div class="content">${fundingInfo.farmer_phone }</div>
+					</div>
 				</div>
 			</div>
-			<div class="right-div">
-				<div class="productinfo-div">
-					<div class="farmerinfoline1">
-						<p class="product_name">${auctionInfo.product_name}</p>
-						<img class="shareicon-class" src="/assets/shareicon.png" />
+<!-- 			<div class="amount_info border_green">
+				<div class="auction_detail">
+					<div>
+						<div class="detail_tit">출하량</div>
+						<div class="content">500kg</div>
 					</div>
-					<p class="farm-introduction-class">${auctionInfo.farm_introduction}</p>
-				</div>
-				<div class="funding-participant-info">
-					<div class="funding-paticipant">
-						<p class="participant-cnt"><fmt:formatNumber value="${maxAndCntInfo.participant_cnt}"  pattern="#,###.#"/></p>
-						<p class="small-unit">명 참여</p>
-						<div class="due-day">D - ${auctionInfo.dueDay}</div>
-					</div>
-					<div class="funding-paticipate-info">
-						<p class="small-unit">최고 입찰가</p><p class="funding-max-price"><fmt:formatNumber value="${maxAndCntInfo.max_auction_price}"  pattern="#,###.#"/> 원</p>
+					<div>
+						<div class="detail_tit">단위당 단가&#40;경매시작가&#41;</div>
+						<div class="content">800,000원</div>
 					</div>
 				</div>
-				<div class="farmerinfo-div">
-					<div class="farmerinfo-frame1">
-						<div class="farmerinfo-line1-div">
-							<img class="farmer-image" src="/assets/farmerimage.png" />
-							<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
-						</div>
-						<img class="chaticon-img" src="/assets/chaticon.png" />
+			</div> -->
+<!-- 			<div class="provide_price border_green">
+				<div>시세(api) 활용해서 값의 차이 제공</div>
+			</div> -->
+<!-- 			<div class="auction_list border_green">
+				<div class="list_tit">입찰목록</div>
+				<div class="auction_group">
+					<div class="person on">
+						<span>배재호</span> <span>800,000원</span> <span>23-11-23
+							11:13:55</span>
 					</div>
-					<div class="farmerinfo-frame2">
-						<div class="frame2-line1">
-							<p class="farm-name">농장명</p>
-							<p class="farm-name-val">${auctionInfo.farm_name}</p>
-						</div>
-						<div class="frame2-line2">
-							<p class="farm-address">농장 주소</p>
-							<p class="farm-address-val">${auctionInfo.farm_address}</p>
-						</div>
-						<div class="frame2-line3">
-							<p class="farm-footage">농장 면적</p>
-							<p class="farm-footage-val"><fmt:formatNumber value="${auctionInfo.farm_square_footage}"  pattern="#,###.#"/> 평</p>
-						</div>
-						<div class="frame2-line4">
-							<p class="farm-kind">농작물 이름</p>
-							<p class="farm-kind-val">${auctionInfo.product_kind}</p>
-						</div>
-						<div class="frame2-line5">
-							<p class="crops-finish">수확 완료일</p>
-							<p class="crops-finish-val"><fmt:formatDate value="${auctionInfo.update_date}" type="date" pattern="yyyy-MM-dd" /></p>
-						</div>
-						
-						<div class="frame2-line6">
-							<p class="farmer-phone">파머 연락처</p>
-							<p class="farmer-phone-val">${auctionInfo.farmer_phone}</p>
-						</div>
+					<div class="person">
+						<span>배재호</span> <span>800,000원</span> <span>23-11-23
+							11:13:55</span>
+					</div>
+					<div class="person">
+						<span>배재호</span> <span>800,000원</span> <span>23-11-23
+							11:13:55</span>
 					</div>
 				</div>
-				<div class="crops-info-div">
-					<div class="crops-inner-div">
-						<div class="crops-line1">
-							<p class="crops-amount">출하량</p>
-							<p class="crops-amount-val"><fmt:formatNumber value="${auctionInfo.harvest_amount}"  pattern="#,###.#"/> kg</p>
-						</div>
-						<div class="crops-line2">
-							<p class="kg-per-price">단위당 단가(경매시작가)</p>
-							<p class="kg-per-price-val"><fmt:formatNumber value="${auctionInfo.starting_price}"  pattern="#,###.#"/> 원</p>
-						</div>
+			</div> -->
+			<div class="tit">경매할 포인트 입력</div>
+			<div class="insert_point border_green">
+				<input type="text" id="inpPoint" /> <span>원</span>
+			</div>
+			<div class="btn_wrap">
+				<button class="btn_like">1,615</button>
+				<button class="btn_bid" onclick="submitForm()">입찰하기</button>
+			</div>
+		</div>
+		<div class="funding_info_left">
+			<div class="fd_introducepic"></div>
+			<div class="funding_info_left_bottom">
+			<p class="project_story">프로젝트 스토리</p>
+			<div class="fd_prostorypic"></div>
+			<div class="stroymoregroup"></div>
+			<div class="grouptext">
+				<p class="text">스토리 더보기</p>
+				<img class="fd_greencheck"
+					src="${pageContext.request.contextPath }/resources/assets/fd_greencheck.png" />
+			</div>
+			</div>
+			<div class="group-162-Cn9">
+				<p class="item--XJd">펀딩할 포인트 선택</p>
+				<div class="auto-group-sfb3-AsP">
+					<div class="input_pct">
+						<form id="payForm" action="${cpath}/funding/fundingDetail"
+							method="post">
+							<input list="paylist" type="number" name="pay" id="pay"
+								class="item-10-Dam" max="100">
+							<!-- select, textarea,  -->
+						</form>
+						<datalist id="paylist"></datalist>
 					</div>
-				</div>
-				<div class="crops-api-info">시세(api) 활용해서 값의 차이 제공</div>
-				<p class="auctionhisotry-tag">입찰현황</p>
-				<div class="auctionhistory-div">
-					<div class="auctionhisotry-inner-layout">
-						<c:forEach items="${auctionHistoryInfo}" var="list">
-							<div class="auction-participant-info">
-								<p class="auction-participant-name">${list.user_name}</p>
-								<p class="auction-participant-val"><fmt:formatNumber value="${list.user_price}"  pattern="#,###.#"/></p>
-								<p class="auction-participate-date"><fmt:formatDate value="${list.bid_date}" type="date" pattern="yyyy-MM-dd hh:mm:ss" /></p>
-							</div>
-						</c:forEach>
-					</div>
-				</div>
-				<p class="auction-input-tag">경매할 포인트 입력</p>
-				<form class="auction-price-form" >
-					<input id="auction-price-input" class="auction-price-input" type="text" pattern="[0-9]" value="0">
-					<label class="won-unit" for="auction-price-input">원</label>
-				</form>				
-				<div class="last-layer">
-					<div class="bookmark-layer">
-						<div class="bookmark-btn">
-							<img id="heart-icon" class="heart-icon" src="/assets/hearticon.png" />
-							<p class="heart-num">### 좋아요 수###</p>
-						</div>
-					</div>
-					<button class="auction-confirm-btn">입찰하기</button>
+					<div class="Paydiv" id="Paydiv"></div>
 				</div>
 			</div>
 		</div>
 	</div>
+
+	<script>
+		document
+				.querySelector("#inpPoint")
+				.addEventListener(
+						"keyup",
+						function(e) {
+							let value = e.target.value;
+							value = Number(value.replaceAll(',', ''));
+
+							if (isNaN(value)) {
+								document.querySelector("#inpPoint").value = 0;
+							} else {
+								const formatValue = value
+										.toLocaleString("ko-KR");
+								document.querySelector("#inpPoint").value = formatValue;
+							}
+						})
+		const start = 0.01;
+		const end = 100;
+		const datalist = document.getElementById("paylist");
+		const payInput = document.getElementById("pay");
+		const payDiv = document.getElementById("Paydiv");
+		const payMoney = ${fundingInfo.target_total_amount};
+		var result = 0;
+
+		for (let value = start; value <= end; value += 0.01) {
+			const roundedValue = parseFloat(value.toFixed(2));
+			const option = document.createElement("option");
+			option.value = roundedValue;
+			datalist.appendChild(option);
+		}
+
+		payInput.addEventListener("input", function() {
+			let inputValue = parseFloat(payInput.value);
+			if (inputValue > end) {
+				alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
+				payInput.value = end;
+			} else if (payInput.value && inputValue.toFixed(2) != inputValue) {
+				alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+				payInput.value = inputValue.toFixed(2);
+			}
+			updatePayDiv();
+		});
+
+		function updatePayDiv() {
+			const selectedValue = parseFloat(payInput.value) || 0;
+			result = Math.floor(selectedValue * (payMoney / 100));
+			const formattedResult = new Intl.NumberFormat('ko-KR')
+					.format(result);
+			payDiv.innerHTML = formattedResult + "포인트";
+		}
+	</script>
+	<script>
+		function submitForm() {
+			var form = document.getElementById("payForm");
+			form.submit();
+		}
+	</script>
+	<%@include file="../headerfooter/footer.jsp"%>
 </body>
 </html>

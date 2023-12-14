@@ -26,7 +26,7 @@ public class FarmerLoginController {
 	
 	@GetMapping("farmerLogout")
 	public String farmerLogout(HttpSession session, RedirectAttributes rttr) {
-		session.removeAttribute("farmer_serial_num");
+		session.removeAttribute("serial_num");
 		rttr.addFlashAttribute("message", "farmer 로그아웃 성공");
 		return "redirect:/";
 	}
@@ -41,7 +41,7 @@ public class FarmerLoginController {
 	public String loginFarmerTest(FarmersVO vo, HttpSession session, RedirectAttributes rttr) {
 		FarmersVO result = service.loginFarmer(vo);
 		if (result != null) {
-			session.setAttribute("farmer_serial_num", result.getFarmer_serial_num());
+			session.setAttribute("serial_num", result.getFarmer_serial_num());
 			rttr.addFlashAttribute("message", "farmer 로그인 성공");
 		} else {
 			rttr.addFlashAttribute("message", "farmer 로그인 실패");

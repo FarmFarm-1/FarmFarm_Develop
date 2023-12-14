@@ -1,6 +1,7 @@
 package com.farmfarm.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +25,8 @@ public class UserService {
 	public List<UsersVO> getAllUsers() {
 		return dao.getAllUsers();
 	}
-
+	
+	public int userpoint(Map<String,Object> userpoint) {
+		return dao.userpoint(userpoint);
+	}
 }

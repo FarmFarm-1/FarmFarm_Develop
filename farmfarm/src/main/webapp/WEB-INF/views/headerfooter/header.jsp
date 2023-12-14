@@ -6,18 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>FarmFarm Header</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />
+<c:set value="${pageContext.request.contextPath}" var="cpath"/>
+<link rel="shortcut icon" href="${cpath}/assets/favicon/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${cpath}/assets/favicon/favicon.ico" type="image/x-icon">
+<!-- <link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" /> -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Pretendard%3A400%2C700" />
+<!-- <link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Pretendard%3A400%2C700" /> -->
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/styles/header.css" />
+	href="${cpath}/styles/header.css" />
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/resources/styles/footer.css" />
+	href="${cpath}/styles/footer.css" />
 </head>
 <body>
 	<div class="header">
@@ -26,7 +29,7 @@
 				<div class="header_title_menu">
 					<div class="header_title">
 						<a href="javascript:void(0)"> <img class="logo_img"
-							src="${pageContext.request.contextPath }/resources/assets/logo.png" />
+							src="${cpath}/assets/logo.png" />
 							<p class="logo_name">팜팜</p>
 						</a>
 					</div>
