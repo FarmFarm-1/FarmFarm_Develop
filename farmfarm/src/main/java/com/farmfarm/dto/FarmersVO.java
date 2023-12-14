@@ -2,13 +2,14 @@ package com.farmfarm.dto;
 
 import java.sql.Date;
 
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Setter 
+@Setter
 @Getter
 @ToString
 @NoArgsConstructor
@@ -18,5 +19,8 @@ public class FarmersVO {
 	String farmer_email;
 	String farmer_pw;
 	String farmer_name;
-	Date farmer_join_date; 
+	Date farmer_join_date;
 }
+
+
+

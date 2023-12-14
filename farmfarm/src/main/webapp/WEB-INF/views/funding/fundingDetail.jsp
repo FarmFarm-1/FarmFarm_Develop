@@ -4,22 +4,22 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FundingList</title>
-<c:set value="${pageContext.request.contextPath}" var="cpath" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
-<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FundingList</title>
+	<c:set value="${pageContext.request.contextPath}" var="cpath" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
+	<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-	<%@include file="../headerfooter/header.jsp"%>
-	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="farmfarm_container">
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="funding_detail"></div>
 		<div class="funding_info_right">
 			<div class="tit_wrap">
@@ -271,6 +271,6 @@
 			});
 		}
 	</script>
-	<%@include file="../headerfooter/footer.jsp"%>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
 </html>

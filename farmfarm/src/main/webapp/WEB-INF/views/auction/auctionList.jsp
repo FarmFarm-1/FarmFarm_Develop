@@ -15,15 +15,10 @@
 <link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 <body>
-
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
-
-		<!-- header -->
-
-
 		<div class="body">
 			<div class="group-156-QXX">
 				<div class="search">
@@ -387,6 +382,7 @@
 			}
 		}
 	</script>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
 
 </html>

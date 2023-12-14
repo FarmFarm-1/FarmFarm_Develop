@@ -4,27 +4,10 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.farmfarm.users">
 
-	<select id="loginUser" resultType="UsersVO">
-		select * from users where
-		user_email=#{user_email} and user_pw=#{user_pw};
-	</select>
-
-	<insert id="userInsert" parameterType="UsersVO">
-		INSERT INTO
-		users(user_email, user_pw, user_name)
-		VALUES(#{user_email},#{user_pw},#{user_name})
-
-	</insert>
-
-	<select id="getAllUsers" resultType="UsersVO">
-		select * from users
-	</select>	
-
 	<insert id="userpoint" parameterType="map">
 		INSERT INTO point_history
 		(user_serial_num, history_content, amount)
-		VALUES(#{user_serial_num},
-		'펀딩참여', #{pay});
+		VALUES(#{user_serial_num},'펀딩참여', #{pay});
 	</insert>
 
 </mapper>

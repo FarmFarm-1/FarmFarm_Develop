@@ -26,8 +26,7 @@
 	href="${cpath}/styles/fundingbuy.css" />
 </head>
 <body>
-
-	<%@include file="../headerfooter/header.jsp"%>
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="body">
 		<div class="mainpage--869">
 			<div class="mainpage">
@@ -112,5 +111,5 @@
 			payButton.disabled = checkboxCheckbox1.checked ? false : true;
 		}
 	</script>
-	<%@include file="../headerfooter/footer.jsp"%>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>

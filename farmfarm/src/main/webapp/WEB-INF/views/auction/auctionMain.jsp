@@ -20,11 +20,8 @@
 
 </head>
 <body>
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
-
-		<!-- header -->
-
-
 		<div class="auto-group-rv6m-jsK">
 			<div class="auto-group-v9bk-T2d">
 				<p class="item--ZLZ">
@@ -138,6 +135,7 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
 <script>
 let serial_num = "${sessionScope.serial_num}";

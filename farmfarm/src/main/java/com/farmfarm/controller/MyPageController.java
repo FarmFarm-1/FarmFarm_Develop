@@ -18,12 +18,6 @@ public class MyPageController {
 
 	@Autowired
 	MyPageService myPageService;
-	
-	
-	@GetMapping("/fundingList")
-	public String showFundingList(HttpSession session) {
-		return "mypage/menubar_supporter";
-	}
 
 	@ResponseBody
 	@PostMapping("/addcart")

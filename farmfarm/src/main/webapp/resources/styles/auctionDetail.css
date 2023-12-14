@@ -54,10 +54,10 @@ body {
 
 .container {
 	width: 100%;
-	position: absolute;
 	display: flex;
 	align-items: flex-start;
 	justify-content: center;
+	margin: 8rem 0 10rem 0;
 }
 
 .left-div {

@@ -5,109 +5,89 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class MainController {
-	
-	@GetMapping("/")
-	public String showmain() {
-		return "mainIndex";
-	}
-	
-	// ·Î±×ÀÎ ÆäÀÌÁö
-	@GetMapping("/login.do")
-	public String showLogin() {
-		return "login/login";
-	}
 
-	// Çì´õ
-	@GetMapping("/header.do")
-	public String showHeader(HttpSession session) {
+	@GetMapping("/")
+	public String showmain(HttpSession session) {
 		//session.setAttribute("serial_num", "us1010101010");
 		//session.setAttribute("serial_num", "FA1010101010");
 		session.removeAttribute("headerSelect");
-		return "header";
-	}
+		return "loginIndex";
+	}		
 
-	// ¸ŞÀÎ ÆäÀÌÁö
-	@GetMapping("/main.do")
-	public String showMain(HttpSession session) {
-		session.removeAttribute("headerSelect");
-		return "main";
-	}
-
-	// Æİµù ÆäÀÌÁö
-	@GetMapping("/funding.do")
-	public String showFunding(HttpSession session) {
-		session.setAttribute("headerSelect", "funding");
-		return "funding";
-	}
-
-	// °æ¸Å ÆäÀÌÁö
-	@GetMapping("/auction.do")
-	public String showAuction(HttpSession session) {
-		session.setAttribute("headerSelect", "auction");
-		return "auction";
-	}
-
-	// ¸¶ÀÌÆÊ ÆäÀÌÁö
-	@GetMapping("/myfarm.do")
-	public String showMyFarm(HttpSession session) {
-		session.setAttribute("headerSelect", "myFarm");
-		return "myFarm";
-	}
-
-	// ÂÊÁöÇÔ ÆäÀÌÁö
-	@GetMapping("/messageBox.do")
-	public String showMessageBox(HttpSession session) {
-		session.setAttribute("headerSelect", "myFarm");
-		return "messageBox";
-	}
-
-	// ¸¶ÀÌÇÁ·ÎÁ§Æ® ÆäÀÌÁö
-	@GetMapping("/makeProject.do")
-	public String showMakeProject(HttpSession session) {
-		session.setAttribute("headerSelect", "myFarm");
-		return "makeProject";
-	}
-
-	// Æ÷ÀÎÆ® ÃæÀü ÆäÀÌÁö
-	@GetMapping("/chargePoints.do")
-	public String showChargePoints(HttpSession session) {
-		session.setAttribute("headerSelect", "myFarm");
-		return "chargePoints";
-	}
-
-	// ÀÎÁõ¹øÈ£ ¸ğ´Ş
-	@GetMapping("/cerNumModal.do")
-	public String cerNumModal() {
-		return "signUp/validationModal";
-	}
-
-	// È¸¿ø°¡ÀÔ ÆäÀÌÁö
-	@GetMapping("/signup.do")
+	@GetMapping("/login")
+	public String showLogin() {
+		return "login/login";
+	}	
+	
+	@GetMapping("/signup")
 	public String showSignUpIndex() {
 		return "signUp/signupIndex";
 	}
-
-	// È¸¿ø°¡ÀÔ ÆäÀÌÁö ajax
-	@GetMapping("/s_signup1.do")
-	public String showSSignup1() {
-		return "signUp/s_signup1";
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.removeAttribute("serial_num");
+		return "loginIndex";
 	}
 
-	@GetMapping("/s_signup2.do")
-	public String showSSignup2() {
-		return "signUp/s_signup2";
+	/*ï¿½ë¸˜ï¿½ì˜’ï¿½ë’— ï¿½ë¿¤ï¿½ëœ‘ï¿½ìŠœ ï§ã…½ë¸¨ï¿½ì—¯ï¿½ë•²ï¿½ë–.*/
+	// ï§ë¶¿ì”¤ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/main")
+	public String showMain(HttpSession session) {
+		session.removeAttribute("headerSelect");
+		return "loginIndex";
 	}
 
-	@GetMapping("/f_signup1.do")
-	public String showFSignUp1() {
-		return "signUp/f_signup1";
+	// ï¿½ï¿½ï¿½ëµ« ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/funding")
+	public String showFunding(HttpSession session) {
+		session.setAttribute("headerSelect", "funding");
+		return "/";
 	}
 
-	@GetMapping("/f_signup2.do")
-	public String showFSignUp2() {
-		return "signUp/f_signup2";
+	// å¯ƒìˆâ„“ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/auction")
+	public String showAuction(HttpSession session) {
+		session.setAttribute("headerSelect", "auction");
+		return "/";
 	}
 	
+	@GetMapping("/myPageFarmer")
+	public String showMyFarmFarmer(HttpSession session) {
+		session.setAttribute("headerSelect", "myFarm");
+		session.removeAttribute("MyFarmer");
+		return "myPage/Farmer/menubar_farmer";
+	}
+	
+	
+	// ï§ŸìŒï¿½ï¿½ë¸¿ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/messageBox")
+	public String showMessageBox(HttpSession session) {
+		session.setAttribute("headerSelect", "myFarm");
+		return "/";
+	}
+
+	// ï§ë‰ì” ï¿½ë´½æ¿¡ì’–ì ¥ï¿½ë“ƒ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/makeProject")
+	public String showMakeProject(HttpSession session) {
+		session.setAttribute("headerSelect", "myFarm");
+		session.setAttribute("MyFarmer", "makeProject");
+		return "myPage/Farmer/menubar_farmer";
+	}
+	
+	@GetMapping("/regPro")
+	public String regPro() {
+		return "myPage/Farmer/regProduct";
+	}
+
+	// ï¿½ë£·ï¿½ì”¤ï¿½ë“ƒ ç•°â‘¹ìŸ¾ ï¿½ëŸ¹ï¿½ì” ï§ï¿½
+	@GetMapping("/chargePoints")
+	public String showChargePoints(HttpSession session) {
+		session.setAttribute("headerSelect", "myFarm");
+		return "/";
+	}
+
 }

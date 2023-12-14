@@ -171,6 +171,7 @@
 </script>
 </head>
 <body>
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="left-div">
@@ -331,5 +332,6 @@
 			</div>
 		</div>
 	</div>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
 </html>

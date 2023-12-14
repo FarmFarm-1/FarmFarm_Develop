@@ -18,13 +18,9 @@
 
 </head>
 <body>
-
+	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
-
-		<!-- header -->
-
-
-		<div class="body">
+	<div class="body">
 			<div class="group-156-QXX">
 				<div class="search">
 					<input id="searchInput" type="text"
@@ -385,7 +381,6 @@
 				search(document.getElementById('searchInput').value);
 			}
 		}
-		
-		
 	</script>
+	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
