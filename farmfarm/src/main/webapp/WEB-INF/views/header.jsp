@@ -134,7 +134,7 @@
 							<p class="new_text2">N</p>
 						</div>
 					</div>
-					<div class="myProject" onclick="location.href='${cpath}/makeProject'">나의 프로젝트 만들기</div>
+					<div class="myProject" onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
 				</div>
 			</div>
 		</div>

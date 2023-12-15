@@ -2,6 +2,7 @@ package com.farmfarm.controller;
 
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,8 +16,8 @@ public class MainController {
 		//session.setAttribute("serial_num", "FA1010101010");
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
-	}		
-
+	}
+	
 	@GetMapping("/login")
 	public String showLogin() {
 		return "login/login";

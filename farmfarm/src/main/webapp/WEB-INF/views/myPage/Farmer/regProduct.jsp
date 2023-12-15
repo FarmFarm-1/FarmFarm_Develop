@@ -20,27 +20,52 @@
 </head>
 
 <script>
-	function next(){
-		
+	function next() {
+
 		$.ajax({
 			type : "GET",
 			url : "/myPageFarmer/regFarm",
-			data : {
-				"email" : $("#email").val(),
-				"password" : $("#password").val(),
-				"name" : $("#name").val()
-			},
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
 		});
-		
-		
+
 	}
-
-
-
 </script>
+<script>
+/* 상품 등록 - 카테고리 선택 */
+	function disSelect() {
+		$('.status2-3uo').css('background-color', '#f6f6f6');
+		$('.status2-3uo').css('color', '#3a3a3a');
+	}
+	function type1() {
+		disSelect();
+		$('#nemo1').css('background-color', '#3d3d3d');
+		$('#nemo1').css('color', '#ffffff');
+	}function type2() {
+		disSelect();
+		$('#nemo2').css('background-color', '#3d3d3d');
+		$('#nemo2').css('color', '#ffffff');
+	}function type3() {
+		disSelect();
+		$('#nemo3').css('background-color', '#3d3d3d');
+		$('#nemo3').css('color', '#ffffff');
+	}function type4() {
+		disSelect();
+		$('#nemo4').css('background-color', '#3d3d3d');
+		$('#nemo4').css('color', '#ffffff');
+	}function type5() {
+		disSelect();
+		$('#nemo5').css('background-color', '#3d3d3d');
+		$('#nemo5').css('color', '#ffffff');
+	}function type6() {
+		disSelect();
+		$('#nemo6').css('background-color', '#3d3d3d');	
+		$('#nemo6').css('color', '#ffffff');
+	}
+</script>
+
+
 
 
 <body>
@@ -60,12 +85,12 @@
 					</div>
 					<div class="categorychoose-8Xw">
 						<!-- 필터 쪽 지원이 검색 필터 보고 참고 합니다.. -->
-						<div class="status2-3uo">쌀</div>
-						<div class="status1-WoP">콩</div>
-						<div class="status3-CRK">팥</div>
-						<div class="status4-4Cd">녹두</div>
-						<div class="status5-uyw">감자</div>
-						<div class="status6-P8R">고구마</div>
+						<div class="status2-3uo" id="nemo1" onclick="type1()">쌀</div>
+						<div class="status2-3uo" id="nemo2" onclick="type2()">콩</div>
+						<div class="status2-3uo" id="nemo3" onclick="type3()">팥</div>
+						<div class="status2-3uo" id="nemo4" onclick="type4()">녹두</div>
+						<div class="status2-3uo" id="nemo5" onclick="type5()">감자</div>
+						<div class="status2-3uo" id="nemo6" onclick="type6()">고구마</div>
 					</div>
 				</div>
 				<div class="productname-3Ts">
@@ -144,8 +169,8 @@
 						<p class="item--67F">재배 예정일</p>
 						<p class="item--p3F">재배 예정일을 설정해주세요.</p>
 					</div>
-					<input class="group-185-7o3" type = "date">
-						<!--  <img class="mingcute-calendar-line-FuF"
+					<input class="group-185-7o3" type="date">
+					<!--  <img class="mingcute-calendar-line-FuF"
 							src="./assets/mingcute-calendar-line.png" />  -->
 					</input>
 				</div>
@@ -154,8 +179,8 @@
 						<p class="item--rPF">수확 예정일</p>
 						<p class="item--mm7">수확 예정일을 설정해주세요.</p>
 					</div>
-					<input class="group-185-5Wu" type = "date">
-						<%-- <img class="mingcute-calendar-line-cFw"
+					<input class="group-185-5Wu" type="date">
+					<%-- <img class="mingcute-calendar-line-cFw"
 							src="${cpath }/assets/mingcute-calendar-line-mxh.png" /> --%>
 					</input>
 				</div>

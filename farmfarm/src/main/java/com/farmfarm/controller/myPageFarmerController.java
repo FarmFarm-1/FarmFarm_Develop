@@ -16,6 +16,7 @@ public class myPageFarmerController {
 	
 	@Autowired
 	FarmersService fService;
+	
 	@RequestMapping(value = "/regFarm", method = RequestMethod.GET)
 	public String regFarm() {
 		return "myPage/Farmer/regFarm";
@@ -24,7 +25,6 @@ public class myPageFarmerController {
 	
 	@RequestMapping(value = "/regProduct", method = RequestMethod.GET)
 	public String findUser(HttpServletRequest request, HttpSession session) {
-		session.setAttribute("curFind", "user");
 		return "myPage/Farmer/regProduct";
 	}
 	
