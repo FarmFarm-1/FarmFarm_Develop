@@ -44,7 +44,7 @@ public class AuctionDAO {
 	@Transactional
 	public int auctionConfirm(Auction_historyVO auction_historyVO) {
 		
-		//∆˜¿Œ∆Æ ∫∏¿Ø ø©∫Œ check
+		//ÌòÑ Î≥¥Ïú† Ìè¨Ïù∏Ìä∏ Ï≤¥ÌÅ¨
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("user_serial_num", auction_historyVO.getUser_serial_num());
 		map.put("user_point", auction_historyVO.getUser_price());
@@ -52,16 +52,18 @@ public class AuctionDAO {
 		if (pointEnoughChk != 1) {
 			throw new AuctionException("notEnoughPoint");
 		}
-		//√÷∞Ì ±›æ◊ ø©∫Œ check
+		//ÏµúÍ≥†Í∏àÏï° check
 		int maxAuctionPriceChk = sqlSession.selectOne(namespace_auction+"maxAuctionPriceCheck", auction_historyVO);
 		if (maxAuctionPriceChk != 1) {
 			throw new AuctionException("notMaxAuctionraiser");
 		}
 		
-		//∞Ê∏≈ √÷∞Ì¬¸ø©¿⁄ status ∫Ø∞Ê & «ˆ¿Á user¿« ∞™¿ª historyø° ≥÷±‚
-		int updateStatusResult = sqlSession.update(namespace_auction+"updateCurMaxPriceStatus", auction_historyVO.getProduct_serial_num());
-		if (updateStatusResult != 1) {
-			throw new AuctionException("notUpdatedAuctionStatus");
+		//Ïù¥Ï†Ñ ÏµúÍ≥†Í∏àÏï° ÏûÖÏ∞∞ÏûêÏùò ÏÉÅÌÉú Î≥ÄÍ≤Ω
+		if((Integer)sqlSession.selectOne(namespace_auction+"selectParticipantCntByPrID",auction_historyVO) > 0 ) {
+			int updateStatusResult = sqlSession.update(namespace_auction+"updateCurMaxPriceStatus", auction_historyVO.getProduct_serial_num());
+			if (updateStatusResult != 1) {
+				throw new AuctionException("notUpdatedAuctionStatus");
+			}
 		}
 		
 		int auctionConfirm = sqlSession.insert(namespace_auction+"auctionHistoryInsert", auction_historyVO);

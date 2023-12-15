@@ -43,8 +43,15 @@
 		
 		$("#auction-confirm-btn").click(function() {
 			if(serial_num.substring(0,2) === "us"){
-				if(user_real_input_price - ${auctionInfo.starting_price * auctionInfo.harvest_amount} > 0) {
-					if (user_real_input_price - ${maxAndCntInfo.max_auction_price} > 0) {
+				if(user_real_input_price - ${auctionInfo.starting_price * auctionInfo.harvest_amount} >= 0) {
+					let max_auction_price = "${maxAndCntInfo.max_auction_price}";
+					if(max_auction_price.length==0) {
+						max_auction_price = Number(0);
+					} else {
+						max_auction_price = Number(${maxAndCntInfo.max_auction_price});
+					}
+					
+					if (user_real_input_price - max_auction_price > 0) {
 						$.ajax({
 							url: "${cpath}/auction/auctionConfirm",
 							type: "POST",
@@ -255,20 +262,23 @@
 					<p class="frame-tit">경매 시작가</p>
 					<p class="frame-val"><fmt:formatNumber value="${auctionInfo.starting_price * auctionInfo.harvest_amount}"  pattern="#,###.#"/> 원</p>
 				</div>
-			
 			</div>
-			<p class="frame-tag">시세대비 손익</p>
-			<div class="frame-layout">
-				<div class="frame-line2">
-					<div class="frame-tit">측정 날짜</div>
-					<div class="frame-val"><fmt:formatDate value="${cropsquoteInfo.regDate}" type="date" pattern="yyyy-MM-dd" /></div>
-					<img class="reading-glasses-icon" src="${cpath}/assets/search.png" onclick="showChart()">
-				</div>
-	
-				<div class="frame-line">
-					<div class="frame-tit">현재 시세(1kg)</div>
-					<div class="frame-val"><fmt:formatNumber value="${cropsquoteInfo.crops_quote}" pattern="#,###.#"/></div>
-				</div>	
+			<div class="frame-tag">
+            <p>시세대비 손익</p>
+                <img class="reading-glasses-icon" src="${cpath}/assets/search.png" onclick="showChart()">
+            </div>
+            <div class="frame-layout">
+                <div class="frame-line">
+                    <div class="frame-tit">현재 시세(1kg)</div>
+                    <div class="frame-val"><fmt:formatNumber value="${cropsquoteInfo.crops_quote}" pattern="#,###.#"/></div>
+                </div>
+                <div class="frame-line">
+                    <div class="frame-tit">측정 날짜</div>
+                    <div class="frame-val">
+                        <fmt:formatDate value="${cropsquoteInfo.regDate}" type="date"
+                            pattern="yyyy-MM-dd" />
+                    </div>
+                </div>
 				<div class="frame-line">
 					<div class="frame-tit">도매 예상 구매가</div>
 					<div class="frame-val">
@@ -286,9 +296,16 @@
 				<div class="frame-line">
 					<div class="frame-tit">낙찰 손익율</div>
 					<div class="frame-val">
-						<fmt:formatNumber value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
+						<c:choose>
+							<c:when test="${maxAndCntInfo.max_auction_price ne null}">
+								<fmt:formatNumber value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
 					     - maxAndCntInfo.max_auction_price)
 					     /maxAndCntInfo.max_auction_price)}" type="percent"/>
+							</c:when>
+							<c:otherwise>
+								<fmt:formatNumber value="0" type="percent"/>
+							</c:otherwise>
+						</c:choose>	
 			      	</div>
 				</div>
 			</div>
@@ -299,7 +316,7 @@
 						<div class="auction-participant-info">
 							<p class="auction-participant-name">${list.user_name}</p>
 							<p class="auction-participant-val"><fmt:formatNumber value="${list.user_price}"  pattern="#,###.#"/></p>
-							<p class="auction-participate-date"><fmt:formatDate value="${list.bid_date}" type="date" pattern="yyyy-MM-dd hh:mm:ss" /></p>
+							<p class="auction-participate-date"><fmt:formatDate value="${list.bid_date}" type="date" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 						</div>
 					</c:forEach>
 				</div>

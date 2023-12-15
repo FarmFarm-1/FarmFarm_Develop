@@ -4,17 +4,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FundingList</title>
-	<c:set value="${pageContext.request.contextPath}" var="cpath" />
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
-	<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundingList</title>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
+<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
@@ -27,7 +27,8 @@
 			</div>
 			<p class="funding_text">${fundingInfo.farm_introduction}</p>
 			<div class="participation">
-				<span>${fundingInfocnt}명 참여</span> <span>D - ${fundingInfo.dueDay}</span>
+				<span>${fundingInfocnt}명 참여</span> <span>D -
+					${fundingInfo.dueDay}</span>
 			</div>
 			<div class="auction_price">
 				총 모금액
@@ -76,13 +77,13 @@
 				</div>
 			</div>
 			<div class="funding_info_right_bottom">
-				<div class="tit">펀딩할 포인트 선택</div>
+				<div class="tit2">펀딩할 포인트 선택</div>
 				<div class="input_group">
 					<div class="input_pct">
 						<form id="payForm" action="${cpath}/funding/fundingBuy"
 							method="post">
 							<input list="paylist" type="number" name="pay" id="pay"
-								class="item-10-Dam" max="${sumfundingpct}"> <input
+								class="item-10-Dam" min="0" max="${sumfundingpct}"> <input
 								type="hidden" id="product_serial_num" name="product_serial_num"
 								value="${fundingInfo.product_serial_num}"> <input
 								type="hidden" id="payMoney" name="payMoney" value="${result}">
@@ -100,7 +101,7 @@
 						<c:choose>
 							<c:when test="${myBookmark == 1}">
 								<div class="img_heart_wrap">
-									<img id="heart-icon" class="heart-icon_filled"
+									<img id="heart-icon" class="heart-icon filled"
 										src="${cpath}/assets/heart_fill.png" />
 								</div>
 							</c:when>
@@ -113,7 +114,8 @@
 						</c:choose>
 						<p id="heart-num" class="heart-num">${bookmarkCnt}</p>
 					</div>
-					<button class="btn_fund" id="btn_fund" onclick="submitForm()" disabled>펀딩하기</button>
+					<button class="btn_fund" id="btn_fund" onclick="submitForm()"
+						disabled>펀딩하기</button>
 				</div>
 			</div>
 		</div>
@@ -157,6 +159,7 @@
 		const payMoney = "${fundingInfo.target_total_amount}";
 		const sumfundingpct = "${sumfundingpct}";
 		var result = 0;
+		const fundingbtn = document.getElementById("btn_fund");
 
 		for (let value = start; value <= end; value += 0.01) {
 			const roundedValue = parseFloat(value.toFixed(2));
@@ -167,15 +170,24 @@
 		payInput.addEventListener("input", function() {
 			if (serial_num.substring(0, 2) === "us") {
 				let inputValue = parseFloat(payInput.value);
-				if (inputValue > end) {
-					alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
-					payInput.value = end;
-				} else if (payInput.value
-						&& inputValue.toFixed(2) != inputValue) {
-					alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
-					payInput.value = inputValue.toFixed(2);
+				if (inputValue > 0) {
+					if (inputValue > end) {
+						alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
+								+ "까지만 입력 가능합니다.");
+						payInput.value = end;
+					} else if (payInput.value
+							&& inputValue.toFixed(2) != inputValue) {
+						alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+						payInput.value = inputValue.toFixed(2);
+					}
+					updatePayDiv();
+				} else {
+					payInput.value = "";
+					alert("0.01퍼센트이상 입력해주세요");
+					fundingbtn.disabled = true;
+					fundingbtn.style.backgroundColor = '#b7b7b7';
+					fundingbtn.style.cursor = 'default';
 				}
-				updatePayDiv();
 			} else {
 				showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 			}
@@ -188,18 +200,24 @@
 			const formattedResult = new Intl.NumberFormat('ko-KR')
 					.format(result);
 			const point = document.querySelector("#point");
-			const fundingbtn = document.getElementById("btn_fund");
 
-			if (user_point >= result) {
-				point.style.display = 'none';
-				fundingbtn.disabled = false;
-				fundingbtn.style.backgroundColor = '#64A346';
-				fundingbtn.style.cursor = 'pointer';
+			if (result != 0) {
+				if (user_point >= result) {
+					point.style.display = 'none';
+					fundingbtn.disabled = false;
+					fundingbtn.style.backgroundColor = '#64A346';
+					fundingbtn.style.cursor = 'pointer';
+				} else {
+					point.style.display = 'flex';
+					fundingbtn.disabled = true;
+					fundingbtn.style.backgroundColor = '#b7b7b7';
+					fundingbtn.style.cursor = 'default';
+				}
 			} else {
-				point.style.display = 'flex';
 				fundingbtn.disabled = true;
 				fundingbtn.style.backgroundColor = '#b7b7b7';
 				fundingbtn.style.cursor = 'default';
+
 			}
 			payDiv.innerHTML = formattedResult + "포인트";
 			$("#payMoney").val(result);
@@ -214,19 +232,16 @@
 				function() {
 					console.log(serial_num);
 					if (serial_num.substring(0, 2) === "us") {
-						let isHeartFilled = $("#heart-icon").toggleClass(
-								"filled").hasClass("filled");
+						let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
 						if (isHeartFilled) {
 							addToMyCart();
-							$("#heart-icon").attr("src",
-									"${cpath}/assets/heart_fill.png");
+							$("#heart-icon").attr("src", "${cpath}/assets/heart_fill.png");
 						} else {
 							deleteFromMyCart();
-							$("#heart-icon").attr("src",
-									"${cpath}/assets/heart_empty.png");
+							$("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
 						}
 					} else {
-						showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
+						showModal("로그인이 필요한 기능입니다.", "로그인 바로가기");
 					}
 				});
 

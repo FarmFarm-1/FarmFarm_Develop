@@ -42,6 +42,7 @@
 	font-size: 15px;
 	margin-bottom: 20px;
 	color: #000;
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 }
 
 .border_green:last-child {
@@ -77,7 +78,7 @@
 	color: #2d2d2d;
 	font-family: Inter, 'Source Sans Pro';
 	white-space: nowrap;
-	margin-bottom: 1rem;
+	margin-bottom: 5rem;
 }
 
 .farmfarm_container .funding_info_left .fd_prostorypic {
@@ -86,7 +87,7 @@
 	background-size: 137.135% 100%;
 	background-position: -10.1625rem -0rem;
 	border-radius: 1.355rem;
-	margin-top: 5rem;
+	margin-bottom: 5px;
 }
 
 .farmfarm_container .funding_info_left .stroymoregroup {
@@ -148,17 +149,28 @@
 
 .funding_info_right .tit {
 	color: #2e2e2e;
-	font-size: 18px;
+	font-size: 35px;
 	font-weight: bold;
 	margin-bottom: 2rem;
+	font-family: TheJamsil5Bold, 'Source Sans Pro';
+}
+
+.tit2 {
+	font-size:20px;
+	font-weight: 800;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: LINESeedKR-Bd, 'Source Sans Pro';
+    margin-bottom: 20px;
 }
 
 .funding_info_right .funding_text {
 	display: flex;
 	color: #828282;
-	font-size: 12px;
+	font-size: 18px;
 	font-weight: 600;
 	margin: 13px 0;
+	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 }
 
 .funding_info_right .participation {
@@ -172,7 +184,7 @@
 }
 
 .funding_info_right .participation span:nth-of-type(1) {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -189,7 +201,7 @@
 .funding_info_right .auction_price {
 	margin: 13px 0 15px;
 	color: #2e2e2e;
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: bold;
 }
 
@@ -197,18 +209,19 @@
 	display: flex;
 	align-items: center;
 	margin-bottom: 15px;
+	font-size:20px;
 }
 
 .funding_info_right .detail_info .seller .img_wrap {
-	width: 30px;
-	height: 30px;
+	width: 50px;
+	height: 50px;
 	border-radius: 50%;
-	margin-right: 10px;
+	margin-right: 20px;
 	overflow: hidden;
 	background-color: #ddd;
 	background-image: url("../assets/fd_farmer_pic.png");
 	background-size: 154% 100%;
-	background-position: -10.1625rem -0rem;
+	background-position: -9.1625rem -0rem;
 }
 
 .funding_info_right .funding_detail>div {
@@ -223,6 +236,12 @@
 .funding_info_right .funding_detail .detail_tit {
 	flex-basis: 120px;
 	margin-right: 20px;
+	font-size: 18px;
+	font-family: TheJamsil5Bold, 'Source Sans Pro';
+}
+
+.content{
+	font-size: 18px;
 }
 
 .funding_info_right .insert_point {
@@ -371,18 +390,13 @@
 .bookmark-layer:hover {
 	cursor: pointer;
 }
-
-.bookmark-layer .bookmark-btn .img_heart_wrap {
-	width: 2rem;
-	margin-bottom: 5px;
+ 
+ .heart-icon, .heart-icon .filled {
+	margin: 0.5rem 0rem 0.1rem 0.116rem;
+	height: 2.3rem;
 }
-
-.bookmark-layer .bookmark-btn .img_heart_wrap img {
-	display: block;
-	width: 100%;
-	margin: 10px 0px 0px 0px;
-}
-
+ 
+ 
 .point-show span{
 	font-size: 2rem;
 	font-family: LINESeedKR-Bd, 'Source Sans Pro';

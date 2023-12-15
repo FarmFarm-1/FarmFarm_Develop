@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.myPageUser">
+
+	<select id="myPageFundingList" parameterType="String"
+		resultType="MyPageUserFundingVO">
+		SELECT funding_thumb_img_url, product_name, farm_name,
+		farm_address, user_funding_date, user_funding_amout, user_funding_pct,
+		product_status
+		FROM farm_and_product fp
+		INNER JOIN funding_history fh ON
+		fp.product_serial_num = fh.product_serial_num
+		WHERE user_serial_num = #{user_serial_num}
+	</select>
+
+</mapper>
