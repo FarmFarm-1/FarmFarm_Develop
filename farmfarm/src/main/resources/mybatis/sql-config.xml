@@ -20,5 +20,6 @@
 		<typeAlias type="com.farmfarm.dto.FarmersVO" alias="FarmersVO"/>
 		<typeAlias type="com.farmfarm.dto.TermsOfUseVO" alias="TermsOfUseVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserFundingVO" alias="MyPageUserFundingVO"/>
+		<typeAlias type="com.farmfarm.dto.User_account_historyVO" alias="User_account_historyVO"/>
 	</typeAliases>
 </configuration>

@@ -23,5 +23,10 @@
 	<button onclick="location.href='logout'">로그아웃</button>
 	<hr>
 	<button onclick= "location.href='myFarm'">마이팜 파머 테스트</button>
+	<form action="/manuallyInputCropsData" method="get">
+		<input type="text" name="date">
+		<input type="submit" value="cropsDataManuallyInput BY HS">
+	</form>
+	<button onclick= "location.href='/manuallySearchAccount'">계좌 조회 테스트</button>
 </body>
 </html>

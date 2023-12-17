@@ -23,9 +23,13 @@
 	let serial_num = "${sessionScope.serial_num}";
 	let product_serial_num = "${auctionInfo.product_serial_num}";
 	let user_real_input_price = 0;
-	$(document).ready(function() {	
+	$(document).ready(function(){
 		$("#auction-price-input").on("input", pointChk);
+		$("#auction-price-input").on("keyup", pointChk);
+		$("#auction-price-input").on("change", pointChk);
 		$("#auction-price-input").on("input", formattingNum);
+		$("#auction-price-input").on("keyup", formattingNum);
+		$("#auction-price-input").on("change", formattingNum);
 		$(".bookmark-layer").click(function() {
 			if(serial_num.substring(0,2) === "us"){
 				let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
@@ -37,7 +41,7 @@
                     $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
                 }
 			} else {
-				showModal("로그인이 필요한 기능입니다.","로그인 바로가기");
+				showModal("로그인이 필요한 기능입니다","로그인 바로가기");
 			}
 		});
 		
@@ -63,28 +67,33 @@
 							success: function(res) {
 								if(res == 1) {
 									showModal_success("입찰결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");
+									location.reload(true);
 								} else {
 									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+									location.reload(true);
 								}
 							},
 							error: function(xhr, status, error) {
 								if(xhr.responseText == "notEnoughPoint") {
 									showModal("입찰 결과","포인트가 부족합니다");
+									location.reload(true);
 								} else if (xhr.responseText == "notMaxAuctionraiser") {
 									showModal("입찰 결과","최고 입찰 금액이 아닙니다");
+									location.reload(true);
 								} else {
 									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+									location.reload(true);
 								}
 							}
 						});
 					} else {
-						showModal("입력 오류","최고 금액 이상으로 입찰하세요");
+						showModal("입력 오류","최고 금액 이상으로 입찰하세요"); 
 					}	
 				}else {
-					showModal("입력 오류","경매 시작 금액 이상으로 입찰하세요.");
+					showModal("입력 오류","경매 시작 금액 이상으로 입찰하세요"); 
 				}	
 			} else {
-				showModal("로그인이 필요한 기능입니다.","로그인 바로가기");
+				showModal("로그인이 필요한 기능입니다.","로그인 바로가기"); 
 			}
 		});
 		
@@ -110,7 +119,7 @@
 		            }
 		        }
 	    	} else {
-	    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
+	    		showModal("로그인이 필요한 기능입니다","서포터 회원으로 로그인 하세요");
 	    		e.target.value = "0";
 	    	}
 	    }
@@ -160,7 +169,7 @@
         if(input.length > 0) {
         	let num = input.replace(/,/g, ""); // 콤마 제거
         	if (!$.isNumeric(num)) {
-        		showModal("입력 오류","숫자만 입력하세요.");
+        		showModal("입력 오류","숫자만 입력하세요");
                 $(this).val(input.slice(0, -1)); // 마지막 문자 제거
             } else {
                 $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가

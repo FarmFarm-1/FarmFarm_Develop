@@ -95,7 +95,7 @@
 						<p class="cate">마이 팜머니</p>
 
 						<div class="auto-group-3tvm-62R">
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="location.href='${cpath}/mypage/farmMoneyCharge'">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/chargeIcon.png" />
@@ -174,7 +174,7 @@
 									<div class="item--WCV">결제정보 관리</div>
 								</div>
 								<div class="item--cWR">간편하게 계좌 등록하고, 빠르게 결제하세요!</div>
-								<button onclick="location.href='myFunding'" class="group--Gay">
+								<button onclick="location.href='${cpath}/mypage/accountRegister'" class="group--Gay">
 									<div class="item--QhB">계좌 등록</div>
 									<img class="group-uP3" src="${cpath }/assets/right_pushAcc.png" />
 								</button>

@@ -2,12 +2,15 @@ package com.farmfarm.model;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.dto.User_cartVO;
+import com.farmfarm.dto.UsersVO;
 
 @Repository
 public class MyPageDAO {
@@ -43,5 +46,22 @@ public class MyPageDAO {
 
 	public List<String> myBookmarkShowByUser(String user_serial_num) {
 		return sqlSession.selectList(namespace_myPage+"myBookmarkShowByUser",user_serial_num);
+	}
+
+	public int chargePointCfrm(Map<String, Object> data) {
+		try {
+	        return sqlSession.insert(namespace_myPage+"chargePointCfrm",data);
+	    } catch (Exception e) {
+	    	System.out.println("chargePointCfrm error : " + e.getMessage());
+	        return -1;
+	    }
+	}
+
+	public UsersVO getUserInfoForChargingPoint(String user_serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"getUserInfoForChargingPoint",user_serial_num);
+	}
+
+	public User_account_historyVO accountExistence(String user_serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"latestAccountSelect",user_serial_num);
 	}
 }
