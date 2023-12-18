@@ -68,6 +68,7 @@ public class LoginController {
 		String serial_num = uService.loginCheck(u);
 		if (serial_num != null) {
 			session.setAttribute("serial_num", serial_num);
+			session.setAttribute("user_pw", shaUserPw);
 			response.getWriter().print(true);
 			System.out.println(session.getAttribute(serial_num));
 		} else {

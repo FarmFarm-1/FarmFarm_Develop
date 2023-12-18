@@ -69,7 +69,7 @@
 		} else {
 			if (curUser.substring(0, 2) === "us") {
 				//header_user_login 띄움
-				location.href = '/myPageUser';
+				location.href = '${cpath}/jaeho/a';
 
 			} else if (curUser.substring(0, 2) === "FA") {
 				//header_farmer_login 띄움

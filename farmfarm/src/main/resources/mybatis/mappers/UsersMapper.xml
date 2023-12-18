@@ -22,7 +22,11 @@
 	<update id="updatePw" >
 		update users set user_pw = #{user_pw} where user_email = #{user_email}
 	</update>
-
+	
+	<!-- 재호 -->
+	<update id="changePw" >
+	update users set user_pw = #{user_pw} where user_serial_num = #{user_serial_num}
+	</update>
 </mapper>
 
 
