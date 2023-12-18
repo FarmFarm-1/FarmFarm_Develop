@@ -18,7 +18,6 @@
 	
 	<select id = "getLastInsertedId" resultType="String">
 		SELECT product_serial_num FROM farm_and_product ORDER BY product_serial_num DESC LIMIT 1
-	
 	</select>
 	
 	<insert id="regFundInfo">

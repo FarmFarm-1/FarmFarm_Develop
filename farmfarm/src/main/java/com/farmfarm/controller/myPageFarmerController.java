@@ -2,6 +2,7 @@ package com.farmfarm.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
+import com.farmfarm.model.FarmerNavCntService;
 import com.farmfarm.model.FarmersService;
 import com.farmfarm.model.S3Service;
 import com.farmfarm.model.regProService;
@@ -33,6 +35,23 @@ public class myPageFarmerController {
 	
 	@Autowired
 	regProService rService;
+	
+	@Autowired
+	FarmerNavCntService cService;
+	
+	@GetMapping(value = "/navBarCnt")
+	@ResponseBody
+	public HashMap<String,Integer> navBarCnt(HttpSession session) {
+		
+		HashMap<String,Integer> map = new HashMap<String,Integer>();
+		
+		String farmer = (String) session.getAttribute("serial_num");
+		map = cService.getCnt(farmer);
+		
+		return map;
+	}
+	
+	
 	
 	@GetMapping(value = "/profitShare")
 	public String showProfitShare() {

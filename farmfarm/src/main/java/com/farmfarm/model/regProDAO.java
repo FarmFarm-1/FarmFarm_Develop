@@ -24,7 +24,7 @@ public class regProDAO {
 		fundVO.setProduct_serial_num(serial);
 		
 		int res = sqlSession.insert(namespace + "regFundInfo",fundVO); 
-		
+	
 		
 		return res;
 	}

@@ -237,6 +237,10 @@
 </body>
 <script>
 
+var max_cart;
+var max_money;
+var max_supporter;
+
 window.onload = ()=>{
 	
 	
@@ -246,9 +250,7 @@ window.onload = ()=>{
 	var $counter_cart = document.querySelector('.item-123--re1-sub-0');
 	var $counter_money = document.querySelector('.p-EwP-sub-0');
 	var $counter_supporter = document.querySelector('.item-56--CYm-sub-0');
-	var max_cart = 123;
-	var max_money = 1110000000;
-	var max_supporter = 56;
+	
 	setTimeout(()=>counter($counter_cart, max_cart),200);
 	setTimeout(()=>counter($counter_money, max_money),200);
 	setTimeout(()=>counter($counter_supporter, max_supporter),200);
@@ -266,7 +268,15 @@ window.onload = ()=>{
 	function navBarCnt(){
 		// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
 		// max_cart, max_money, max_supporter
-		
+		$.ajax({
+			url : "/myPageFarmer/navBarCnt",
+			async : false,
+			success : function(responseData) {
+				max_money = responseData.cntFund
+				max_cart = responseData.cntCart
+				max_supporter = responseData.cntAuction
+			}
+		});
 		
 		
 	}
