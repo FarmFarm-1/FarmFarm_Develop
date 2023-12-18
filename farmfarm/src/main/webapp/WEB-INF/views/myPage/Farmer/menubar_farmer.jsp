@@ -14,7 +14,6 @@
 <title>mypage/파머</title>
 
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
-<link rel="stylesheet" href="${cpath }/styles/1.css" />
 </head>
 <script>
 
@@ -30,7 +29,7 @@
 		
 		function f1(){
 			$.ajax({
-				url : "/regPro",
+				url : "/myPageFarmer/regPro",
 				success : function(responseData) {
 					$("#here").html(responseData);
 				}
@@ -39,6 +38,7 @@
 
 	
 </script>
+
 <body>
 	<jsp:include page="${cpath }/WEB-INF/views/header.jsp" />
 	<div class="jw-center">
@@ -181,6 +181,30 @@
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
 						<br>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<br>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<br>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<br>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<br>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
+						<h1>마이프로젝트 리스트</h1>
 						
 					</div>
 				</div>

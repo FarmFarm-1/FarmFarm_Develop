@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
-import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
@@ -14,16 +13,15 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Configuration
-@PropertySource("classpath:aws.properties")
 public class S3Config {
 
-	//@Value("${aws.accesskey}")
-	private String accessKey = "AKIATLB4HTHPMUOPD3OR";
+	@Value("${aws.accesskey}")
+	private String accessKey;
 
-	//@Value("${aws.secretkey}")
-	private String secretKey = "zMdsjoHyaN0OYyKrSgV+5XF2D+VQzMZ50LU8PmWO";
+	@Value("${aws.secretkey}")
+	private String secretKey;
 
-	//@Value("${aws.region.static}")
+	
 	private String region = "ap-northeast-2";
 
 	@Bean
@@ -32,4 +30,11 @@ public class S3Config {
 		return AmazonS3ClientBuilder.standard().withRegion(Regions.fromName(region))
 				.withCredentials(new AWSStaticCredentialsProvider(awsCredentials)).build();
 	}
+	
+	@Bean(name = "multipartResolver")
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+        multipartResolver.setMaxUploadSize(10485760); // 10MB
+        return multipartResolver;
+    }
 }

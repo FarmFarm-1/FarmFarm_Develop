@@ -79,11 +79,6 @@ public class MainController {
 		return "myPage/Farmer/menubar_farmer";
 	}
 	
-	@GetMapping("/regPro")
-	public String regPro() {
-		return "myPage/Farmer/regProduct";
-	}
-
 	// �룷�씤�듃 異⑹쟾 �럹�씠吏�
 	@GetMapping("/chargePoints")
 	public String showChargePoints(HttpSession session) {
