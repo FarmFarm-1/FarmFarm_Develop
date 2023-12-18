@@ -29,8 +29,8 @@
 						class="item--ZLZ-sub-1">팜팜</span>
 				</p>
 				<img class="twemoji-ear-of-corn-CXw"
-					src="${cpath }/assets/twemoji-ear-of-corn-4KX.png">
-				<img class="twemoji-ear-of-corn-Uds"
+					src="${cpath }/assets/twemoji-ear-of-corn-4KX.png"> <img
+					class="twemoji-ear-of-corn-Uds"
 					src="${cpath }/assets/twemoji-ear-of-corn-SVK.png">
 				<div class="rectangle-72-Vmw"></div>
 				<p class="item--R9o">농작물의 주인이 되는 가장 쉬운 방법</p>
@@ -42,7 +42,8 @@
 			<div class="group-156-QXX">
 
 				<div>
-					<div class="auto-group-r77t-U1b" onclick="location.href='${cpath}/funding/fundingList';">
+					<div class="auto-group-r77t-U1b"
+						onclick="location.href='${cpath}/funding/fundingList';">
 						<p class="item--zkd">펀딩 라인업</p>
 						<button class="button_list">
 							<img class="mingcute-right-line-6of"
@@ -57,7 +58,8 @@
 				<div class="item--uPK" id="fundingOrder">
 					<c:forEach items="${fundingListHot }" var="fundingItem"
 						varStatus="status">
-						<div class="funding_item">
+						
+						<div class="funding_item" onclick="location.href='${cpath}/funding/fundingDetail?product_serial_num=${fundingItem.product_serial_num}';">
 
 
 							<div class="img_wrap">
@@ -70,9 +72,17 @@
 							<div class="bookmark-layer"
 								onclick="func('${fundingItem.product_serial_num }', ${status.index })">
 								<div class="bookmark-btn">
-									<img id="heart-icon-${status.index}"
-										class="${fundingItem.is_cart eq '0'?'heart-icon':'heart-icon filled' }"
-										src="${fundingItem.is_cart eq '0' ?'/assets/heart_white_empty.png':'/assets/heart_thub.png' }" />
+									<c:choose>
+										<c:when
+											test="${fn:contains(myBookmarkShowByUser, fundingItem.product_serial_num)}">
+											<img id="heart-icon-${status.index}"
+												class="heart-icon filled" src="/assets/heart_thub.png" />
+										</c:when>
+										<c:otherwise>
+											<img id="heart-icon-${status.index}" class="heart-icon"
+												src="${cpath}/assets/heart_white_empty.png" />
+										</c:otherwise>
+									</c:choose>
 								</div>
 							</div>
 							<div class="group-86-zpV">

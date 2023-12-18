@@ -14,6 +14,7 @@
 <title>mypage/파머</title>
 
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
+
 </head>
 
 <script>
@@ -293,11 +294,6 @@ window.onload = ()=>{
 		});
 	}
 	
-	
-	
-	
-	
-
 	
 	
 </script>
