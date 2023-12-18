@@ -31,6 +31,25 @@
 			}
 		});
 	}
+	
+	function myAuctionList() {
+		$.ajax({
+			url : "/myPageUser/myAuctionList",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
+	function myCartList() {
+		$.ajax({
+			url : "/myPageUser/myCartList",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
 </script>
 
 <body>
@@ -64,7 +83,8 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							
+							<button class="menuBtn" onclick="myAuctionList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/auctionIcon.png" />
@@ -73,7 +93,7 @@
 								</div>
 							</button>
 
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="myCartList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/cartIcon.png" />
@@ -81,6 +101,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
+							
 							<button class="menuBtn" onclick="location.href='myFunding'">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
@@ -185,6 +206,7 @@
 					<!-- ajax -->
 					<div id="here">
 
+
 						<div class="mypage--Se9">
 							<!-- 고정 -->
 							<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
@@ -198,281 +220,32 @@
 							</div>
 
 							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
+							<c:forEach items="${myFundingList }" var="fList">
+								<div class="fundinglist1-giZ">
+									<img class="tomatoes-55667411280-5Eu"
+										src="${cpath }/assets/tomatoes.png" />
 
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
+									<div class="fundinginfo-B9X">
 
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
+										<div class="auto-group-anxd-tCM">
+											<p class="item--aqs">${fList.product_name}</p>
+											<p class="item--UwF">${fList.farm_name}</p>
+											<div class="auto-group-huhf-zPo">
+												<img class="mdi-location-v2Z" src="./assets/location.png" />
+												<p class="item--3cy">${fList.farm_address}</p>
+											</div>
 										</div>
 									</div>
+
+									<p class="fundingdate-9R7">${fList.user_funding_date}</p>
+									<div class="fundingpct-4Y5">70%</div>
+									<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
+									<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
+									<div class="fundingstate-MQh">${fList.product_status}</div>
 								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
-							<!-- 펀딩 리스트 -->
-							<div class="fundinglist1-giZ">
-
-								<img class="tomatoes-55667411280-5Eu"
-									src="${cpath }/assets/tomatoes.png" />
-								<div class="fundinginfo-B9X">
-
-									<div class="auto-group-anxd-tCM">
-										<p class="item--aqs">달달 스테비아 토망고</p>
-										<p class="item--UwF">행복농장</p>
-										<div class="auto-group-huhf-zPo">
-											<img class="mdi-location-v2Z" src="./assets/location.png" />
-											<p class="item--3cy">경기 광주</p>
-										</div>
-									</div>
-								</div>
-
-								<p class="fundingdate-9R7">2023.12.10</p>
-								<div class="fundingpct-4Y5">70%</div>
-								<p class="fundingpay-7WM">30,000p</p>
-								<p class="fundingmypercent-djb">2%</p>
-								<div class="fundingstate-MQh">펀딩 진행중</div>
-
-							</div>
-
+							</c:forEach>
 						</div>
+
 
 					</div>
 				</div>

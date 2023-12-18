@@ -128,18 +128,6 @@ input {
 	flex-shrink: 0;
 }
 
-.mypage--Se9 .fundinglistheader-H8h .item--MAV {
-	/* margin-left: 3rem; */
-	text-align: center;
-	font-size: 1.5rem;
-	font-weight: 400;
-	line-height: 1.2575;
-	color: #686868;
-	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
-}
-
 .mypage--Se9 .fundinglist1-giZ {
 	column-gap: 3.2rem;
 	margin: 2rem 0rem 2rem 0rem;
@@ -234,40 +222,36 @@ input {
 	flex-shrink: 0;
 }
 
-.mypage--Se9 .fundinglist1-giZ .fundingdate-9R7 {
-	/* margin: 0rem 0rem 3rem 0rem;  */
-	font-size: 1.2rem;
-	font-weight: 400;
-	line-height: 1.2575;
-	color: #2d2d2d;
-	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+.mypage--Se9 .fundinglist1-giZ .auctiondeadlinegroup-Nj7 {
+	/* margin: 2.2rem 7.4rem 2.445rem 0rem;
+	height: calc(100% - 4.6449rem); */
+	display: flex;
+	flex-direction: column;
 	flex-shrink: 0;
 	flex-basis: 80px;
-	text-align: center;
 }
 
-.mypage--Se9 .fundinglist1-giZ .fundingpct-4Y5 {
-	/* margin-right: 3.3rem; */
-	/* width: 8rem; */
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.mypage--Se9 .fundinglist1-giZ .auctiondeadlinegroup-Nj7 .auctionremaining-VYq
+	{
+	margin-bottom: 0.1rem;
 	font-size: 1.2rem;
 	font-weight: 700;
 	line-height: 1.2575;
-	color: #64a246;
+	color: #5c913b;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	/* background-image: url('../assets/ellipse-32-dhX.png'); */
-	border-radius: 0.2rem;
 	flex-shrink: 0;
-	flex-basis: 80px;
-	text-align: center;
+}
+
+.mypage--Se9 .fundinglist1-giZ .auctiondeadlinegroup-Nj7 .auctiondeadline-pr1
+	{
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #a7a7a7;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundingpay-7WM {
@@ -284,24 +268,12 @@ input {
 	text-align: center;
 }
 
-.mypage--Se9 .fundinglist1-giZ .fundingmypercent-djb {
-	/* margin: 0rem 5rem 0rem 0rem; */
-	font-size: 1.2rem;
-	font-weight: 400;
-	line-height: 1.2575;
-	color: #2d2d2d;
-	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
-	flex-basis: 80px;
-	text-align: center;
-}
-
 .mypage--Se9 .fundinglist1-giZ .fundingstate-MQh {
 	/* margin: 2.8rem 0; */
 	width: 8rem;
 	/* height: calc(100% - 5.6rem); */
-	height: 3rem; display : flex;
+	height: 3rem;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 1.2rem;
@@ -318,12 +290,20 @@ input {
 	text-align: center;
 }
 
-.mypage--Se9 .fundinglist1-giZ .show_more {
-	margin-top: 0.1rem;
-	width: 1.5rem;
-	height: 0.8rem;
-	object-fit: contain;
-	vertical-align: top;
+.mypage--Se9 .fundinglist1-giZ .item--KJD {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.096rem;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
 	flex-shrink: 0;
-	cursor: pointer;
+	background-color: #c7efb4;
+	border-radius: 0.8rem;
+	width: 8rem;
+	height: 3rem;
 }

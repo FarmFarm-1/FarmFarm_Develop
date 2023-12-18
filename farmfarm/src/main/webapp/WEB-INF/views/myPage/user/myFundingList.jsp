@@ -16,6 +16,22 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 </head>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<script type="text/javascript">
+	/* function showMore() {
+		$.ajax({
+			url : "/myPageUser/myFundingListShowMore",
+			success : function(responseData) {
+				$("#showHere").html(responseData);
+			}
+		});
+	} */
+</script>
+
 <body>
 
 	<div class="mypage--Se9">
@@ -53,8 +69,18 @@
 				<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh">${fList.product_status}</div>
+				<img class="show_more" id="show_more" onclick="location.href='/myPageUser/myFundingListShowMore'"
+					src="${cpath }/assets/down_solid.png" />
+
+
 			</div>
+			
+			<!-- <div id="showHere"></div> -->
+
 		</c:forEach>
+
 	</div>
+
+
 </body>
 </html>
