@@ -6,6 +6,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,10 @@ public class MainController {
 
 	@GetMapping("/")
 	public String showmain(HttpSession session) {
-		// session.setAttribute("serial_num", "us1010101010");
-		// session.setAttribute("serial_num", "FA1010101010");
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
 	}
+	
 
 	@GetMapping("/login")
 	public String showLogin() {
@@ -42,27 +43,13 @@ public class MainController {
 		return "loginIndex";
 	}
 
-	/* 占쎈툡占쎌삋占쎈뮉 占쎈엘占쎈쐭占쎌뒠 筌띲끋釉⑨옙�뿯占쎈빍占쎈뼄. */
-	// 筌롫뗄�뵥 占쎈읂占쎌뵠筌욑옙
+
 	@GetMapping("/main")
 	public String showMain(HttpSession session) {
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
 	}
 
-	// 占쏙옙占쎈뎃 占쎈읂占쎌뵠筌욑옙
-	@GetMapping("/funding")
-	public String showFunding(HttpSession session) {
-		session.setAttribute("headerSelect", "funding");
-		return "/";
-	}
-
-	// 野껋럥�꼻 占쎈읂占쎌뵠筌욑옙
-	@GetMapping("/auction")
-	public String showAuction(HttpSession session) {
-		session.setAttribute("headerSelect", "auction");
-		return "/";
-	}
 
 	@GetMapping("/myPageFarmer")
 	public String showMyFarmFarmer(HttpSession session) {
@@ -70,15 +57,20 @@ public class MainController {
 		session.removeAttribute("MyFarmer");
 		return "myPage/Farmer/menubar_farmer";
 	}
+	
+	@GetMapping("/myPageUser")
+	public String showMyPageUser(HttpSession session) {
+		session.setAttribute("headerSelect", "myFarm");
+		return "myPage/user/menubar_supporter";
+	}
 
-	// 筌잛럩占쏙옙釉� 占쎈읂占쎌뵠筌욑옙
 	@GetMapping("/messageBox")
 	public String showMessageBox(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
 		return "/";
 	}
 
-	// 筌띾뜆�뵠占쎈늄嚥≪뮇�젰占쎈뱜 占쎈읂占쎌뵠筌욑옙
+
 	@GetMapping("/makeProject")
 	public String showMakeProject(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
@@ -86,12 +78,6 @@ public class MainController {
 		return "myPage/Farmer/menubar_farmer";
 	}
 
-	@GetMapping("/regPro")
-	public String regPro() {
-		return "myPage/Farmer/regProduct";
-	}
-
-	// 占쎈７占쎌뵥占쎈뱜 �빊�뫗�읈 占쎈읂占쎌뵠筌욑옙
 	@GetMapping("/chargePoints")
 	public String showChargePoints(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
