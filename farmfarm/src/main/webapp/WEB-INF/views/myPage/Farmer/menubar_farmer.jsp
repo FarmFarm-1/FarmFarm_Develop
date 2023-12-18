@@ -15,28 +15,48 @@
 
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
 </head>
+
 <script>
-
+	function profit(){
+		// ajax -> 입급내역 here.html
+		alert('ajax : 입금내역으로 이동');
+		$.ajax({
+			url : "/myPageFarmer/profitShare",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	function chat(){
+		// ajax -> 입급내역 here.html
+		alert('ajax : 쪽지함으로 이동');
+		$.ajax({
+			url : "/myPageFarmer/chat",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	function changePw(){
+		alert('ajax : 비밀번호 변경으로 이동');
+		$.ajax({
+			url : "/myPageFarmer/changePassword",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	function account(){
+		alert('ajax : 파머 계좌 관리로 이동');
+		$.ajax({
+			url : "/myPageFarmer/account",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
 	
-		var curReq = "${sessionScope.MyFarmer}";
-		if(curReq==""){
-			console.log('그냥접근');
-		}else{
-			console.log('프로젝트로 만들기로 접근')
-			f1();
-		}
-		
-		
-		function f1(){
-			$.ajax({
-				url : "/myPageFarmer/regPro",
-				success : function(responseData) {
-					$("#here").html(responseData);
-				}
-			});
-		}
 
-	
 </script>
 
 <body>
@@ -53,7 +73,7 @@
 							<p class="item--ASH">마더파더젠틀맨님</p>
 						</div>
 					</div>
-					<button class="logout-QrR" onclick="location.href='myProject'">
+					<button class="logout-QrR" onclick="location.href='/logout'">
 						<p class="item--8XX">로그아웃</p>
 						<div class="log-out-1bK"></div>
 					</button>
@@ -62,7 +82,7 @@
 						<p class="cate">활동 관리</p>
 
 						<div class="auto-group-3tvm-62R">
-							<button class="menuBtn" onclick="location.href='myProject'">
+							<button class="menuBtn" onclick="location.href='/myPageFarmer'">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/fundingIcon.png" />
@@ -72,7 +92,7 @@
 							</button>
 
 
-							<button class="menuBtn" onclick="location.href='myProject'">
+							<button class="menuBtn" onclick="profit()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/incomeIcon.png" />
@@ -80,7 +100,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							<button class="menuBtn" onclick="location.href='myProject'">
+							<button class="menuBtn" onclick="chat()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/chatIcon.png" />
@@ -96,7 +116,7 @@
 						<p class="cate">설정</p>
 
 						<div class="auto-group-3tvm-62R">
-							<button class="menuBtn" onclick="location.href='myProject'">
+							<button class="menuBtn" onclick="changePw()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/pwchageIcon.png" />
@@ -116,8 +136,7 @@
 							<p class="item--bXj">마이 데이터</p>
 							<div class="item--KCq">내 프로젝트의 진행상황을 확인해보세요</div>
 
-							<button onclick="location.href='myProject'"
-								class="accountpagebtn-zpm">
+							<button onclick="account()" class="accountpagebtn-zpm">
 								<img class="group-135-hjB"
 									src="${cpath }/assets/info_accIcon2.png" />
 								<div class="item--RQH">수익 계좌 관리</div>
@@ -205,7 +224,7 @@
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
-						
+
 					</div>
 				</div>
 			</div>
@@ -218,16 +237,39 @@
 <script>
 
 window.onload = ()=>{
+	
+	
+	navBarCnt();
+	
+	
 	var $counter_cart = document.querySelector('.item-123--re1-sub-0');
 	var $counter_money = document.querySelector('.p-EwP-sub-0');
 	var $counter_supporter = document.querySelector('.item-56--CYm-sub-0');
 	var max_cart = 123;
-	var max_money = 115320;
+	var max_money = 1110000000;
 	var max_supporter = 56;
 	setTimeout(()=>counter($counter_cart, max_cart),200);
 	setTimeout(()=>counter($counter_money, max_money),200);
 	setTimeout(()=>counter($counter_supporter, max_supporter),200);
+	
+	
+	var curReq = "${sessionScope.MyFarmer}";
+	if(curReq==""){
+		console.log('그냥접근');
+	}else{
+		console.log('프로젝트로 만들기로 접근')
+		f1();
+	}
 }
+
+	function navBarCnt(){
+		// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
+		// max_cart, max_money, max_supporter
+		
+		
+		
+	}
+	
 	function counter($counter, max){
 		let now = max;
 		const handle = setInterval(() => {
@@ -240,5 +282,22 @@ window.onload = ()=>{
 			now -= step;
 		},30);
 	} 
+	
+	
+	function f1(){
+		$.ajax({
+			url : "/myPageFarmer/regPro",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
+	
+	
+	
+	
+
+	
 	
 </script>

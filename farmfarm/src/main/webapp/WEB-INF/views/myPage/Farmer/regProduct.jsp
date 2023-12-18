@@ -23,46 +23,7 @@
 <script
 	src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
-<script>
-	// 날짜 필터링 관련 
-	window.onload = function() {
-		var now_utc = Date.now() // 지금 날짜를 밀리초로
-		// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
-		var timeOff = new Date().getTimezoneOffset()*60000; // 분단위를 밀리초로 변환
-		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
-		var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
-		document.getElementById("harvestDate").setAttribute("min", today);
-		
-		
-		var harvestDate = document.getElementById('harvestDate');
-	    var harvest2Date = document.getElementById('harvest2Date');
-	    var deadline = document.getElementById('deadline');
-	    
-	    var warning = document.querySelector('.warn-one');
-	    warning.style.display = "none"; // Initially hide the warning
 
-	    harvest2Date.onchange = function(){
-	        if(harvestDate.valueAsDate >= harvest2Date.valueAsDate){
-	            warning.style.display = "flex"; // Show warning if second date is before first date
-	        } else {
-	            warning.style.display = "none"; // Hide warning if not
-	        }
-	    }
-	    
-	    var warning2 = document.querySelector('.warn-two');
-	    warning2.style.display = "none";
-	    
-	    deadline.onchange = function(){
-	        if(deadline.valueAsDate >= harvestDate.valueAsDate){
-	            warning2.style.display = "flex"; // Show warning if second date is before first date
-	        } else {
-	            warning2.style.display = "none"; // Hide warning if not
-	        }
-	    }
-	    
-	    
-	}
-</script>
 <script>
 	// 상품 등록 
 	var funding_thumb_img_url;
@@ -113,10 +74,10 @@
 	}
 
 	function regProduct() {
-		
+
 		var warning = document.querySelector('.warn-one');
 		var warning2 = document.querySelector('.warn-two');
-		
+
 		var product_kind = $(".status2-3uo.selected").text();
 		var product_name = $(".rectangle-193-TZX").val();
 		var farm_name = $(".group-185-3Yq").val();
@@ -131,62 +92,61 @@
 		var file2 = $('#inputFile2')[0].files[0];
 		var target_total_amount = $(".rectangle-195-G4m").val();
 		var funding_deadline = $(".group-185-jW5").val();
-		
-		if (warning.style.display=='flex' || warning2.style.display=='flex'){
+
+		if (warning.style.display == 'flex' || warning2.style.display == 'flex') {
 			alert('날짜 조건을 다시 확인하고 등록 해주세요 !')
-		}else{
-			
-			if (product_kind != '' && product_name != '' && farm_name != ''
-				&& farm_address != '' && farm_introduction != ''
-				&& farm_square_footage != '' && expected_planting_date != ''
-				&& expected_harvest_date != '' && farmer_phone != ''
-				&& file != '' && file2 != '' && target_total_amount != ''
-				&& funding_deadline != '') {
-
-			imageUpload(file);
-			imageUpload2(file2);
-
-			$.ajax({
-				url : '/myPageFarmer/regProduct',
-				type : 'POST',
-				contentType : 'application/json',
-				data : JSON.stringify({
-					"product_kind" : product_kind,
-					"product_name" : product_name,
-					"farm_name" : farm_name,
-					"farm_address" : farm_address,
-					"farm_introduction" : farm_introduction,
-					"farm_square_footage" : farm_square_footage,
-					"expected_planting_date" : expected_planting_date,
-					"expected_harvest_date" : expected_harvest_date,
-					"funding_thumb_img_url" : funding_thumb_img_url,
-					"funding_product_img_url" : funding_product_img_url,
-					"target_total_amount" : target_total_amount,
-					"funding_deadline" : funding_deadline,
-					"farmer_phone" : farmer_phone
-
-				}),
-				success : function(response) {
-					if (response === 'success') {
-						console.log('상품 등록에 성공했습니다.');
-						location.href = '/main';
-					} else {
-						console.log('등록 실패 ..');
-					}
-
-				},
-				error : function(error) {
-					console.log(error);
-				}
-			});
-
 		} else {
-			alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+
+			if (product_kind != '' && product_name != '' && farm_name != ''
+					&& farm_address != '' && farm_introduction != ''
+					&& farm_square_footage != ''
+					&& expected_planting_date != ''
+					&& expected_harvest_date != '' && farmer_phone != ''
+					&& file != '' && file2 != '' && target_total_amount != ''
+					&& funding_deadline != '') {
+
+				imageUpload(file);
+				imageUpload2(file2);
+
+				$.ajax({
+					url : '/myPageFarmer/regProduct',
+					type : 'POST',
+					contentType : 'application/json',
+					data : JSON.stringify({
+						"product_kind" : product_kind,
+						"product_name" : product_name,
+						"farm_name" : farm_name,
+						"farm_address" : farm_address,
+						"farm_introduction" : farm_introduction,
+						"farm_square_footage" : farm_square_footage,
+						"expected_planting_date" : expected_planting_date,
+						"expected_harvest_date" : expected_harvest_date,
+						"funding_thumb_img_url" : funding_thumb_img_url,
+						"funding_product_img_url" : funding_product_img_url,
+						"target_total_amount" : target_total_amount,
+						"funding_deadline" : funding_deadline,
+						"farmer_phone" : farmer_phone
+
+					}),
+					success : function(response) {
+						if (response === 'success') {
+							console.log('상품 등록에 성공했습니다.');
+							location.href = '/main';
+						} else {
+							console.log('등록 실패 ..');
+						}
+
+					},
+					error : function(error) {
+						console.log(error);
+					}
+				});
+
+			} else {
+				alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+			}
+
 		}
-			
-		}
-		
-		
 
 	}
 </script>
@@ -323,9 +283,8 @@
 
 
 
-
-<body>
-	<div class="mypage--YJR">
+<body onclick = "daySet()">
+	<div class="mypage--YJR" onclick = "daySet()">
 		<div class="insertproject-e37">
 			<div class="auto-group-ovs1-Nzh">
 				<p class="item--JtM">내 프로젝트 만들기</p>
@@ -529,4 +488,79 @@
 		</div>
 	</div>
 </body>
+<script>
+	// 날짜 필터링 관련 
+	var harvestDate = document.getElementById('harvestDate');
+	var harvest2Date = document.getElementById('harvest2Date');
+	var deadline = document.getElementById('deadline');
+
+	var warning = document.querySelector('.warn-one');
+	var warning2 = document.querySelector('.warn-two');
+
+	function daySet() {
+		console.log('ddd')
+		var now_utc = Date.now() // 지금 날짜를 밀리초로
+		// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+		var timeOff = new Date().getTimezoneOffset() * 60000; // 분단위를 밀리초로 변환
+		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
+		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
+		document.getElementById("harvestDate").setAttribute("min", today);
+
+
+	}
+	
+	harvest2Date.onchange = function() {
+		if (harvestDate.valueAsDate >= harvest2Date.valueAsDate) {
+			warning.style.display = "flex"; // Show warning if second date is before first date
+		} else {
+			warning.style.display = "none"; // Hide warning if not
+		}
+	}
+	
+	deadline.onchange = function() {
+		if (deadline.valueAsDate >= harvestDate.valueAsDate) {
+			warning2.style.display = "flex"; // Show warning if second date is before first date
+		} else {
+			warning2.style.display = "none"; // Hide warning if not
+		}
+	}
+
+	/* window.onload = function() {
+		var now_utc = Date.now() // 지금 날짜를 밀리초로
+		// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
+		var timeOff = new Date().getTimezoneOffset() * 60000; // 분단위를 밀리초로 변환
+		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
+		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
+		document.getElementById("harvestDate").setAttribute("min", today);
+
+		var harvestDate = document.getElementById('harvestDate');
+		var harvest2Date = document.getElementById('harvest2Date');
+		var deadline = document.getElementById('deadline');
+
+		var warning = document.querySelector('.warn-one');
+		warning.style.display = "none"; // Initially hide the warning
+
+		harvest2Date.onchange = function() {
+			if (harvestDate.valueAsDate >= harvest2Date.valueAsDate) {
+				warning.style.display = "flex"; // Show warning if second date is before first date
+			} else {
+				warning.style.display = "none"; // Hide warning if not
+			}
+		}
+
+		var warning2 = document.querySelector('.warn-two');
+		warning2.style.display = "none";
+
+		deadline.onchange = function() {
+			if (deadline.valueAsDate >= harvestDate.valueAsDate) {
+				warning2.style.display = "flex"; // Show warning if second date is before first date
+			} else {
+				warning2.style.display = "none"; // Hide warning if not
+			}
+		}
+
+	} */
+</script>
+
+
 </html>
