@@ -18,6 +18,12 @@
 </head>
 
 <body>
+
+	<form action="/manuallyInputCropsData" method="get">
+		<input type="text" name="date"> <input type="submit"
+			value="cropsDataManuallyInput BY HS">
+	</form>
+
 	<jsp:include page="header.jsp" />
 
 
@@ -72,6 +78,7 @@
 		<div class="section32-Tw3">
 			<p class="item--C7w scroll_on">경매</p>
 			<div class="auto-group-1e85-uo3">
+
 				<div class="auto-group-xa6r-TZf">
 					<p class="item-1--PiD scroll_on">
 						여러 농작물의 시세 정보를 <br /> 1분 만에 <br /> 확인해보세요
@@ -146,7 +153,9 @@
 
 			</div>
 			<div class="section52-jjK">
-				<div style='width: 1000px; height: 100px; color: grey;'></div>
+				<div id="apiChart">
+				</div>
+
 				<div class="section42text-ebP scroll_on">
 					<p class="api-CN1">농산물 실시간 가격 API</p>
 					<p class="item--WNh">
@@ -310,8 +319,9 @@
 				</div>
 				<div class="auto-group-xz1p-Vpq">
 					<p class="item--dAM">팜팜에서 인기있는 펀딩 프로젝트를 살펴보세요</p>
-						<button onclick="location.href='${cpath}/funding/fundingMain'" class="section71btn-UAy">프로젝트 살펴보기</button>
-					
+					<button onclick="location.href='${cpath}/funding/fundingMain'"
+						class="section71btn-UAy">프로젝트 살펴보기</button>
+
 				</div>
 			</div>
 			<div class="section72-7Uq">
@@ -324,19 +334,47 @@
 				</div>
 				<div class="auto-group-jwoo-emb">
 					<p class="item--C2R">내 농작물을 위해 투자금 받고, 대량 판매 해보세요</p>
-						<button onclick="location.href='${cpath}/makeProject'" class="section72btn-r6y">내 농장 등록하기</button>
+					<button onclick="goMypage()"
+						class="section72btn-r6y">내 농장 등록하기</button>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<button onclick="location.href='logout'">로그아웃</button>
-	
+
 
 
 	<script>
 	
+	let serial_num = "${sessionScope.serial_num}";
 	
+	function goMypage(){
+		if (serial_num.substring(0, 2) === "FA"){
+			location.href='${cpath}/makeProject'
+		} else {
+			alert("파머 회원으로 로그인 하세요.");
+		}
+	}
+	
+	$(function(){
+		showGraph();
+	});
+	
+	function showGraph(){
+		$.ajax({
+			url : '/cropsQuote',
+			type : 'GET',
+			success : function(response) {
+				$("#apiChart").html(response);
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+	}
+	
+	/* 농산물 유통비용 데이터 차트 */
 	$(document).ready(function() {
 	    $('#areaChart').hide();
 	    
@@ -460,119 +498,11 @@
 		function toggleSeries(checkbox) {
 			chart.toggleSeries(checkbox.value)
 		}
+		
+		
+		
 	</script>
-	<!-- End Area Chart -->
 
-
-
-	<%-- <div style="width: 1000px; height: 700px;">
-		<canvas id="myChart" style="width: 500px"></canvas>
-	</div>
-
-	<script>
-		var ctx = document.getElementById('myChart').getContext('2d');
-
-		var myChart = new Chart(ctx, {
-			type : 'line',
-			data : {
-				labels : [ "Sunday", "Monday", "Tuesday", "Wednesday",
-						"Thursday"/* , "Friday", "Saturday"  */],
-				datasets : [ {
-					data : [ 86, 114, 106, 106, 107, 111, 133 ],
-					label : "쌀",
-					borderColor : "rgb(62,149,205)",
-					backgroundColor : "rgb(62,149,205,0.1)",
-					borderWidth : 1,
-					fill : 'origin',
-					pointRadius : 1, // 데이터 포인트의 크기 설정
-					pointHoverRadius : 6, // 마우스 호버 시 데이터 포인트의 크기 설정
-					pointHitRadius : 20
-				}, {
-					data : [ 70, 90, 44, 60, 83, 90, 100 ],
-					label : "콩",
-					borderColor : "rgb(60,186,159)",
-					backgroundColor : "rgb(60,186,159,0.1)",
-					borderWidth : 1,
-					fill : 'origin',
-					pointRadius : 1, // 데이터 포인트의 크기 설정
-					pointHoverRadius : 6, // 마우스 호버 시 데이터 포인트의 크기 설정
-					pointHitRadius : 20
-				}, {
-					data : [ 10, 21, 60, 44, 17, 21, 17 ],
-					label : "녹두",
-					borderColor : "rgb(255,165,0)",
-					backgroundColor : "rgb(255,165,0,0.1)",
-					borderWidth : 1,
-					fill : 'origin',
-					pointRadius : 1, // 데이터 포인트의 크기 설정
-					pointHoverRadius : 6, // 마우스 호버 시 데이터 포인트의 크기 설정
-					pointHitRadius : 20
-				}, {
-					data : [ 100, 100, 100, 100, 100 ], // 'Friday'와 'Saturday'의 데이터 값을 0에서 0.1로 변경
-					label : "고구마",
-					borderColor : "rgb(196,88,80)",
-					backgroundColor : "rgb(196,88,80,0.1)",
-					borderWidth : 1,
-					fill : 'origin',
-					pointRadius : 1, // 데이터 포인트의 크기 설정
-					pointHoverRadius : 6, // 마우스 호버 시 데이터 포인트의 크기 설정
-					pointHitRadius : 20
-				} ]
-			},
-			options : {
-				elements : {
-					line : {
-						tension : 0.4
-					}
-				},
-				plugins : {
-					tooltip : {
-						enabled : true,
-						mode : 'nearest',
-						intersect : false
-					},
-					legend : {
-						labels : {
-							font : {
-								size : 14
-							}
-						},
-						position: 'top',
-						align: 'start',
-						itemSpacing: 500,
-						offset: 100
-					}
-
-				},
-				scales : {
-					x : {
-						grid : {
-							display : false
-						}
-					},
-					y : {
-						grid : {
-							display : false
-						}
-					}
-				},
-				animation : {
-					mode : 'x',
-					active : {
-						duration : 400
-					},
-					show : {
-						type : 'boolean',
-						duration : 0
-					},
-					hide : {
-						type : 'boolean',
-						easing : 'easeInExpo'
-					}
-				}
-			}
-		});
-	</script> --%>
 </body>
 <script>
 $(document).ready(function() {
