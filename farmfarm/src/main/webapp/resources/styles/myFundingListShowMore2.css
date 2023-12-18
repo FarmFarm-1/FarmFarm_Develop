@@ -1,0 +1,397 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li {
+	list-style: none;
+}
+
+input {
+	border: none;
+}
+
+/* body {
+	width: 144rem;
+} */
+/*  .mypage--uuf{
+	width: 100%;
+	margin: 27rem 5rem 0rem 5rem;
+	overflow: hidden;
+	position: relative;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+	zoom: 1.75;
+} */
+.fundingupdatedetail-Tqf {
+	width: 90rem;
+	/* height: 30rem; */
+	position: relative;
+	left: 5rem;
+	top: 5rem;
+	box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
+	background-color: #f2f2f2;
+	border-radius: 0.868rem;
+	zoom: 1.9;
+}
+
+.fundingupdatedetail-Tqf .line-55-nsw {
+	height: 100%;
+	background-color: #D8D8D8;
+	display: block;
+	/* position: absolute; */
+	width: 0.5px;
+	left: 67px;
+}
+
+.fundingupdatedetail-Tqf .update4-HZo {
+	width: 11.9rem;
+	height: 1.8235rem;
+	margin: 0rem 0rem 0rem 5.8rem;
+	/* position: absolute; */
+	left: 5.8rem;
+	top: 26.4412rem;
+	display: flex;
+	align-items: center;
+}
+
+.fundingupdatedetail-Tqf .update4-HZo .update4icon-cry {
+	margin-right: 0.8rem;
+	width: 1.8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-33-EGm.png');
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update4-HZo .item--VQy {
+	margin: 0rem 1.7rem 0rem 0rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update4-HZo .item--C4V {
+	margin-top: 0.1013rem;
+	display: flex;
+	font-size: 0.6rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #a2a2a3;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs {
+	width: 75.4rem;
+	height: auto;
+	margin: 0rem 0rem 3rem 5.8rem;
+	/* position: absolute; */
+	left: 5.8rem;
+	top: 11.853rem;
+	display: flex;
+	align-items: flex-start;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .update3icon-b6d {
+	margin: 0.709rem 0.8rem 0rem 0rem;
+	width: 1.8rem;
+	height: 1.8235rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-33-LJq.png');
+	flex-shrink: 0;
+	cursor: pointer;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .item--sfj {
+	margin: 0rem 2.6rem 0rem 0rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH {
+	box-sizing: border-box;
+	padding: 1.071rem 1.5rem 1.021rem 1.5rem;
+	width: 72.8rem;
+	height: 100%;
+	background-color: #bedab1;
+	border-radius: 0.9rem;
+	flex-shrink: 0;
+	display: none;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-hs7j-Q45
+	{
+	margin: 0rem 62.4rem 1.028rem 0rem;
+	width: calc(100% - 62.4rem);
+	display: flex;
+	align-items: center;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-hs7j-Q45 .item--X8h
+	{
+	margin-right: 1.6rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-hs7j-Q45 .item--SmT
+	{
+	margin-top: 0.1016rem;
+	display: flex;
+	font-size: 0.6rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5
+	{
+	margin-right: 41.2rem;
+	width: calc(100% - 41.2rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .wheat-18458351280-gfo
+	{
+	margin: 0.043rem 1.6rem 0rem 0rem;
+	width: 11.3rem;
+	height: 9.2108rem;
+	position: relative;
+	background-size: 137.135% 100%;
+	background-position: -1.7534rem -0rem;
+	background-image: url('../assets/wheat-18458351280.png');
+	border-radius: 0.4871rem;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .auto-group-hkbx-LkM
+	{
+	width: 15.7rem;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1
+	{
+	margin: 0rem 9.5rem 0.949rem 0rem;
+	width: calc(100% - 9.5rem);
+	display: flex;
+	align-items: center;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1 .item--E53
+	{
+	margin-right: 1.2rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1 .item-20230915-7uX
+	{
+	margin-top: 0.1013rem;
+	display: flex;
+	font-size: 0.6rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update3-fTs .updatedetail-fcH .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .item--pow
+	{
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #717f35;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.fundingupdatedetail-Tqf .update2-GA9 {
+	width: 11.9rem;
+	height: 1.8235rem;
+	margin: 0rem 0rem 3rem 5.8rem;
+	/* position: absolute; */
+	left: 5.8rem;
+	top: 8.4085rem;
+	display: flex;
+	align-items: center;
+}
+
+.fundingupdatedetail-Tqf .update2-GA9 .update2icon-PVf {
+	margin-right: 0.8rem;
+	width: 1.8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-33-wUq.png');
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update2-GA9 .item--sfj {
+	margin: 0rem 2.6rem 0rem 0rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update2-GA9 .item--P8H {
+	margin-top: 0.1013rem;
+	display: flex;
+	font-size: 0.6rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #a2a2a3;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update1-UfX {
+	width: 9.9rem;
+	height: 1.8235rem;
+	margin: 3rem 0rem 3rem 5.8rem;
+	/* position: absolute; */
+	left: 5.8rem;
+	top: 4.964rem;
+	display: flex;
+	align-items: center;
+}
+
+.fundingupdatedetail-Tqf .update1-UfX .update1icon-1fT {
+	margin-right: 0.8rem;
+	width: 1.8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-33.png');
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update1-UfX .item--WMK {
+	margin: 0rem 1.2rem 0rem 0rem;
+	display: flex;
+	font-size: 0.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #7a7a7a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingupdatedetail-Tqf .update1-UfX .item--cQM {
+	margin-top: 0.1016rem;
+	display: flex;
+	font-size: 0.6rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #a2a2a3;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}

@@ -50,7 +50,7 @@
 		<c:forEach items="${myFundingList }" var="fList">
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${cpath }/assets/tomatoes.png" />
+					src="${cpath }/assets/tomatoes.png" /> <!-- 바꿔야함 db에서 가져오는 사진 -->
 
 				<div class="fundinginfo-B9X">
 
@@ -65,7 +65,7 @@
 				</div>
 
 				<p class="fundingdate-9R7">${fList.user_funding_date}</p>
-				<div class="fundingpct-4Y5">70%</div>
+				<div class="fundingpct-4Y5">${fList.total_funding_pct}%</div>
 				<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh">${fList.product_status}</div>

@@ -7,15 +7,22 @@
 	<!-- 마이페이지 서포터 펀딩리스트 -->
 	<select id="myPageFundingList" parameterType="String"
 		resultType="MyPageUserFundingVO">
-		SELECT funding_thumb_img_url, product_name, farm_name,
-		farm_address, user_funding_date, user_funding_amout, user_funding_pct,
-		product_status
-		FROM farm_and_product fp
-		INNER JOIN funding_history fh ON
-		fp.product_serial_num =
-		fh.product_serial_num
-		WHERE user_serial_num =
-		#{user_serial_num}
+		SELECT
+		funding_thumb_img_url, product_name, farm_name,
+		farm_address, user_funding_date, total_funding_pct,
+		user_funding_amout, user_funding_pct, product_status
+		FROM farm_and_product A
+		INNER JOIN
+		(SELECT
+		round(SUM(user_funding_pct))
+		total_funding_pct, product_serial_num,
+		user_serial_num,
+		user_funding_pct, user_funding_amout,
+		user_funding_date
+		FROM funding_history
+		WHERE user_serial_num = #{user_serial_num}
+		GROUP BY product_serial_num ) B ON A.product_serial_num =
+		B.product_serial_num
 	</select>
 
 	<!-- 마이페이지 서포터 경매리스트 -->
