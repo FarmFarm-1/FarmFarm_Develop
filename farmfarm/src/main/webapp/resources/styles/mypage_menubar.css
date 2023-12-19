@@ -6,6 +6,19 @@
 	zoom: 1.5;
 }
 
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH-1 {
+	margin-top: 0.5rem;
+	text-align: center;
+	font-size: 1.5616rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.0468rem;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
 button {
 	border: 0;
 	background-color: transparent;
@@ -318,18 +331,7 @@ html {
 	flex-shrink: 0;
 }
 
-.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH-1 {
-	margin-top: 0.5rem;
-	text-align: center;
-	font-size: 1.5616rem;
-	font-weight: 700;
-	line-height: 1.2575;
-	letter-spacing: 0.0468rem;
-	color: #2d2d2d;
-	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
-	flex-shrink: 0;
-}
+
 .auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH-2 {
 	position: relative;
 	display: flex;

@@ -88,7 +88,9 @@
 						<div class="auto-group-autb-WKo">
 							<div class="auto-group-yaf7-cNq">파머</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
-							<p class="item--ASH">마더파더젠틀맨님</p>
+							<div class="item--ASH-2">
+							<p class="item--ASH"></p><p class="item--ASH-1">님</p>
+							</div>
 						</div>
 					</div>
 					<button class="logout-QrR" onclick="location.href='/logout'">
@@ -293,6 +295,7 @@ window.onload = ()=>{
 				max_money = responseData.cntFund
 				max_cart = responseData.cntCart
 				max_supporter = responseData.cntAuction
+				$(".item--ASH").html(responseData.name);
 			}
 		});
 		

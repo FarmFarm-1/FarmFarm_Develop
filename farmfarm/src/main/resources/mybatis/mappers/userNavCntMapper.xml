@@ -10,7 +10,7 @@
 	<select id="userFundingNum" resultType="int">
 		SELECT COUNT(*)
 		FROM users
-		LEFT OUTER JOIN funding_history ON users.user_serial_num =
+		JOIN funding_history ON users.user_serial_num =
 		funding_history.user_serial_num
 		WHERE users.user_serial_num =
 		#{user_serial_num}
@@ -19,7 +19,7 @@
 	<select id="userAuctionNum" resultType="Integer">
 		SELECT COUNT(*)
 		FROM users
-		LEFT OUTER JOIN auction_history ON
+		JOIN auction_history ON
 		users.user_serial_num =
 		auction_history.user_serial_num
 		WHERE

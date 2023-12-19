@@ -3,7 +3,11 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.farmfarm.FarmerNavCnt">
-
+	<select id="FarmerName" resultType="String">
+		SELECT farmer_name
+		FROM farmers
+		WHERE farmers.farmer_serial_num=#{farmer}
+	</select>
 	<select id="cntTotalFund" resultType="Integer">
 		SELECT
 		SUM(fh.user_funding_amout)

@@ -11,7 +11,7 @@ public class FarmerNavCntService {
 	@Autowired
 	FarmerNavCntDAO dao;
 	
-	public HashMap<String, Integer> getCnt(String farmer) {
+	public HashMap<String, Object> getCnt(String farmer) {
 		// TODO Auto-generated method stub
 		return dao.getCnt(farmer);
 	}

@@ -13,16 +13,18 @@ public class FarmerNavCntDAO {
 	SqlSession sqlSession;
 	String namespace = "com.farmfarm.FarmerNavCnt.";
 	
-	public HashMap<String, Integer> getCnt(String farmer) {
+	public HashMap<String, Object> getCnt(String farmer) {
 		
-		HashMap<String, Integer> map = new HashMap<String, Integer>();
-		int cntFund = sqlSession.selectOne(namespace + "cntTotalFund", farmer);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		Integer cntFund = sqlSession.selectOne(namespace + "cntTotalFund", farmer);
 		int cntCart = sqlSession.selectOne(namespace + "cntTotalCart", farmer);
 		int cntAuction = sqlSession.selectOne(namespace + "cntTotalAuc", farmer);
+		String name = sqlSession.selectOne(namespace + "FarmerName", farmer);
 		
 		map.put("cntFund", cntFund);
 		map.put("cntCart", cntCart);
 		map.put("cntAuction", cntAuction);
+		map.put("name", name);
 		
 		return map;
 	}

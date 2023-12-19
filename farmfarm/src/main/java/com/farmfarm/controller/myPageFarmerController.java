@@ -42,9 +42,9 @@ public class myPageFarmerController {
 	
 	@GetMapping(value = "/navBarCnt")
 	@ResponseBody
-	public HashMap<String,Integer> navBarCnt(HttpSession session) {
+	public HashMap<String,Object> navBarCnt(HttpSession session) {
 		
-		HashMap<String,Integer> map = new HashMap<String,Integer>();
+		HashMap<String,Object> map = new HashMap<String,Object>();
 		
 		String farmer = (String) session.getAttribute("serial_num");
 		map = cService.getCnt(farmer);
