@@ -16,12 +16,24 @@
 </head>
 
 <script>
+	function updateCultivate(){
+		
+		$.ajax({
+			url : "/myPageFarmer/showUpdateCultivate",
+			// data :
+			// 어떤 상품에서 update 누른건지 ?
+			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+		
+	}
 
 	function regAuction(){
 		
-		alert('ajax : 경매등록으로 이동');
 		$.ajax({
-			url : "/myPageFarmer/regAuction",
+			url : "/myPageFarmer/showRegAuction",
 			// data :
 			// 어떤 상품에서 경매등록을 누른건지 ?
 			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
@@ -34,7 +46,6 @@
 	}
 	function profit(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 입금내역으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/profitShare",
 			success : function(responseData) {
@@ -44,7 +55,6 @@
 	}
 	function chat(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 쪽지함으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/chat",
 			success : function(responseData) {
@@ -53,7 +63,6 @@
 		});
 	}
 	function changePw(){
-		alert('ajax : 비밀번호 변경으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/changePassword",
 			success : function(responseData) {
@@ -192,6 +201,12 @@
 					<!-- ajax -->
 					<div id="here">
 						<button onclick="regAuction()">경매등록</button>
+						<hr>
+						<button onclick="updateCultivate()">업데이트</button>
+						<hr>
+						
+						<br>
+
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>

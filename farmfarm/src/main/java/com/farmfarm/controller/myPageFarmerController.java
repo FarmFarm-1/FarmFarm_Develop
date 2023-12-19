@@ -74,8 +74,22 @@ public class myPageFarmerController {
 		return map;
 	}
 	
-	@GetMapping(value = "/regAuction")
+	@GetMapping(value = "/showUpdateCultivate")
+	public String showUpdate() {
+		// post 처리 해야할듯 함 
+		return "myPage/Farmer/updateCultivate";
+	}
+	
+	@PostMapping(value = "/updateCultivate")
+	@ResponseBody
+	public String updateCultivate() {
+		// 가져온 정보를 바탕으로 DB에 insert하기
+		return "success";
+	}
+	
+	@GetMapping(value = "/showRegAuction")
 	public String showRegAuction() {
+		// post 처리 해야할듯 함 
 		return "myPage/Farmer/regAuction";
 	}
 	
