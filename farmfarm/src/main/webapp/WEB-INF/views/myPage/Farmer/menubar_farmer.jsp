@@ -18,6 +18,23 @@
 </head>
 
 <script>
+
+
+	function regAuction(){
+		
+		alert('ajax : 경매등록으로 이동');
+		$.ajax({
+			url : "/myPageFarmer/regAuction",
+			// data :
+			// 어떤 상품에서 경매등록을 누른건지 ?
+			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+		
+		
+	}
 	function profit(){
 		// ajax -> 입급내역 here.html
 		alert('ajax : 입금내역으로 이동');
@@ -176,6 +193,7 @@
 
 					<!-- ajax -->
 					<div id="here">
+						<button onclick="regAuction()">경매등록</button>
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
 						<h1>마이프로젝트 리스트</h1>
@@ -237,6 +255,10 @@
 </body>
 <script>
 
+var max_cart;
+var max_money;
+var max_supporter;
+
 window.onload = ()=>{
 	
 	
@@ -246,9 +268,7 @@ window.onload = ()=>{
 	var $counter_cart = document.querySelector('.item-123--re1-sub-0');
 	var $counter_money = document.querySelector('.p-EwP-sub-0');
 	var $counter_supporter = document.querySelector('.item-56--CYm-sub-0');
-	var max_cart = 123;
-	var max_money = 1110000000;
-	var max_supporter = 56;
+	
 	setTimeout(()=>counter($counter_cart, max_cart),200);
 	setTimeout(()=>counter($counter_money, max_money),200);
 	setTimeout(()=>counter($counter_supporter, max_supporter),200);
@@ -266,7 +286,15 @@ window.onload = ()=>{
 	function navBarCnt(){
 		// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
 		// max_cart, max_money, max_supporter
-		
+		$.ajax({
+			url : "/myPageFarmer/navBarCnt",
+			async : false,
+			success : function(responseData) {
+				max_money = responseData.cntFund
+				max_cart = responseData.cntCart
+				max_supporter = responseData.cntAuction
+			}
+		});
 		
 		
 	}
