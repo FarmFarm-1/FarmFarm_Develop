@@ -7,22 +7,19 @@
 	<!-- 마이페이지 서포터 펀딩리스트 -->
 	<select id="myPageFundingList" parameterType="String"
 		resultType="MyPageUserFundingVO">
-		SELECT
-		funding_thumb_img_url, product_name, farm_name,
-		farm_address, user_funding_date, total_funding_pct,
-		user_funding_amout, user_funding_pct, product_status
-		FROM farm_and_product A
-		INNER JOIN
-		(SELECT
-		round(SUM(user_funding_pct))
-		total_funding_pct, product_serial_num,
-		user_serial_num,
-		user_funding_pct, user_funding_amout,
-		user_funding_date
-		FROM funding_history
-		WHERE user_serial_num = #{user_serial_num}
-		GROUP BY product_serial_num ) B ON A.product_serial_num =
-		B.product_serial_num
+		SELECT p.*, h.user_funding_date, h.user_funding_amout,
+		h.user_funding_pct, sh.total_sum_pct FROM farm_and_product p JOIN
+		funding_history h ON(p.product_serial_num=h.product_serial_num)
+		JOIN (SELECT hh.product_serial_num,SUM(hh.user_funding_pct) AS
+		total_sum_pct FROM funding_history hh GROUP BY hh.product_serial_num)
+		sh ON(p.product_serial_num=sh.product_serial_num)
+		WHERE h.user_serial_num=#{user_serial_num}
+	</select>
+
+	<!-- 마이페이지 서포터 펀딩리스트 더보기 -->
+	<select id="myPageFundingListDetail" parameterType="String"
+		resultType="MyPageUserFundingDetailVO">
+			SELECT * FROM cultivating_product_detail c WHERE c.product_serial_num=#{product_serial_num} ORDER BY c.update_date desc
 	</select>
 
 	<!-- 마이페이지 서포터 경매리스트 -->

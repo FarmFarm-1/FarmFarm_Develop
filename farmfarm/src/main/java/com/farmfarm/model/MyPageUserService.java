@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
 import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 
 @Service
@@ -26,4 +27,10 @@ public class MyPageUserService {
 	public List<MyPageUserCartFundingVO> myPageCartFundingList(String user_serial_num) {
 		return dao.myPageCartFundingList(user_serial_num);
 	}
+	
+
+	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num){
+		return dao.myPageFundingListDetail(product_serial_num);
+	}
+	
 }

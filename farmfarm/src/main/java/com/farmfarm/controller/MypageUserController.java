@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
 import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 import com.farmfarm.model.MyPageUserService;
 
@@ -21,11 +23,6 @@ public class MypageUserController {
 	
 	@Autowired
 	MyPageUserService service;
-	
-	@GetMapping("/showMore")
-	public String showMore() {
-		return "myPage/user/showMore";
-	}
 
 	@GetMapping("/myFundingList")
 	public String showMyFundingList(HttpSession session, Model model) {
@@ -41,8 +38,13 @@ public class MypageUserController {
 		return "myPage/user/myFundingList";
 	}
 	
-	@GetMapping("/myFundingListShowMore")
-	public String showMyFundingListShowMore() {
+	@PostMapping("/myFundingListShowMore")
+	public String showMyFundingListShowMore(String product_serial_num,Model model) {
+		System.out.println(product_serial_num);
+		List<MyPageUserFundingDetailVO> fundingDetail=service.myPageFundingListDetail(product_serial_num);
+		System.out.println(fundingDetail);
+		model.addAttribute("fundingDetail",fundingDetail);
+		model.addAttribute("status",fundingDetail.get(0).getCultivate_status());
 		return "myPage/user/myFundingListShowMore";
 	}
 	

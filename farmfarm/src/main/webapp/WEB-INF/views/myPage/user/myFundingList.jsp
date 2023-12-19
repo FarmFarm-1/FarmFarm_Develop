@@ -23,18 +23,21 @@
 
 <script type="text/javascript">
 	/* function showMore() {
-		$.ajax({
-			url : "/myPageUser/myFundingListShowMore",
-			success : function(responseData) {
-				$("#showHere").html(responseData);
-			}
-		});
+		$
+				.ajax({
+					data: 
+					url : "/myPageUser/myFundingListShowMore",
+					success : function(responseData) {
+						document.querySelector('#fundingDetailModal').style.display = 'flex'; //모달을 띄위는 코드
+					}
+				});
 	} */
 </script>
 
 <body>
 
 	<div class="mypage--Se9">
+		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%><!-- 모달 -->
 		<!-- 고정 -->
 		<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">
@@ -50,7 +53,8 @@
 		<c:forEach items="${myFundingList }" var="fList">
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${cpath }/assets/tomatoes.png" /> <!-- 바꿔야함 db에서 가져오는 사진 -->
+					src="${cpath }/assets/tomatoes.png" />
+				<!-- 바꿔야함 db에서 가져오는 사진 -->
 
 				<div class="fundinginfo-B9X">
 
@@ -69,12 +73,20 @@
 				<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh">${fList.product_status}</div>
-				<img class="show_more" id="show_more" onclick="location.href='/myPageUser/myFundingListShowMore'"
-					src="${cpath }/assets/down_solid.png" />
+				<%-- <img class="show_more" id="show_more" onclick="location.href='/myPageUser/myFundingListShowMore'"
+					src="${cpath }/assets/down_solid.png" /> --%>
+				<form action="/myPageUser/myFundingListShowMore" method="post">
+					<input type="hidden" name="product_serial_num" value="${fList.product_serial_num }">
+					<input type="submit" id="${fList.product_serial_num }_submit" style="display: none;">
+					<label for="${fList.product_serial_num }_submit"><img class="show_more" id="show_more" 
+					src="${cpath }/assets/down_solid.png" /></label>
+				</form>
+				<!-- onclick="location.href='/myPageUser/myFundingListShowMore'" -->
+				<!-- onclick="showMore()" -->
 
 
 			</div>
-			
+
 			<!-- <div id="showHere"></div> -->
 
 		</c:forEach>

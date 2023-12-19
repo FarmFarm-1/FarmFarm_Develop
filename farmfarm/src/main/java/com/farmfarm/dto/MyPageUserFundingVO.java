@@ -15,6 +15,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class MyPageUserFundingVO {
 
+	String product_serial_num;
 	String funding_thumb_img_url;
 	String product_name;
 	String farm_name;

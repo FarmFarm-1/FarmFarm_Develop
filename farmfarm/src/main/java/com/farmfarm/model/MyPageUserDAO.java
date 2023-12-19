@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
 import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 
 @Repository
@@ -38,5 +39,9 @@ public class MyPageUserDAO {
 				user_serial_num);
 
 		return userCartFundingList;
+	}
+	
+	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num){
+		return sqlSession.selectList(namespace + "myPageFundingListDetail",product_serial_num);
 	}
 }
