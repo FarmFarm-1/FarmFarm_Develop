@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.dto.User_cartVO;
 import com.farmfarm.dto.UsersVO;
@@ -60,8 +61,29 @@ public class MyPageDAO {
 	public UsersVO getUserInfoForChargingPoint(String user_serial_num) {
 		return sqlSession.selectOne(namespace_myPage+"getUserInfoForChargingPoint",user_serial_num);
 	}
-
-	public User_account_historyVO accountExistence(String user_serial_num) {
-		return sqlSession.selectOne(namespace_myPage+"latestAccountSelect",user_serial_num);
+	
+	public User_account_historyVO accountExistenceUser(String user_serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"latestAccountSelectUser",user_serial_num);
 	}
+	
+	public String getUserInfoForVerifyAccount(String user_serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"getUserInfoForVerifyAccount",user_serial_num);
+	}
+	
+	public int registerAccountUser(HashMap<String, String> sqlInputData) {
+		return sqlSession.insert(namespace_myPage+"registerAccountUser",sqlInputData);
+	}
+	
+	public Farmer_account_historyVO accountExistenceFarmer(String user_serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"latestAccountSelectFarmer",user_serial_num);
+	}
+
+	public String getFarmerInfoForVerifyAccount(String serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"getFarmerInfoForVerifyAccount",serial_num);
+	}
+	
+	public int registerAccountFarmer(HashMap<String, String> sqlInputData) {
+		return sqlSession.insert(namespace_myPage+"registerAccountFarmer",sqlInputData);
+	}
+
 }

@@ -37,7 +37,14 @@
 			});
 		}
 
-	
+		function accountRegister() {
+			$.ajax({
+				url : "${cpath}/myPageFarmer/accountRegister",
+				success : function(responseData) {
+					$("#here").html(responseData);
+				}
+			});
+		}
 </script>
 <body>
 	<jsp:include page="${cpath }/WEB-INF/views/header.jsp" />
@@ -116,7 +123,7 @@
 							<p class="item--bXj">마이 데이터</p>
 							<div class="item--KCq">내 프로젝트의 진행상황을 확인해보세요</div>
 
-							<button onclick="location.href='myProject'"
+							<button onclick="accountRegister()"
 								class="accountpagebtn-zpm">
 								<img class="group-135-hjB"
 									src="${cpath }/assets/info_accIcon2.png" />

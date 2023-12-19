@@ -31,7 +31,13 @@
 		
 	<!-- 2단계 mariadbinfo.properties 추가 후, 밑의 bean 추가와, 1단계 datasource 값 수정  -->
 	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="/WEB-INF/spring/appServlet/mariadbinfo.properties" />
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/spring/appServlet/mariadbinfo.properties</value>
+				<value>/WEB-INF/spring/appServlet/aws.properties</value>
+				<value>/WEB-INF/spring/appServlet/portone-api.properties</value>
+			</list>
+		</property>
 		<property name="fileEncoding" value="UTF-8" />
 	</bean>
 	
