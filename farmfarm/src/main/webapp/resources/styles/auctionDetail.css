@@ -1,5 +1,4 @@
 @font-face {
-<<<<<<< HEAD
     font-family: 'TheJamsil5Bold';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil5Bold.woff2') format('woff2');
     font-weight: 700;
@@ -69,20 +68,21 @@ body {
 	align-items: center;
 }
 .product-thum-img {
-	margin-bottom: 10rem;
-	width: 70rem;
-	border-radius: 2rem;
+	    margin-bottom: 5rem;
+    width: 60rem;
+    border-radius: 1.355rem;
+    margin-top: 5rem;
 }
 
 .product-detail-tag {
 	font-size: 3rem;
-	margin-bottom: 1.5rem; 
+	margin-bottom: 5rem; 
 	color: #828282;
 	align-self: flex-start;
 }
 .product-detail-img {
-	margin-bottom: 5rem;
 	width: 100%;
+	margin-bottom:5px;
 }
 
 .showmore-btn {
@@ -180,10 +180,9 @@ body {
 .due-day
 	{
 	width: 9rem;
-	height: 1.9873rem;
-	font-size: 1.5rem;
+	height: 100%;
 	font-family: LINESeedKR-Bd, 'Source Sans Pro';
-	display: inline-flex;
+	display: flex;
 	justify-content: center;
 	align-items:center;
 	background-color: #b2d6a1;
@@ -192,8 +191,7 @@ body {
 }
 
 .dday-tag {
-	vertical-align: middle;
-	font-size: 1.5rem;
+	font-size: 15px;
 	line-height: 100%;
 }
 
@@ -259,7 +257,7 @@ body {
 
 .farmer-image
 	{
-	margin-right: 10.8rem;
+	margin-right: 2rem;
 	width: 7rem;
 	height: 7rem;
 	object-fit: contain;
@@ -268,10 +266,9 @@ body {
 }
 
 .reading-glasses-icon {
-	height: 3rem;
-	width: 3rem;
- 	margin-left: auto;
-    margin-right: 2rem;
+	height: 22px;
+	width: 22px;
+ 	margin-left: 1.5rem;
 }
 
 .farmer-name-div
@@ -394,7 +391,7 @@ body {
 	color: #000000;
 	font-family: LINESeedKR-Bd, 'Source Sans Pro';
 	white-space: nowrap;
-	
+	display: flex;
 }
 
 .auction-price-form {
@@ -488,4 +485,98 @@ body {
 	border-color : #64a246;
 	height: calc(100% - 0.0214rem);
 	letter-spacing: 0.3rem;
+}
+
+.project_story {
+	width: 10.7rem;
+	height: 2.5rem;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #2d2d2d;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	margin-bottom: 1rem;
+}
+
+.fd_prostorypic {
+	    margin-bottom: 5rem;
+    width: 60rem;
+    border-radius: 1.355rem;
+    margin-top: 5rem;
+}
+
+
+.stroymoregroup {
+	width: 60rem;
+	height: 4.6973rem;
+	border: solid 0.0903rem #64a246;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	border-radius: 0.3613rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10rem;
+}
+
+.stroymoregroup .grouptext {
+	width: 13.1501rem;
+	height: 2.2rem;
+	display: flex;
+	align-items: center;
+}
+.stroymoregroup .grouptext .text
+	{
+	margin-right: 3.4715rem;
+	text-align: center;
+	font-size: 1.8067rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #64a246;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+ .stroymoregroup .grouptext .fd_greencheck
+	{
+	margin-bottom: 0.2677rem;
+	width: 1.0787rem;
+	height: 0.5378rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+
+/*������ �̺�Ʈ ������ ����*/
+.showstep1 {
+	max-height: 30rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.showstep2 {
+	max-height: 3100rem;
+	overflow: hidden;
+}
+
+.fd_prostorypic {
+	max-height: 3100rem;
+}
+
+.hide {
+	display: none;
+} 
+a {
+  text-decoration-line: none;
+}
+.gradient{
+	height: 15rem;
+	width: 60rem;
+	background: linear-gradient(to top, white, white 10%, transparent);
+	position: absolute;
+    top: 15rem;
+    left: 0;
 }

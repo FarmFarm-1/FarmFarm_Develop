@@ -62,7 +62,6 @@
 						fontSize: '25px',  // 폰트 크기
 						fontWeight: 'bold',  // 폰트 굵기
 						opacity: 1,  // 투명도
-						
 		    	    }
 	        },
 	        subtitle: {

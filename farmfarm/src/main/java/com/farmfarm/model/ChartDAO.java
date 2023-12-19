@@ -1,6 +1,7 @@
 package com.farmfarm.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,13 @@ public class ChartDAO {
 
 	public int cropsPriceAvg(String crops_kind) {
 		return sqlSession.selectOne(namespace+"cropsPriceAvg",crops_kind);
+	}
+	
+	public String cropQuoteDate() {
+		return sqlSession.selectOne(namespace+"cropQuoteDate");
+	}
+	
+	public List<Map<String, Object>> cropQuoteList() {
+		return sqlSession.selectList(namespace+"cropQuoteList");
 	}
 }

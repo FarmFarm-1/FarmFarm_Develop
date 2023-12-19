@@ -60,4 +60,66 @@
 			user_serial_num = #{user_serial_num}
 	</select>
 	
+	<insert id="chargePointCfrm" parameterType="hashMap">
+		insert into point_history
+		set
+			user_serial_num = #{user_serial_num},
+			history_content = '포인트구매',
+			amount = #{amount}
+	</insert>
+	
+	<select id="getUserInfoForChargingPoint" parameterType="String" resultType="UsersVO">
+		select user_email, user_name
+		from users
+		where user_serial_num = #{user_serial_num}
+	</select>
+	
+	<select id="getUserInfoForVerifyAccount" parameterType="String" resultType="String">
+		select user_name
+		from users
+		where user_serial_num = #{serial_num}
+	</select>
+	
+	<select id="getFarmerInfoForVerifyAccount" parameterType="String" resultType="String">
+		select farmer_name
+		from farmers
+		where farmer_serial_num = #{serial_num}
+	</select>
+	
+	<select id="latestAccountSelectUser" parameterType="String" resultType="User_account_historyVO">
+		select 
+			user_account, user_bank
+		from 
+			user_account_history
+		where 
+			user_serial_num = #{user_serial_num}
+		ORDER BY 
+			update_date DESC
+		LIMIT 1
+	</select>
+	
+	<select id="latestAccountSelectFarmer" parameterType="String" resultType="Farmer_account_historyVO">
+		select 
+			farmer_account, farmer_bank
+		from 
+			farmer_account_history
+		where 
+			farmer_serial_num = #{farmer_serial_num}
+		ORDER BY 
+			update_date DESC
+		LIMIT 1
+	</select>
+	
+	<insert id="registerAccountUser" parameterType="User_account_historyVO">
+		insert into user_account_history
+		(user_serial_num, user_account, user_bank)
+		values(#{user_serial_num}, #{user_account}, #{user_bank})
+	</insert>
+	
+	<insert id="registerAccountFarmer" parameterType="Farmer_account_historyVO">
+		insert into farmer_account_history
+		(farmer_serial_num, farmer_account, farmer_bank)
+		values(#{farmer_serial_num}, #{farmer_account}, #{farmer_bank})
+	</insert>
+	
 </mapper>
