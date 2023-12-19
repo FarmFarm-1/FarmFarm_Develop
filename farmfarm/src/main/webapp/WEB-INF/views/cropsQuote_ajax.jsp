@@ -12,8 +12,6 @@
 
 <script>
 	$(function(){
-		
-		
 				
 		/* 농산물 시세 api 데이터 차트 */
 
@@ -96,6 +94,14 @@
 
 		var chart = new ApexCharts(document.querySelector("#apiChart"), options);
 		chart.render();
+		
+
+		chart.showSeries('${cropsKindList[0]}');
+		chart.hideSeries('${cropsKindList[1]}');
+		chart.hideSeries('${cropsKindList[2]}');
+		chart.hideSeries('${cropsKindList[3]}');
+		chart.hideSeries('${cropsKindList[4]}');
+		chart.hideSeries('${cropsKindList[5]}');
 		
 	});
 	

@@ -4,17 +4,17 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>FundingList</title>
-	<c:set value="${pageContext.request.contextPath}" var="cpath" />
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
-	<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FundingList</title>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C500%2C700%2C800" />
+<link rel="stylesheet" href="${cpath}/styles/fundingdetail.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
@@ -27,7 +27,8 @@
 			</div>
 			<p class="funding_text">${fundingInfo.farm_introduction}</p>
 			<div class="participation">
-				<span>${fundingInfocnt}명 참여</span> <span>D - ${fundingInfo.dueDay}</span>
+				<span>${fundingInfocnt}명 참여</span> <span>D -
+					${fundingInfo.dueDay}</span>
 			</div>
 			<div class="auction_price">
 				총 모금액
@@ -113,39 +114,93 @@
 						</c:choose>
 						<p id="heart-num" class="heart-num">${bookmarkCnt}</p>
 					</div>
-					<button class="btn_fund" id="btn_fund" onclick="submitForm()" disabled>펀딩하기</button>
+					<button class="btn_fund" id="btn_fund" onclick="submitForm()"
+						disabled>펀딩하기</button>
 				</div>
 			</div>
 		</div>
 		<div class="funding_info_left">
 			<img class="fd_introducepic"
-				src="${cpath}/assets/fd_introducepic.png"></img>
+				src="${fundingInfo.funding_thumb_img_url }"></img>
 			<div class="funding_info_left_bottom">
-				<p class="project_story">프로젝트 스토리</p>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png"></img> <img
-					class="fd_prostorypic" src="${cpath}/assets/fd_introducepic.png"
-					style="display: none;"></img> <img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<div class="stroymoregroup" onclick="showMore()">
-					<div class="grouptext">
-						<p class="text">스토리 더보기</p>
-						<img class="fd_greencheck" src="${cpath}/assets/fd_greencheck.png" />
-					</div>
+				<div class="detailinfo showstep1">
+					<p class="project_story">프로젝트 스토리</p>
+					<div class="gradient"></div>
+					<img class="fd_prostorypic"
+						src="${fundingInfo.funding_product_img_url }"></img>
 				</div>
+
+				<a href="#" class="btn_open">
+
+					<div class="stroymoregroup">
+
+						<div class="grouptext">
+							<p class="text">스토리 더보기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck.png" />
+						</div>
+					</div>
+				</a> <a href="#" class="btn_close hide">
+					<div class="stroymoregroup">
+						<div class="grouptext">
+							<p class="text">스토리 접기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck_toggle.png" />
+						</div>
+					</div>
+				</a>
 			</div>
 		</div>
 	</div>
 	<script>
-		function showMore() {
-			$(".fd_prostorypic:not(:first)").toggle();
-		}
+		/*더보기 이벤트 리스너*/
+		document
+				.addEventListener(
+						'DOMContentLoaded',
+						function() { //DOM 생성 후 이벤트 리스너 등록
+							//더보기 버튼 이벤트 리스너
+							document.querySelector('.btn_open').addEventListener('click',
+									function(e) {
+
+										let classList = document
+												.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+										let contentHeight = document
+												.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+
+										// 더보기
+										classList.remove('showstep1');
+										classList.add('showstep2');
+
+										document
+												.querySelector('.btn_open').classList
+												.add('hide');
+										document
+												.querySelector('.btn_close').classList
+												.remove('hide');
+
+									});
+							document.querySelector('.btn_close').addEventListener('click',
+											function(e) {
+
+												let classList = document
+														.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+												let contentHeight = document
+														.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+
+												//접기
+												classList.remove('showstep2');
+												classList.add('showstep1');
+												document
+														.querySelector('.btn_close').classList
+														.add('hide');
+												document
+														.querySelector('.btn_open').classList
+														.remove('hide');
+
+											});
+
+						});
+
 		let serial_num = "${sessionScope.serial_num}";
 		let product_serial_num = "${fundingInfo.product_serial_num}";
 

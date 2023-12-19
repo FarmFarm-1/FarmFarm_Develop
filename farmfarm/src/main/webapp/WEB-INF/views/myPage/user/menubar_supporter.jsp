@@ -17,12 +17,38 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
-<link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
+<%-- <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" /> --%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <script type="text/javascript">
+	let serial_num = "${sessionScope.serial_num}";
+
+	$(function() {
+		showNavBar();
+	})
+
+	function showNavBar() {
+		$.ajax({
+			url : '/myPageUser/navBarCnt',
+			type : 'GET',
+			success : function(response) {
+				
+				let userPoint = response.userPoint.toLocaleString('ko-KR');
+				
+				$(".pointamount-wpH").html(userPoint);
+				$("#funding_num").html(response.fundingNum);
+				$("#auction_num").html(response.auctionNum);
+				$("#cart_num").html(response.cartNum);
+				$(".item--ASH").html(response.userName);
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+	}
+
 	function myFundingList() {
 		$.ajax({
 			url : "/myPageUser/myFundingList",
@@ -31,7 +57,7 @@
 			}
 		});
 	}
-	
+
 	function myAuctionList() {
 		$.ajax({
 			url : "/myPageUser/myAuctionList",
@@ -40,7 +66,7 @@
 			}
 		});
 	}
-	
+
 	function myCartList() {
 		$.ajax({
 			url : "/myPageUser/myCartList",
@@ -49,7 +75,6 @@
 			}
 		});
 	}
-	
 </script>
 
 <body>
@@ -63,10 +88,12 @@
 						<div class="auto-group-autb-WKo">
 							<div class="auto-group-yaf7-cNq">서포터</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
-							<p class="item--ASH">팜쪽이님</p>
+							<div class="item--ASH-2">
+							<p class="item--ASH"></p><p class="item--ASH-1">님</p>
+							</div>
 						</div>
 					</div>
-					<button class="logout-QrR" onclick="location.href='myFunding'">
+					<button class="logout-QrR" onclick="location.href='logout'">
 						<p class="item--8XX">로그아웃</p>
 						<div class="log-out-1bK"></div>
 					</button>
@@ -83,7 +110,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							
+
 							<button class="menuBtn" onclick="myAuctionList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
@@ -101,7 +128,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							
+
 							<button class="menuBtn" onclick="location.href='myFunding'">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
@@ -168,24 +195,27 @@
 							<div class="pammoneytext-dv5">
 								<img class="pointIcon" src="${cpath }/assets/pointIcon.png" />
 								<p class="item--qmF">팜머니</p>
-								<p class="pointamount-wpH">50,000P</p>
+								<div class="pointamount-wpH-2">
+									<p class="pointamount-wpH"></p>
+									<p class="pointamount-wpH-1">P</p>
+								</div>
 							</div>
 						</button>
 						<div class="my-status-RjT">
 							<div class="auto-group-xwbk-xDb">
 								<button onclick="location.href='myFunding'" class="item--GEH">
 									<p class="item--mB3">펀딩</p>
-									<p class="item-5-U5T" id="funding_num">0</p>
+									<p class="item-5-U5T" id="funding_num"></p>
 								</button>
 
 								<button onclick="location.href='myFunding'" class="item--GEH1">
 									<p class="item--mB3">경매</p>
-									<p class="item-5-U5T" id="auction_num">0</p>
+									<p class="item-5-U5T" id="auction_num"></p>
 								</button>
 
 								<button onclick="location.href='myFunding'" class="item--GEH">
 									<p class="item--mB3">찜</p>
-									<p class="item-5-U5T" id="cart_num">0</p>
+									<p class="item-5-U5T" id="cart_num"></p>
 								</button>
 							</div>
 							<div class="auto-group-jptk-7g9">
@@ -255,28 +285,3 @@
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
-<script>
-	/* window.onload = ()=>{
-	 const $counter_funding = document.querySelector('#funding_num');
-	 const $counter_auction = document.querySelector('#auction_num');
-	 const $counter_cart = document.querySelector('#cart_num');
-	 const max_funding = 5;
-	 const max_auction = 3;
-	 const max_cart = 11;
-	 setTimeout(()=>counter($counter_funding, max_funding),200);
-	 setTimeout(()=>counter($counter_auction, max_auction),200);
-	 setTimeout(()=>counter($counter_cart, max_cart),200);
-	 }
-	 function counter($counter, max){
-	 let now = max;
-	 const handle = setInterval(() => {
-	
-	 $counter.innerHTML = Math.ceil(max-now);
-	 if(now<1){
-	 clearInterval(handle);
-	 }
-	 const step = now / 10;
-	 now -= step;
-	 },30);
-	 }  */
-</script>

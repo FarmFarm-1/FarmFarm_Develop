@@ -13,7 +13,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -43,7 +43,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -73,7 +73,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -107,7 +107,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -142,7 +142,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -175,7 +175,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -209,7 +209,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -242,7 +242,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -277,7 +277,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -307,7 +307,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -337,7 +337,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -369,7 +369,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -400,7 +400,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
