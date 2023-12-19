@@ -418,6 +418,4 @@
 		farm_and_product.product_serial_num
 	</select>
 
-
-
 </mapper>

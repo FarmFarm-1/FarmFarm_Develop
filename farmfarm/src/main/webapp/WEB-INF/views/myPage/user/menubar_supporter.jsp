@@ -15,14 +15,38 @@
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
-<link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <script type="text/javascript">
+	let serial_num = "${sessionScope.serial_num}";
+
+	$(function() {
+		showNavBar();
+	})
+
+	function showNavBar() {
+		$.ajax({
+			url : '/myPageUser/navBarCnt',
+			type : 'GET',
+			success : function(response) {
+				
+				let userPoint = response.userPoint.toLocaleString('ko-KR');
+				
+				$(".pointamount-wpH").html(userPoint);
+				$("#funding_num").html(response.fundingNum);
+				$("#auction_num").html(response.auctionNum);
+				$("#cart_num").html(response.cartNum);
+				$(".item--ASH").html(response.userName);
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+	}
+
 	function myFundingList() {
 		$.ajax({
 			url : "/myPageUser/myFundingList",
@@ -31,6 +55,25 @@
 			}
 		});
 	}
+
+	function myAuctionList() {
+		$.ajax({
+			url : "/myPageUser/myAuctionList",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+
+	function myCartList() {
+		$.ajax({
+			url : "/myPageUser/myCartList",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
 	function farmMoneyCharge() {
 		$.ajax({
 			url : "${cpath}/myPageUser/farmMoneyCharge",
@@ -60,10 +103,12 @@
 						<div class="auto-group-autb-WKo">
 							<div class="auto-group-yaf7-cNq">서포터</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
-							<p class="item--ASH">팜쪽이님</p>
+							<div class="item--ASH-2">
+							<p class="item--ASH"></p><p class="item--ASH-1">님</p>
+							</div>
 						</div>
 					</div>
-					<button class="logout-QrR" onclick="location.href='myFunding'">
+					<button class="logout-QrR" onclick="location.href='logout'">
 						<p class="item--8XX">로그아웃</p>
 						<div class="log-out-1bK"></div>
 					</button>
@@ -80,7 +125,8 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							<button class="menuBtn" onclick="location.href='myFunding'">
+
+							<button class="menuBtn" onclick="myAuctionList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/auctionIcon.png" />
@@ -89,7 +135,7 @@
 								</div>
 							</button>
 
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="myCartList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/cartIcon.png" />
@@ -97,6 +143,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
+
 							<button class="menuBtn" onclick="location.href='myFunding'">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
@@ -163,24 +210,27 @@
 							<div class="pammoneytext-dv5">
 								<img class="pointIcon" src="${cpath }/assets/pointIcon.png" />
 								<p class="item--qmF">팜머니</p>
-								<p class="pointamount-wpH">50,000P</p>
+								<div class="pointamount-wpH-2">
+									<p class="pointamount-wpH"></p>
+									<p class="pointamount-wpH-1">P</p>
+								</div>
 							</div>
 						</button>
 						<div class="my-status-RjT">
 							<div class="auto-group-xwbk-xDb">
 								<button onclick="location.href='myFunding'" class="item--GEH">
 									<p class="item--mB3">펀딩</p>
-									<p class="item-5-U5T" id="funding_num">0</p>
+									<p class="item-5-U5T" id="funding_num"></p>
 								</button>
 
 								<button onclick="location.href='myFunding'" class="item--GEH1">
 									<p class="item--mB3">경매</p>
-									<p class="item-5-U5T" id="auction_num">0</p>
+									<p class="item-5-U5T" id="auction_num"></p>
 								</button>
 
 								<button onclick="location.href='myFunding'" class="item--GEH">
 									<p class="item--mB3">찜</p>
-									<p class="item-5-U5T" id="cart_num">0</p>
+									<p class="item-5-U5T" id="cart_num"></p>
 								</button>
 							</div>
 							<div class="auto-group-jptk-7g9">
@@ -200,6 +250,48 @@
 					</div>
 					<!-- ajax -->
 					<div id="here">
+
+
+						<div class="mypage--Se9">
+							<!-- 고정 -->
+							<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
+							<div class="fundinglistheader-H8h">
+								<p class="item--CmT">상품 정보</p>
+								<p class="item--ufs">펀딩 참여일</p>
+								<p class="item--DwT">펀딩 달성률</p>
+								<p class="item--juo">결제 포인트</p>
+								<p class="item--E5s">나의 지분</p>
+								<p class="item--MAV">진행 상태</p>
+							</div>
+
+							<!-- 펀딩 리스트 -->
+							<c:forEach items="${myFundingList }" var="fList">
+								<div class="fundinglist1-giZ">
+									<img class="tomatoes-55667411280-5Eu"
+										src="${cpath }/assets/tomatoes.png" />
+
+									<div class="fundinginfo-B9X">
+
+										<div class="auto-group-anxd-tCM">
+											<p class="item--aqs">${fList.product_name}</p>
+											<p class="item--UwF">${fList.farm_name}</p>
+											<div class="auto-group-huhf-zPo">
+												<img class="mdi-location-v2Z" src="./assets/location.png" />
+												<p class="item--3cy">${fList.farm_address}</p>
+											</div>
+										</div>
+									</div>
+
+									<p class="fundingdate-9R7">${fList.user_funding_date}</p>
+									<div class="fundingpct-4Y5">70%</div>
+									<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
+									<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
+									<div class="fundingstate-MQh">${fList.product_status}</div>
+								</div>
+							</c:forEach>
+						</div>
+
+
 					</div>
 				</div>
 				<!-- footer -->
@@ -208,28 +300,4 @@
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
-<script>
-	/* window.onload = ()=>{
-	 const $counter_funding = document.querySelector('#funding_num');
-	 const $counter_auction = document.querySelector('#auction_num');
-	 const $counter_cart = document.querySelector('#cart_num');
-	 const max_funding = 5;
-	 const max_auction = 3;
-	 const max_cart = 11;
-	 setTimeout(()=>counter($counter_funding, max_funding),200);
-	 setTimeout(()=>counter($counter_auction, max_auction),200);
-	 setTimeout(()=>counter($counter_cart, max_cart),200);
-	 }
-	 function counter($counter, max){
-	 let now = max;
-	 const handle = setInterval(() => {
-	
-	 $counter.innerHTML = Math.ceil(max-now);
-	 if(now<1){
-	 clearInterval(handle);
-	 }
-	 const step = now / 10;
-	 now -= step;
-	 },30);
-	 }  */
-</script>
+>>>>>>> refs/remotes/origin/BOHYEON

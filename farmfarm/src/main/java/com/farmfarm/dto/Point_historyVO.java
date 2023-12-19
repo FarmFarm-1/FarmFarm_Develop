@@ -19,4 +19,5 @@ public class Point_historyVO {
 	private String history_content;
 	private int amount;
 	private Date update_date;
+	private String product_serial_num;
 }

@@ -96,6 +96,7 @@
 				<div class="searchOutput_container-none">
 					<div id="output" class="search_output"></div>
 					<div class="search_output-">검색결과</div>
+					
 				</div>
 
 				<div class="item--uPK" id="fundingOrder">
@@ -111,7 +112,8 @@
 		let serial_num = "${sessionScope.serial_num}";
 
 		$(function() {
-			order1();
+			type1();
+			
 			$('#order1').css('color', 'black');
 			$('#order1').css('font-weight', '800');
 			type_light();
@@ -126,7 +128,7 @@
 		function search(input) {
 			type_filter_light();
 			type_light();
-			document.getElementById('output').innerHTML = input; 
+			document.getElementById('output').innerHTML = input; //input 출력
 			$("div.searchOutput_container-none").removeClass("searchOutput_container-none").addClass("searchOutput_container");
 			$("div.order_container").removeClass("searchOutput_container").addClass("order_container-none");
 			$.ajax({

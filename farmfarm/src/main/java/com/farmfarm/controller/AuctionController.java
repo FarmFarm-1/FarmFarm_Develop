@@ -118,6 +118,7 @@ public class AuctionController {
 	
 	@GetMapping("/auctionMain")
 	public String showAuctionMain(Model model, HttpSession session) {
+		session.setAttribute("headerSelect", "auction");
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>)auctionService.auctionListSelectHot();
 		model.addAttribute("auctionListHot", auctionList);
 		

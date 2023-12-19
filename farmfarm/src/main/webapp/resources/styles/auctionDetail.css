@@ -68,9 +68,10 @@ body {
 	align-items: center;
 }
 .product-thum-img {
-	margin-bottom: 5rem;
-	width: 70rem;
-	border-radius: 2rem;
+	    margin-bottom: 5rem;
+    width: 60rem;
+    border-radius: 1.355rem;
+    margin-top: 5rem;
 }
 
 .product-detail-tag {
@@ -82,7 +83,6 @@ body {
 .product-detail-img {
 	width: 100%;
 	margin-bottom:5px;
-	border-radius: 2rem;
 }
 
 .showmore-btn {
@@ -485,4 +485,98 @@ body {
 	border-color : #64a246;
 	height: calc(100% - 0.0214rem);
 	letter-spacing: 0.3rem;
+}
+
+.project_story {
+	width: 10.7rem;
+	height: 2.5rem;
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #2d2d2d;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	margin-bottom: 1rem;
+}
+
+.fd_prostorypic {
+	    margin-bottom: 5rem;
+    width: 60rem;
+    border-radius: 1.355rem;
+    margin-top: 5rem;
+}
+
+
+.stroymoregroup {
+	width: 60rem;
+	height: 4.6973rem;
+	border: solid 0.0903rem #64a246;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	border-radius: 0.3613rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10rem;
+}
+
+.stroymoregroup .grouptext {
+	width: 13.1501rem;
+	height: 2.2rem;
+	display: flex;
+	align-items: center;
+}
+.stroymoregroup .grouptext .text
+	{
+	margin-right: 3.4715rem;
+	text-align: center;
+	font-size: 1.8067rem;
+	font-weight: 800;
+	line-height: 1.2125;
+	color: #64a246;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+ .stroymoregroup .grouptext .fd_greencheck
+	{
+	margin-bottom: 0.2677rem;
+	width: 1.0787rem;
+	height: 0.5378rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+
+/*������ �̺�Ʈ ������ ����*/
+.showstep1 {
+	max-height: 30rem;
+	overflow: hidden;
+	position: relative;
+}
+
+.showstep2 {
+	max-height: 3100rem;
+	overflow: hidden;
+}
+
+.fd_prostorypic {
+	max-height: 3100rem;
+}
+
+.hide {
+	display: none;
+} 
+a {
+  text-decoration-line: none;
+}
+.gradient{
+	height: 15rem;
+	width: 60rem;
+	background: linear-gradient(to top, white, white 10%, transparent);
+	position: absolute;
+    top: 15rem;
+    left: 0;
 }

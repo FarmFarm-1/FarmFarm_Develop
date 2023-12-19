@@ -43,6 +43,7 @@
 					if (curUser.substring(0, 2) === "us") {
 						//header_user_login 띄움
 						header_user_login.style.display = 'flex';
+						showPamMoney();
 
 					} else if (curUser.substring(0, 2) === "FA") {
 						//header_farmer_login 띄움
@@ -58,11 +59,10 @@
 					menu_myFarm.style.color = '#2d2d2d';
 				}
 			});
-	
-	function selectMyFarm(){
+
+	function selectMyFarm() {
 		var curUser = "${sessionScope.serial_num}";
-		
-		
+
 		if (curUser == "") {
 			//header_join_login 띄움
 			alert('로그인 해주세요.');
@@ -76,7 +76,23 @@
 				location.href = '/myPageFarmer';
 			}
 		}
-		
+
+	}
+
+
+	function showPamMoney() {
+		$.ajax({
+			url : '/myPageUser/navBarCnt',
+			type : 'GET',
+			success : function(response) {
+				let userPoint = response.userPoint.toLocaleString('ko-KR');
+
+				$(".userPoints").html(userPoint);
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
 	}
 </script>
 
@@ -86,17 +102,19 @@
 			<div class="header_main">
 				<div class="header_title_menu">
 					<div class="header_title">
-						<a onclick="location.href='${cpath}/main'"> <img class="logo_img"
-							src="${cpath }/assets/logo.png" />
+						<a onclick="location.href='${cpath}/main'"> <img
+							class="logo_img" src="${cpath }/assets/logo.png" />
 							<p class="logo_name">팜팜</p>
 						</a>
 					</div>
 					<div class="header_menu">
 						<div class="menu_funding">
-							<a id="menu_funding" onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
+							<a id="menu_funding"
+								onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
 						</div>
 						<div class="menu_auction">
-							<a id="menu_auction" onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
+							<a id="menu_auction"
+								onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
 						</div>
 						<div class="menu_myFarm">
 							<a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
@@ -110,7 +128,8 @@
 				</div>
 
 				<div class="header_user_login" id="header_user_login">
-					<div class="messageBox_div" onclick="location.href='${cpath}/messageBox'">
+					<div class="messageBox_div"
+						onclick="location.href='${cpath}/messageBox'">
 						<img class="messageBox_img" src="${cpath }/assets/messageBox.png">
 						<p class="messageBox_text">쪽지함</p>
 						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
@@ -119,13 +138,15 @@
 							<p class="new_text">N</p>
 						</div>
 					</div>
-					<div class="userPoint_div"  onclick="location.href='${cpath}/chargePoints'">
+					<div class="userPoint_div"
+						onclick="location.href='${cpath}/chargePoints'">
 						내 팜머니 : <span class="userPoints">1,000,000,000</span>p
 					</div>
 				</div>
 
 				<div class="header_farmer_login" id="header_farmer_login">
-					<div class="messageBox_div2" onclick="location.href='${cpath}/messageBox'">
+					<div class="messageBox_div2"
+						onclick="location.href='${cpath}/messageBox'">
 						<img class="messageBox_img2" src="${cpath }/assets/messageBox.png">
 						<p class="messageBox_text2">쪽지함</p>
 						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
@@ -134,7 +155,8 @@
 							<p class="new_text2">N</p>
 						</div>
 					</div>
-					<div class="myProject" onclick="location.href='${cpath}/makeProject'">나의 프로젝트 만들기</div>
+					<div class="myProject"
+						onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
 				</div>
 			</div>
 		</div>

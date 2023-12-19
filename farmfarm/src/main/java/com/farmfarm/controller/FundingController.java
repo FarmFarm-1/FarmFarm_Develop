@@ -27,10 +27,8 @@ public class FundingController {
 	@Autowired
 	FundingDetailService fundingDetailService;
 	
-
 	@Autowired
 	MyPageService myPageService;
-
 
 	@GetMapping("/fundingList")
 	public String showFundingList(Model model, HttpSession session) {
@@ -76,6 +74,7 @@ public class FundingController {
 
 	@GetMapping("/fundingMain")
 	public String showFundingMain(Model model, HttpSession session) {
+		session.setAttribute("headerSelect", "funding");
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService.fundingListSelectHot();
 		for (Map<String, Object> map : fundingList) {
 			if (map.get("funding_pct") == null) {

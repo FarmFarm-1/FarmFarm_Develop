@@ -77,13 +77,13 @@
 				</div>
 			</div>
 			<div class="funding_info_right_bottom">
-				<div class="tit2">펀딩할 포인트 선택</div>
+				<div class="tit">펀딩할 포인트 선택</div>
 				<div class="input_group">
 					<div class="input_pct">
 						<form id="payForm" action="${cpath}/funding/fundingBuy"
 							method="post">
 							<input list="paylist" type="number" name="pay" id="pay"
-								class="item-10-Dam" min="0" max="${sumfundingpct}"> <input
+								class="item-10-Dam" max="${sumfundingpct}"> <input
 								type="hidden" id="product_serial_num" name="product_serial_num"
 								value="${fundingInfo.product_serial_num}"> <input
 								type="hidden" id="payMoney" name="payMoney" value="${result}">
@@ -101,7 +101,7 @@
 						<c:choose>
 							<c:when test="${myBookmark == 1}">
 								<div class="img_heart_wrap">
-									<img id="heart-icon" class="heart-icon filled"
+									<img id="heart-icon" class="heart-icon_filled"
 										src="${cpath}/assets/heart_fill.png" />
 								</div>
 							</c:when>
@@ -121,33 +121,118 @@
 		</div>
 		<div class="funding_info_left">
 			<img class="fd_introducepic"
-				src="${cpath}/assets/fd_introducepic.png"></img>
+				src="${fundingInfo.funding_thumb_img_url }"></img>
 			<div class="funding_info_left_bottom">
-				<p class="project_story">프로젝트 스토리</p>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png"></img> <img
-					class="fd_prostorypic" src="${cpath}/assets/fd_introducepic.png"
-					style="display: none;"></img> <img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<img class="fd_prostorypic"
-					src="${cpath}/assets/fd_introducepic.png" style="display: none;"></img>
-				<div class="stroymoregroup" onclick="showMore()">
-					<div class="grouptext">
-						<p class="text">스토리 더보기</p>
-						<img class="fd_greencheck" src="${cpath}/assets/fd_greencheck.png" />
+				<div class="detailinfo showstep1">
+					<p class="project_story">프로젝트 스토리</p>
+					<div class="gradient"></div>
+					<img class="fd_prostorypic"
+						src="${fundingInfo.funding_product_img_url }"></img>
+				</div>
+
+				<div class="btn_open">
+
+					<div class="stroymoregroup">
+
+						<div class="grouptext">
+							<p class="text">스토리 더보기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck.png" />
+						</div>
 					</div>
 				</div>
+				<div class="btn_close hide">
+					<div class="stroymoregroup">
+						<div class="grouptext">
+							<p class="text">스토리 접기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck_toggle.png" />
+						</div>
+					</div>
+				</div>
+				<%-- <a href="#" class="btn_open">
+
+					<div class="stroymoregroup">
+
+						<div class="grouptext">
+							<p class="text">스토리 더보기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck.png" />
+						</div>
+					</div>
+				</a> <a href="#" class="btn_close hide">
+					<div class="stroymoregroup">
+						<div class="grouptext">
+							<p class="text">스토리 접기</p>
+							<img class="fd_greencheck"
+								src="${cpath}/assets/fd_greencheck_toggle.png" />
+						</div>
+					</div>
+				</a> --%>
 			</div>
 		</div>
 	</div>
 	<script>
-		function showMore() {
-			$(".fd_prostorypic:not(:first)").toggle();
-		}
+		/*더보기 이벤트 리스너*/
+		document
+				.addEventListener(
+						'DOMContentLoaded',
+						function() { //DOM 생성 후 이벤트 리스너 등록
+							//더보기 버튼 이벤트 리스너
+							document
+									.querySelector('.btn_open')
+									.addEventListener(
+											'click',
+											function(e) {
+
+												let classList = document
+														.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+												let contentHeight = document
+														.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+
+												// 더보기
+												classList.remove('showstep1');
+												classList.add('showstep2');
+
+												document
+														.querySelector('.btn_open').classList
+														.add('hide');
+												document
+														.querySelector('.btn_close').classList
+														.remove('hide');
+												document
+														.querySelector('.gradient').classList
+														.add('hide');
+
+											});
+							document
+									.querySelector('.btn_close')
+									.addEventListener(
+											'click',
+											function(e) {
+
+												let classList = document
+														.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+												let contentHeight = document
+														.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+
+												//접기
+												classList.remove('showstep2');
+												classList.add('showstep1');
+												document
+														.querySelector('.btn_close').classList
+														.add('hide');
+												document
+														.querySelector('.btn_open').classList
+														.remove('hide');
+												document
+														.querySelector('.gradient').classList
+														.remove('hide');
+
+											});
+
+						});
+
 		let serial_num = "${sessionScope.serial_num}";
 		let product_serial_num = "${fundingInfo.product_serial_num}";
 
@@ -159,7 +244,6 @@
 		const payMoney = "${fundingInfo.target_total_amount}";
 		const sumfundingpct = "${sumfundingpct}";
 		var result = 0;
-		const fundingbtn = document.getElementById("btn_fund");
 
 		for (let value = start; value <= end; value += 0.01) {
 			const roundedValue = parseFloat(value.toFixed(2));
@@ -170,24 +254,15 @@
 		payInput.addEventListener("input", function() {
 			if (serial_num.substring(0, 2) === "us") {
 				let inputValue = parseFloat(payInput.value);
-				if (inputValue > 0) {
-					if (inputValue > end) {
-						alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
-								+ "까지만 입력 가능합니다.");
-						payInput.value = end;
-					} else if (payInput.value
-							&& inputValue.toFixed(2) != inputValue) {
-						alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
-						payInput.value = inputValue.toFixed(2);
-					}
-					updatePayDiv();
-				} else {
-					payInput.value = "";
-					alert("0.01퍼센트이상 입력해주세요");
-					fundingbtn.disabled = true;
-					fundingbtn.style.backgroundColor = '#b7b7b7';
-					fundingbtn.style.cursor = 'default';
+				if (inputValue > end) {
+					alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
+					payInput.value = end;
+				} else if (payInput.value
+						&& inputValue.toFixed(2) != inputValue) {
+					alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+					payInput.value = inputValue.toFixed(2);
 				}
+				updatePayDiv();
 			} else {
 				showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 			}
@@ -200,24 +275,18 @@
 			const formattedResult = new Intl.NumberFormat('ko-KR')
 					.format(result);
 			const point = document.querySelector("#point");
+			const fundingbtn = document.getElementById("btn_fund");
 
-			if (result != 0) {
-				if (user_point >= result) {
-					point.style.display = 'none';
-					fundingbtn.disabled = false;
-					fundingbtn.style.backgroundColor = '#64A346';
-					fundingbtn.style.cursor = 'pointer';
-				} else {
-					point.style.display = 'flex';
-					fundingbtn.disabled = true;
-					fundingbtn.style.backgroundColor = '#b7b7b7';
-					fundingbtn.style.cursor = 'default';
-				}
+			if (user_point >= result) {
+				point.style.display = 'none';
+				fundingbtn.disabled = false;
+				fundingbtn.style.backgroundColor = '#64A346';
+				fundingbtn.style.cursor = 'pointer';
 			} else {
+				point.style.display = 'flex';
 				fundingbtn.disabled = true;
 				fundingbtn.style.backgroundColor = '#b7b7b7';
 				fundingbtn.style.cursor = 'default';
-
 			}
 			payDiv.innerHTML = formattedResult + "포인트";
 			$("#payMoney").val(result);
@@ -232,16 +301,19 @@
 				function() {
 					console.log(serial_num);
 					if (serial_num.substring(0, 2) === "us") {
-						let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
+						let isHeartFilled = $("#heart-icon").toggleClass(
+								"filled").hasClass("filled");
 						if (isHeartFilled) {
 							addToMyCart();
-							$("#heart-icon").attr("src", "${cpath}/assets/heart_fill.png");
+							$("#heart-icon").attr("src",
+									"${cpath}/assets/heart_fill.png");
 						} else {
 							deleteFromMyCart();
-							$("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
+							$("#heart-icon").attr("src",
+									"${cpath}/assets/heart_empty.png");
 						}
 					} else {
-						showModal("로그인이 필요한 기능입니다.", "로그인 바로가기");
+						showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 					}
 				});
 

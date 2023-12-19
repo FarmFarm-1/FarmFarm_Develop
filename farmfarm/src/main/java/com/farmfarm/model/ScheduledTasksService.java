@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 public class ScheduledTasksService {
 
 	Logger logger = LoggerFactory.getLogger(ScheduledTasksService.class);
+
 	protected LinkedList<LinkedHashMap<String, String>> cropsQuoteDataFetchAndSaveOrNull() {
 		LinkedList<LinkedHashMap<String, String>> resultData = new LinkedList<>();
 		try {
@@ -33,22 +34,18 @@ public class ScheduledTasksService {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			Calendar c1 = Calendar.getInstance();
 			c1.add(Calendar.DATE, -1);
-			String regDay = sdf.format(c1.getTime());			
+			String regDay = sdf.format(c1.getTime());
 			String dailySalesList = "https://www.kamis.or.kr/service/price/xml.do?action=dailyPriceByCategoryList"
-					+ "&p_product_cls_code=02" 
-					+ "&p_regday="+regDay
-					+ "&p_convert_kg_yn=Y"
-					+ "&p_item_category_code=100" 
-					+ "&p_cert_key=479dabdd-7aa2-43d5-9b8f-6e4712d863f2"
-					+ "&p_cert_id=3836" 
-					+ "&p_returntype=json";
+					+ "&p_product_cls_code=02" + "&p_regday=" + regDay + "&p_convert_kg_yn=Y"
+					+ "&p_item_category_code=100" + "&p_cert_key=479dabdd-7aa2-43d5-9b8f-6e4712d863f2"
+					+ "&p_cert_id=3836" + "&p_returntype=json";
 
 			URL url = new URL(dailySalesList);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setInstanceFollowRedirects(true);
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
-			logger.warn(url+"");
+			logger.warn(url + "");
 			logger.warn(Integer.toString(conn.getResponseCode()));
 
 			// read API result by line
@@ -65,13 +62,15 @@ public class ScheduledTasksService {
 			conn.disconnect();
 			String result = sb.toString();
 			logger.warn(result);
-			
+
 			// JSON Parsing
 			JSONParser jsonParser = new JSONParser();
+
 			JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
-			if(jsonObject.get("data") instanceof JSONArray) {//�����ڵ带 Ȯ���ؼ� ó�� -> ������ ��� ó��
+			if(jsonObject.get("data") instanceof JSONArray) {// 에러코드를 확인해서 처리 -> 오류일 경우 처리
 				return null;
 			}
+
 			JSONObject data = (JSONObject)jsonObject.get("data");
 			JSONArray priceInfo = (JSONArray)data.get("item");
 			// search options
@@ -99,7 +98,7 @@ public class ScheduledTasksService {
 					Arrays.asList("rice", "bean", "red_bean", "green_gram", "sweet_potato", "potato"));
 
 			List<LinkedHashMap<String, String>> popsList = new LinkedList<>();
-			
+
 			for (int i = 0; i < cropsList.size(); i++) {
 				popsList.add(new LinkedHashMap<String, String>());
 				String actualItemName = null;
@@ -146,7 +145,7 @@ public class ScheduledTasksService {
 				popsList.get(i).put("rank_code", rank_code);
 			}
 			
-			// make map type data
+			// json에서 추출
 			for (int i = 0; i < priceInfo.size(); i++) {
 				JSONObject cur_jsonObject = (JSONObject) priceInfo.get(i);
 
@@ -159,25 +158,25 @@ public class ScheduledTasksService {
 							break;
 						}
 					}
-					if(match) {
-						String priceCheck = (String)cur_jsonObject.get("dpr1");
-						if(priceCheck.equals("-")) {
+					if (match) {
+						String priceCheck = (String) cur_jsonObject.get("dpr1");
+						if (priceCheck.equals("-")) {
 							return null;
 						}
-			            LinkedHashMap<String, String> input = new LinkedHashMap<>();
-			            input.put("crops_kind", (String)cur_jsonObject.get("item_name"));
-			            String formattedPrice = ((String)cur_jsonObject.get("dpr1")).replace(",", "");
-			            input.put("crops_quote", formattedPrice);
-			            input.put("regDay", regDay);
-			            resultData.add(input);
-			        }
+						LinkedHashMap<String, String> input = new LinkedHashMap<>();
+						input.put("crops_kind", (String) cur_jsonObject.get("item_name"));
+						String formattedPrice = ((String) cur_jsonObject.get("dpr1")).replace(",", "");
+						input.put("crops_quote", formattedPrice);
+						input.put("regDay", regDay);
+						resultData.add(input);
+					}
 				}
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		logger.info(resultData+"");
+		logger.info(resultData + "");
 		return resultData;
 	}
 	
@@ -336,4 +335,5 @@ public class ScheduledTasksService {
 		logger.info(resultData+"");
 		sqlSession.insert("com.farmfarm.schedule.cropsDataInsert",resultData);
 	}
+
 }

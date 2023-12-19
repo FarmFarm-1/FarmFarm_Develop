@@ -53,7 +53,7 @@ public class FundingDAO {
 	}
 	
 	public List<Map<String, Object>> fundingListSelectSupport(String type) {
-		if (type == null || type.equals("all")) {			
+		if (type == null || type.equals("all")) {	
 			return sqlSession.selectList(namespace+"fundingListSelectSupport");
 		} else {
 			return sqlSession.selectList(namespace+"fundingListSelectByTypeSupport", type);			

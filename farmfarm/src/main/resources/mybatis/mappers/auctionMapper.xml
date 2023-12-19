@@ -13,7 +13,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -43,7 +43,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -73,7 +73,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -107,7 +107,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -142,7 +142,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -175,7 +175,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -209,7 +209,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -242,7 +242,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
 		auction_reg_info.auction_deadline
 		FROM
 		auction_history
@@ -277,7 +277,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -307,7 +307,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -337,7 +337,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -369,7 +369,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -400,7 +400,7 @@
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.funding_thumb_img_url
+		farm_and_product.auction_thumb_img_url
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -417,48 +417,67 @@
 		GROUP BY
 		farm_and_product.product_serial_num
 	</select>
-	
+
 	<select id="auctionInfo" parameterType="String" resultType="map">
-		SELECT 
-			PR.product_serial_num, PR.product_kind, PR.product_name, PR.farmer_phone,
-			PR.farmer_serial_num, PR.farm_name, PR.farm_introduction, PR.farm_square_footage,
-			PR.expected_planting_date, PR.expected_harvest_date, PR.auction_thumb_img_url,
-			PR.auction_product_img_url, PR.farm_address, FA.farmer_email, FA.farmer_name,
-			AU.harvest_amount, AU.starting_price, AU.auction_deadline, CU.update_date,DATEDIFF(AU.auction_deadline,CURDATE()) AS dueDay
-		from farm_and_product AS PR
+		SELECT
+		PR.product_serial_num, PR.product_kind, PR.product_name,
+		PR.farmer_phone,
+		PR.farmer_serial_num, PR.farm_name,
+		PR.farm_introduction,
+		PR.farm_square_footage,
+		PR.expected_planting_date, PR.expected_harvest_date,
+		PR.auction_thumb_img_url,
+		PR.auction_product_img_url, PR.farm_address,
+		FA.farmer_email,
+		FA.farmer_name,
+		AU.harvest_amount, AU.starting_price,
+		AU.auction_deadline,
+		CU.update_date,DATEDIFF(AU.auction_deadline,CURDATE()) AS dueDay
+		from
+		farm_and_product AS PR
 		LEFT OUTER JOIN
-			farmers AS FA ON (PR.farmer_serial_num = FA.farmer_serial_num)
+		farmers AS FA ON
+		(PR.farmer_serial_num = FA.farmer_serial_num)
 		LEFT OUTER JOIN
-			auction_reg_info AS AU ON (PR.product_serial_num = AU.product_serial_num)
+		auction_reg_info AS AU ON (PR.product_serial_num =
+		AU.product_serial_num)
 		LEFT OUTER JOIN
-			cultivating_product_detail AS CU ON (PR.product_serial_num = CU.product_serial_num)
-		
+		cultivating_product_detail AS CU
+		ON (PR.product_serial_num = CU.product_serial_num)
+
 		where
-			PR.product_serial_num = #{product_serial_num} 
-			AND PR.product_status='경매중'
-			AND CU.cultivate_status='수확완료'
+		PR.product_serial_num = #{product_serial_num}
+		AND
+		PR.product_status='경매중'
+		AND CU.cultivate_status='수확완료'
 	</select>
-	
-	<select id="auctionHistorySelectAll" parameterType="String" resultType="map">
-		SELECT 
-			A.user_price, A.bid_date, U.user_name
-		FROM 
-			auction_history AS A
-		LEFT OUTER JOIN 
-			users AS U ON(A.user_serial_num = U.user_serial_num)
+
+	<select id="auctionHistorySelectAll" parameterType="String"
+		resultType="map">
+		SELECT
+		A.user_price, A.bid_date, U.user_name
+		FROM
+		auction_history AS A
+		LEFT OUTER JOIN
+		users AS U ON(A.user_serial_num =
+		U.user_serial_num)
 		WHERE
-			product_serial_num = #{product_serial_num}
+		product_serial_num = #{product_serial_num}
 		ORDER BY A.user_price DESC
 	</select>
-	
-	<select id="maxAndCntAuctionInfo" parameterType="String" resultType="map">
-		SELECT MAX(user_price) AS max_auction_price, COUNT(*) AS participant_cnt
+
+	<select id="maxAndCntAuctionInfo" parameterType="String"
+		resultType="map">
+		SELECT MAX(user_price) AS max_auction_price, COUNT(*) AS
+		participant_cnt
 		FROM auction_history
-		WHERE 
-			product_serial_num = #{product_serial_num}
+		WHERE
+		product_serial_num =
+		#{product_serial_num}
 	</select>
-	
-	<select id="maxAuctionPriceCheck" parameterType="Auction_historyVO" resultType="int">
+
+	<select id="maxAuctionPriceCheck"
+		parameterType="Auction_historyVO" resultType="int">
 		<![CDATA[
 		select
 		case
@@ -470,13 +489,16 @@
    		    then 1
    		    else 0
 		end
-    	]]>		  
+    	]]>
 	</select>
-	
-	<insert id="auctionHistoryInsert" parameterType="Auction_historyVO">
+
+	<insert id="auctionHistoryInsert"
+		parameterType="Auction_historyVO">
 		insert into auction_history
-		(product_serial_num, user_serial_num, user_price)
-		values(#{product_serial_num}, #{user_serial_num}, #{user_price})
+		(product_serial_num,
+		user_serial_num, user_price)
+		values(#{product_serial_num},
+		#{user_serial_num}, #{user_price})
 	</insert>
 	
 	<select id="selectParticipantCntByPrID" parameterType="Auction_historyVO" resultType="int">
@@ -488,7 +510,8 @@
 	<update id="updateCurMaxPriceStatus" parameterType="Auction_historyVO">
 		update auction_history
 		set auction_status = 'X'
-		where product_serial_num = #{product_serial_num}
+		where
+		product_serial_num = #{product_serial_num}
 		and auction_status= 'O'
 	</update>
 

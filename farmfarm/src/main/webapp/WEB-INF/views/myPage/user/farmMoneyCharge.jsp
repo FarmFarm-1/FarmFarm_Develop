@@ -10,7 +10,6 @@
 	});
 	
 	let chargeAmount = 0;
-	let serial_num = "${sessionScope.serial_num}";
 	
 	function formattingNum(e) {
     	let input = e.target.value;
