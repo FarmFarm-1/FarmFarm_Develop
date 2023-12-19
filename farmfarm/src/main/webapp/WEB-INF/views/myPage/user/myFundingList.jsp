@@ -15,8 +15,9 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
-</head>
 
+</head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -32,12 +33,45 @@
 					}
 				});
 	} */
+
+	$(window).ready(function() {
+		// 각 프로젝트의 펀딩 달성률에 따라 파이 차트를 그립니다.
+		$('.fundingpct-4Y5').each(function() {
+			var fundingPct = parseFloat($(this).text().replace('p', '')); // 펀딩 달성률 추출 및 파싱
+			draw(fundingPct, $(this), '#a7e0a3', '#F6F6F6', '#d9ead3'); // 변경된 색상 및 배경색상 적용
+		});
+	});
+
+	function draw(max, element, colorname, bgcolor, redcolor) {
+		var i = 1;
+		var func1 = setInterval(function() {
+			if (i <= max) {
+				color1(i, element, colorname);
+				i++;
+			} else {
+				clearInterval(func1);
+			}
+		}, 10);
+
+		// 배경색 변경
+		element.css({
+			"background" : bgcolor
+		});
+	};
+
+	function color1(i, element, colorname) {
+		element.css({
+			"background" : "conic-gradient(" + colorname + " 0% " + i
+					+ "%, #d9ead3 " + i + "% 100%)"
+		});
+	};
 </script>
 
 <body>
 
 	<div class="mypage--Se9">
-		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%><!-- 모달 -->
+		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%>
+		<!-- 모달 -->
 		<!-- 고정 -->
 		<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">
@@ -69,17 +103,32 @@
 				</div>
 
 				<p class="fundingdate-9R7">${fList.user_funding_date}</p>
-				<div class="fundingpct-4Y5">${fList.total_funding_pct}%</div>
+				<div class="fundingpct-4Y5">${fList.total_sum_pct}%</div>
 				<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh">${fList.product_status}</div>
 				<%-- <img class="show_more" id="show_more" onclick="location.href='/myPageUser/myFundingListShowMore'"
 					src="${cpath }/assets/down_solid.png" /> --%>
+				<%-- <form action="/myPageUser/myFundingListShowMore" method="post">
+					<input type="hidden" name="product_serial_num"
+						value="${fList.product_serial_num }"> <input type="submit"
+						id="${fList.product_serial_num }_submit" style="display: none;">
+					<label for="${fList.product_serial_num }_submit"><img
+						class="show_more" id="show_more"
+						src="${cpath }/assets/down_solid.png" /></label>
+				</form> --%>
 				<form action="/myPageUser/myFundingListShowMore" method="post">
-					<input type="hidden" name="product_serial_num" value="${fList.product_serial_num }">
-					<input type="submit" id="${fList.product_serial_num }_submit" style="display: none;">
-					<label for="${fList.product_serial_num }_submit"><img class="show_more" id="show_more" 
-					src="${cpath }/assets/down_solid.png" /></label>
+					<input type="hidden" name="product_serial_num"
+						value="${fList.product_serial_num}"> <input type="submit"
+						id="${fList.product_serial_num }_submit" style="display: none;">
+
+					<!-- fList.product_status가 "경작중"인 경우에만 더 보기 아이콘 표시 -->
+					<c:if test="${fList.product_status eq '경작중'}">
+						<label for="${fList.product_serial_num }_submit"> <img
+							class="show_more" id="show_more"
+							src="${cpath }/assets/down_solid.png" />
+						</label>
+					</c:if>
 				</form>
 				<!-- onclick="location.href='/myPageUser/myFundingListShowMore'" -->
 				<!-- onclick="showMore()" -->

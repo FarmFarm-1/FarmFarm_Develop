@@ -21,7 +21,7 @@ public class MyPageUserFundingVO {
 	String farm_name;
 	String farm_address;
 	Date user_funding_date;
-	int total_funding_pct;
+	int total_sum_pct;
 	int user_funding_amout;
 	double user_funding_pct;
 	String product_status;

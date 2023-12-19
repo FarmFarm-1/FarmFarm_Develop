@@ -44,7 +44,11 @@ public class MypageUserController {
 		List<MyPageUserFundingDetailVO> fundingDetail=service.myPageFundingListDetail(product_serial_num);
 		System.out.println(fundingDetail);
 		model.addAttribute("fundingDetail",fundingDetail);
-		model.addAttribute("status",fundingDetail.get(0).getCultivate_status());
+		
+		if(fundingDetail.size()!=0) {
+			model.addAttribute("status",fundingDetail.get(0).getCultivate_status());
+		}
+		
 		return "myPage/user/myFundingListShowMore";
 	}
 	

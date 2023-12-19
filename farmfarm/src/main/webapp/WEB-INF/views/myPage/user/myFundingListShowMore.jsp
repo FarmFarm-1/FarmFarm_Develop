@@ -32,17 +32,6 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <body>
 
-	<!-- <script>
-		document
-				.addEventListener(
-						'click',
-						function(event) {
-							document.querySelector('#fundingDetailModal').style.display = 'none';
-						});
-	</script> -->
-
-	<!-- <div id="fundingDetailModal" class="modal"> -->
-
 	<!-- 경작 준비중 -->
 	<button class="accordion">
 		<div class="update1icon">1</div>
@@ -65,9 +54,9 @@
 					<div class="item-20230915-7uX">
 						<c:forEach items="${fundingDetail}" var="f">
 							<%-- ${f.cultivate_status} --%>
-							 <c:if test="${f.cultivate_status eq '경작준비중'}">
+							<c:if test="${f.cultivate_status eq '경작준비중'}">
 									${f.update_date}
-								</c:if> 
+								</c:if>
 						</c:forEach>
 					</div>
 				</div>
@@ -77,7 +66,7 @@
 						<%-- ${f.cultivate_status} --%>
 						<c:if test="${f.cultivate_status eq '경작준비중'}">
 									${f.cultivating_content}
-								</c:if> 
+								</c:if>
 					</c:forEach>
 				</div>
 			</div>
@@ -103,9 +92,23 @@
 			<div class="auto-group-hkbx-LkM">
 				<div class="auto-group-6tox-hL1">
 					<div class="item--E53">경작 중 정보</div>
-					<div class="item-20230915-7uX">2023.09.15</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '경작중'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="item--pow">이렇게 자라고 있습니다 어쩌고 몇 키로 나올 것 같습니다 저쩌구구</div>
+				<div class="item--pow">
+					<c:forEach items="${fundingDetail}" var="f">
+						<%-- ${f.cultivate_status} --%>
+						<c:if test="${f.cultivate_status eq '경작중'}">
+									${f.cultivating_content}
+								</c:if>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -128,9 +131,23 @@
 			<div class="auto-group-hkbx-LkM">
 				<div class="auto-group-6tox-hL1">
 					<div class="item--E53">수확 중 정보</div>
-					<div class="item-20230915-7uX">2023.09.15</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '수확중'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="item--pow">이렇게 자라고 있습니다 어쩌고 몇 키로 나올 것 같습니다 저쩌구구</div>
+				<div class="item--pow">
+					<c:forEach items="${fundingDetail}" var="f">
+						<%-- ${f.cultivate_status} --%>
+						<c:if test="${f.cultivate_status eq '수확중'}">
+									${f.cultivating_content}
+								</c:if>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -153,13 +170,28 @@
 			<div class="auto-group-hkbx-LkM">
 				<div class="auto-group-6tox-hL1">
 					<div class="item--E53">수확완료 정보</div>
-					<div class="item-20230915-7uX">2023.09.15</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '수확완료'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
 				</div>
-				<div class="item--pow">이렇게 자라고 있습니다 어쩌고 몇 키로 나올 것 같습니다 저쩌구구</div>
+			</div>
+			<div class="item--pow">
+				<c:forEach items="${fundingDetail}" var="f">
+					<%-- ${f.cultivate_status} --%>
+					<c:if test="${f.cultivate_status eq '수확완료'}">
+									${f.cultivating_content}
+								</c:if>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
-	<!-- </div> -->
+
+
 
 
 
