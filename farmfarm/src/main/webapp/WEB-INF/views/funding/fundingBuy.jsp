@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mainpage/펀딩/구매 전 확인/버튼비활성</title>
-<c:set value="${pageContext.request.contextPath}" var="cpath"/>
+<c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />
 <link rel="stylesheet"
@@ -22,8 +22,7 @@
 	href="https://fonts.googleapis.com/css?family=Abhaya+Libre+ExtraBold%3A800" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A500%2C700%2C800" />
-<link rel="stylesheet"
-	href="${cpath}/styles/fundingbuy.css" />
+<link rel="stylesheet" href="${cpath}/styles/fundingbuy.css" />
 </head>
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
@@ -62,14 +61,22 @@
 										<div>전체 펀딩 목표 금액</div>
 										<div>${fundingInfo.target_total_amount}</div>
 									</div>
-									<div class="line">
-										<div>내 펀딩 비율</div>
-										<div>${pay }</div>
-									</div>
-									<div class="line">
-										<div>최종 가격</div>
-										<div>${payMoney}</div>
-									</div>
+									<form id="payForm" action="${cpath}/funding/fundingFinish"
+										method="post">
+										<div class="line">
+											<div>내 펀딩 비율</div>
+											<div name="pay">${pay }</div>
+											<input type="hidden" value="${pay}" name="pay">
+										</div>
+										<div class="line">
+											<div>최종 가격</div>
+											<div name="payMoney">${payMoney}</div>
+											<input type="hidden" value="${payMoney}" name="payMoney">
+										</div>
+										<input type="hidden" id="product_serial_num"
+											name="product_serial_num"
+											value="${fundingInfo.product_serial_num}">
+									</form>
 								</div>
 							</div>
 							<!-- //funding_text -->
@@ -78,8 +85,8 @@
 						<div class="checkbox-pmT">
 							<div class="auto-group-h2nh-jNd">
 								<input type="checkbox" id="checkbox1" class="checkbox1">
-								<label for="checkbox1" class="agreegroup">주문 내용을 확인했으며, 펀딩
-									하는 것에 동의합니다.</label>
+								<label for="checkbox1" class="agreegroup">주문 내용을 확인했으며,
+									펀딩 하는 것에 동의합니다.</label>
 							</div>
 							<div class="line-54-rrZ"></div>
 							<div class="auto-group-ziz3-cKw"></div>
@@ -87,7 +94,7 @@
 						<!-- //checkbox-pmT -->
 						<div class="pay_wrap">
 							<button id="payButton" class="group-120-aMK"
-								onclick="location.href='${cpath}/funding/fundingFinish';">${fundingInfo.funding_amount}
+								onclick="submitForm()">${fundingInfo.funding_amount}
 								포인트 결제하기</button>
 						</div>
 					</div>
@@ -97,6 +104,11 @@
 		</div>
 	</div>
 	<script>
+		function submitForm() {
+			var form = document.getElementById("payForm");
+			form.submit();
+		}
+
 		const checkboxCheckbox1 = document.getElementById("checkbox1");
 		const payButton = document.getElementById("payButton");
 		payButton.disabled = true;

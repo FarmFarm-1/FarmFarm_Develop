@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.farmfarm.model.FundingDetailService;
 import com.farmfarm.model.FundingService;
+import com.farmfarm.model.MyPageService;
 
 @Controller
 @RequestMapping("/funding")
@@ -25,9 +26,12 @@ public class FundingController {
 
 	@Autowired
 	FundingDetailService fundingDetailService;
+	
+	@Autowired
+	MyPageService myPageService;
 
 	@GetMapping("/fundingList")
-	public String showFundingList(Model model) {
+	public String showFundingList(Model model, HttpSession session) {
 		String type = null;
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService.fundingListSelectAll(type);
 		for (Map<String, Object> map : fundingList) {
@@ -36,11 +40,20 @@ public class FundingController {
 			}
 		}
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		System.out.println(user_serial_num);
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
+		System.out.println(model);
 		return "funding/fundingList";
 	}
 
 	@GetMapping("/fundingListByType")
-	public String fundingListByType(String type, Model model) {
+	public String fundingListByType(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService
 				.fundingListSelectByType(type);
 		for (Map<String, Object> map : fundingList) {
@@ -48,32 +61,59 @@ public class FundingController {
 				map.put("funding_pct", 0);
 			}
 		}
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
 		model.addAttribute("fundingList", fundingList);
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/fundingMain")
-	public String showFundingMain(Model model) {
+	public String showFundingMain(Model model, HttpSession session) {
+		session.setAttribute("headerSelect", "funding");
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService.fundingListSelectHot();
+		for (Map<String, Object> map : fundingList) {
+			if (map.get("funding_pct") == null) {
+				map.put("funding_pct", 0);
+			}
+		}
 		model.addAttribute("fundingListHot", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
 		return "funding/fundingMain";
 	}
 
 	@GetMapping("/orderAll")
-	public String showFundingFilter1(String type, Model model) {
+	public String showFundingFilter1(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService.fundingListSelectAll(type);
 		for (Map<String, Object> map : fundingList) {
 			if (map.get("funding_pct") == null) {
 				map.put("funding_pct", 0);
 			}
 		}
-		model.addAttribute("fundingList", fundingService.fundingListSelectAll(type));
+		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
 		System.out.println(model);
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/orderSupport")
-	public String showFundingFilter2(String type, Model model) {
+	public String showFundingFilter2(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService
 				.fundingListSelectSupport(type);
 		for (Map<String, Object> map : fundingList) {
@@ -82,11 +122,18 @@ public class FundingController {
 			}
 		}
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/orderClosing")
-	public String showFundingFilter3(String type, Model model) {
+	public String showFundingFilter3(String type, Model model, HttpSession session) {
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService
 				.fundingListSelectClosing(type);
 		for (Map<String, Object> map : fundingList) {
@@ -95,11 +142,19 @@ public class FundingController {
 			}
 		}
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
+		System.out.println(user_serial_num); //null
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/orderAmount")
-	public String showFundingFilter4(String type, Model model) {
+	public String showFundingFilter4(String type, Model model, HttpSession session) {
 
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService
 				.fundingListSelectAmount(type);
@@ -109,11 +164,19 @@ public class FundingController {
 			}
 		}
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
+		System.out.println(model);
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/orderRecent")
-	public String showFundingFilter5(String type, Model model) {
+	public String showFundingFilter5(String type, Model model, HttpSession session) {
 
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService
 				.fundingListSelectRecent(type);
@@ -123,11 +186,19 @@ public class FundingController {
 			}
 		}
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
+		System.out.println(model);
 		return "funding/fundingList_ajax";
 	}
 
 	@GetMapping("/fundingSearch")
-	public String fundingSearch(String input, Model model) {
+	public String fundingSearch(String input, Model model, HttpSession session) {
 
 		List<Map<String, Object>> fundingList = (List<Map<String, Object>>) fundingService.fundingSearch(input);
 		for (Map<String, Object> map : fundingList) {
@@ -137,6 +208,14 @@ public class FundingController {
 		}
 		System.out.println(fundingList);
 		model.addAttribute("fundingList", fundingList);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		if (user_serial_num != null) {
+			if (user_serial_num.substring(0, 2).equals("us")) {
+				List<String> myBookmarkShowByUser = myPageService.myBookmarkShowByUser(user_serial_num);
+				model.addAttribute("myBookmarkShowByUser", myBookmarkShowByUser);
+			}
+		}
+		
 		return "funding/fundingList_ajax";
 	}
 
@@ -145,7 +224,7 @@ public class FundingController {
 		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
 		model.addAttribute("bookmarkCnt", fundingDetailService.bookmarkCnt(product_serial_num));
 
-		// ¿Ø¿˙ π¯»£ √º≈© (us∏È º≠∆˜≈Õ, fa∏È ∆ƒ∏”)
+		// Âç†ÏèôÏòôÂç†ÏèôÏòô Âç†ÏèôÏòôÌò∏ Ï≤¥ÌÅ¨ (usÂç†ÏèôÏòô Âç†ÏèôÏòôÂç†ÏèôÏòôÂç†ÏèôÏòô, faÂç†ÏèôÏòô Âç†ÏãùÎ™åÏòô)
 		String user_serial_num = (String) session.getAttribute("serial_num");
 
 		int fundingInfocnt = fundingDetailService.fundingInfocnt(product_serial_num);
@@ -176,7 +255,6 @@ public class FundingController {
 			}
 		}
 
-		// ∆˘≥—πˆ √‚∑¬ æÁΩƒ ∫Ø∞Ê
 		String farmer_phone_origin = (String) fundingInfo.get("farmer_phone");
 		String farmer_phone = farmer_phone_origin.replaceAll("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");
 		fundingInfo.replace("farmer_phone", farmer_phone);
@@ -195,6 +273,20 @@ public class FundingController {
 		model.addAttribute("pay", pay);
 		model.addAttribute("payMoney", payMoney);
 
+		return "funding/fundingBuy";
+	}
+
+	@PostMapping("/fundingFinish")
+	public String showFundingFinish(String product_serial_num, Double pay, int payMoney, Model model,
+			HttpSession session) {
+		System.out.println("========================================");
+		System.out.println(pay);
+		System.out.println(payMoney);
+		System.out.println(product_serial_num);
+		
+		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		
 		Map<String, Object> abc = new HashMap<String, Object>();
 		abc.put("user_serial_num", user_serial_num);
 		abc.put("product_serial_num", product_serial_num);
@@ -220,12 +312,8 @@ public class FundingController {
 		} else {
 			fundingDetailService.buyFunding(abc);
 		}
-		return "funding/fundingBuy";
-	}
-
-	@GetMapping("/fundingFinish")
-	public String showFundingFinish() {
-
+		
+		
 		return "funding/fundingFinish";
 
 	}

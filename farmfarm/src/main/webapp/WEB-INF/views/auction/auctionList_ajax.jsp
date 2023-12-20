@@ -9,7 +9,7 @@
 <div class="funding_item" onclick="location.href='${cpath}/auction/auctionDetail?product_serial_num=${auctionItem.product_serial_num}';">
 	<div class="img_wrap">
 		<img class="corn-36630861280-1-daD"
-			src="${cpath}/assets/tomatoes-55667411280.png" />
+			src="${auctionItem.auction_thumb_img_url }" />
 		<div class="${auctionItem.d_day>=0?'active':'overlay'}">경매가 종료되었습니다</div>
 	</div>
 	<div class="bookmark-layer"

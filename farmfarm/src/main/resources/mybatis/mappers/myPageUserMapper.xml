@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.myPageUser">
+
+	<!-- 마이페이지 서포터 펀딩리스트 -->
+	<select id="myPageFundingList" parameterType="String"
+		resultType="MyPageUserFundingVO">
+		SELECT
+		funding_thumb_img_url, product_name, farm_name,
+		farm_address, user_funding_date, total_funding_pct,
+		user_funding_amout, user_funding_pct, product_status
+		FROM farm_and_product A
+		INNER JOIN
+		(SELECT
+		round(SUM(user_funding_pct))
+		total_funding_pct, product_serial_num,
+		user_serial_num,
+		user_funding_pct, user_funding_amout,
+		user_funding_date
+		FROM funding_history
+		WHERE user_serial_num = #{user_serial_num}
+		GROUP BY product_serial_num ) B ON A.product_serial_num =
+		B.product_serial_num
+	</select>
+
+	<!-- 마이페이지 서포터 경매리스트 -->
+	<select id="myPageAuctionList" parameterType="String"
+		resultType="MyPageUserAuctionVO">
+		SELECT QUERY1.auction_thumb_img_url, QUERY1.product_name,
+		QUERY1.farm_name, QUERY1.farm_address, QUERY1.auction_deadline,
+		QUERY1.product_status, QUERY2.max_user_price
+		FROM
+		(SELECT
+		b.product_serial_num, user_serial_num, auction_thumb_img_url,
+		product_name, farm_name,
+		farm_address, auction_deadline,
+		b.product_status
+		FROM auction_history a
+		INNER JOIN farm_and_product b ON
+		a.product_serial_num =
+		b.product_serial_num
+		INNER JOIN auction_reg_info
+		c ON a.product_serial_num =
+		c.product_serial_num
+		WHERE a.user_serial_num
+		= #{user_serial_num}) AS QUERY1
+		join
+		(SELECT product_serial_num,
+		MAX(user_price) max_user_price
+		FROM auction_history
+		WHERE
+		product_serial_num IN (SELECT product_serial_num FROM auction_history
+		WHERE user_serial_num = #{user_serial_num} )
+		GROUP BY
+		product_serial_num) as QUERY2
+		ON QUERY1.product_serial_num =
+		QUERY2.product_serial_num
+	</select>
+
+	<!-- 마이페이지 서포터 찜하기 -->
+	<select id="myPageCartFundingList" parameterType="String"
+		resultType="MyPageUserCartFundingVO">
+		SELECT
+		farm_and_product.product_serial_num,
+		farm_and_product.product_name,
+		round(funding_reg_info.target_total_amount/10000) AS min_amount,
+		farm_and_product.expected_planting_date,
+		farm_and_product.farm_square_footage,
+		round(SUM(funding_history.user_funding_pct)) as funding_pct,
+		DATEDIFF(funding_reg_info.funding_deadline, NOW()) as d_day,
+		farm_and_product.funding_thumb_img_url,
+		ifnull(user_cart.user_serial_num,0) is_cart
+		FROM farm_and_product
+		LEFT
+		OUTER
+		JOIN funding_history
+		ON funding_history.product_serial_num =
+		farm_and_product.product_serial_num
+		LEFT OUTER JOIN funding_reg_info
+		ON
+		farm_and_product.product_serial_num =
+		funding_reg_info.product_serial_num
+		LEFT OUTER JOIN user_cart
+		ON
+		farm_and_product.product_serial_num = user_cart.product_serial_num
+		WHERE farm_and_product.product_status ='펀딩진행중'
+		AND
+		user_cart.user_serial_num = #{user_serial_num}
+		GROUP BY
+		farm_and_product.product_serial_num
+	</select>
+	
+	<!--  재호 -->
+		<select id="depositList" resultType="map">
+		SELECT fap.product_name, fap.product_regdate , fap.farm_address,
+		Date(upsh.sharing_date) AS sharing_date, upsh.user_bank,
+		upsh.user_account, upsh.user_profit AS deposit
+		FROM user_profit_sharing_history AS upsh
+		JOIN farm_and_product fap ON upsh.product_serial_num =
+		fap.product_serial_num
+		left outer JOIN auction_history ah ON upsh.product_serial_num =
+		ah.product_serial_num
+		WHERE upsh.user_serial_num = #{user_serial_num}
+		AND ah.auction_status = 'O'
+		ORDER BY upsh.sharing_date;
+	</select>
+
+	<select id="usedfarmList" resultType="map">
+		SELECT fap.product_name, ph.product_serial_num,
+		fap.farm_name, ph.amount, ph.history_content,
+		Date(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN farm_and_product fap
+		ON
+		ph.product_serial_num =
+		fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		=
+		#{user_serial_num}
+		ORDER BY ph.update_date
+	</select>
+
+	<select id="showSearchDate" resultType="map">
+		SELECT
+		fap.product_name,
+		fap.farm_name,
+		ph.amount,
+		ph.history_content,
+		DATE(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN
+		farm_and_product fap
+		ON
+		ph.product_serial_num = fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		= #{user_serial_num}
+		AND
+		DATE(ph.update_date) BETWEEN #{startDate} AND
+		#{endDate}
+		ORDER BY
+		ph.update_date
+	</select>
+	<!-- //재호 -->
+</mapper>

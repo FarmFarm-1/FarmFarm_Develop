@@ -118,7 +118,7 @@
 	}
 	function hideModal() {
 		document.querySelector('.modal').style.display = 'none';
-		location.reload(true);
+		//location.reload(true); => 경매시 체크해봐야함.
 	}
 	function showModal(title,result) {
 		$(".alertTitle").text(title);

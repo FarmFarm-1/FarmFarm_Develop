@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.farmfarm.UserNavCnt">
+
+
+
+	<select id="userFundingNum" resultType="int">
+		SELECT COUNT(*)
+		FROM users
+		JOIN funding_history ON users.user_serial_num =
+		funding_history.user_serial_num
+		WHERE users.user_serial_num =
+		#{user_serial_num}
+	</select>
+
+	<select id="userAuctionNum" resultType="Integer">
+		SELECT COUNT(*)
+		FROM users
+		JOIN auction_history ON
+		users.user_serial_num =
+		auction_history.user_serial_num
+		WHERE
+		users.user_serial_num=#{user_serial_num}
+	</select>
+
+	<select id="userCartNum" resultType="Integer">
+		SELECT
+		COUNT(user_cart.product_serial_num)
+		FROM users LEFT OUTER JOIN
+		user_cart ON users.user_serial_num =
+		user_cart.user_serial_num
+		WHERE
+		users.user_serial_num=#{user_serial_num}
+	</select>
+
+	<select id="userPoint" resultType="Integer">
+		SELECT
+		user_point
+		FROM users
+		WHERE users.user_serial_num=#{user_serial_num}
+	</select>
+
+	<select id="userName" resultType="String">
+		SELECT user_name
+		FROM users
+		WHERE users.user_serial_num=#{user_serial_num}
+	</select>
+
+
+</mapper>

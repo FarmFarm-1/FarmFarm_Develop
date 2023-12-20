@@ -216,7 +216,7 @@
 		ORDER BY
 		funding_reg_info.funding_deadline
 	</select>
-
+	
 	<select id="fundingListSelectAmount" resultType="map">
 		SELECT
 		farm_and_product.product_name,
@@ -417,5 +417,4 @@
 		BY
 		farm_and_product.product_serial_num
 	</select>
-
 </mapper>

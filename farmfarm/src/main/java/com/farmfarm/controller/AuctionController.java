@@ -54,13 +54,13 @@ public class AuctionController {
 				model.addAttribute("myBookmarkShow",myBookmarkShow);
 			}
 		}
-		//Æù³Ñ¹ö Ãâ·Â ¾ç½Ä º¯°æ
+		//ï¿½ï¿½ï¿½Ñ¹ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String farmer_phone_origin = (String)auctionInfo.get("farmer_phone");
 		String farmer_phone = farmer_phone_origin.replaceAll("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");
 		auctionInfo.replace("farmer_phone", farmer_phone);
 		model.addAttribute("auctionInfo", auctionInfo);
 		
-		//user_name Ãâ·Â¾ç½Ä º¯°æ
+		//user_name ï¿½ï¿½Â¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		List<Map<String, Object>> auctionHistoryInfo = auctionService.auctionHistorySelectAll(product_serial_num);
 
 		for (Map<String, Object> history : auctionHistoryInfo) {
@@ -77,8 +77,13 @@ public class AuctionController {
 	@ResponseBody
 	@PostMapping("/auctionConfirm")
 	public ResponseEntity<String> auctionConfirm(Auction_historyVO auction_historyVO) {
-		String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
-		return ResponseEntity.ok(result);
+		try {
+			String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
+	        return ResponseEntity.ok(result);
+	    } catch (AuctionException e) {
+	    	System.out.println(e.getMessage());
+	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+	    }
 	}
 	
 	//jw code
@@ -113,6 +118,7 @@ public class AuctionController {
 	
 	@GetMapping("/auctionMain")
 	public String showAuctionMain(Model model, HttpSession session) {
+		session.setAttribute("headerSelect", "auction");
 		List<Map<String, Object>> auctionList = (List<Map<String, Object>>)auctionService.auctionListSelectHot();
 		model.addAttribute("auctionListHot", auctionList);
 		

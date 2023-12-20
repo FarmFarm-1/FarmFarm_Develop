@@ -1,3 +1,13 @@
+a {
+	text-decoration-line: none;
+	color: #414141;
+}
+
+a:visited {
+	text-decoration: none;
+	color : #414141;
+}
+
 .Content {
 	width: 850px;
 }
