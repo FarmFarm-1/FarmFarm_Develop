@@ -1,9 +1,9 @@
 package com.farmfarm.controller;
 
-import java.util.HashMap;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,13 +16,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
@@ -30,13 +27,12 @@ import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.dto.Auction_reg_infoVO;
 import com.farmfarm.dto.Farm_and_productVO;
+import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
 import com.farmfarm.model.FarmerNavCntService;
-
 import com.farmfarm.model.FarmersService;
-
+import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
-
 import com.farmfarm.model.S3Service;
 import com.farmfarm.model.regProService;
 
@@ -61,6 +57,9 @@ public class myPageFarmerController {
 	
 	@Autowired
 	FarmerNavCntService cService;
+	
+	@Autowired
+	MyPageFarmerService myPageFarmerService;
 	
 	@GetMapping(value = "/navBarCnt")
 	@ResponseBody
@@ -94,27 +93,65 @@ public class myPageFarmerController {
 	
 	@PostMapping(value = "/updateCultivate")
 	@ResponseBody
+
 	public String updateCultivate() {
 		// 가져온 정보를 바탕으로 DB에 insert하기
 		return "success";
 	}
 	
-	@GetMapping(value = "/showRegAuction")
-	public String showRegAuction(Model model) {
-		// post 처리 해야할듯 함 
-		Map<String, Object> map = new HashMap<String, Object>();
+
+	@GetMapping(value = "/myProject")
+	public String showMyProject(HttpSession session, Model model) {
+		String farmer_serial_num = (String)session.getAttribute("serial_num");
+		List<Map<String, Object>> projectList = (List<Map<String, Object>>) myPageFarmerService.selectProjectList(farmer_serial_num);
+		int hasAuctionWaiting = 0;
 		
-		map.put("funding_thumb_img_url", "https://farmfarmimagess.s3.ap-northeast-2.amazonaws.com/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-11-21%20135506.png");
-		map.put("product_serial_num", "PR2023121800001");
-		map.put("product_name", "보리보리쌀보리");
-		map.put("farm_name", "보현농장");
-		map.put("farm_address", "충북 괴산군 청천면 문장로 116-3");
+		for (Map<String, Object> map : projectList) {
+			if (map.get("funding_pct") == null) {
+				map.put("funding_pct", 0);
+			}
+			if(map.get("auction_thumb_img_url") == null) {
+				String funding_thumb_img_url = (String)map.get("funding_thumb_img_url");
+				map.put("auction_thumb_img_url", funding_thumb_img_url);
+			}
+			if(map.get("max_price")==null) {
+				map.put("max_price", '-');
+			} 
+			if (map.get("product_status") != null && map.get("product_status").equals("경매대기중")) {
+		        hasAuctionWaiting = 1;
+		        model.addAttribute("hasAuctionWaiting", hasAuctionWaiting);
+		    }
+			
+			
+		}
+		model.addAttribute("projectList", projectList);
 		
-		model.addAttribute("map", map);
-		
-		
-		return "myPage/Farmer/regAuction";
+		return "myPage/Farmer/myProject";
 	}
+	
+	@PostMapping(value = "/showRegAuction")
+	   public String showRegAuction(Model model, @RequestBody Map<String,Object> param) {
+	      // post 처리 해야할듯 함 
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      
+	      String product_serial_num = (String) param.get("product_serial_num");
+	      String product_name = (String) param.get("product_name");
+	      String farm_name = (String) param.get("farm_name");
+	      String farm_address = (String) param.get("farm_address");
+	      String imgurl = (String) param.get("imgurl");
+	    
+	      
+	      map.put("funding_thumb_img_url", imgurl);
+		  map.put("product_serial_num", product_serial_num);
+		  map.put("product_name", product_name);
+		  map.put("farm_name", farm_name);
+		  map.put("farm_address",farm_address );
+			
+			model.addAttribute("map", map);
+	      
+	      return "myPage/Farmer/regAuction";
+	   }
+
 	
 	@RequestMapping(value = "/regAuction", method = RequestMethod.POST)
 	@ResponseBody
@@ -147,8 +184,6 @@ public class myPageFarmerController {
 		}
 		
 	}
-	
-	
 	
 	
 	@GetMapping(value = "/profitShare")

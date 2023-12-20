@@ -38,6 +38,7 @@
 			processData : false,
 			contentType : false,
 			success : function(response) {
+				console.log(response);
 				auction_thumb_img_url = response; // 업로드된 이미지의 URL을 반환
 			},
 			error : function(error) {
@@ -60,6 +61,7 @@
 			processData : false,
 			contentType : false,
 			success : function(response) {
+				console.log(response);
 				auction_product_img_url = response; // 업로드된 이미지의 URL을 반환
 			},
 			error : function(error) {
