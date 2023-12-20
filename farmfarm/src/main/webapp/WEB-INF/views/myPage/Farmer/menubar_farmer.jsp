@@ -20,6 +20,19 @@
 </head>
 
 <script>
+	function updateCultivate(){
+		
+		$.ajax({
+			url : "/myPageFarmer/showUpdateCultivate",
+			// data :
+			// 어떤 상품에서 update 누른건지 ?
+			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+		
+	}
 
 	$(function() {
 		/* alert('ajax : 나의프로젝트로 이동'); */
@@ -35,9 +48,8 @@
 
 	function regAuction(){
 		
-		alert('ajax : 경매등록으로 이동');
 		$.ajax({
-			url : "/myPageFarmer/regAuction",
+			url : "/myPageFarmer/showRegAuction",
 			// data :
 			// 어떤 상품에서 경매등록을 누른건지 ?
 			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
@@ -50,7 +62,6 @@
 	}
 	function profit(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 입금내역으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/profitShare",
 			success : function(responseData) {
@@ -60,7 +71,6 @@
 	}
 	function chat(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 쪽지함으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/chat",
 			success : function(responseData) {
@@ -69,7 +79,6 @@
 		});
 	}
 	function changePw(){
-		alert('ajax : 비밀번호 변경으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/changePassword",
 			success : function(responseData) {
@@ -101,7 +110,10 @@
 						<div class="auto-group-autb-WKo">
 							<div class="auto-group-yaf7-cNq">파머</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
-							<p class="item--ASH">마더파더젠틀맨님</p>
+							<div class="item--ASH-2">
+								<p class="item--ASH"></p>
+								<p class="item--ASH-1">님</p>
+							</div>
 						</div>
 					</div>
 					<button class="logout-QrR" onclick="location.href='/logout'">
@@ -205,10 +217,7 @@
 					</div>
 
 					<!-- ajax -->
-					<div id="here">
-						<button onclick="regAuction()">경매등록</button>
-						<div id="chart" style="width: 100%; height: 400px;"></div>
-					</div>
+					<div id="here"></div>
 				</div>
 			</div>
 			<!-- footer -->
@@ -258,6 +267,7 @@ window.onload = ()=>{
 				max_money = responseData.cntFund
 				max_cart = responseData.cntCart
 				max_supporter = responseData.cntAuction
+				$(".item--ASH").html(responseData.name);
 			}
 		});
 		

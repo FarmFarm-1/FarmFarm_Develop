@@ -22,6 +22,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+import com.farmfarm.dto.Farmer_account_historyVO;
+import com.farmfarm.dto.User_account_historyVO;
+import com.farmfarm.dto.Auction_reg_infoVO;
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
@@ -69,19 +73,33 @@ public class myPageFarmerController {
 		return map;
 	}
 	
-	@GetMapping(value = "/regAuction")
-	public String showRegAuction() {
-		return "myPage/Farmer/regAuction";
+	@GetMapping(value = "/showUpdateCultivate")
+	public String showUpdate(Model model) {
+		// post 처리 해야할듯 함
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("funding_thumb_img_url", "https://farmfarmimagess.s3.ap-northeast-2.amazonaws.com/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-11-21%20135506.png");
+		map.put("product_serial_num", "PR2023121800001");
+		map.put("product_name", "보리보리쌀보리");
+		map.put("farm_name", "보현농장");
+		map.put("farm_address", "충북 괴산군 청천면 문장로 116-3");
+		
+		model.addAttribute("map", map);
+
+		
+		return "myPage/Farmer/updateCultivate";
 	}
 	
-	@PostMapping(value = "/regAuction")
+	@PostMapping(value = "/updateCultivate")
 	@ResponseBody
-	public String regAuction() {
-		// 媛��졇�삩 �젙蹂대�� 諛뷀깢�쑝濡� DB�뿉 insert�븯湲�
+
+	public String updateCultivate() {
+		// 가져온 정보를 바탕으로 DB에 insert하기
 		return "success";
 	}
 	
-	//jw
+
 	@GetMapping(value = "/myProject")
 	public String showMyProject(HttpSession session, Model model) {
 		String farmer_serial_num = (String)session.getAttribute("serial_num");
@@ -121,15 +139,51 @@ public class myPageFarmerController {
 	      String farm_name = (String) param.get("farm_name");
 	      String farm_address = (String) param.get("farm_address");
 	      String imgurl = (String) param.get("imgurl");
+	    
 	      
-	      System.out.println(product_serial_num);
-	      System.out.println(product_name);
-	      System.out.println(farm_name);
-	      System.out.println(farm_address);
-	      System.out.println(imgurl);
+	      map.put("funding_thumb_img_url", imgurl);
+		  map.put("product_serial_num", product_serial_num);
+		  map.put("product_name", product_name);
+		  map.put("farm_name", farm_name);
+		  map.put("farm_address",farm_address );
+			
+			model.addAttribute("map", map);
 	      
 	      return "myPage/Farmer/regAuction";
 	   }
+
+	
+	@RequestMapping(value = "/regAuction", method = RequestMethod.POST)
+	@ResponseBody
+	public String regAuction(HttpServletRequest request, HttpSession session, 
+			@RequestBody Map<String,Object> param,  Farm_and_productVO vo, Auction_reg_infoVO aucVO) throws ParseException {
+		// 가져온 정보를 바탕으로 DB에 insert하기
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date parsed = format.parse((String) param.get("auction_deadline"));
+		java.sql.Date auction_deadline = new java.sql.Date(parsed.getTime());
+		
+		String status = "경매중";
+		
+		aucVO.setAuction_deadline(auction_deadline);
+		aucVO.setHarvest_amount(Integer.parseInt(String.valueOf(param.get("harvest_amount"))));
+		aucVO.setProduct_serial_num((String) param.get("product_serial_num"));
+		aucVO.setStarting_price(Integer.parseInt(String.valueOf(param.get("starting_price"))));
+		
+		vo.setProduct_serial_num((String) param.get("product_serial_num"));
+		vo.setProduct_status(status);
+		vo.setAuction_thumb_img_url((String) param.get("auction_thumb_img_url"));
+		vo.setAuction_product_img_url((String) param.get("auction_product_img_url"));
+		
+		int res = rService.regAuc(vo, aucVO);
+		
+		if(res>0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+		
+	}
 	
 	
 	@GetMapping(value = "/profitShare")
