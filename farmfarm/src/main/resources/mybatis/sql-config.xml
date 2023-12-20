@@ -25,6 +25,7 @@
 		<typeAlias type="com.farmfarm.dto.Farmer_account_historyVO" alias="Farmer_account_historyVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserAuctionVO" alias="MyPageUserAuctionVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserCartFundingVO" alias="MyPageUserCartFundingVO"/>
+		<typeAlias type="com.farmfarm.dto.Cultivating_product_detailVO" alias="Cultivating_product_detailVO"/>
 	</typeAliases>
 	
 </configuration>

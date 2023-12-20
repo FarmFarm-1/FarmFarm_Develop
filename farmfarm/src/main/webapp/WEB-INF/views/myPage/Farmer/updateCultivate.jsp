@@ -18,27 +18,78 @@
 <link rel="stylesheet" href="${cpath }/styles/mypage--84M.css" />
 </head>
 <script>
+	var cultivating_image;
 
-	function goUpdate(){
+	function imageUpload(file) {
 
-		alert('ajax : 경작중업데이트하기 DB');
+		var formData = new FormData();
+		formData.append('file', file);
+
 		$.ajax({
-			url : "/myPageFarmer/updateCultivate",
-			type: "POST",
-			// data :
-			// 어떤 상품에서 경매등록을 누른건지 ?
-			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
-			success : function(responseData) {
-				if(responseData === 'success'){
-					console.log('성공');
-				}
-				
+			url : '/s3/upload',
+			type : 'POST',
+			data : formData,
+			async : false,
+			processData : false,
+			contentType : false,
+			success : function(response) {
+				cultivating_image = response; // 업로드된 이미지의 URL을 반환
+			},
+			error : function(error) {
+				console.log(error);
 			}
 		});
+
 	}
 
+	function goUpdate() {
+		
+		var cultivate_status = $(".status3-vcM.selected").text();
+		var cultivating_content = $(".rectangle-193-VoB").val();
+		var etc_content = $(".rectangle-197-TjK").val();
+		var fertilizer_content = $(".group-184-AgM").val();
+		var fertilizer_amount = $(".auto-group-5tsx-CmT").val();
+		var product_serial_num = '${map.product_serial_num}';
 
+		var file = $('#inputFile')[0].files[0];
 
+		if (cultivate_status != '' && cultivating_content != ''
+				 && file) {
+			
+			imageUpload(file);
+
+			$.ajax({
+				url : '/myPageFarmer/updateCultivate',
+				type : 'POST',
+				contentType : 'application/json',
+				data : JSON.stringify({
+					"cultivate_status" : cultivate_status,
+					"cultivating_content" : cultivating_content,
+					"etc_content" : etc_content,
+					"fertilizer_content" : fertilizer_content,
+					"fertilizer_amount" : fertilizer_amount,
+					"product_serial_num" : product_serial_num,
+					"cultivating_image" : cultivating_image
+				}),
+				success : function(response) {
+					if (response === 'success') {
+						alert('상품 경작 정보 업데이트 성공');
+						location.href = '/main';
+					} else {
+						alet('업데이트 실패 ㅋㅋ');
+					}
+
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			});
+
+		} else {
+			alert('상태, 이미지, 경작 정보는 필수 입력해야 합니다.');
+		}
+
+	}
 </script>
 <script>
 	function previewImage(input) {
@@ -57,6 +108,7 @@
 	}
 </script>
 <script>
+	var isNowon;
 	/* 상품 등록 - 카테고리 선택 */
 	function disSelect() {
 		$('.status3-vcM').css('background-color', '#f6f6f6');
@@ -70,12 +122,12 @@
 		$('#nemo1').css('color', '#ffffff');
 
 		$('#nemo1').addClass("selected");
-		
-		$('.group-184-AgM').attr('readonly',true);
-		$('.auto-group-5tsx-CmT').attr('readonly',true);
+
+		$('.group-184-AgM').attr('readonly', true);
+		$('.auto-group-5tsx-CmT').attr('readonly', true);
 		$('.group-184-AgM').val('');
 		$('.auto-group-5tsx-CmT').val('');
-		
+
 	}
 	function type2() {
 		disSelect();
@@ -83,11 +135,9 @@
 		$('#nemo2').css('color', '#ffffff');
 
 		$('#nemo2').addClass("selected");
-		
-		$('.group-184-AgM').attr('readonly',true);
-		$('.auto-group-5tsx-CmT').attr('readonly',true);
-		$('.group-184-AgM').val('');
-		$('.auto-group-5tsx-CmT').val('');
+
+		$('.group-184-AgM').attr('readonly', false);
+		$('.auto-group-5tsx-CmT').attr('readonly', false);
 	}
 	function type3() {
 		disSelect();
@@ -95,17 +145,19 @@
 		$('#nemo3').css('color', '#ffffff');
 		$('#nemo3').addClass("selected");
 		
-		$('.group-184-AgM').attr('readonly',false);
-		$('.auto-group-5tsx-CmT').attr('readonly',false);
+		$('.group-184-AgM').attr('readonly', true);
+		$('.auto-group-5tsx-CmT').attr('readonly', true);
+		$('.group-184-AgM').val('');
+		$('.auto-group-5tsx-CmT').val('');
 	}
 	function type4() {
 		disSelect();
 		$('#nemo4').css('background-color', '#3d3d3d');
 		$('#nemo4').css('color', '#ffffff');
 		$('#nemo4').addClass("selected");
-		
-		$('.group-184-AgM').attr('readonly',true);
-		$('.auto-group-5tsx-CmT').attr('readonly',true);
+
+		$('.group-184-AgM').attr('readonly', true);
+		$('.auto-group-5tsx-CmT').attr('readonly', true);
 		$('.group-184-AgM').val('');
 		$('.auto-group-5tsx-CmT').val('');
 	}
@@ -122,11 +174,11 @@
 				<div class="fundinginfo-idT">
 					<div class="tomatoes-55667411280-UMj"></div>
 					<div class="auto-group-h5qx-Xqo">
-						<p class="item--453">그래호구마호박고구마</p>
-						<p class="item--ANy">고구마무봤나나</p>
+						<p class="item--453">${map.product_name }</p>
+						<p class="item--ANy">${map.farm_name }</p>
 						<div class="auto-group-zsah-4z9">
 							<img class="mdi-location-CKf" src="./assets/mdi-location-A37.png" />
-							<p class="item--Xsj">강원 원주</p>
+							<p class="item--Xsj">${map.farm_address }</p>
 						</div>
 					</div>
 				</div>
@@ -171,25 +223,29 @@
 						</p>
 					</div>
 					<div class="auto-group-nwyy-Ftq">
-						<textarea class="rectangle-193-VoB"  maxlength='50'></textarea>
+						<textarea class="rectangle-193-VoB" maxlength='50'></textarea>
 					</div>
 				</div>
 				<div class="updatefertilizer-VAu">
 					<div class="fertilizerleft-pU5">
 						<p class="item--Myo">사용한 비료</p>
-						<p class="item--tD3">사용한 비료의 종류와 양을 기록해 주세요.<br>(수확중 상태에만 작성 가능)</p>
+						<p class="item--tD3">
+							사용한 비료의 종류와 양을 기록해 주세요.<br>(경작중 상태에만 작성 가능)
+						</p>
 					</div>
-					<input class="group-184-AgM" placeholder="비료의 종류를 입력해주세요." readonly/>
+					<input class="group-184-AgM" placeholder="비료의 종류를 입력해주세요." readonly />
 					<div class="group-185-TYy">
-						<input type = number class="auto-group-5tsx-CmT"
-							placeholder="사용량" readonly/>
+						<input type=number class="auto-group-5tsx-CmT" placeholder="사용량"
+							readonly />
 						<div class="kg-3GH">kg</div>
 					</div>
 				</div>
 				<div class="updateetc-Mnm">
 					<div class="etcleft-7mw">
 						<p class="item--sFK">기타</p>
-						<p class="item--zaq">추가적으로 기록해야 할 내용이 있다면 기록해 주세요. <br>(100자)</p>
+						<p class="item--zaq">
+							추가적으로 기록해야 할 내용이 있다면 기록해 주세요. <br>(100자)
+						</p>
 					</div>
 					<textarea class="rectangle-197-TjK" maxlength='100'></textarea>
 				</div>

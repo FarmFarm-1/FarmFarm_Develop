@@ -34,15 +34,7 @@
 		
 	}
 
-	$(function() {
-		/* alert('ajax : 나의프로젝트로 이동'); */
-		$.ajax({
-			url : "/myPageFarmer/myProject",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	});
+	
 
 
 
@@ -251,6 +243,7 @@ window.onload = ()=>{
 	var curReq = "${sessionScope.MyFarmer}";
 	if(curReq==""){
 		console.log('그냥접근');
+		f2();
 	}else{
 		console.log('프로젝트로 만들기로 접근')
 		f1();
@@ -287,6 +280,14 @@ window.onload = ()=>{
 		},30);
 	} 
 	
+	function f2(){
+		$.ajax({
+			url : "/myPageFarmer/myProject",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
 	
 	function f1(){
 		$.ajax({
