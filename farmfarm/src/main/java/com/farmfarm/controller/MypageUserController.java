@@ -69,9 +69,9 @@ public class MypageUserController {
 	public String showMyCartList(HttpSession session, Model model) {
 		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
 		System.out.println(user_serial_num);
-		List<MyPageUserCartFundingVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 가져오기
-		System.out.println(myCartFundingList);
-		model.addAttribute("myCartFundingList", myCartFundingList);
+		List<MyPageUserCartFundingVO> myCartAllList = service.myPageCartAllList(user_serial_num); //내가 찜한 리스트 모두 가져오기
+		System.out.println(myCartAllList);
+		model.addAttribute("myCartAllList", myCartAllList);
 		return "myPage/user/myCartList";
 	}
 

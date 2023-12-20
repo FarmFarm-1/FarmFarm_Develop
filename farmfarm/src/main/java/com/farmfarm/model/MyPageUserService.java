@@ -20,17 +20,19 @@ public class MyPageUserService {
 		return dao.myPageFundingList(user_serial_num);
 	}
 	
+	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num){
+		return dao.myPageFundingListDetail(product_serial_num);
+	}
+	
 	public List<MyPageUserAuctionVO> myPageAuctionList(String user_serial_num) {
 		return dao.myPageAuctionList(user_serial_num);
 	}
 	
-	public List<MyPageUserCartFundingVO> myPageCartFundingList(String user_serial_num) {
-		return dao.myPageCartFundingList(user_serial_num);
+	public List<MyPageUserCartFundingVO> myPageCartAllList(String user_serial_num) {
+		return dao.myPageCartAllList(user_serial_num);
 	}
 	
-
-	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num){
-		return dao.myPageFundingListDetail(product_serial_num);
-	}
+	
+	
 	
 }

@@ -25,6 +25,10 @@ public class MyPageUserDAO {
 		return userFundingList;
 	}
 
+	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num) {
+		return sqlSession.selectList(namespace + "myPageFundingListDetail", product_serial_num);
+	}
+
 	public List<MyPageUserAuctionVO> myPageAuctionList(String user_serial_num) {
 
 		List<MyPageUserAuctionVO> userAuctionList = sqlSession.selectList(namespace + "myPageAuctionList",
@@ -32,16 +36,13 @@ public class MyPageUserDAO {
 
 		return userAuctionList;
 	}
-	
-	public List<MyPageUserCartFundingVO> myPageCartFundingList(String user_serial_num) {
 
-		List<MyPageUserCartFundingVO> userCartFundingList = sqlSession.selectList(namespace + "myPageCartFundingList",
+	public List<MyPageUserCartFundingVO> myPageCartAllList(String user_serial_num) {
+
+		List<MyPageUserCartFundingVO> userCartAllList = sqlSession.selectList(namespace + "myPageCartAllList",
 				user_serial_num);
 
-		return userCartFundingList;
+		return userCartAllList;
 	}
-	
-	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num){
-		return sqlSession.selectList(namespace + "myPageFundingListDetail",product_serial_num);
-	}
+
 }

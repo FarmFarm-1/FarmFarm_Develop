@@ -60,9 +60,9 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h {
-	margin: 0rem 0rem 0rem 7.5rem;
+	margin: 0rem 0rem 0rem 10rem;
 	/* width: calc(100% - 10rem); */
-	column-gap: 5rem;
+	column-gap: 4rem;
 	display: flex;
 	align-items: center;
 	/* width: 100%; */
@@ -129,11 +129,11 @@ input {
 }
 
 .mypage--Se9 .fundinglist1-giZ {
-	column-gap: 3.2rem;
+	column-gap: 3.5rem;
 	margin: 2rem 0rem 2rem 0rem;
 	box-sizing: border-box;
-	padding: 0rem 1.5rem 0rem 1.5rem;
-	width: 99%;
+	padding: 0rem 3rem 0rem 3rem;
+	width: 90%;
 	height: 12rem;
 	display: flex;
 	align-items: center;
@@ -143,7 +143,7 @@ input {
 }
 
 .mypage--Se9 .fundinglist1-giZ .tomatoes-55667411280-5Eu {
-	/* margin-right: 2.1rem; */
+	margin-left: 1rem;
 	width: 9rem;
 	height: 9rem;
 	position: relative;
@@ -306,4 +306,9 @@ input {
 	border-radius: 0.8rem;
 	width: 8rem;
 	height: 3rem;
+}
+
+.mypage--Se9 .fundinglist1-giZ .item--KJD.failure {
+	background-color: #FDE8E8; 
+	color: #F4440C;
 }

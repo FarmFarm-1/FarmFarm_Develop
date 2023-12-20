@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.Date"%>
+<%@ page import="java.text.SimpleDateFormat"%>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <!DOCTYPE html>
 <html>
@@ -16,24 +17,8 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/myAuctionList.css" />
-<script>
 
-</script>
 <body>
-
-
-
- 	<%-- 현재 시간을 가져오기 --%>
-    <%
-        Date currentDate = new Date();
-        pageContext.setAttribute("currentDate", currentDate);
-    %>
-
-    <%-- JSTL을 사용하여 현재 시간을 포맷해서 출력 --%>
-    <fmt:formatDate value="${currentDate}" pattern="yy-MM-dd HH:mm" var="formattedDate" />
-
-    <h1>현재 시간: ${formattedDate}</h1>
-
 	<div class="mypage--Se9">
 		<!-- 고정 -->
 		<p class="item--ydo">경매에 참여 내역을 확인해보세요.</p>
@@ -47,11 +32,11 @@
 
 		<!-- 경매 리스트 -->
 		<c:forEach items="${myAuctionList }" var="aList">
-	
-		
+
+
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${cpath }/assets/tomatoes.png" />
+					src="${aList.auction_thumb_img_url}" />
 
 				<div class="fundinginfo-B9X">
 					<div class="auto-group-anxd-tCM">
@@ -65,26 +50,43 @@
 				</div>
 
 				<div class="auctiondeadlinegroup-Nj7">
-					<div class="auctionremaining-VYq">15시간 23분</div>
+					<c:set var="days"
+						value="${fn:substringBefore(Math.floor((aList.d_day)/1440), '.')}" />
+					<c:set var="remainingHours"
+						value="${fn:substringBefore(Math.floor(((aList.d_day)%1440) / 60), '.')}" />
+					<c:set var="remainingMinutes" value="${(((aList.d_day)%1440)%60)}" />
+
+
+					<div class="auctionremaining-VYq">${days}일
+						${remainingHours}시간 ${remainingMinutes}분</div>
 					<p class="auctiondeadline-pr1">${aList.auction_deadline}마감</p>
 				</div>
 
 				<p class="fundingpay-7WM">${aList.max_user_price}p</p>
-				<!--  -->
 				<div class="fundingstate-MQh">${aList.product_status}</div>
-				<div class="item--KJD">낙찰</div>
-				<!-- 낙찰 실패 -->
-
+				<div class="item--KJD ${aList.product_status eq '경매완료' and aList.auction_status eq 'X' ? 'failure' : ''}" id="auctionStatus">
+				    <c:choose>
+				        <c:when test="${aList.product_status eq '경매중'}">
+				            진행중
+				        </c:when>
+				        <c:when test="${aList.product_status eq '경매완료' and aList.auction_status eq 'O'}">
+				            낙찰
+				        </c:when>
+				        <c:when test="${aList.product_status eq '경매완료' and aList.auction_status eq 'X'}">
+				            낙찰실패
+				        </c:when>
+				        <c:when test="${aList.product_status eq '정산완료'}">
+				            낙찰
+				        </c:when>
+				        <c:otherwise>
+				            <!-- 다른 경우에 대한 처리 -->
+				        </c:otherwise>
+				    </c:choose>
+				</div>
 			</div>
-
-
 		</c:forEach>
 
 	</div>
-
-
-
-
 </body>
 
 </html>
