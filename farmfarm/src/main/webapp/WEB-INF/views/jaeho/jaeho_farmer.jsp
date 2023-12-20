@@ -12,6 +12,7 @@
 	<div class="content_tit">
 		이메일 아이디 로그인을 위한<br />비밀번호를 설정해 주세요.
 	</div>
+
 	<div class="grayback">
 		<div class="content_detailall">
 			<div class="content_detail">
@@ -41,6 +42,7 @@
 			<button id="updatePasswdBtn" onclick="check()">비밀번호 변경</button>
 		</div>
 	</div>
+
 </div>
 <!-- 여기까지써 -->
 <script>
@@ -66,7 +68,7 @@
 		};
 		console.log(obj);
 		$.ajax({
-			url : "${cpath}/jaeho/passwdchange",
+			url : "${cpath}/jaeho/passwdchange_farmer",
 			data : obj,
 			type : "post",
 			success : function(responseData) {
@@ -80,3 +82,4 @@
 		});
 	}
 </script>
+

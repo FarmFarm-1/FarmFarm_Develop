@@ -66,7 +66,7 @@
 }
 
 .locationText {
-	font-size: 10px;
+	font-size: 11px;
 }
 
 .content_detail {
@@ -86,19 +86,19 @@
 
 .content_little_tit {
 	display: flex;
-	margin-left: 170px;
+	margin-left: 160px;
 }
 
 .content_little_tit>.content_little_content:nth-child(2) {
-	margin-left: 105px;
+	margin-left: 115px;
 }
 
 .content_little_tit>.content_little_content:nth-child(3) {
-	margin-left: 80px;
+	margin-left: 85px;
 }
 
 .content_little_tit>.content_little_content:nth-child(4) {
-	margin-left: 85px;
+	margin-left: 82.5px;
 }
 
 .content_little_content {

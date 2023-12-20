@@ -94,10 +94,16 @@ public class UsersService {
 		}
 	}
 	
+	//재호
+	public String pwCheck(String user_serial_num){
+		return dao.pwCheck(user_serial_num);
+	}
+	
 	public int changePw(String user_serial_num, String user_pw) throws Exception {
 	    UsersVO vo = new UsersVO();
 	    vo.setUser_serial_num(user_serial_num);
 	    vo.setUser_pw(user_pw);
 	    return dao.changePw(vo);
 	}
+	//재호
 }

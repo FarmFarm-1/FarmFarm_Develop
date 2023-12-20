@@ -34,7 +34,13 @@ public class UsersDAO {
 		return sqlSession.update(namespace+"updatePw", vo);
 	}
 	
+	//재호
+	public String pwCheck(String user_serial_num){
+		return sqlSession.selectOne(namespace + "pwCheck", user_serial_num);
+	}
+	
     public int changePw(UsersVO vo) {
         return sqlSession.update(namespace + "changePw", vo);
     }
+    //재호
 }

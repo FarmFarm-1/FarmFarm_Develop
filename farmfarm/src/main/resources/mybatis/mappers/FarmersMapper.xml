@@ -19,7 +19,19 @@
 		update farmers set farmer_pw = #{farmer_pw} where farmer_email = #{farmer_email}
 	</update>
 
+
+	<!-- 재호 -->
+	<select id="pwCheck" resultType="String">
+		SELECT farmer_pw
+		FROM farmers
+		WHERE farmer_serial_num = #{farmer_serial_num}
+	</select>
 	
+	<update id="changePw">
+		update farmers set farmer_pw = #{farmer_pw} where farmer_serial_num =
+		#{farmer_serial_num}
+	</update>
+	<!-- //재호 -->
 </mapper>
 
 

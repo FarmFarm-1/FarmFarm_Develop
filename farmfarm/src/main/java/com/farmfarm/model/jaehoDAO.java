@@ -16,6 +16,7 @@ public class jaehoDAO {
 	
 	String namespace = "com.farmfarm.jaeho.";
 	
+	//서포터
 	public List<Map<String, Object>> depositList(String user_serial_num){
 		return sqlSession.selectList(namespace+"depositList", user_serial_num);
 	}
@@ -31,5 +32,10 @@ public class jaehoDAO {
 	    params.put("endDate", endDate);
 	    
 	    return sqlSession.selectList(namespace + "showSearchDate", params);
+	}
+	
+	//파머
+	public List<Map<String, Object>> depositList_farmer(String farmer_serial_num){
+		return sqlSession.selectList(namespace+"depositList_farmer", farmer_serial_num);
 	}
 }

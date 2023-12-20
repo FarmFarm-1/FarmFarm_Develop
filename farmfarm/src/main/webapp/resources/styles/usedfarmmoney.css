@@ -50,11 +50,21 @@
 
 .callendar input {
 	border: none;
+	width: 100px;
 }
 
-.callendat p {
+.callendar p {
 	font-size: 12px;
 	margin: 0rem 0.5rem;
+}
+
+.dateSearchBtn {
+	float: right;
+	font-size: 14px;
+	border: 1px solid #64A346;
+	padding: 2px 4px 2px 4px;
+	margin-top: 5px;
+	border-radius: 5px;
 }
 
 .content_little_date {
@@ -81,6 +91,11 @@
 	margin-right: 130px;
 }
 
+.content_detail_first {
+	font-size: 14px;
+	color: #414141;
+}
+
 .content_detail_second {
 	font-size: 12px;
 	color: #8F8F8F
@@ -93,7 +108,10 @@
 }
 
 .historyText {
-	width : 40px;
+	width: 55px;
+	font-weight: bold;
+	font-size: 11px;
+	color: #3A3A3A;
 	margin: 0px 130px 0px 20px;
 }
 
@@ -108,8 +126,14 @@
 	font-size: 12px;
 }
 
-.farmMoneyText{
-	font-size:12px;
+.farmMoneyText {
+	font-size: 12px;
 }
-.yesdisplay { visibility: visible;}
-.nodislay { visibility: hidden;}
+
+.yesdisplay {
+	visibility: visible;
+}
+
+.nodislay {
+	visibility: hidden;
+}

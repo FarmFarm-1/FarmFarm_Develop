@@ -73,7 +73,7 @@
 
 			} else if (curUser.substring(0, 2) === "FA") {
 				//header_farmer_login 띄움
-				location.href = '/myPageFarmer';
+				location.href = '${cpath}/jaeho/b';
 			}
 		}
 		

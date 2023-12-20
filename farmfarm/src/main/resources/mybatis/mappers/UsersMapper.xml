@@ -4,29 +4,44 @@
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.farmfarm.UsersVO">
 	<insert id="userInsert" parameterType="UsersVO">
-		INSERT INTO users(user_email, user_pw, user_name)
-		VALUES(#{user_email},#{user_pw},#{user_name})	
+		INSERT INTO
+		users(user_email, user_pw, user_name)
+		VALUES(#{user_email},#{user_pw},#{user_name})
 	</insert>
 	<select id="getAllUsers" resultType="UsersVO">
 		select * from users
 	</select>
-	<select id="loginCheck" parameterType="UsersVO" resultType="String">
+	<select id="loginCheck" parameterType="UsersVO"
+		resultType="String">
 		select * from users
-		where user_email = #{user_email} and user_pw = #{user_pw}
+		where user_email = #{user_email} and
+		user_pw = #{user_pw}
 	</select>
 	<select id="readMember" resultType="String">
 		select * from users
+		where
+		user_email = #{user_email}
+	</select>
+
+	<update id="updatePw">
+		update users set user_pw = #{user_pw}
 		where user_email = #{user_email}
+	</update>
+
+
+
+	<!-- 재호 -->
+	<select id="pwCheck" resultType="String">
+		SELECT user_pw
+		FROM users
+		WHERE user_serial_num = #{user_serial_num}
 	</select>
 	
-	<update id="updatePw" >
-		update users set user_pw = #{user_pw} where user_email = #{user_email}
+	<update id="changePw">
+		update users set user_pw = #{user_pw} where user_serial_num =
+		#{user_serial_num}
 	</update>
-	
-	<!-- 재호 -->
-	<update id="changePw" >
-	update users set user_pw = #{user_pw} where user_serial_num = #{user_serial_num}
-	</update>
+	<!-- //재호 -->
 </mapper>
 
 
