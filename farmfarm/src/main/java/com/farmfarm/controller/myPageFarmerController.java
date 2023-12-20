@@ -1,9 +1,9 @@
 package com.farmfarm.controller;
 
-import java.util.HashMap;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,27 +16,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import com.farmfarm.dto.Farmer_account_historyVO;
-import com.farmfarm.dto.User_account_historyVO;
-
 import com.farmfarm.dto.Farm_and_productVO;
+import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
 import com.farmfarm.model.FarmerNavCntService;
-
 import com.farmfarm.model.FarmersService;
-
+import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
-
 import com.farmfarm.model.S3Service;
 import com.farmfarm.model.regProService;
 
@@ -62,6 +54,9 @@ public class myPageFarmerController {
 	@Autowired
 	FarmerNavCntService cService;
 	
+	@Autowired
+	MyPageFarmerService myPageFarmerService;
+	
 	@GetMapping(value = "/navBarCnt")
 	@ResponseBody
 	public HashMap<String,Object> navBarCnt(HttpSession session) {
@@ -82,10 +77,59 @@ public class myPageFarmerController {
 	@PostMapping(value = "/regAuction")
 	@ResponseBody
 	public String regAuction() {
-		// 가져온 정보를 바탕으로 DB에 insert하기
+		// 媛��졇�삩 �젙蹂대�� 諛뷀깢�쑝濡� DB�뿉 insert�븯湲�
 		return "success";
 	}
 	
+	//jw
+	@GetMapping(value = "/myProject")
+	public String showMyProject(HttpSession session, Model model) {
+		String farmer_serial_num = (String)session.getAttribute("serial_num");
+		List<Map<String, Object>> projectList = (List<Map<String, Object>>) myPageFarmerService.selectProjectList(farmer_serial_num);
+		int hasAuctionWaiting = 0;
+		
+		for (Map<String, Object> map : projectList) {
+			if (map.get("funding_pct") == null) {
+				map.put("funding_pct", 0);
+			}
+			if(map.get("auction_thumb_img_url") == null) {
+				String funding_thumb_img_url = (String)map.get("funding_thumb_img_url");
+				map.put("auction_thumb_img_url", funding_thumb_img_url);
+			}
+			if(map.get("max_price")==null) {
+				map.put("max_price", '-');
+			} 
+			if (map.get("product_status") != null && map.get("product_status").equals("경매대기중")) {
+		        hasAuctionWaiting = 1;
+		        model.addAttribute("hasAuctionWaiting", hasAuctionWaiting);
+		    }
+			
+			
+		}
+		model.addAttribute("projectList", projectList);
+		
+		return "myPage/Farmer/myProject";
+	}
+	
+	@PostMapping(value = "/showRegAuction")
+	   public String showRegAuction(Model model, @RequestBody Map<String,Object> param) {
+	      // post 처리 해야할듯 함 
+	      Map<String, Object> map = new HashMap<String, Object>();
+	      
+	      String product_serial_num = (String) param.get("product_serial_num");
+	      String product_name = (String) param.get("product_name");
+	      String farm_name = (String) param.get("farm_name");
+	      String farm_address = (String) param.get("farm_address");
+	      String imgurl = (String) param.get("imgurl");
+	      
+	      System.out.println(product_serial_num);
+	      System.out.println(product_name);
+	      System.out.println(farm_name);
+	      System.out.println(farm_address);
+	      System.out.println(imgurl);
+	      
+	      return "myPage/Farmer/regAuction";
+	   }
 	
 	
 	@GetMapping(value = "/profitShare")
