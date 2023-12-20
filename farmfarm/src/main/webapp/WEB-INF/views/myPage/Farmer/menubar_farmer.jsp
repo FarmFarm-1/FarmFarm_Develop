@@ -36,8 +36,6 @@
 
 	
 
-
-
 	function regAuction(){
 		
 		$.ajax({
@@ -279,6 +277,15 @@ window.onload = ()=>{
 			now -= step;
 		},30);
 	} 
+	
+	function f2(){
+		$.ajax({
+			url : "/myPageFarmer/myProject",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
 	
 	function f2(){
 		$.ajax({
