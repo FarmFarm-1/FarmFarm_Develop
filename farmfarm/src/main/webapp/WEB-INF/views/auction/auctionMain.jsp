@@ -89,7 +89,7 @@
 											<p class="item--p6h">수확 완료일</p>
 										</div>
 										<div class="auto-group-sqjq-8Wh">
-											<p class="item-2023-6-15-gYD">${auctionItem.expected_harvest_date}</p>
+											<p class="item-2023-6-15-gYD">${auctionItem.harvestEnd}</p>
 										</div>
 									</div>
 									<div class="auto-group-mvny-sMo">
