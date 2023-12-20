@@ -135,8 +135,8 @@ public class myPageFarmerController {
 		
 		vo.setProduct_serial_num((String) param.get("product_serial_num"));
 		vo.setProduct_status(status);
-		vo.setFunding_thumb_img_url((String) param.get("funding_thumb_img_url"));
-		vo.setFunding_product_img_url((String) param.get("funding_product_img_url"));
+		vo.setAuction_thumb_img_url((String) param.get("auction_thumb_img_url"));
+		vo.setAuction_product_img_url((String) param.get("auction_product_img_url"));
 		
 		int res = rService.regAuc(vo, aucVO);
 		
