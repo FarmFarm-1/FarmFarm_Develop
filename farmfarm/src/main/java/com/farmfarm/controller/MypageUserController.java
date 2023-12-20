@@ -75,4 +75,13 @@ public class MypageUserController {
 		return "myPage/user/myCartList";
 	}
 
+	@GetMapping("/myCartFundingList")
+	public String showMyCartFundingList() {
+		return "myPage/user/myCartFundingList";
+	}
+	
+	@GetMapping("/myCartAuctionList")
+	public String showMyCartAuctionList() {
+		return "myPage/user/myCartAuctionList";
+	}
 }

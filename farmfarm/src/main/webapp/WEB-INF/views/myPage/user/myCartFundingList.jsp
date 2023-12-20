@@ -16,42 +16,24 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${cpath }/styles/myCartList.css" />
 
-<script type="text/javascript">
-	function myCartFundingList() {
-		$.ajax({
-			url : "/myPageUser/myCartFundingList",
-			success : function(responseData) {
-				$("#here2").html(responseData);
-			}
-		});
-	}
-
-	function myCartAuctionList() {
-		$.ajax({
-			url : "/myPageUser/myCartAuctionList",
-			success : function(responseData) {
-				$("#here2").html(responseData);
-			}
-		});
-	}
-</script>
 <body>
-	<div id="here2" class="mypage--hQ1">
-		<p class="item--oAd">관심 있는 소식만 모았어요</p>
+	<h1>펀딩리스트</h1>
+	<%-- <div class="mypage--hQ1">
+		<!-- <p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
 			<div class="filter1-CTf">전체</div>
 			<div class="filter2-GTX" onclick="myCartFundingList()">펀딩</div>
 			<div class="filter3-8Vj" onclick="myCartAuctionList()">경매</div>
-		</div>
-
+		</div> -->
+		
+		
 		<c:forEach items="${myCartAllList }" var="caList">
-			<div class="auto-group-ceto-zXw">
+			<div id="here" class="auto-group-ceto-zXw">
 				<div class="cartlist2-HAu">
-
+				
 					<div class="auto-group-zfjd-bBb">
 						<div class="auto-group-fj9f-Bb3">
-							<img class="vector-6xu" src="./assets/vector-1id.png" />
-							<!--db에서 가져오는 사진으로 바꾸기-->
+							<img class="vector-6xu" src="./assets/vector-1id.png" /> <!--db에서 가져오는 사진으로 바꾸기-->
 							<div class="auto-group-fj9f-Bb3-bg"></div>
 						</div>
 						<p class="item--ixM">${caList.product_name}</p>
@@ -87,6 +69,6 @@
 				</div>
 			</div>
 		</c:forEach>
-	</div>
+	</div> --%>
 </body>
 </html>
