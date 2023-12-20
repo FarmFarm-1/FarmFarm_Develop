@@ -22,28 +22,102 @@
 </head>
 
 <script>
+	var auction_thumb_img_url;
+	var auction_product_img_url;
 
-	function goRegAuction(){
+	function imageUpload(file) {
 
-		alert('ajax : 경매등록하기 DB');
+		var formData = new FormData();
+		formData.append('file', file);
+
 		$.ajax({
-			url : "/myPageFarmer/regAuction",
-			type: "POST",
-			// data :
-			// 어떤 상품에서 경매등록을 누른건지 ?
-			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
-			success : function(responseData) {
-				if(responseData === 'success'){
-					console.log('성공');
-				}
-				
+			url : '/s3/upload',
+			type : 'POST',
+			data : formData,
+			async : false,
+			processData : false,
+			contentType : false,
+			success : function(response) {
+				auction_thumb_img_url = response; // 업로드된 이미지의 URL을 반환
+			},
+			error : function(error) {
+				console.log(error);
 			}
 		});
+
 	}
 
+	function imageUpload2(file) {
 
+		var formData = new FormData();
+		formData.append('file', file);
 
+		$.ajax({
+			url : '/s3/upload',
+			type : 'POST',
+			data : formData,
+			async : false,
+			processData : false,
+			contentType : false,
+			success : function(response) {
+				auction_product_img_url = response; // 업로드된 이미지의 URL을 반환
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+
+	}
+
+	function goRegAuction() {
+
+		var harvest_amount = $(".rectangle-195-dTT").val();
+		var starting_price = $(".rectangle-195-SBw").val();
+		var auction_deadline = $(".group-185-ut9").val();
+		var product_serial_num = '${map.product_serial_num}';
+
+		var file = $('#inputFile')[0].files[0];
+		var file2 = $('#inputFile2')[0].files[0];
+
+		if (harvest_amount != '' && starting_price != ''
+				&& auction_deadline != '' && file != '' && file2 != '') {
+			
+			imageUpload(file);
+			imageUpload2(file2);
+
+			$.ajax({
+				url : '/myPageFarmer/regAuction',
+				type : 'POST',
+				contentType : 'application/json',
+				data : JSON.stringify({
+					"harvest_amount" : harvest_amount,
+					"starting_price" : starting_price,
+					"auction_deadline" : auction_deadline,
+					"auction_thumb_img_url" : auction_thumb_img_url,
+					"auction_product_img_url" : auction_product_img_url,
+					"product_serial_num" : product_serial_num
+				}),
+				success : function(response) {
+					if (response === 'success') {
+						console.log('상품 경매 등록에 성공했습니다.');
+						location.href = '/main';
+					} else {
+						console.log('등록 실패 ..');
+					}
+
+				},
+				error : function(error) {
+					console.log(error);
+				}
+			});
+
+		} else {
+			alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+		}
+
+	}
 </script>
+
 
 <script>
 	function daySet() {
@@ -91,7 +165,7 @@
 
 
 <body>
-	<div class="mypage--ro7" onclick = "daySet()">
+	<div class="mypage--ro7" onclick="daySet()">
 		<div class="auctionform-YHj">
 			<div class="auto-group-d797-4G5">
 				<p class="item--z9j">나의 프로젝트 경매 신청하기</p>
@@ -99,13 +173,13 @@
 			</div>
 			<div class="projectinfo-ACd">
 				<div class="fundinginfo-Ho3">
-					<div class="tomatoes-55667411280-qpZ"></div>
+					<img class="tomatoes-55667411280-qpZ" src = "${map.funding_thumb_img_url }"></img>
 					<div class="auto-group-cp41-hLy">
-						<p class="item--QmB">그래호구마호박고구마</p>
-						<p class="item--vUd">고구마무봤나나</p>
+						<p class="item--QmB">${map.product_name }</p>
+						<p class="item--vUd">${map.farm_name }</p>
 						<div class="auto-group-vkim-efX">
-							<img class="mdi-location-BQZ" src="./assets/mdi-location-8ah.png" />
-							<p class="item--rmb">강원 원주</p>
+							<img class="mdi-location-BQZ" src="./assets/mdi-location-A37.png"/>
+							<p class="item--rmb">${map.farm_address }</p>
 						</div>
 					</div>
 				</div>
@@ -184,7 +258,8 @@
 					<input class="group-185-ut9" type="date" id="deadline"></input>
 				</div>
 			</div>
-			<div class="auctionpushbtn-YgD" onclick="goRegAuction()">경매 신청하기</div>
+			<div class="auctionpushbtn-YgD" onclick="goRegAuction()">경매
+				신청하기</div>
 		</div>
 	</div>
 </body>
