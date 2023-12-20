@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.dto.Auction_reg_infoVO;
+import com.farmfarm.dto.Cultivating_product_detailVO;
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
@@ -34,6 +35,7 @@ import com.farmfarm.model.FarmersService;
 import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.S3Service;
+import com.farmfarm.model.UpdateCulService;
 import com.farmfarm.model.regProService;
 
 
@@ -61,6 +63,9 @@ public class myPageFarmerController {
 	@Autowired
 	MyPageFarmerService myPageFarmerService;
 	
+	@Autowired
+	UpdateCulService ucService;
+	
 	@GetMapping(value = "/navBarCnt")
 	@ResponseBody
 	public HashMap<String,Object> navBarCnt(HttpSession session) {
@@ -73,17 +78,23 @@ public class myPageFarmerController {
 		return map;
 	}
 	
-	@GetMapping(value = "/showUpdateCultivate")
-	public String showUpdate(Model model) {
+	@PostMapping(value = "/showUpdateCultivate")
+	public String showUpdate(Model model, @RequestBody Map<String,Object> param) {
 		// post 처리 해야할듯 함
+		
+		String product_serial_num = (String) param.get("product_serial_num");
+	    String product_name = (String) param.get("product_name");
+	    String farm_name = (String) param.get("farm_name");
+	    String farm_address = (String) param.get("farm_address");
+	    String imgurl = (String) param.get("imgurl");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("funding_thumb_img_url", "https://farmfarmimagess.s3.ap-northeast-2.amazonaws.com/%ED%99%94%EB%A9%B4%20%EC%BA%A1%EC%B2%98%202023-11-21%20135506.png");
-		map.put("product_serial_num", "PR2023121800001");
-		map.put("product_name", "보리보리쌀보리");
-		map.put("farm_name", "보현농장");
-		map.put("farm_address", "충북 괴산군 청천면 문장로 116-3");
+		map.put("funding_thumb_img_url", imgurl);
+		map.put("product_serial_num", product_serial_num);
+		map.put("product_name", product_name);
+		map.put("farm_name", farm_name);
+		map.put("farm_address", farm_address);
 		
 		model.addAttribute("map", map);
 
@@ -93,10 +104,44 @@ public class myPageFarmerController {
 	
 	@PostMapping(value = "/updateCultivate")
 	@ResponseBody
-
-	public String updateCultivate() {
-		// 가져온 정보를 바탕으로 DB에 insert하기
-		return "success";
+	public String updateCultivate(@RequestBody Map<String,Object> param, Cultivating_product_detailVO vo) {
+		
+		String fa = String.valueOf(param.get("fertilizer_amount"));
+		System.out.println(fa);
+		Integer fertilizer_amount;
+		if(fa.equals("")) {
+			fertilizer_amount = null;
+		}else {
+			fertilizer_amount = Integer.parseInt(fa);
+		}
+		
+		String product_serial_num = (String) param.get("product_serial_num");
+	    String cultivate_status = (String) param.get("cultivate_status");
+	    String cultivating_content = (String) param.get("cultivating_content");
+	    String cultivating_image = (String) param.get("cultivating_image");
+	    String fertilizer_content = (String) param.get("fertilizer_content");
+	    String etc_content = (String) param.get("etc_content");
+	    
+	    vo.setProduct_serial_num(product_serial_num);
+	    vo.setCultivate_status(cultivate_status);
+	    vo.setCultivating_content(cultivating_content);
+	    vo.setCultivating_image(cultivating_image);
+	    vo.setFertilizer_content(fertilizer_content);
+	    vo.setFertilizer_amount(fertilizer_amount);
+	    vo.setEtc_content(etc_content);
+	    
+	    int res = ucService.updateCultivate(vo);
+	    
+	    if (res>0) {
+	    	return "success";
+	    }else {
+	    	return "fail";
+	    }
+	    
+	    
+	    
+	    
+		
 	}
 	
 

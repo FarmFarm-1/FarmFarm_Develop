@@ -82,7 +82,7 @@
 		var file2 = $('#inputFile2')[0].files[0];
 
 		if (harvest_amount != '' && starting_price != ''
-				&& auction_deadline != '' && file != '' && file2 != '') {
+				&& auction_deadline != '' && file && file2 ) {
 			
 			imageUpload(file);
 			imageUpload2(file2);

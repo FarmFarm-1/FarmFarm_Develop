@@ -102,7 +102,7 @@
 					&& farm_square_footage != ''
 					&& expected_planting_date != ''
 					&& expected_harvest_date != '' && farmer_phone != ''
-					&& file != '' && file2 != '' && target_total_amount != ''
+					&& file && file2 && target_total_amount != ''
 					&& funding_deadline != '') {
 
 				imageUpload(file);
