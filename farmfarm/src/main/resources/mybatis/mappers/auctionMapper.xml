@@ -9,21 +9,27 @@
 		farm_and_product.product_serial_num,
 		farm_and_product.product_name,
 		max(auction_history.user_price) as current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')
+		AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
 		JOIN farm_and_product
-		ON auction_history.product_serial_num =
+		ON
+		auction_history.product_serial_num =
 		farm_and_product.product_serial_num
 		INNER JOIN auction_reg_info
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -39,21 +45,26 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')
+		AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
 		JOIN farm_and_product
-		ON auction_history.product_serial_num =
+		ON
+		auction_history.product_serial_num =
 		farm_and_product.product_serial_num
 		INNER JOIN auction_reg_info
 		ON
 		farm_and_product.product_serial_num =
-		auction_reg_info.product_serial_num
+		auction_reg_info.product_serial_num LEFT OUTER JOIN
+		cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -69,12 +80,12 @@
 		farm_and_product.product_serial_num,
 		farm_and_product.product_name,
 		max(auction_history.user_price) as current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -87,6 +98,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' AND
@@ -103,12 +117,12 @@
 		farm_and_product.product_serial_num,
 		farm_and_product.product_name,
 		max(auction_history.user_price) as current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -121,6 +135,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' AND
@@ -138,12 +155,12 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -156,6 +173,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -171,12 +191,12 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -189,6 +209,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' AND
@@ -205,12 +228,12 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -223,6 +246,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -238,12 +264,12 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
 		farm_and_product.auction_thumb_img_url,
-		auction_reg_info.auction_deadline
+		auction_reg_info.auction_deadline,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -256,6 +282,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' AND
@@ -273,11 +302,11 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -288,6 +317,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -303,11 +335,11 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -318,6 +350,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -333,11 +368,11 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -348,6 +383,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' and
@@ -365,21 +403,27 @@
 		farm_and_product.product_serial_num,
 		farm_and_product.product_name,
 		max(auction_history.user_price) as current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')
+		AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
 		JOIN farm_and_product
-		ON auction_history.product_serial_num =
+		ON
+		auction_history.product_serial_num =
 		farm_and_product.product_serial_num
 		INNER JOIN auction_reg_info
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중' AND
@@ -396,11 +440,11 @@
 		farm_and_product.product_name,
 		max(auction_history.user_price) as
 		current_price,
-		farm_and_product.expected_harvest_date,
 		auction_reg_info.harvest_amount,
 		DATEDIFF(auction_reg_info.auction_deadline, NOW()) as d_day,
 		COUNT(auction_history.product_serial_num) as participants,
-		farm_and_product.auction_thumb_img_url
+		farm_and_product.auction_thumb_img_url,
+		date_format(max(cultivating_product_detail.update_date), '%Y-%m-%d')  AS harvestEnd
 		FROM
 		auction_history
 		RIGHT OUTER
@@ -411,6 +455,9 @@
 		ON
 		farm_and_product.product_serial_num =
 		auction_reg_info.product_serial_num
+		LEFT OUTER JOIN cultivating_product_detail
+		ON farm_and_product.product_serial_num =
+		cultivating_product_detail.product_serial_num
 		WHERE
 		farm_and_product.product_status
 		='경매중'
@@ -500,14 +547,17 @@
 		values(#{product_serial_num},
 		#{user_serial_num}, #{user_price})
 	</insert>
-	
-	<select id="selectParticipantCntByPrID" parameterType="Auction_historyVO" resultType="int">
+
+	<select id="selectParticipantCntByPrID"
+		parameterType="Auction_historyVO" resultType="int">
 		select count(*)
-		from auction_history
+		from
+		auction_history
 		where product_serial_num = #{product_serial_num}
 	</select>
-	
-	<update id="updateCurMaxPriceStatus" parameterType="Auction_historyVO">
+
+	<update id="updateCurMaxPriceStatus"
+		parameterType="Auction_historyVO">
 		update auction_history
 		set auction_status = 'X'
 		where
