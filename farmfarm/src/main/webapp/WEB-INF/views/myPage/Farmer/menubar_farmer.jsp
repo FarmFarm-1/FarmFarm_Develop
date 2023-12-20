@@ -4,24 +4,44 @@
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <head>
 <meta charset="utf-8" />
 <link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mypage/파머</title>
+<title>mypage/파머/나의프로젝트</title>
+
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 </head>
 
 <script>
+	function updateCultivate(){
+		
+		$.ajax({
+			url : "/myPageFarmer/showUpdateCultivate",
+			// data :
+			// 어떤 상품에서 update 누른건지 ?
+			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+		
+	}
+
+	
+
+
 
 	function regAuction(){
 		
-		alert('ajax : 경매등록으로 이동');
 		$.ajax({
-			url : "/myPageFarmer/regAuction",
+			url : "/myPageFarmer/showRegAuction",
 			// data :
 			// 어떤 상품에서 경매등록을 누른건지 ?
 			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
@@ -34,7 +54,6 @@
 	}
 	function profit(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 입금내역으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/profitShare",
 			success : function(responseData) {
@@ -44,7 +63,6 @@
 	}
 	function chat(){
 		// ajax -> 입급내역 here.html
-		alert('ajax : 쪽지함으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/chat",
 			success : function(responseData) {
@@ -53,7 +71,6 @@
 		});
 	}
 	function changePw(){
-		alert('ajax : 비밀번호 변경으로 이동');
 		$.ajax({
 			url : "/myPageFarmer/changePassword",
 			success : function(responseData) {
@@ -61,15 +78,16 @@
 			}
 		});
 	}
-	
-	function accountRegister() {
+	function account(){
+		alert('ajax : 파머 계좌 관리로 이동');
 		$.ajax({
-			url : "${cpath}/myPageFarmer/accountRegister",
+			url : "/myPageFarmer/account",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
 		});
 	}
+	
 
 </script>
 
@@ -85,7 +103,8 @@
 							<div class="auto-group-yaf7-cNq">파머</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
 							<div class="item--ASH-2">
-							<p class="item--ASH"></p><p class="item--ASH-1">님</p>
+								<p class="item--ASH"></p>
+								<p class="item--ASH-1">님</p>
 							</div>
 						</div>
 					</div>
@@ -152,7 +171,7 @@
 							<p class="item--bXj">마이 데이터</p>
 							<div class="item--KCq">내 프로젝트의 진행상황을 확인해보세요</div>
 
-							<button onclick="accountRegister()" class="accountpagebtn-zpm">
+							<button onclick="account()" class="accountpagebtn-zpm">
 								<img class="group-135-hjB"
 									src="${cpath }/assets/info_accIcon2.png" />
 								<div class="item--RQH">수익 계좌 관리</div>
@@ -190,59 +209,7 @@
 					</div>
 
 					<!-- ajax -->
-					<div id="here">
-						<button onclick="regAuction()">경매등록</button>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<br>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-						<h1>마이프로젝트 리스트</h1>
-
-					</div>
+					<div id="here"></div>
 				</div>
 			</div>
 			<!-- footer -->
@@ -251,6 +218,7 @@
 	</div>
 	<jsp:include page="${cpath }/WEB-INF/views/footer.jsp" />
 </body>
+
 <script>
 
 var max_cart;
@@ -275,6 +243,7 @@ window.onload = ()=>{
 	var curReq = "${sessionScope.MyFarmer}";
 	if(curReq==""){
 		console.log('그냥접근');
+		f2();
 	}else{
 		console.log('프로젝트로 만들기로 접근')
 		f1();
@@ -311,6 +280,14 @@ window.onload = ()=>{
 		},30);
 	} 
 	
+	function f2(){
+		$.ajax({
+			url : "/myPageFarmer/myProject",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
 	
 	function f1(){
 		$.ajax({
@@ -320,6 +297,7 @@ window.onload = ()=>{
 			}
 		});
 	}
+	
 	
 	
 </script>

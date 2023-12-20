@@ -10,6 +10,7 @@
 	</settings>
 	
 	<typeAliases>
+		<typeAlias type="com.farmfarm.dto.Auction_reg_infoVO" alias="Auction_reg_infoVO" />
 		<typeAlias type="com.farmfarm.dto.Farm_and_productVO" alias="Farm_and_productVO" />
 		<typeAlias type="com.farmfarm.dto.Auction_historyVO" alias="Auction_historyVO" />
 		<typeAlias type="com.farmfarm.dto.User_cartVO" alias="User_cartVO" />
@@ -24,5 +25,7 @@
 		<typeAlias type="com.farmfarm.dto.Farmer_account_historyVO" alias="Farmer_account_historyVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserAuctionVO" alias="MyPageUserAuctionVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserCartFundingVO" alias="MyPageUserCartFundingVO"/>
+		<typeAlias type="com.farmfarm.dto.Cultivating_product_detailVO" alias="Cultivating_product_detailVO"/>
 	</typeAliases>
+	
 </configuration>

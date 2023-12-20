@@ -26,5 +26,23 @@
 		values
 		(#{product_serial_num},#{target_total_amount},#{funding_deadline})
 	</insert>
+	
+	
+	<insert id ="aucRegInfo" parameterType="Auction_reg_infoVO">
+		insert into auction_reg_info
+		(product_serial_num,harvest_amount,starting_price,auction_deadline)
+		values
+		(#{product_serial_num},#{harvest_amount},#{starting_price},#{auction_deadline})
+	</insert>
+	
+	<update id ="updateStatusToAuc" parameterType="Farm_and_productVO">
+		update farm_and_product
+		set product_status = #{product_status},
+		auction_thumb_img_url = #{auction_thumb_img_url},
+		auction_product_img_url = #{auction_product_img_url}
+		where product_serial_num = #{product_serial_num}
+	</update>
+	
+	
 
 </mapper>
