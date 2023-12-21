@@ -4,7 +4,6 @@
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8" />
 <link rel="icon" href="/favicon.ico" />
@@ -303,7 +302,5 @@ window.onload = ()=>{
 			}
 		});
 	}
-	
-	
 	
 </script>

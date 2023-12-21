@@ -16,6 +16,7 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
+<link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
@@ -60,6 +61,7 @@
 			}
 		});
 	}
+	
 
 	function myAuctionList() {
 		$.ajax({
@@ -134,7 +136,6 @@
 	}
 	
 </script>
-
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="jw-center">
@@ -293,8 +294,7 @@
 					</div>
 					<!-- ajax -->
 					<div id="here">
-
-
+					
 						<div class="mypage--Se9">
 							<!-- 고정 -->
 							<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
@@ -335,6 +335,8 @@
 						</div>
 
 
+
+
 					</div>
 				</div>
 				<!-- footer -->
@@ -343,4 +345,4 @@
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
->>>>>>> refs/remotes/origin/BOHYEON
+

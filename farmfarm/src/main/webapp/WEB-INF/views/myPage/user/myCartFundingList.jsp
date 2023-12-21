@@ -15,7 +15,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${cpath }/styles/myCartFundingList.css" />
-
 <script type="text/javascript">
 	function myCartFundingList() {
 		$.ajax({
@@ -43,7 +42,11 @@
 		});
 	}
 </script>
+<script>
+	
+</script>
 <body>
+	<!-- <h1>펀딩리스트</h1> -->
 	<div id="here2" class="mypage--hQ1">
 		<p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
@@ -87,7 +90,7 @@
 							<div class="auto-group-lfhx-zB7">
 								<p class="item-44--yoj">
 									<span class="item-44--yoj-sub-0">${fList.total_pct}</span> <span
-										class="item-44--yoj-sub-1">% 달성</span>
+										class="item-44--yoj-sub-1"> % 달성</span>
 								</p>
 								<p class="item-9--wty">
 									<c:choose>
@@ -109,5 +112,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

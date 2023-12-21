@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -108,7 +108,7 @@
 						<c:choose>
 							<c:when test="${myBookmark == 1}">
 								<div class="img_heart_wrap">
-									<img id="heart-icon" class="heart-icon_filled"
+									<img id="heart-icon" class="heart-icon filled"
 										src="${cpath}/assets/heart_fill.png" />
 								</div>
 							</c:when>

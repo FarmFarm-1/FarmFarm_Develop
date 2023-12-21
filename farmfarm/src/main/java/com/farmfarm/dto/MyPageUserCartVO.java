@@ -13,16 +13,19 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyPageUserFundingVO {
-
+public class MyPageUserCartVO {
 	String product_serial_num;
-	String funding_thumb_img_url;
-	String product_name;
-	String farm_name;
-	String farm_address;
-	Date user_funding_date;
-	int total_sum_pct;
-	int user_funding_amout;
-	double user_funding_pct;
 	String product_status;
+	String funding_thumb_img_url;
+	String auction_thumb_img_url;
+	String product_name;
+	Date expected_planting_date;
+	Date expected_harvest_date;
+	int farm_square_footage;
+	int harvest_amount;
+	int min_amount;
+	int d_day;
+	int current_price;
+	int total_pct;
+	int participants;
 }
