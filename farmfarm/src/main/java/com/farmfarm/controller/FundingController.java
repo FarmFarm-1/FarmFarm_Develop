@@ -224,7 +224,7 @@ public class FundingController {
 		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
 		model.addAttribute("bookmarkCnt", fundingDetailService.bookmarkCnt(product_serial_num));
 
-		// ���� ��ȣ üũ (us�� ������, fa�� �ĸ�)
+		// 占쏙옙占쏙옙 占쏙옙호 체크 (us占쏙옙 占쏙옙占쏙옙占쏙옙, fa占쏙옙 占식몌옙)
 		String user_serial_num = (String) session.getAttribute("serial_num");
 
 		int fundingInfocnt = fundingDetailService.fundingInfocnt(product_serial_num);
@@ -255,7 +255,6 @@ public class FundingController {
 			}
 		}
 
-		// ���ѹ� ��� ��� ����
 		String farmer_phone_origin = (String) fundingInfo.get("farmer_phone");
 		String farmer_phone = farmer_phone_origin.replaceAll("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");
 		fundingInfo.replace("farmer_phone", farmer_phone);
@@ -274,6 +273,20 @@ public class FundingController {
 		model.addAttribute("pay", pay);
 		model.addAttribute("payMoney", payMoney);
 
+		return "funding/fundingBuy";
+	}
+
+	@PostMapping("/fundingFinish")
+	public String showFundingFinish(String product_serial_num, Double pay, int payMoney, Model model,
+			HttpSession session) {
+		System.out.println("========================================");
+		System.out.println(pay);
+		System.out.println(payMoney);
+		System.out.println(product_serial_num);
+		
+		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		
 		Map<String, Object> abc = new HashMap<String, Object>();
 		abc.put("user_serial_num", user_serial_num);
 		abc.put("product_serial_num", product_serial_num);
@@ -299,12 +312,8 @@ public class FundingController {
 		} else {
 			fundingDetailService.buyFunding(abc);
 		}
-		return "funding/fundingBuy";
-	}
-
-	@GetMapping("/fundingFinish")
-	public String showFundingFinish() {
-
+		
+		
 		return "funding/fundingFinish";
 
 	}

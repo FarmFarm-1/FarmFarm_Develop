@@ -90,6 +90,45 @@
 			}
 		});
 	}
+	
+	function usedFarmMoney() {
+		console.log("usedFarmMoney");
+		$.ajax({
+			url : "${cpath}/myPageUser/usedfarmList",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}
+	
+	function Chatting() {
+		$.ajax({
+			url : "${cpath}/myPageUser/chatting",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}	
+
+	function depositList() {
+		$.ajax({
+			url : "${cpath}/myPageUser/depositList",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}
+
+	
+	function passwdChange() {
+		$.ajax({
+			url : "${cpath}/myPageUser/InputPW",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}
+	
 </script>
 
 <body>
@@ -144,7 +183,7 @@
 								</div>
 							</button>
 
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="Chatting()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/chatIcon.png" />
@@ -166,7 +205,7 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="usedFarmMoney()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/paymentIcon.png" />
@@ -174,11 +213,11 @@
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="depositList()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/incomeIcon.png" />
-									<p class="item--7Nm">입금 내역</p>
+									<p class="item--7Nm">정산 내역</p>
 									<img class="group-omP" src="${cpath }/assets/right.png" />
 								</div>
 							</button>
@@ -190,7 +229,7 @@
 						<p class="cate">설정</p>
 
 						<div class="auto-group-3tvm-62R">
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="passwdChange()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/pwchageIcon.png" />

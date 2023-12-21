@@ -332,7 +332,7 @@ public class ScheduledTasksService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		logger.info(resultData+"");
+		logger.warn(resultData+"33333333333333333333333333");
 		sqlSession.insert("com.farmfarm.schedule.cropsDataInsert",resultData);
 	}
 
