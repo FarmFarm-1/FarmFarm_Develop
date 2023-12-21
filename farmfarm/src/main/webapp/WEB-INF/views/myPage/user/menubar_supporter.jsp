@@ -100,6 +100,15 @@
 			}
 		});
 	}
+	
+	function Chatting() {
+		$.ajax({
+			url : "${cpath}/myPageUser/chatting",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}	
 
 	function depositList() {
 		$.ajax({
@@ -174,7 +183,7 @@
 								</div>
 							</button>
 
-							<button class="menuBtn" onclick="location.href='myFunding'">
+							<button class="menuBtn" onclick="Chatting()">
 								<div class="chat-eEH">
 									<img class="humbleicons-chat-nLV"
 										src="${cpath }/assets/chatIcon.png" />

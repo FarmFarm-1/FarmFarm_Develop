@@ -29,7 +29,6 @@ public class MyPageUserService {
 
 	}
 	
-	//재호
 	public List<Map<String, Object>> depositList(String user_serial_num) {
 		return dao.depositList(user_serial_num);
 	}
@@ -41,5 +40,4 @@ public class MyPageUserService {
 	public List<Map<String, Object>> showSearchDate(String user_serial_num, String startDate, String endDate) {
 		return dao.showSearchDate(user_serial_num, startDate, endDate);
 	}
-	//재호
 }

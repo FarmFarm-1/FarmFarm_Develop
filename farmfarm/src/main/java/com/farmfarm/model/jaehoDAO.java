@@ -14,8 +14,7 @@ public class jaehoDAO {
 	SqlSession sqlSession;
 
 	String namespace = "com.farmfarm.jaeho.";
-
-	// ÆÄ¸Ó
+	
 	public List<Map<String, Object>> depositList_farmer(String farmer_serial_num) {
 		return sqlSession.selectList(namespace + "depositList_farmer", farmer_serial_num);
 	}

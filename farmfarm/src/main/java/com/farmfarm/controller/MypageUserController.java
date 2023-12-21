@@ -112,6 +112,13 @@ public class MypageUserController {
 		model.addAttribute("myCartFundingList", myCartFundingList);
 		return "myPage/user/myCartList";
 	}
+	
+	@GetMapping("/chatting")
+	public String Chatting() {
+		return "myPage/user/JHMESSAGE";
+	}
+
+	
 
 	@GetMapping("/farmMoneyCharge")
 	public String showChargePoints() {

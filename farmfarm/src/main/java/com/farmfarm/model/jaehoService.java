@@ -11,7 +11,6 @@ public class jaehoService {
 	@Autowired
 	jaehoDAO dao;
 
-	// ÆÄ¸Ó
 	public List<Map<String, Object>> depositList_farmer(String farmer_serial_num) {
 		return dao.depositList_farmer(farmer_serial_num);
 	}

@@ -23,7 +23,7 @@ public class UsersDAO {
 	}
 	
 	public String readMember(String user_email){
-		// �씠硫붿씪 �엳�뒗吏� 議고쉶 
+		// 이메일 있는지 조회 
 		System.out.println("dao : " + user_email);
 		String result = "";		
 		result = sqlSession.selectOne(namespace+"readMember", user_email);

@@ -43,7 +43,6 @@ public class MyPageUserDAO {
 
 	}
 	
-	//재호
 	public List<Map<String, Object>> depositList(String user_serial_num){
 		return sqlSession.selectList(namespace+"depositList", user_serial_num);
 	}
@@ -60,5 +59,4 @@ public class MyPageUserDAO {
 	    
 	    return sqlSession.selectList(namespace + "showSearchDate", params);
 	}
-	//재호
 }
