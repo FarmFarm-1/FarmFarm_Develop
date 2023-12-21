@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <!DOCTYPE html>
 <html>
@@ -15,26 +16,20 @@
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
-</head>
 
+</head>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<!-- <script
+	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<script type="text/javascript">
-	/* function showMore() {
-		$.ajax({
-			url : "/myPageUser/myFundingListShowMore",
-			success : function(responseData) {
-				$("#showHere").html(responseData);
-			}
-		});
-	} */
-</script>
-
 <body>
 
 	<div class="mypage--Se9">
+		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%>
+		<!-- 모달 -->
 		<!-- 고정 -->
 		<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">
@@ -47,10 +42,12 @@
 		</div>
 
 		<!-- 펀딩 리스트 -->
-		<c:forEach items="${myFundingList }" var="fList">
+		<c:forEach items="${myFundingList }" var="fList" varStatus="status">
+
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${cpath }/assets/tomatoes.png" /> <!-- 바꿔야함 db에서 가져오는 사진 -->
+					src="${fList.funding_thumb_img_url}" />
+				<!-- 바꿔야함 db에서 가져오는 사진 -->
 
 				<div class="fundinginfo-B9X">
 
@@ -65,21 +62,88 @@
 				</div>
 
 				<p class="fundingdate-9R7">${fList.user_funding_date}</p>
-				<div class="fundingpct-4Y5">${fList.total_funding_pct}%</div>
-				<p class="fundingpay-7WM">${fList.user_funding_amout}p</p>
+				<div class="fundingpct-4Y5" id="chart${status.index }"></div>
+				<p class="fundingpay-7WM">
+					<fmt:formatNumber value="${fList.user_funding_amout}" type="number"
+						pattern="#,##0" />
+					p
+				</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
-				<div class="fundingstate-MQh">${fList.product_status}</div>
-				<img class="show_more" id="show_more" onclick="location.href='/myPageUser/myFundingListShowMore'"
-					src="${cpath }/assets/down_solid.png" />
+				<div class="fundingstate-MQh"
+					<c:if test="${fList.product_status eq '펀딩실패'}">
+                		style="background-color: #EF6134;" 
+            		</c:if>>
+					${fList.product_status}</div>
 
+				<form action="/myPageUser/myFundingListShowMore" method="post">
+					<input type="hidden" name="product_serial_num"
+						value="${fList.product_serial_num}"> <input type="submit"
+						id="${fList.product_serial_num }_submit" style="display: none;">
+
+					<!-- fList.product_status가 "경작중"인 경우에만 더 보기 아이콘 표시 -->
+					<c:if test="${fList.product_status eq '경작중'}">
+						<label for="${fList.product_serial_num }_submit"> <img
+							class="show_more" id="show_more"
+							src="${cpath }/assets/ic-round-plus.png" />
+						</label>
+					</c:if>
+				</form>
+
+				<script type="text/javascript">
+
+        var seriesData${status.index} = [${fList.total_sum_pct}];
+        var options${status.index} = {
+                series: seriesData${status.index},
+                chart: {
+                    height: 150,
+                    width: 150,
+                    type: 'radialBar',
+                },
+                plotOptions: {
+                    radialBar: {
+                        hollow: {
+                            size: '50%',
+                        },
+                        dataLabels: {
+                            showOn: "always",
+                            name: {
+                                show: false,
+                                color: "#64A346",
+                                fontSize: "13px"
+                            },
+                            value: {
+                                offsetY: 8,
+                                color: "#64A346",
+                                fontSize: "16px",
+                                show: true,
+                                fontWeight: "bold",
+                                fontFamily: 'Pretendard, Source Sans Pro'
+                            }
+                        }
+                    },
+                },
+                labels: [],
+                fill: {
+                    colors: ['#64A346'],
+                },
+                stroke: {
+                    lineCap: "round",
+                    width: 2,
+                },
+            };
+
+        
+        
+     	var chart${status.index} = new ApexCharts(document.querySelector("#chart${status.index}"), options${status.index});
+        chart${status.index}.render(); 
+
+</script>
 
 			</div>
-			
-			<!-- <div id="showHere"></div> -->
-
 		</c:forEach>
 
 	</div>
+
 
 </body>
 </html>

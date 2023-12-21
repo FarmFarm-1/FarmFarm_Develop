@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'SeoulNamsanM';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/SeoulNamsanM.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* * {
+	font-family: 'SeoulNamsanM';
+} */
+
+p {
+	background-color: #FFEC9F;
+}
+
+
+#deliveryform {
+	display: inline-block;
+	/* align-items: center; */
+}
+
+
+.deliveryInfo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 65px;
+}
+
+#add_adress_content {
+	position: absolute;
+	background-color: #ffffff;
+	width: 300px;
+	height: 230px;
+	padding-left: 20px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: 'SeoulNamsanM';
+}
+
+.container {
+	width: 1440px;
+	margin-left: 10%;
+	position: relative;
+}
+
+/* .box {
+   position: relative;
+   width: 1440px;
+   margin-left: 7%;
+} */
+.title_text {
+	position: absolute;
+	z-index: 3;
+	font-size: 30px;
+	font-weight: 400;
+	color: rgba(0, 0, 0, 1);
+	width: 200px;
+	height: 48px;
+	margin-left: 50px;
+	margin-top: 70px;
+}
+
+.front {
+	position: absolute;
+	z-index: 2;
+}
+
+.back {
+	position: absolute;
+	z-index: 1;
+}
+
+img#pay01 {
+	height: 150px;
+	width: 1500px;
+}
+
+img#pay02 {
+	height: 150px;
+	width: 1500px;
+}
+
+/* .pay02 {
+	position: absolute;
+	z-index: 1;
+	height: 293px;
+	margin-left: 15%;
+} */

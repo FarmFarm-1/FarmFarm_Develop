@@ -11,19 +11,27 @@ import org.springframework.stereotype.Repository;
 import com.farmfarm.dto.MyPageUserAuctionVO;
 import com.farmfarm.dto.MyPageUserCartFundingVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
+import com.farmfarm.dto.MyPageUserCartVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
+
 
 @Repository
 public class MyPageUserDAO {
 	@Autowired
 	SqlSession sqlSession;
 	String namespace = "com.farmfarm.myPageUser.";
-
+	
+	
 	public List<MyPageUserFundingVO> myPageFundingList(String user_serial_num) {
 
 		List<MyPageUserFundingVO> userFundingList = sqlSession.selectList(namespace + "myPageFundingList",
 				user_serial_num);
 
 		return userFundingList;
+	}
+
+	public List<MyPageUserFundingDetailVO> myPageFundingListDetail(String product_serial_num) {
+		return sqlSession.selectList(namespace + "myPageFundingListDetail", product_serial_num);
 	}
 
 	public List<MyPageUserAuctionVO> myPageAuctionList(String user_serial_num) {
@@ -34,14 +42,23 @@ public class MyPageUserDAO {
 		return userAuctionList;
 	}
 	
-	public List<MyPageUserCartFundingVO> myPageCartFundingList(String user_serial_num) {
+	
+	public List<MyPageUserCartVO> myPageCartFundingList(String user_serial_num) {
 
-		List<MyPageUserCartFundingVO> userCartFundingList = sqlSession.selectList(namespace + "myPageCartFundingList",
+		List<MyPageUserCartVO> userCartFundingList = sqlSession.selectList(namespace + "myPageCartFundingList",
 				user_serial_num);
 
 		return userCartFundingList;
-
 	}
+	
+	public List<MyPageUserCartVO> myPageCartAuctionList(String user_serial_num) {
+
+		List<MyPageUserCartVO> userCartAuctionList = sqlSession.selectList(namespace + "myPageCartAuctionList",
+				user_serial_num);
+
+		return userCartAuctionList;
+	}
+
 	
 	public List<Map<String, Object>> depositList(String user_serial_num){
 		return sqlSession.selectList(namespace+"depositList", user_serial_num);
@@ -60,3 +77,8 @@ public class MyPageUserDAO {
 	    return sqlSession.selectList(namespace + "showSearchDate", params);
 	}
 }
+
+
+
+
+

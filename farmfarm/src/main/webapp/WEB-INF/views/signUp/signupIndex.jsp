@@ -132,22 +132,27 @@
 						<div class="group-103-H7s">
 							<input type="checkbox" id="checkbox2" class="checkbox2">
 							<label for="checkbox2" class="item--iys">개인정보 수집 및 이용
-								동의(필수)</label> <label for="checkbox2" onclick="showFullText('terms1')" class="item--Qrh">전문
-								보기</label>
+								동의(필수)</label> <!-- <label for="checkbox2" onclick="showFullText('terms1')" class="item--Qrh">전문
+								보기</label> -->
+								<p onclick="showFullText('terms1')" class="item--Qrh">전문
+								보기</p>
 						</div>
 
 						<div class="group-104-XAd">
 							<input type="checkbox" id="checkbox3" class="checkbox3">
-							<label for="checkbox3" class="item--YLd">팜팜 이용약관(필수)</label> <label
+							<label for="checkbox3" class="item--YLd">팜팜 이용약관(필수)</label> <!-- <label
 								for="checkbox3" onclick="showFullText('sterms2')" class="item--2Wh">전문
-								보기</label>
+								보기</label> -->
+								<p onclick="showFullText('sterms2')" class="item--2Wh">전문
+								보기</p>
 						</div>
 
 						<div class="group-105-jR7">
 							<input type="checkbox" id="checkbox4" class="checkbox4">
 							<label for="checkbox4" class="item--NU5">팜팜의 소식과 다양한
-								안내(선택)</label> <label for="checkbox4" onclick="showFullText('terms3')" class="item--GZT">전문
-								보기</label>
+								안내(선택)</label> <!-- <label for="checkbox4" onclick="showFullText('terms3')" class="item--GZT">전문
+								보기</label> --> <p onclick="showFullText('terms3')" class="item--GZT">전문
+								보기</p>
 						</div>
 
 						<!-- <div class="group-106-P8H">

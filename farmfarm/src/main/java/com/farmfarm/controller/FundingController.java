@@ -224,7 +224,6 @@ public class FundingController {
 		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
 		model.addAttribute("bookmarkCnt", fundingDetailService.bookmarkCnt(product_serial_num));
 
-		// 占쏙옙占쏙옙 占쏙옙호 체크 (us占쏙옙 占쏙옙占쏙옙占쏙옙, fa占쏙옙 占식몌옙)
 		String user_serial_num = (String) session.getAttribute("serial_num");
 
 		int fundingInfocnt = fundingDetailService.fundingInfocnt(product_serial_num);
@@ -254,6 +253,7 @@ public class FundingController {
 				model.addAttribute("sumfundingpct", sumfundingpct);
 			}
 		}
+
 
 		String farmer_phone_origin = (String) fundingInfo.get("farmer_phone");
 		String farmer_phone = farmer_phone_origin.replaceAll("(\\d{3})(\\d{4})(\\d{4})", "$1-$2-$3");
