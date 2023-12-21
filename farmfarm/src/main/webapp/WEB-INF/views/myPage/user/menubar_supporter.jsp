@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 </head>
 
 <script type="text/javascript">
