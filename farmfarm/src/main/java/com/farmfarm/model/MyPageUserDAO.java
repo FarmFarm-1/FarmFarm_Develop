@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
-import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserCartVO;
 import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 
@@ -37,12 +37,30 @@ public class MyPageUserDAO {
 		return userAuctionList;
 	}
 
-	public List<MyPageUserCartFundingVO> myPageCartAllList(String user_serial_num) {
+	/*
+	 * public List<MyPageUserCartFundingVO> myPageCartAllList(String
+	 * user_serial_num) {
+	 * 
+	 * List<MyPageUserCartFundingVO> userCartAllList =
+	 * sqlSession.selectList(namespace + "myPageCartAllList", user_serial_num);
+	 * 
+	 * return userCartAllList; }
+	 */
+	
+	public List<MyPageUserCartVO> myPageCartFundingList(String user_serial_num) {
 
-		List<MyPageUserCartFundingVO> userCartAllList = sqlSession.selectList(namespace + "myPageCartAllList",
+		List<MyPageUserCartVO> userCartFundingList = sqlSession.selectList(namespace + "myPageCartFundingList",
 				user_serial_num);
 
-		return userCartAllList;
+		return userCartFundingList;
+	}
+	
+	public List<MyPageUserCartVO> myPageCartAuctionList(String user_serial_num) {
+
+		List<MyPageUserCartVO> userCartAuctionList = sqlSession.selectList(namespace + "myPageCartAuctionList",
+				user_serial_num);
+
+		return userCartAuctionList;
 	}
 
 }

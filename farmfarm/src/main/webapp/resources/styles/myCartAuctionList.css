@@ -59,7 +59,7 @@ input {
 
 .mypage--hQ1 .auto-group-owjb-tC5 {
 	margin: 2rem 0rem 2rem 0rem;
-	padding-right: 100rem;
+	padding-right: 110rem;
 	height: 4rem;
 	display: flex;
 	column-gap: 2rem;
@@ -112,20 +112,40 @@ input {
 	font-weight: 700;
 	line-height: 1.2575;
 	letter-spacing: 0.036rem;
-	color: #3d3d3d;
+	/* color: #3d3d3d; */
+	color: #ffffff;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(248, 248, 248, 0.9725490212);
+	/* background-color: rgba(248, 248, 248, 0.9725490212); */
+	background-color: #2d2d2d;
 	border-radius: 0.9rem;
 	flex-shrink: 0;
 }
 
-.mypage--hQ1 .auto-group-ceto-zXw {
-	margin-right: 41.7647rem;
-	width: calc(100% - 41.7647rem);
+.cart-container {
+	display: grid;
+    grid-template-columns: repeat(3, calc(33.33% - 50px));
+    gap: 10px;
+    right: 17rem;
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: relative;
+}
+
+.auto-group-ceto-zXw {
+	margin-right: 10rem;
+	/* width: calc(100% - 41.7647rem); */
+	height: 27.0476rem;
+	display: flex;
+	align-items: center;
+}
+
+.mypage--hQ1 .auto-group-ceto-zXw1 {
+	margin-right: 25rem;
+	/* width: calc(100% - 41.7647rem); */
 	height: 27.0476rem;
 	display: flex;
 	align-items: center;
@@ -385,4 +405,21 @@ input {
 	line-height: 1.2125;
 	color: #2d2d2d;
 	font-family: Inter, 'Source Sans Pro';
+}
+
+/* 선택된 버튼의 스타일을 추가 */
+.selected-button {
+	background-color: #2d2d2d;
+	color: #ffffff;
+	/* border:5px solid red; */
+}
+.deadline_today{
+	font-size: 1.3rem;
+	font-weight: 600;
+	margin-right: 4px;
+	line-height: 1.2125;
+	color: #d7503c;
+	font-family: Pretendard, 'Source Sans Pro';
+	line-height: 1.2125;
+	margin-left: -10px;
 }

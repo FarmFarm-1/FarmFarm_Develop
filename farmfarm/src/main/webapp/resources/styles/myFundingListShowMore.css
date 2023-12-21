@@ -42,6 +42,7 @@
 	padding: 18px;
 	/* width: 100%; */
 	width: 50%;
+	min-width: 550px;
 	text-align: left;
 	border: none;
 	outline: none;
@@ -57,6 +58,7 @@
 	transition: max-height 0.2s ease-out;
 	/* width: 100%; */
 	width: 50%;
+	min-width: 550px;
 	box-sizing: border-box;
 	background-color: #bedab1;
 }

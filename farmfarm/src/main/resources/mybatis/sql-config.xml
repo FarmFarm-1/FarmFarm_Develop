@@ -22,6 +22,6 @@
 		<typeAlias type="com.farmfarm.dto.MyPageUserFundingVO" alias="MyPageUserFundingVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserFundingDetailVO" alias="MyPageUserFundingDetailVO"/>
 		<typeAlias type="com.farmfarm.dto.MyPageUserAuctionVO" alias="MyPageUserAuctionVO"/>
-		<typeAlias type="com.farmfarm.dto.MyPageUserCartFundingVO" alias="MyPageUserCartFundingVO"/>
+		<typeAlias type="com.farmfarm.dto.MyPageUserCartVO" alias="MyPageUserCartVO"/>
 	</typeAliases>
 </configuration>

@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class MyPageUserCartFundingVO {
+public class MyPageUserCartVO {
 	String product_serial_num;
 	String product_status;
 	String funding_thumb_img_url;

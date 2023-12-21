@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
-import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserCartVO;
 import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 import com.farmfarm.model.MyPageUserService;
@@ -69,19 +69,29 @@ public class MypageUserController {
 	public String showMyCartList(HttpSession session, Model model) {
 		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
 		System.out.println(user_serial_num);
-		List<MyPageUserCartFundingVO> myCartAllList = service.myPageCartAllList(user_serial_num); //내가 찜한 리스트 모두 가져오기
-		System.out.println(myCartAllList);
-		model.addAttribute("myCartAllList", myCartAllList);
+		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
+		System.out.println(myCartFundingList);
+		model.addAttribute("myCartFundingList", myCartFundingList);
 		return "myPage/user/myCartList";
 	}
 
 	@GetMapping("/myCartFundingList")
-	public String showMyCartFundingList() {
+	public String showMyCartFundingList(HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
+		System.out.println(myCartFundingList);
+		model.addAttribute("myCartFundingList", myCartFundingList);
 		return "myPage/user/myCartFundingList";
 	}
 	
 	@GetMapping("/myCartAuctionList")
-	public String showMyCartAuctionList() {
+	public String showMyCartAuctionList(HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserCartVO> myCartAuctionList = service.myPageCartAuctionList(user_serial_num); //내가 찜한 경매 리스트 모두 가져오기
+		System.out.println(myCartAuctionList);
+		model.addAttribute("myCartAuctionList", myCartAuctionList);
 		return "myPage/user/myCartAuctionList";
 	}
 }

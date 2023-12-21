@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
-import com.farmfarm.dto.MyPageUserCartFundingVO;
+import com.farmfarm.dto.MyPageUserCartVO;
 import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 
@@ -28,11 +28,13 @@ public class MyPageUserService {
 		return dao.myPageAuctionList(user_serial_num);
 	}
 	
-	public List<MyPageUserCartFundingVO> myPageCartAllList(String user_serial_num) {
-		return dao.myPageCartAllList(user_serial_num);
+	public List<MyPageUserCartVO> myPageCartFundingList(String user_serial_num) {
+		return dao.myPageCartFundingList(user_serial_num);
 	}
 	
-	
+	public List<MyPageUserCartVO> myPageCartAuctionList(String user_serial_num) {
+		return dao.myPageCartAuctionList(user_serial_num);
+	}
 	
 	
 }
