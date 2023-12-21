@@ -55,8 +55,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/myPageUser")
-	public String showMyPageUser(HttpSession session) {
+	public String showMyPageUser(HttpSession session, Model model) {
 		session.setAttribute("headerSelect", "myFarm");
+		model.addAttribute("check", "null");
 		return "myPage/user/menubar_supporter";
 	}
 
@@ -75,9 +76,10 @@ public class MainController {
 	}
 
 	@GetMapping("/chargePoints")
-	public String showChargePoints(HttpSession session) {
+	public String showChargePoints(HttpSession session, Model model) {
 		session.setAttribute("headerSelect", "myFarm");
-		return "/";
+		model.addAttribute("check", "point");
+		return "myPage/user/menubar_supporter";
 	}
 
 	// manually call crops-data-input method by hs
