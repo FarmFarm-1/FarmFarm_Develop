@@ -12,7 +12,6 @@
 	<div class="content_tit">
 		이메일 아이디 로그인을 위한<br />비밀번호를 설정해 주세요.
 	</div>
-
 	<div class="grayback">
 		<div class="content_detailall">
 			<div class="content_detail">
@@ -26,7 +25,6 @@
 				<div class="detail_tit">변경할 비밀번호</div>
 				<div class="detail_content">
 					<input id="newPasswd" type="password" name="newPasswd"
-						pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$"
 						placeholder="8~16자의 영문, 숫자, 특수기호">
 				</div>
 			</div>
@@ -42,7 +40,6 @@
 			<button id="updatePasswdBtn" onclick="check()">비밀번호 변경</button>
 		</div>
 	</div>
-
 </div>
 <!-- 여기까지써 -->
 <script>
@@ -57,21 +54,22 @@
 		let passwdCheck = document.getElementById("passwdCheck").value;
 		let newPasswd = document.getElementById("newPasswd").value;
 		let newPasswdCheck = document.getElementById("newPasswdCheck").value;
-
+		
 		//추가된 부분
 		var reg = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
-		if (reg.test(newPasswd) == false) {
+		if(reg.test(newPasswd)==false ){
 			alert("비밀번호 표현식이 틀렸습니다.\n8~16자의 영문, 숫자, 특수기호를 섞어주세요.");
 			document.getElementById("newPasswd").focus();
 			return;
 		}
-		if (reg.test(newPasswdCheck) == false) {
+		if(reg.test(newPasswdCheck)==false ){
 			alert("비밀번호 표현식이 틀렸습니다.\n8~16자의 영문, 숫자, 특수기호를 섞어주세요");
 			document.getElementById("newPasswdCheck").focus();
 			return;
 		}
 		//추가된 부분 끝
-
+		
+		
 		if (newPasswd != newPasswdCheck) {
 			alert("비밀번호가 다릅니다.\n비밀번호를 확인해주세요!");
 			return;
@@ -81,19 +79,20 @@
 			"newPasswd" : newPasswd
 		};
 		console.log(obj);
-		$.ajax({
-			url : "${cpath}/myPageFarmer/passwdchange_farmer",
-			data : obj,
-			type : "post",
-			success : function(responseData) {
-				if (responseData == 0) {
-					alert("비밀번호가 다릅니다.\n비밀번호를 확인해주세요!");
-				} else {
-					alert("비밀번호 변경 성공!\n변경된 비밀번호로 다시 로그인해주세요.");
-					location.href = "${cpath}/logout";
+		if (newPasswd != null && newPasswdCheck != null) {
+			$.ajax({
+				url : "${cpath}/myPageUser/passwdchange",
+				data : obj,
+				type : "post",
+				success : function(responseData) {
+					if (responseData == 1) {
+						alert("비밀번호 변경 성공!\n변경된 비밀번호로 다시 로그인해주세요.");
+						location.href = "${cpath}/logout";
+					} else {
+						alert("비밀번호가 다릅니다.\n비밀번호를 확인해주세요!");
+					}
 				}
-			}
-		});
+			});
+		}
 	}
 </script>
-

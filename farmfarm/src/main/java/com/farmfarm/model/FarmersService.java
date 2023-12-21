@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.farmfarm.dto.FarmersVO;
+import com.farmfarm.dto.UsersVO;
 
 @Service
 public class FarmersService {
@@ -34,11 +35,11 @@ public class FarmersService {
 		String subject = "";
 		String msg = "";
 
-		subject = "팜팜 임시 비밀번호 입니다.";
+		subject =  "팜팜 임시 비밀번호 입니다.";
 		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
 		msg += "<h3 style='color: blue;'>";
 		msg += vo.getFarmer_email() + "님의 임시 비밀번호 입니다. 로그인 후 비밀번호를 변경하여 사용하세요.</h3>";
-		msg += "<p>임시 비밀번호 : ";
+		msg += "<p>>임시 비밀번호 : ";
 		msg += pw + "</p></div>";
 
 		// 받는 사람 E-Mail 주소
@@ -91,4 +92,16 @@ public class FarmersService {
 		}
 	}
 
+	// 재호
+	public String pwCheck(String farmer_serial_num) {
+		return dao.pwCheck(farmer_serial_num);
+	}
+	
+	public int changePw(String farmer_serial_num, String farmer_pw) throws Exception {
+	    FarmersVO vo = new FarmersVO();
+	    vo.setFarmer_serial_num(farmer_serial_num);
+	    vo.setFarmer_pw(farmer_pw);
+	    return dao.changePw(vo);
+	}
+	// 재호
 }

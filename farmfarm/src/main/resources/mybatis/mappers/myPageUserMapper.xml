@@ -91,5 +91,64 @@
 		GROUP BY
 		farm_and_product.product_serial_num
 	</select>
+	
+	<!--  재호 -->
+		<select id="depositList" resultType="map">
+		SELECT fap.product_name, fap.product_regdate , fap.farm_address,
+		Date(upsh.sharing_date) AS sharing_date, upsh.user_bank,
+		upsh.user_account, upsh.user_profit AS deposit
+		FROM user_profit_sharing_history AS upsh
+		JOIN farm_and_product fap ON upsh.product_serial_num =
+		fap.product_serial_num
+		left outer JOIN auction_history ah ON upsh.product_serial_num =
+		ah.product_serial_num
+		WHERE upsh.user_serial_num = #{user_serial_num}
+		AND ah.auction_status = 'O'
+		ORDER BY upsh.sharing_date;
+	</select>
 
+	<select id="usedfarmList" resultType="map">
+		SELECT fap.product_name, ph.product_serial_num,
+		fap.farm_name, ph.amount, ph.history_content,
+		Date(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN farm_and_product fap
+		ON
+		ph.product_serial_num =
+		fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		=
+		#{user_serial_num}
+		ORDER BY ph.update_date
+	</select>
+
+	<select id="showSearchDate" resultType="map">
+		SELECT
+		fap.product_name,
+		fap.farm_name,
+		ph.amount,
+		ph.history_content,
+		DATE(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN
+		farm_and_product fap
+		ON
+		ph.product_serial_num = fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		= #{user_serial_num}
+		AND
+		DATE(ph.update_date) BETWEEN #{startDate} AND
+		#{endDate}
+		ORDER BY
+		ph.update_date
+	</select>
+	<!-- //재호 -->
 </mapper>

@@ -20,11 +20,11 @@ public class UsersService {
 		return dao.loginCheck(u);
 	}
 
-	// 비밀번호 찾기 이메일발송
+	//비밀번호 찾기 이메일발송
 	public void sendEmail(UsersVO vo, String pw) throws Exception {
 		// Mail Server 설정
 		String charSet = "utf-8";
-		String hostSMTP = "smtp.gmail.com"; // 네이버 이용시 smtp.naver.com
+		String hostSMTP = "smtp.gmail.com"; //네이버 이용시 smtp.naver.com
 		String hostSMTPid = "boh3430@gmail.com";
 		String hostSMTPpwd = "serg vdkm jgrn waty";
 
@@ -60,7 +60,7 @@ public class UsersService {
 			email.setHtmlMsg(msg);
 			email.send();
 		} catch (Exception e) {
-			System.out.println("메일발송 실패 : " + e);
+			System.out.println("메일발송 실패  : " + e);
 		}
 	}
 
@@ -93,5 +93,17 @@ public class UsersService {
 			out.close();
 		}
 	}
-
+	
+	//재호
+	public String pwCheck(String user_serial_num){
+		return dao.pwCheck(user_serial_num);
+	}
+	
+	public int changePw(String user_serial_num, String user_pw) throws Exception {
+	    UsersVO vo = new UsersVO();
+	    vo.setUser_serial_num(user_serial_num);
+	    vo.setUser_pw(user_pw);
+	    return dao.changePw(vo);
+	}
+	//재호
 }

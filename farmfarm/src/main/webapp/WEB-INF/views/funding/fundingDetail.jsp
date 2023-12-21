@@ -150,25 +150,6 @@
 						</div>
 					</div>
 				</div>
-				<%-- <a href="#" class="btn_open">
-
-					<div class="stroymoregroup">
-
-						<div class="grouptext">
-							<p class="text">스토리 더보기</p>
-							<img class="fd_greencheck"
-								src="${cpath}/assets/fd_greencheck.png" />
-						</div>
-					</div>
-				</a> <a href="#" class="btn_close hide">
-					<div class="stroymoregroup">
-						<div class="grouptext">
-							<p class="text">스토리 접기</p>
-							<img class="fd_greencheck"
-								src="${cpath}/assets/fd_greencheck_toggle.png" />
-						</div>
-					</div>
-				</a> --%>
 			</div>
 		</div>
 	</div>
@@ -254,15 +235,20 @@
 		payInput.addEventListener("input", function() {
 			if (serial_num.substring(0, 2) === "us") {
 				let inputValue = parseFloat(payInput.value);
-				if (inputValue > end) {
-					alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end + "까지만 입력 가능합니다.");
-					payInput.value = end;
-				} else if (payInput.value
-						&& inputValue.toFixed(2) != inputValue) {
-					alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
-					payInput.value = inputValue.toFixed(2);
+				if (end != 0) {
+					if (inputValue > end) {
+						alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
+								+ "까지만 입력 가능합니다.");
+						payInput.value = end;
+					} else if (payInput.value
+							&& inputValue.toFixed(2) != inputValue) {
+						alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+						payInput.value = inputValue.toFixed(2);
+					}
+					updatePayDiv();
+				}else {
+					showModal("펀딩이 불가한 상품입니다.", "다른 상품을 확인하세요.");
 				}
-				updatePayDiv();
 			} else {
 				showModal("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 			}

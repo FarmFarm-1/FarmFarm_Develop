@@ -1,0 +1,56 @@
+.left_farmer_Img img {
+	width: 40px;
+	height: 40px;
+	border-radius: 70%;
+}
+
+.left_new_Img img {
+	width: 9px;
+	height: 9px;
+	border-radius: 10px;
+}
+
+.Content {
+	width: 850px;
+}
+
+.content_tit {
+	font-size: 25px;
+	color: #2E2E2E;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.content_detailAll {
+	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25)
+}
+
+.content_detail_top {
+	display: flex;
+}
+
+.content_detail_top_left {
+	display: flex;
+	background-color: #FBFBFB;
+	flex-basis: 230px;
+	margin-right: 10px;
+}
+
+.top_left_one {
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+.top_left_two {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.detailAll {
+	display: flex;
+}
+
+.detailAll_left{
+	width:230px;
+}

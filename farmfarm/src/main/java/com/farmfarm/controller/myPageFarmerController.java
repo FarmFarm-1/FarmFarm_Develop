@@ -1,5 +1,6 @@
 package com.farmfarm.controller;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -35,7 +36,12 @@ import com.farmfarm.model.FarmersService;
 import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.S3Service;
+
+import com.farmfarm.model.jaehoService;
+import com.farmfarm.model.pwdSha256;
+
 import com.farmfarm.model.UpdateCulService;
+
 import com.farmfarm.model.regProService;
 
 
@@ -59,6 +65,9 @@ public class myPageFarmerController {
 	
 	@Autowired
 	FarmerNavCntService cService;
+	
+	@Autowired
+	jaehoService jhService;
 	
 	@Autowired
 	MyPageFarmerService myPageFarmerService;
@@ -139,9 +148,6 @@ public class myPageFarmerController {
 	    }
 	    
 	    
-	    
-	    
-		
 	}
 	
 
@@ -231,8 +237,13 @@ public class myPageFarmerController {
 	}
 	
 	
+
 	@GetMapping(value = "/profitShare")
-	public String showProfitShare() {
+	public String showProfitShare(Model model, HttpSession session) {
+		String farmer_serial_num = (String) session.getAttribute("serial_num");
+		List<Map<String, Object>> depositList = (List<Map<String, Object>>) jhService.depositList_farmer(farmer_serial_num);
+		model.addAttribute("depositList", depositList);
+		System.out.println(depositList);
 		return "myPage/Farmer/profitShare";
 	}
 	
@@ -240,6 +251,33 @@ public class myPageFarmerController {
 	public String changePassword() {
 		return "myPage/Farmer/changePassword";
 	}
+	
+	@ResponseBody
+	@PostMapping(value = "/passwdchange_farmer", produces = "text/plain;charset=utf-8")
+	public String passwdchange_farmer(String originalPass, String newPasswd, HttpSession session) throws Exception {
+		String farmer_serial_num = (String) session.getAttribute("serial_num");
+		String farmer_passwd = fService.pwCheck(farmer_serial_num);
+		String encrytPw = pwdSha256.encrypt(originalPass);
+		String message = "";
+
+		System.out.println(originalPass);
+		System.out.println(newPasswd);
+		System.out.println(farmer_serial_num);
+		System.out.println(farmer_passwd);
+
+		if (farmer_passwd.equals(encrytPw)) {
+			String encrytNewPw = pwdSha256.encrypt(newPasswd);
+			fService.changePw(farmer_serial_num, encrytNewPw);
+			message = "1";
+
+		} else {
+			message = "0";
+
+		}
+		System.out.println(message);
+		return message;
+	}
+	//재호
 	
 	@GetMapping(value = "/chat")
 	public String showChat() {
