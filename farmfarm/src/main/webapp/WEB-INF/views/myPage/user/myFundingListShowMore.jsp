@@ -13,59 +13,205 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/myFundingListShowMore.css" />
 </head>
+</head>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script type="text/javascript">
-	$(function() {
-		$("#button").click(function() {
-			$("#divToggle").toggle();
-		});
-	});
-</script>
 <body>
-	<div class="mypage--uuf ">
-		<div class="fundingupdatedetail-Tqf">
-			<span class="line-55-nsw"></span>
 
-			<div class="update1-UfX">
-				<div class="update1icon-1fT">1</div>
-				<div class="item--WMK">경작 준비중</div>
-				<div class="item--cQM">경작이 곧 시작돼요</div>
-			</div>
+	<!-- 경작 준비중 -->
+	<button class="accordion">
+		<div class="update1icon">1</div>
+		<div class="update1item1">경작준비중</div>
+	</button>
+	<div class="panel">
+		<div class="auto-group-hs7j-Q45">
+			<div class="item--X8h">경작준비중</div>
+			<div class="item--SmT">경작이 곧 시작돼요.</div>
+		</div>
 
-			<div class="update2-GA9">
-				<div class="update2icon-PVf">2</div>
-				<div class="item--sfj">경작 중</div>
-				<div class="item--P8H">곡물이 건강하게 자라고 있어요</div>
-			</div>
+		<div class="auto-group-3qdt-9A5">
+			<c:forEach items="${fundingDetail}" var="f">
+				<c:if test="${f.cultivate_status eq '경작준비중'}">
+					<img class="wheat-18458351280-gfo" src="${f.cultivating_image}" />
 
-			<div class="update3-fTs">
-				<button id="button" class="update3icon-b6d">3</button>
-				<div id="divToggle" class="updatedetail-fcH">
-					<div class="auto-group-hs7j-Q45">
-						<div class="item--X8h">수확 중</div>
-						<div class="item--SmT">곡물을 수확하고 있어요</div>
-					</div>
-					<div class="auto-group-3qdt-9A5">
-						<div class="wheat-18458351280-gfo"></div>
-						<div class="auto-group-hkbx-LkM">
-							<div class="auto-group-6tox-hL1">
-								<div class="item--E53">수확 정보</div>
-								<div class="item-20230915-7uX">2023.09.15</div>
-							</div>
-							<div class="item--pow">이렇게 자라고 있습니다 어쩌고 몇 키로 나올 것 같습니다 저쩌구구</div>
-						</div>
+				</c:if>
+			</c:forEach>
+
+			<!-- 바꿔야함 db에서 가져오는 사진 -->
+
+			<div class="auto-group-hkbx-LkM">
+				<div class="auto-group-6tox-hL1">
+					<div class="item--E53">경작준비중 정보</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '경작준비중'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
 					</div>
 				</div>
-			</div>
-
-			<div class="update4-HZo">
-				<div class="update4icon-cry">4</div>
-				<div class="item--VQy">수확 완료</div>
-				<div class="item--C4V">맛있는 곡물이 다 수확되었어요</div>
+				<div class="item--pow">
+					<!-- 이렇게 자라고 있습니다 어쩌고 몇 키로 나올 것 같습니다 저쩌구구 -->
+					<c:forEach items="${fundingDetail}" var="f">
+						<%-- ${f.cultivate_status} --%>
+						<c:if test="${f.cultivate_status eq '경작준비중'}">
+									${f.cultivating_content}
+								</c:if>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- 경작 중 -->
+	<button class="accordion">
+		<div class="update1icon">2</div>
+		<div class="update1item1">경작중</div>
+	</button>
+	<div class="panel">
+		<div class="auto-group-hs7j-Q45">
+			<div class="item--X8h">경작중</div>
+			<div class="item--SmT">작물이 건강하게 자라고 있어요.</div>
+		</div>
+
+		<div class="auto-group-3qdt-9A5">
+			<c:forEach items="${fundingDetail}" var="f">
+				<c:if test="${f.cultivate_status eq '경작중'}">
+					<img class="wheat-18458351280-gfo" src="${f.cultivating_image}" />
+
+				</c:if>
+			</c:forEach>
+
+			<div class="auto-group-hkbx-LkM">
+				<div class="auto-group-6tox-hL1">
+					<div class="item--E53">경작중 정보</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '경작중'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="item--pow">
+					<c:forEach items="${fundingDetail}" var="f">
+						<%-- ${f.cultivate_status} --%>
+						<c:if test="${f.cultivate_status eq '경작중'}">
+									${f.cultivating_content}
+								</c:if>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button class="accordion">
+		<div class="update1icon">3</div>
+		<div class="update1item1">수확중</div>
+	</button>
+	<div class="panel">
+		<div class="auto-group-hs7j-Q45">
+			<div class="item--X8h">수확중</div>
+			<div class="item--SmT">작물을 수확하고 있어요.</div>
+		</div>
+
+		<div class="auto-group-3qdt-9A5">
+			<c:forEach items="${fundingDetail}" var="f">
+				<c:if test="${f.cultivate_status eq '수확중'}">
+					<img class="wheat-18458351280-gfo" src="${f.cultivating_image}" />
+
+				</c:if>
+			</c:forEach>
+
+			<div class="auto-group-hkbx-LkM">
+				<div class="auto-group-6tox-hL1">
+					<div class="item--E53">수확중 정보</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '수확중'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="item--pow">
+					<c:forEach items="${fundingDetail}" var="f">
+						<%-- ${f.cultivate_status} --%>
+						<c:if test="${f.cultivate_status eq '수확중'}">
+									${f.cultivating_content}
+								</c:if>
+					</c:forEach>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<button class="accordion">
+		<div class="update1icon">4</div>
+		<div class="update1item1">수확완료</div>
+	</button>
+	<div class="panel">
+		<div class="auto-group-hs7j-Q45">
+			<div class="item--X8h">수확완료</div>
+			<div class="item--SmT">작물 수확을 완료했어요.</div>
+		</div>
+
+		<div class="auto-group-3qdt-9A5">
+			<c:forEach items="${fundingDetail}" var="f">
+				<c:if test="${f.cultivate_status eq '수확완료'}">
+					<img class="wheat-18458351280-gfo" src="${f.cultivating_image}" />
+
+				</c:if>
+			</c:forEach>
+
+			<div class="auto-group-hkbx-LkM">
+				<div class="auto-group-6tox-hL1">
+					<div class="item--E53">수확완료 정보</div>
+					<div class="item-20230915-7uX">
+						<c:forEach items="${fundingDetail}" var="f">
+							<%-- ${f.cultivate_status} --%>
+							<c:if test="${f.cultivate_status eq '수확완료'}">
+									${f.update_date}
+								</c:if>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+			<div class="item--pow">
+				<c:forEach items="${fundingDetail}" var="f">
+					<%-- ${f.cultivate_status} --%>
+					<c:if test="${f.cultivate_status eq '수확완료'}">
+									${f.cultivating_content}
+								</c:if>
+				</c:forEach>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		//const cultivateStatus = ; //"경작중"
+		const cultivateStatus = "${status}";
+		console.log(cultivateStatus);
+		const stautsArray = [ "경작준비중", "경작중", "수확중", "수확완료" ];
+		var accordions = document.getElementsByClassName("accordion");
+
+		for (var i = 0; i <= stautsArray.indexOf(cultivateStatus); i++) {
+			accordions[i].onclick = function() {
+				this.classList.toggle('is-open');
+
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight) {
+					// accordion is currently open, so close it
+					content.style.maxHeight = null;
+				} else {
+					// accordion is currently closed, so open it
+					content.style.maxHeight = content.scrollHeight + "rem";
+				}
+			}
+		}
+	</script>
+
 </body>
-
-
 </html>

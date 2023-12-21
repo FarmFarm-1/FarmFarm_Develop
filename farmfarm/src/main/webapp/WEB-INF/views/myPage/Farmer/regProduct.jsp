@@ -283,8 +283,8 @@
 
 
 
-<body onclick = "daySet()">
-	<div class="mypage--YJR" onclick = "daySet()">
+<body onclick="daySet()">
+	<div class="mypage--YJR" onclick="daySet()">
 		<div class="insertproject-e37">
 			<div class="auto-group-ovs1-Nzh">
 				<p class="item--JtM">내 프로젝트 만들기</p>
@@ -505,9 +505,8 @@
 		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
 		document.getElementById("harvestDate").setAttribute("min", today);
 
-
 	}
-	
+
 	harvest2Date.onchange = function() {
 		if (harvestDate.valueAsDate >= harvest2Date.valueAsDate) {
 			warning.style.display = "flex"; // Show warning if second date is before first date
@@ -515,7 +514,7 @@
 			warning.style.display = "none"; // Hide warning if not
 		}
 	}
-	
+
 	deadline.onchange = function() {
 		if (deadline.valueAsDate >= harvestDate.valueAsDate) {
 			warning2.style.display = "flex"; // Show warning if second date is before first date
@@ -523,7 +522,5 @@
 			warning2.style.display = "none"; // Hide warning if not
 		}
 	}
-
 </script>
-
 </html>

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.farmfarm.model.ChartService;
 import com.farmfarm.model.ScheduledTasksService;
 
@@ -41,12 +40,15 @@ public class MainController {
 		return "loginIndex";
 	}
 
+
 	@GetMapping("/main")
 	public String showMain(HttpSession session) {
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
 	}
 
+
+	
 	@GetMapping("/myPageFarmer")
 	public String showMyFarmFarmer(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
@@ -60,6 +62,7 @@ public class MainController {
 		model.addAttribute("check", "null");
 		return "myPage/user/menubar_supporter";
 	}
+
 
 	@GetMapping("/messageBox")
 	public String showMessageBox(HttpSession session) {

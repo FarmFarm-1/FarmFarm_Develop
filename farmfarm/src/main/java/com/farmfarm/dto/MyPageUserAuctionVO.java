@@ -24,5 +24,7 @@ public class MyPageUserAuctionVO {
 	Date auction_deadline;
 	String product_status;
 	int max_user_price;
+	int d_day;
+	String auction_status;
 	
 }
