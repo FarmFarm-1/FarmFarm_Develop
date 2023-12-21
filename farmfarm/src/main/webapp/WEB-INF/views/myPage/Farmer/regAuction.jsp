@@ -101,10 +101,10 @@
 				}),
 				success : function(response) {
 					if (response === 'success') {
-						console.log('상품 경매 등록에 성공했습니다.');
-						location.href = '/main';
+						alert('상품 경매 등록에 성공했습니다.');
+						location.href = '/myPageFarmer';
 					} else {
-						console.log('등록 실패 ..');
+						alet('등록 실패 ..');
 					}
 
 				},

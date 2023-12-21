@@ -131,7 +131,7 @@
 					success : function(response) {
 						if (response === 'success') {
 							alert('상품 등록에 성공했습니다.');
-							location.href = '/main';
+							location.href = '/myPageFarmer';
 						} else {
 							alert('정보를 다시 확인해주세요.');
 						}
