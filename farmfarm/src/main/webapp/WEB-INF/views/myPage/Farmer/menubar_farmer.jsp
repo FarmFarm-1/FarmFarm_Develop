@@ -81,7 +81,7 @@
 	function account(){
 		alert('ajax : 파머 계좌 관리로 이동');
 		$.ajax({
-			url : "/myPageFarmer/account",
+			url : "/myPageFarmer/accountRegister",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
