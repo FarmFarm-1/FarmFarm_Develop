@@ -313,7 +313,6 @@ public class FundingController {
 			fundingDetailService.buyFunding(abc);
 		}
 		
-		
 		return "funding/fundingFinish";
 
 	}

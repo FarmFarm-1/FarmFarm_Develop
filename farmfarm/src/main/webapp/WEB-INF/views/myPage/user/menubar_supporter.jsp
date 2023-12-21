@@ -22,9 +22,14 @@
 
 <script type="text/javascript">
 	let serial_num = "${sessionScope.serial_num}";
+	var check = "${check}";
 
 	$(function() {
 		showNavBar();
+		
+		if(check=="point"){
+			usedFarmMoney();
+		}
 	})
 
 	function showNavBar() {
@@ -92,7 +97,6 @@
 	}
 	
 	function usedFarmMoney() {
-		console.log("usedFarmMoney");
 		$.ajax({
 			url : "${cpath}/myPageUser/usedfarmList",
 			success : function(res) {
