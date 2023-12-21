@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -250,7 +252,7 @@
 				</div>
 				<div class="auto-group-sfjb-WBF">
 					<div class="info-1Nu">
-						<button onclick="location.href='myFunding'" class="pammoney-7Rw">
+						<button onclick="usedFarmMoney()" class="pammoney-7Rw">
 							<div class="pammoneytext-dv5">
 								<img class="pointIcon" src="${cpath }/assets/pointIcon.png" />
 								<p class="item--qmF">팜머니</p>
@@ -262,17 +264,17 @@
 						</button>
 						<div class="my-status-RjT">
 							<div class="auto-group-xwbk-xDb">
-								<button onclick="location.href='myFunding'" class="item--GEH">
+								<button onclick="myFundingList()" class="item--GEH">
 									<p class="item--mB3">펀딩</p>
 									<p class="item-5-U5T" id="funding_num"></p>
 								</button>
 
-								<button onclick="location.href='myFunding'" class="item--GEH1">
+								<button onclick="myAuctionList()" class="item--GEH1">
 									<p class="item--mB3">경매</p>
 									<p class="item-5-U5T" id="auction_num"></p>
 								</button>
 
-								<button onclick="location.href='myFunding'" class="item--GEH">
+								<button onclick="myCartList()" class="item--GEH">
 									<p class="item--mB3">찜</p>
 									<p class="item-5-U5T" id="cart_num"></p>
 								</button>

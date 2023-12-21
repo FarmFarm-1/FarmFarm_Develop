@@ -74,7 +74,7 @@
 				success : function(response) {
 					if (response === 'success') {
 						alert('상품 경작 정보 업데이트 성공');
-						location.href = '/main';
+						location.href = '/myPageFarmer';
 					} else {
 						alet('업데이트 실패 ㅋㅋ');
 					}
