@@ -19,6 +19,8 @@
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 </head>
 
 <script type="text/javascript">
@@ -27,8 +29,8 @@
 
 	$(function() {
 		showNavBar();
-		
-		if(check=="point"){
+
+		if (check == "point") {
 			usedFarmMoney();
 		}
 	})
@@ -38,9 +40,9 @@
 			url : '/myPageUser/navBarCnt',
 			type : 'GET',
 			success : function(response) {
-				
+
 				let userPoint = response.userPoint.toLocaleString('ko-KR');
-				
+
 				$(".pointamount-wpH").html(userPoint);
 				$("#funding_num").html(response.fundingNum);
 				$("#auction_num").html(response.auctionNum);
@@ -61,7 +63,6 @@
 			}
 		});
 	}
-	
 
 	function myAuctionList() {
 		$.ajax({
@@ -80,7 +81,7 @@
 			}
 		});
 	}
-	
+
 	function farmMoneyCharge() {
 		$.ajax({
 			url : "${cpath}/myPageUser/farmMoneyCharge",
@@ -97,7 +98,7 @@
 			}
 		});
 	}
-	
+
 	function usedFarmMoney() {
 		$.ajax({
 			url : "${cpath}/myPageUser/usedfarmList",
@@ -106,7 +107,7 @@
 			}
 		});
 	}
-	
+
 	function Chatting() {
 		$.ajax({
 			url : "${cpath}/myPageUser/chatting",
@@ -114,7 +115,7 @@
 				$("#here").html(res);
 			}
 		});
-	}	
+	}
 
 	function depositList() {
 		$.ajax({
@@ -125,7 +126,6 @@
 		});
 	}
 
-	
 	function passwdChange() {
 		$.ajax({
 			url : "${cpath}/myPageUser/InputPW",
@@ -134,7 +134,6 @@
 			}
 		});
 	}
-	
 </script>
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
@@ -148,7 +147,8 @@
 							<div class="auto-group-yaf7-cNq">서포터</div>
 							<img class="vector-4PF" src="${cpath }/assets/person.png" />
 							<div class="item--ASH-2">
-							<p class="item--ASH"></p><p class="item--ASH-1">님</p>
+								<p class="item--ASH"></p>
+								<p class="item--ASH-1">님</p>
 							</div>
 						</div>
 					</div>
@@ -294,7 +294,7 @@
 					</div>
 					<!-- ajax -->
 					<div id="here">
-					
+
 						<div class="mypage--Se9">
 							<!-- 고정 -->
 							<p class="item--ydo">펀딩한 프로젝트를 확인해보세요.</p>
@@ -345,4 +345,3 @@
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
-
