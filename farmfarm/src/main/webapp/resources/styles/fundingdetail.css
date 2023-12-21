@@ -45,7 +45,7 @@
 	border-radius: 5px;
 	padding: 15px 20px;
 	box-sizing: border-box;
-	width: 42rem;
+	width: 50rem;
 	color: #000;
 	font-size: 15px;
 	margin-bottom: 20px;
@@ -137,8 +137,6 @@
 	flex-shrink: 0;
 }
 
-
-
 /*======================================================================*/
 .funding_info_right {
 	box-sizing: border-box;
@@ -146,6 +144,7 @@
 	margin-left: 5rem;
 	margin-right: 40rem;
 	margin-top: 10rem;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .funding_info_right .tit_wrap {
@@ -153,25 +152,34 @@
 	justify-content: space-between;
 }
 
-.funding_info_right .tit {
-	color: #2e2e2e;
-	font-size: 18px;
-	font-weight: bold;
+.tit_1 {
+	font-size: 35px;
+	font-weight: 700;
+	color: #2d2d2d;
 	margin-bottom: 2rem;
 }
 
-.funding_info_right .funding_text {
-	display: flex;
-	color: #828282;
-	font-size: 12px;
-	font-weight: 600;
-	margin: 13px 0;
+.tit_2 {
+	color: #2e2e2e;
+	font-size: 20px;
+	margin-bottom: 2rem;
+	font-weight: 800;
 }
 
-.funding_info_right .participation {
+.funding_text {
+	font-size: 18px;
+	color: #828282;
+	font-weight: 200;
+	padding: 10px 0 10px 0;
+	margin-bottom: 20px;
+}
+
+.participation {
 	display: flex;
-	gap: 6px;
-	align-items: center;
+	margin-bottom: 15px;
+	width: 100%;
+	height: 30px;
+	align-items: baseline;
 }
 
 .funding_info_right .participation span {
@@ -179,25 +187,42 @@
 }
 
 .funding_info_right .participation span:nth-of-type(1) {
-	font-size: 18px;
-	font-weight: bold;
+	font-size: 25px;
+	font-weight: 800;
 }
 
 .funding_info_right .participation span:nth-of-type(2) {
+	font-size: 15px;
+	color: #828282;
+	margin-right: 20px;
+}
+
+.funding_info_right .participation span:nth-of-type(3) {
 	background-color: #b3d7a1;
 	padding: 3px 20px;
 	border: 1px solid #d0d0d0;
-	border-radius: 15px;
+	border-radius: 22px;
 	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
-	font-size: 10px;
+	font-size: 15px;
 	font-weight: bold;
 }
 
-.funding_info_right .auction_price {
-	margin: 13px 0 15px;
-	color: #2e2e2e;
-	font-size: 18px;
-	font-weight: bold;
+.auction_price {
+	display: flex;
+	align-items: baseline;
+	margin-bottom: 20px;
+}
+
+.ap_text {
+	color: #828282;
+	font-size: 15px;
+	margin-right: 20px;
+}
+
+.ap_value {
+	font-size: 25px;
+	font-weight: 800;
+	color: #2d2d2d;
 }
 
 .funding_info_right .detail_info .seller {
@@ -206,16 +231,24 @@
 	margin-bottom: 15px;
 }
 
-.funding_info_right .detail_info .seller .img_wrap {
-	width: 30px;
-	height: 30px;
+.img_wrap img {
+	margin-right: 2rem;
+	width: 7rem;
+	height: 7rem;
+	object-fit: contain;
+	vertical-align: top;
 	border-radius: 50%;
-	margin-right: 10px;
-	overflow: hidden;
-	background-color: #ddd;
-	background-image: url("../assets/fd_farmer_pic.png");
-	background-size: 154% 100%;
-	background-position: -10.1625rem -0rem;
+}
+
+.farmer_name {
+	font-size: 30px;
+	font-weight: 500;
+}
+
+.chat_open img{
+	width:30px;
+	height: 30px;
+	margin-left: 240px;
 }
 
 .funding_info_right .funding_detail>div {
@@ -228,8 +261,11 @@
 }
 
 .funding_info_right .funding_detail .detail_tit {
-	flex-basis: 120px;
+	flex-basis: 150px;
+	font-size: 18px;
 	margin-right: 20px;
+	font-weight: 500;
+	line-height: 1.2125;
 }
 
 .funding_info_right .insert_point {
@@ -264,10 +300,6 @@
 	gap: 10px;
 }
 
-/* .funding_info_right .bookmark-layer button {
-	border-radius: 5px;
-	cursor: pointer;
-} */
 .funding_info_right .bookmark-btn {
 	display: flex;
 	flex-direction: column;
@@ -294,24 +326,17 @@
 	border: none;
 	font-size: 14px;
 	font-weight: bold;
+	border-radius:7px;
 	cursor: default;
 }
 
-/* .funding_info_right .btn_fund[disabled] {
-	cursor: default;
-}
-
-.btn_fund:hover:enabled {
-	background-color: #64A346;
-}
- */
 .funding_info_right_bottom {
-	width: 42rem;
+	width: 50rem;
 }
 
 .farmfarm_container .funding_info_right .funding_info_right_bottom .input_group
 	{
-	margin-bottom: 1rem;
+	margin-bottom: 30px;
 	width: 100%;
 	height: 3.5526rem;
 	display: flex;
@@ -393,15 +418,13 @@
 .point-show span {
 	font-size: 2rem;
 	font-family: LINESeedKR-Bd, 'Source Sans Pro';
-	margin: 1rem 0rem 1rem 31.5rem;
+	margin: 1rem 0rem 1rem 400px;
 	text-align: right;
 	font-weight: bolder;
 	color: #e0181880;
 	width: 10.6rem;
 	display: none;
 }
-
-
 
 /*������ �̺�Ʈ ������ ����*/
 .showstep1 {
@@ -421,15 +444,24 @@
 
 .hide {
 	display: none;
-} 
-a {
-  text-decoration-line: none;
 }
-.gradient{
+
+a {
+	text-decoration-line: none;
+}
+
+.gradient {
 	height: 15rem;
 	width: 60rem;
 	background: linear-gradient(to top, white, white 10%, transparent);
 	position: absolute;
-    top: 15rem;
-    left: 0;
+	top: 15rem;
+	left: 0;
+}
+
+.content {
+	white-space: normal;
+	width: 250px;
+	font-size: 1.8067rem;
+	font-weight: 500;
 }

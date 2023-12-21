@@ -23,23 +23,30 @@
 		<div class="funding_detail"></div>
 		<div class="funding_info_right">
 			<div class="tit_wrap">
-				<div class="tit">${fundingInfo.product_name }</div>
+				<div class="tit_1">${fundingInfo.product_name }</div>
 			</div>
-			<p class="funding_text">${fundingInfo.farm_introduction}</p>
+			<div class="funding_text">${fundingInfo.farm_introduction}</div>
 			<div class="participation">
-				<span>${fundingInfocnt}명 참여</span> <span>D -
+				<span>${fundingInfocnt}</span><span>명 참여</span> <span>D -
 					${fundingInfo.dueDay}</span>
 			</div>
 			<div class="auction_price">
-				총 모금액
-				<fmt:formatNumber value="${fundingInfo.target_total_amount}"
-					pattern="#,###" />
-				원
+				<div class="ap_text">총 모금액</div>
+				<div class="ap_value">
+					<fmt:formatNumber value="${fundingInfo.target_total_amount}"
+						pattern="#,###" />
+					원
+				</div>
 			</div>
 			<div class="detail_info border_green">
 				<div class="seller">
-					<div class="img_wrap"></div>
-					${fundingInfo.farmer_name } <span class="chat_open"></span>
+					<div class="img_wrap">
+						<img src="" />
+					</div>
+					<div class="farmer_name">${fundingInfo.farmer_name }</div>
+					<div class="chat_open">
+						<img src="" />
+					</div>
 				</div>
 				<div class="funding_detail">
 					<div>
@@ -77,7 +84,7 @@
 				</div>
 			</div>
 			<div class="funding_info_right_bottom">
-				<div class="tit">펀딩할 포인트 선택</div>
+				<div class="tit_2">펀딩할 포인트 선택</div>
 				<div class="input_group">
 					<div class="input_pct">
 						<form id="payForm" action="${cpath}/funding/fundingBuy"
@@ -224,6 +231,7 @@
 		const payDiv = document.getElementById("Paydiv");
 		const payMoney = "${fundingInfo.target_total_amount}";
 		const sumfundingpct = "${sumfundingpct}";
+		const fundingbtn = document.getElementById("btn_fund");
 		var result = 0;
 
 		for (let value = start; value <= end; value += 0.01) {
@@ -236,17 +244,28 @@
 			if (serial_num.substring(0, 2) === "us") {
 				let inputValue = parseFloat(payInput.value);
 				if (end != 0) {
-					if (inputValue > end) {
-						alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
-								+ "까지만 입력 가능합니다.");
-						payInput.value = end;
-					} else if (payInput.value
-							&& inputValue.toFixed(2) != inputValue) {
-						alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
-						payInput.value = inputValue.toFixed(2);
+					if (inputValue >= 0) {
+						if (inputValue != 0) {
+							if (inputValue > end) {
+								alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
+										+ "까지만 입력 가능합니다.");
+								payInput.value = end;
+							} else if (payInput.value
+									&& inputValue.toFixed(2) != inputValue) {
+								alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+								payInput.value = inputValue.toFixed(2);
+							}
+							updatePayDiv();
+						} else {
+							negativePayDiv();
+							payDiv.innerHTML = "";
+						}
+					} else {
+						alert("0원 이하는 구매가 불가능합니다.");
+						negativePayDiv();
+						payDiv.innerHTML = "";
 					}
-					updatePayDiv();
-				}else {
+				} else {
 					showModal("펀딩이 불가한 상품입니다.", "다른 상품을 확인하세요.");
 				}
 			} else {
@@ -261,7 +280,6 @@
 			const formattedResult = new Intl.NumberFormat('ko-KR')
 					.format(result);
 			const point = document.querySelector("#point");
-			const fundingbtn = document.getElementById("btn_fund");
 
 			if (user_point >= result) {
 				point.style.display = 'none';
@@ -276,6 +294,12 @@
 			}
 			payDiv.innerHTML = formattedResult + "포인트";
 			$("#payMoney").val(result);
+		}
+
+		function negativePayDiv() {
+			fundingbtn.disabled = true;
+			fundingbtn.style.backgroundColor = '#b7b7b7';
+			fundingbtn.style.cursor = 'default';
 		}
 
 		function submitForm() {
