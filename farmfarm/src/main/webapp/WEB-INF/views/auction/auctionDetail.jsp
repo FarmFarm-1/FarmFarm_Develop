@@ -272,7 +272,6 @@
 			<div class="productinfo-div">
 				<div class="farmerinfoline1">
 					<p class="product_name">${auctionInfo.product_name}</p>
-					<img class="shareicon-class" src="${cpath}/assets/shareicon.png" />
 				</div>
 				<p class="farm-introduction-class">${auctionInfo.farm_introduction}</p>
 			</div>

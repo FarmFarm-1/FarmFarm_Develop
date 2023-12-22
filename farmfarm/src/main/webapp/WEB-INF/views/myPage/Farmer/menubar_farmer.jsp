@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="utf-8" />
 <link rel="icon" href="/favicon.ico" />
@@ -77,9 +77,8 @@
 		});
 	}
 	function account(){
-		alert('ajax : 파머 계좌 관리로 이동');
 		$.ajax({
-			url : "/myPageFarmer/account",
+			url : "/myPageFarmer/accountRegister",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -287,15 +286,6 @@ window.onload = ()=>{
 		});
 	}
 	
-	function f2(){
-		$.ajax({
-			url : "/myPageFarmer/myProject",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	
 	function f1(){
 		$.ajax({
 			url : "/myPageFarmer/regPro",
@@ -304,7 +294,5 @@ window.onload = ()=>{
 			}
 		});
 	}
-	
-	
 	
 </script>

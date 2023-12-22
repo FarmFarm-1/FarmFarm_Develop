@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import com.farmfarm.model.ChartService;
 import com.farmfarm.model.ScheduledTasksService;
 
@@ -41,12 +40,15 @@ public class MainController {
 		return "loginIndex";
 	}
 
+
 	@GetMapping("/main")
 	public String showMain(HttpSession session) {
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
 	}
 
+
+	
 	@GetMapping("/myPageFarmer")
 	public String showMyFarmFarmer(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
@@ -55,10 +57,12 @@ public class MainController {
 	}
 	
 	@GetMapping("/myPageUser")
-	public String showMyPageUser(HttpSession session) {
+	public String showMyPageUser(HttpSession session, Model model) {
 		session.setAttribute("headerSelect", "myFarm");
+		model.addAttribute("check", "null");
 		return "myPage/user/menubar_supporter";
 	}
+
 
 	@GetMapping("/messageBox")
 	public String showMessageBox(HttpSession session) {
@@ -75,9 +79,10 @@ public class MainController {
 	}
 
 	@GetMapping("/chargePoints")
-	public String showChargePoints(HttpSession session) {
+	public String showChargePoints(HttpSession session, Model model) {
 		session.setAttribute("headerSelect", "myFarm");
-		return "/";
+		model.addAttribute("check", "point");
+		return "myPage/user/menubar_supporter";
 	}
 
 	// manually call crops-data-input method by hs

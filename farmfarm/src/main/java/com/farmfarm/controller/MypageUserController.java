@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
-import com.farmfarm.dto.MyPageUserCartFundingVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.model.MyPageService;
@@ -26,6 +25,12 @@ import com.farmfarm.model.MyPageUserService;
 import com.farmfarm.model.UserNavCntService;
 import com.farmfarm.model.UsersService;
 import com.farmfarm.model.pwdSha256;
+
+
+import com.farmfarm.dto.MyPageUserCartVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
+
+
 
 @Controller
 @RequestMapping("/myPageUser")
@@ -56,68 +61,11 @@ public class MypageUserController {
 		System.out.println(map);
 		return map;
 	}
-
-	@GetMapping("/showMore")
-	public String showMore() {
-		return "myPage/user/showMore";
-	}
-
-	@GetMapping("/myFundingList")
-	public String showMyFundingList(HttpSession session, Model model) {
-
-		String user_serial_num = (String) session.getAttribute("serial_num"); // session占쎈퓠 占쏙옙占쎌삢占쎈쭆 user_serial_num
-																				// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(user_serial_num);
-
-		List<MyPageUserFundingVO> myFundingList = service.myPageFundingList(user_serial_num); // 占쎄땀揶쏉옙 占쏙옙占쎈뎃占쎈립
-																								// �뵳�딅뮞占쎈뱜
-																								// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(myFundingList);
-
-		model.addAttribute("myFundingList", myFundingList);
-
-		return "myPage/user/myFundingList";
-	}
-
-	@GetMapping("/myFundingListShowMore")
-	public String showMyFundingListShowMore() {
-		return "myPage/user/myFundingListShowMore";
-	}
-
-	@GetMapping("/myAuctionList")
-	public String showMyAuctionList(HttpSession session, Model model) {
-
-		String user_serial_num = (String) session.getAttribute("serial_num"); // session占쎈퓠 占쏙옙占쎌삢占쎈쭆 user_serial_num
-																				// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(user_serial_num);
-		List<MyPageUserAuctionVO> myAuctionList = service.myPageAuctionList(user_serial_num); // 占쎄땀揶쏉옙 野껋럥�꼻占쎈립
-																								// �뵳�딅뮞占쎈뱜
-																								// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(myAuctionList);
-		model.addAttribute("myAuctionList", myAuctionList);
-		return "myPage/user/myAuctionList";
-	}
-
-	@GetMapping("/myCartList")
-	public String showMyCartList(HttpSession session, Model model) {
-		String user_serial_num = (String) session.getAttribute("serial_num"); // session占쎈퓠 占쏙옙占쎌삢占쎈쭆 user_serial_num
-																				// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(user_serial_num);
-		List<MyPageUserCartFundingVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); // 占쎄땀揶쏉옙
-																											// 筌≪뮉釉�
-																											// 占쏙옙占쎈뎃
-																											// �뵳�딅뮞占쎈뱜
-																											// 揶쏉옙占쎌죬占쎌궎疫뀐옙
-		System.out.println(myCartFundingList);
-		model.addAttribute("myCartFundingList", myCartFundingList);
-		return "myPage/user/myCartList";
-	}
 	
 	@GetMapping("/chatting")
 	public String Chatting() {
 		return "myPage/user/userChat";
 	}
-
 	
 
 	@GetMapping("/farmMoneyCharge")
@@ -221,4 +169,81 @@ public class MypageUserController {
 			return message; 
 			}
 	// 재호
+	
+	
+	@GetMapping("/myFundingList")
+	public String showMyFundingList(HttpSession session, Model model) {
+		
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		
+		List<MyPageUserFundingVO> myFundingList = service.myPageFundingList(user_serial_num); //내가 펀딩한 리스트 가져오기
+		System.out.println(myFundingList);
+		
+		model.addAttribute("myFundingList", myFundingList);
+		
+		return "myPage/user/myFundingList";
+	}
+	
+	@PostMapping("/myFundingListShowMore")
+	public String showMyFundingListShowMore(String product_serial_num,Model model) {
+		System.out.println(product_serial_num);
+		List<MyPageUserFundingDetailVO> fundingDetail=service.myPageFundingListDetail(product_serial_num);
+		System.out.println(fundingDetail);
+		model.addAttribute("fundingDetail",fundingDetail);
+		
+		if(fundingDetail.size()!=0) {
+			model.addAttribute("status",fundingDetail.get(0).getCultivate_status());
+		}
+		
+		return "myPage/user/myFundingListShowMore";
+	}
+	
+
+	@GetMapping("/myAuctionList")
+	public String showMyAuctionList(HttpSession session, Model model) {
+		
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserAuctionVO> myAuctionList = service.myPageAuctionList(user_serial_num); //내가 경매한 리스트 가져오기
+		System.out.println(myAuctionList);
+		model.addAttribute("myAuctionList", myAuctionList);
+		return "myPage/user/myAuctionList";
+	}
+
+	
+	@GetMapping("/myCartList")
+	public String showMyCartList(HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
+		System.out.println(myCartFundingList);
+		model.addAttribute("myCartFundingList", myCartFundingList);
+		return "myPage/user/myCartList";
+	}
+
+	@GetMapping("/myCartFundingList")
+	public String showMyCartFundingList(HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
+		System.out.println(myCartFundingList);
+		model.addAttribute("myCartFundingList", myCartFundingList);
+		return "myPage/user/myCartFundingList";
+	}
+	
+	@GetMapping("/myCartAuctionList")
+	public String showMyCartAuctionList(HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num"); //session에 저장된 user_serial_num 가져오기
+		System.out.println(user_serial_num);
+		List<MyPageUserCartVO> myCartAuctionList = service.myPageCartAuctionList(user_serial_num); //내가 찜한 경매 리스트 모두 가져오기
+		System.out.println(myCartAuctionList);
+		model.addAttribute("myCartAuctionList", myCartAuctionList);
+		return "myPage/user/myCartAuctionList";
+	}
+	
 }
+
+
+
+>>>>>>> refs/remotes/origin/main_test

@@ -14,15 +14,14 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${cpath }/styles/myCartList.css" />
-
+<link rel="stylesheet" href="${cpath }/styles/myCartAuctionList.css" />
 <script type="text/javascript">
 	function myCartFundingList() {
 		$.ajax({
 			url : "/myPageUser/myCartFundingList",
 			success : function(responseData) {
 				$("#here2").html(responseData);
-
+				
 				// 펀딩 버튼의 스타일 변경
 				$("#funding").addClass("selected-button");
 				$("#auction").removeClass("selected-button");
@@ -35,7 +34,7 @@
 			url : "/myPageUser/myCartAuctionList",
 			success : function(responseData) {
 				$("#here2").html(responseData);
-
+				
 				// 경매 버튼의 스타일 변경
 				$("#auction").addClass("selected-button");
 				$("#funding").removeClass("selected-button");
@@ -44,6 +43,7 @@
 	}
 </script>
 <body>
+	<!-- <h1>경매리스트</h1> -->
 	<div id="here2" class="mypage--hQ1">
 		<p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
@@ -52,57 +52,54 @@
 			<div id="auction" class="filter3-8Vj" onclick="myCartAuctionList()">경매</div>
 		</div>
 
-		<div class="cart-container">
-			<c:forEach items="${myCartFundingList }" var="fList">
+		<div class="cart-container2">
+			<c:forEach items="${myCartAuctionList }" var="aList">
 				<div class="auto-group-ceto-zXw">
-					<div class="cartlist2-HAu">
+					<div class="cartlist2-HAu1">
 
 						<div class="auto-group-zfjd-bBb">
-							
-							<%-- <div> <!-- div class="auto-group-fj9f-Bb3" -->
-								<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}">
+							<!-- <div class="auto-group-fj9f-Bb3">
 								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								<!--db에서 가져오는 사진으로 바꾸기-->
-								<!-- ${fList.funding_thumb_img_url} -->
-								<!-- <div class="auto-group-fj9f-Bb3-bg"></div> -->
-							</div> --%>
+								db에서 가져오는 사진으로 바꾸기
+								${aList.auction_thumb_img_url}
+								<div class="auto-group-fj9f-Bb3-bg"></div>
+							</div> -->
 							
-							<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}" />
+							<img class="auto-group-fj9f-Bb3" src="${aList.auction_thumb_img_url}" />
 							<img class="vector-6xu" src="/assets/heart_thub.png" />
 							
-							<p class="item--ixM">${fList.product_name}</p>
+							<p class="item--ixM">${aList.product_name}</p>
 							<div class="minamount-7xZ">
-								<p class="item--rfF">최소금액</p>
-								<p class="item-13000-BxR">${fList.min_amount}원</p>
+								<p class="item--rfF">현 입찰가</p>
+								<p class="item-13000-BxR">${aList.current_price}원</p>
 							</div>
 							<div class="expectedharvest-XUZ">
-								<p class="item--rWq">재배 예정일</p>
-								<p class="item-2023-9-11-n9b">${fList.expected_planting_date}</p>
+								<p class="item--rWq">수확 완료일</p>
+								<p class="item-2023-9-11-n9b">${aList.expected_harvest_date}</p>
 							</div>
 							<div class="harvestfootage-Y6q">
-								<p class="item--Fmw">평수</p>
-								<p class="item-50-Bfb">${fList.farm_square_footage}평</p>
+								<p class="item--Fmw">출하량</p>
+								<p class="item-50-Bfb">${aList.harvest_amount}kg</p>
 							</div>
 						</div>
 
 						<div class="cartlistfoot-xER">
-							<div class="fundingpct-7ND">
-								<div class="rectangle-81-3Wm"
-									style="--percent: ${fList.total_pct}"></div>
-							</div>
+							<!-- <div class="fundingpct-7ND">
+							<div class="rectangle-81-3Wm"></div>
+						</div> -->
 							<div class="auto-group-lfhx-zB7">
 								<p class="item-44--yoj">
-									<span class="item-44--yoj-sub-0">${fList.total_pct}</span> <span
-										class="item-44--yoj-sub-1">% 달성</span>
+									<span class="item-44--yoj-sub-0">${aList.participants}</span> <span
+										class="item-44--yoj-sub-1">명 참여</span>
 								</p>
 								<p class="item-9--wty">
 									<c:choose>
-										<c:when test="${fList.d_day > 0}">
-											<span class="item-9--wty-sub-0">${fList.d_day}</span>
+										<c:when test="${aList.d_day > 0}">
+											<span class="item-9--wty-sub-0">${aList.d_day}</span>
 											<span class="item-9--wty-sub-1">일 남음</span>
 										</c:when>
-										<c:when test="${fList.d_day == 0}">
-											<span class="deadline_today">마감 임박</span>
+										<c:when test="${aList.d_day == 0}">
+											<span class="deadline_today">오늘종료</span>
 										</c:when>
 									</c:choose>
 
@@ -115,5 +112,4 @@
 		</div>
 	</div>
 </body>
-
 </html>

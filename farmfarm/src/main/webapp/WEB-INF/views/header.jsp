@@ -122,7 +122,7 @@
                     </div>
                     <div class="userPoint_div"
                         onclick="location.href='${cpath}/chargePoints'">
-                        내 팜머니 : <span class="userPoints">1,000,000,000</span>p
+                        내 팜머니 : <span class="userPoints"></span>p
                     </div>
                 </div>
                 <div class="header_farmer_login" id="header_farmer_login">

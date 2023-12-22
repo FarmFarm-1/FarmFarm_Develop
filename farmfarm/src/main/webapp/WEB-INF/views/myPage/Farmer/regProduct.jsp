@@ -130,15 +130,15 @@
 					}),
 					success : function(response) {
 						if (response === 'success') {
-							console.log('상품 등록에 성공했습니다.');
-							location.href = '/main';
+							alert('상품 등록에 성공했습니다.');
+							location.href = '/myPageFarmer';
 						} else {
-							console.log('등록 실패 ..');
+							alert('정보를 다시 확인해주세요.');
 						}
 
 					},
 					error : function(error) {
-						console.log(error);
+						alert('정보를 다시 확인해주세요.');
 					}
 				});
 
@@ -283,8 +283,8 @@
 
 
 
-<body onclick = "daySet()">
-	<div class="mypage--YJR" onclick = "daySet()">
+<body onclick="daySet()">
+	<div class="mypage--YJR" onclick="daySet()">
 		<div class="insertproject-e37">
 			<div class="auto-group-ovs1-Nzh">
 				<p class="item--JtM">내 프로젝트 만들기</p>
@@ -498,7 +498,6 @@
 	var warning2 = document.querySelector('.warn-two');
 
 	function daySet() {
-		console.log('ddd')
 		var now_utc = Date.now() // 지금 날짜를 밀리초로
 		// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
 		var timeOff = new Date().getTimezoneOffset() * 60000; // 분단위를 밀리초로 변환
@@ -506,9 +505,8 @@
 		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
 		document.getElementById("harvestDate").setAttribute("min", today);
 
-
 	}
-	
+
 	harvest2Date.onchange = function() {
 		if (harvestDate.valueAsDate >= harvest2Date.valueAsDate) {
 			warning.style.display = "flex"; // Show warning if second date is before first date
@@ -516,7 +514,7 @@
 			warning.style.display = "none"; // Hide warning if not
 		}
 	}
-	
+
 	deadline.onchange = function() {
 		if (deadline.valueAsDate >= harvestDate.valueAsDate) {
 			warning2.style.display = "flex"; // Show warning if second date is before first date
@@ -524,42 +522,5 @@
 			warning2.style.display = "none"; // Hide warning if not
 		}
 	}
-
-	/* window.onload = function() {
-		var now_utc = Date.now() // 지금 날짜를 밀리초로
-		// getTimezoneOffset()은 현재 시간과의 차이를 분 단위로 반환
-		var timeOff = new Date().getTimezoneOffset() * 60000; // 분단위를 밀리초로 변환
-		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
-		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
-		document.getElementById("harvestDate").setAttribute("min", today);
-
-		var harvestDate = document.getElementById('harvestDate');
-		var harvest2Date = document.getElementById('harvest2Date');
-		var deadline = document.getElementById('deadline');
-
-		var warning = document.querySelector('.warn-one');
-		warning.style.display = "none"; // Initially hide the warning
-
-		harvest2Date.onchange = function() {
-			if (harvestDate.valueAsDate >= harvest2Date.valueAsDate) {
-				warning.style.display = "flex"; // Show warning if second date is before first date
-			} else {
-				warning.style.display = "none"; // Hide warning if not
-			}
-		}
-
-		var warning2 = document.querySelector('.warn-two');
-		warning2.style.display = "none";
-
-		deadline.onchange = function() {
-			if (deadline.valueAsDate >= harvestDate.valueAsDate) {
-				warning2.style.display = "flex"; // Show warning if second date is before first date
-			} else {
-				warning2.style.display = "none"; // Hide warning if not
-			}
-		}
-
-	} */
 </script>
-
 </html>

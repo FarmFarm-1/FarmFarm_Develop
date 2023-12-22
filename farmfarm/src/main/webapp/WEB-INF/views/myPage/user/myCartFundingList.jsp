@@ -14,8 +14,7 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${cpath }/styles/myCartList.css" />
-
+<link rel="stylesheet" href="${cpath }/styles/myCartFundingList.css" />
 <script type="text/javascript">
 	function myCartFundingList() {
 		$.ajax({
@@ -43,7 +42,11 @@
 		});
 	}
 </script>
+<script>
+	
+</script>
 <body>
+	<!-- <h1>펀딩리스트</h1> -->
 	<div id="here2" class="mypage--hQ1">
 		<p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
@@ -58,14 +61,13 @@
 					<div class="cartlist2-HAu">
 
 						<div class="auto-group-zfjd-bBb">
-							
-							<%-- <div> <!-- div class="auto-group-fj9f-Bb3" -->
-								<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}">
+						
+							<!-- <div class="auto-group-fj9f-Bb3">
 								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								<!--db에서 가져오는 사진으로 바꾸기-->
-								<!-- ${fList.funding_thumb_img_url} -->
-								<!-- <div class="auto-group-fj9f-Bb3-bg"></div> -->
-							</div> --%>
+								db에서 가져오는 사진으로 바꾸기
+								${fList.funding_thumb_img_url}
+								<div class="auto-group-fj9f-Bb3-bg"></div>
+							</div> -->
 							
 							<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}" />
 							<img class="vector-6xu" src="/assets/heart_thub.png" />
@@ -93,7 +95,7 @@
 							<div class="auto-group-lfhx-zB7">
 								<p class="item-44--yoj">
 									<span class="item-44--yoj-sub-0">${fList.total_pct}</span> <span
-										class="item-44--yoj-sub-1">% 달성</span>
+										class="item-44--yoj-sub-1"> % 달성</span>
 								</p>
 								<p class="item-9--wty">
 									<c:choose>
@@ -115,5 +117,4 @@
 		</div>
 	</div>
 </body>
-
 </html>
