@@ -136,7 +136,7 @@
 let serial_num = "${sessionScope.serial_num}";
 
 function func(product_serial_num, index) {
-	
+	event.stopPropagation();
 
 	if (serial_num.substring(0, 2) === "us") {
 		let heartIcon = $("#heart-icon-" + index);

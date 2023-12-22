@@ -13,18 +13,16 @@
 		farm_and_product.farm_address,
 		farm_and_product.product_regdate,
 		farm_and_product.product_status,
-		round(SUM(funding_history.user_funding_pct)) as funding_pct,
+		(select SUM(funding_history.user_funding_pct) FROM funding_history WHERE funding_history.product_serial_num = farm_and_product.product_serial_num) as funding_pct,
 		farm_and_product.funding_thumb_img_url,
 		farm_and_product.auction_thumb_img_url,
 		MAX(auction_history.user_price) as max_price
-		FROM funding_history
-		RIGHT OUTER JOIN farm_and_product ON funding_history.product_serial_num =
-		farm_and_product.product_serial_num
-		LEFT OUTER JOIN auction_history ON auction_history.product_serial_num =
+		FROM farm_and_product
+		LEFT outer JOIN auction_history ON auction_history.product_serial_num =
 		farm_and_product.product_serial_num
 		WHERE farmer_serial_num =#{farmer_serial_num}
 		GROUP BY farm_and_product.product_serial_num
-
+    
 	</select>
 
 </mapper>

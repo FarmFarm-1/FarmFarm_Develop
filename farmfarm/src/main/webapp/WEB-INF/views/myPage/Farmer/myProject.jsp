@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -30,7 +32,8 @@
 		<div class="fundinglist1-5vD">
 			<p class="hidden" id="serial_num${status.index }">${projectItem.product_serial_num }</p>
 			<div class="fundinginfo-yVo">
-				<img class="tomatoes-55667411280-Jny" id="tomatoes-55667411280-Jny${status.index }"
+				<img class="tomatoes-55667411280-Jny"
+					id="tomatoes-55667411280-Jny${status.index }"
 					src="${projectItem.auction_thumb_img_url }" />
 				<div class="auto-group-pee9-aVb">
 					<p class="item--6iq" id="item--6iq${status.index }">${projectItem.product_name }</p>
@@ -42,9 +45,12 @@
 				</div>
 			</div>
 			<p class="fundingdate-V8h">${projectItem.product_regdate }</p>
-			<%-- <div class="fundingpct-ntV">${projectItem.funding_pct }%</div> --%>
-			<div id="chart${status.index }" class="fundingpct-ntV"></div>
-			<p class="fundingpay-r7f">${projectItem.max_price }</p>
+			<div class="fundingpct-ntV">
+				<div id="chart${status.index }"></div>
+			</div>
+			<div class="fundingpay-r7f">${projectItem.max_price }
+				<%-- <fmt:formatNumber value="${projectItem.max_price}" pattern="#,###" /> --%>
+			</div>
 			<div
 				class="${projectItem.product_status.contains('실패')?'fundingstate-9cZ-1':'fundingstate-9cZ' }">${projectItem.product_status }</div>
 			<button onclick="goUpdateCultivate(${status.index })">
@@ -59,8 +65,8 @@
 			</button>
 		</div>
 
-	
-	<script>
+
+		<script>
 
 	/*도넛 차트*/
 	var seriesData${status.index} = [${projectItem.funding_pct}];
@@ -181,6 +187,6 @@
 	}
 	
 	</script>
-</c:forEach>
+	</c:forEach>
 </div>
 
