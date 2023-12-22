@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<link rel="stylesheet" href="${cpath}/styles/farmerChat.css" />
+<link rel="stylesheet" href="${cpath}/styles/userChat.css" />
 
 <div class="Content">
 	<div class="content_tit">쪽지함</div>
@@ -31,7 +31,7 @@
 					</div>
 					<div class="chatUser">
 						<div class="left_Big">
-							<div class="profile_Big_Text">김지원</div>
+							<div class="profile_Big_Text">파머 김지원</div>
 							<div class="left_new_Img">
 								<img src="${cpath}/assets/-1uw.png" />
 							</div>
@@ -64,7 +64,7 @@
 						<div class="yourprofileImg">
 							<img src="${cpath}/assets/-1uw.png" />
 						</div>
-						<div class="yourName">김지원</div>
+						<div class="yourName">파머 김지원</div>
 						<div class="yourTime">오전 7:45</div>
 					</div>
 					<div class="yourChat_message">

@@ -108,7 +108,7 @@
 						<c:choose>
 							<c:when test="${myBookmark == 1}">
 								<div class="img_heart_wrap">
-									<img id="heart-icon" class="heart-icon_filled"
+									<img id="heart-icon" class="heart-icon filled"
 										src="${cpath}/assets/heart_fill.png" />
 								</div>
 							</c:when>

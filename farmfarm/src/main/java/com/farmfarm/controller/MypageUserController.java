@@ -115,7 +115,7 @@ public class MypageUserController {
 	
 	@GetMapping("/chatting")
 	public String Chatting() {
-		return "myPage/user/JHMESSAGE";
+		return "myPage/user/userChat";
 	}
 
 	
