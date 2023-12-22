@@ -172,7 +172,7 @@
 			</div>
 			<div class="fundinginfo-zhT">
 				<div class="fundinginfo-idT">
-					<div class="tomatoes-55667411280-UMj"></div>
+					<img class="tomatoes-55667411280-UMj" src = "${map.funding_thumb_img_url }">
 					<div class="auto-group-h5qx-Xqo">
 						<p class="item--453">${map.product_name }</p>
 						<p class="item--ANy">${map.farm_name }</p>
@@ -182,7 +182,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="fundingstate-3r5">경작중</div>
 			</div>
 			<div class="line-66-saD"></div>
 			<div class="line-67-Qq3"></div>

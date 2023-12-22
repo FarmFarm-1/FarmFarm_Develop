@@ -286,15 +286,6 @@ window.onload = ()=>{
 		});
 	}
 	
-	function f2(){
-		$.ajax({
-			url : "/myPageFarmer/myProject",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	
 	function f1(){
 		$.ajax({
 			url : "/myPageFarmer/regPro",
