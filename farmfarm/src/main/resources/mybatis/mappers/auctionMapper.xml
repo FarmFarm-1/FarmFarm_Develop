@@ -111,7 +111,7 @@
 		GROUP BY
 		f.product_serial_num
 
-		ORDER BY a.auction_deadline DESC
+		ORDER BY a.auction_deadline 
 	</select>
 
 	<select id="auctionListSelectByTypeClosing"
@@ -151,7 +151,7 @@
 		GROUP BY
 		f.product_serial_num
 
-		ORDER BY a.auction_deadline DESC
+		ORDER BY a.auction_deadline 
 	</select>
 
 	<select id="auctionListSelectAmount" resultType="map">

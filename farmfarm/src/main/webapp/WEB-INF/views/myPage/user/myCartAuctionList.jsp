@@ -65,7 +65,7 @@
 								<div class="auto-group-fj9f-Bb3-bg"></div>
 							</div> -->
 							
-							<img class="auto-group-fj9f-Bb3" src="${aList.funding_thumb_img_url}" />
+							<img class="auto-group-fj9f-Bb3" src="${aList.auction_thumb_img_url}" />
 							<img class="vector-6xu" src="/assets/heart_thub.png" />
 							
 							<p class="item--ixM">${aList.product_name}</p>
