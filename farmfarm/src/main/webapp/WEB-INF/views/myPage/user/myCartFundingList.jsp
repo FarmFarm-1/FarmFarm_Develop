@@ -61,12 +61,17 @@
 					<div class="cartlist2-HAu">
 
 						<div class="auto-group-zfjd-bBb">
-							<div class="auto-group-fj9f-Bb3">
+						
+							<!-- <div class="auto-group-fj9f-Bb3">
 								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								<!--db에서 가져오는 사진으로 바꾸기-->
-								<!-- ${fList.funding_thumb_img_url} -->
+								db에서 가져오는 사진으로 바꾸기
+								${fList.funding_thumb_img_url}
 								<div class="auto-group-fj9f-Bb3-bg"></div>
-							</div>
+							</div> -->
+							
+							<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}" />
+							<img class="vector-6xu" src="/assets/heart_thub.png" />
+							
 							<p class="item--ixM">${fList.product_name}</p>
 							<div class="minamount-7xZ">
 								<p class="item--rfF">최소금액</p>

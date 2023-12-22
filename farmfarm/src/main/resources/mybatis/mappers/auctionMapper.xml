@@ -111,7 +111,7 @@
 		GROUP BY
 		f.product_serial_num
 
-		ORDER BY a.auction_deadline DESC
+		ORDER BY a.auction_deadline 
 	</select>
 
 	<select id="auctionListSelectByTypeClosing"
@@ -151,7 +151,7 @@
 		GROUP BY
 		f.product_serial_num
 
-		ORDER BY a.auction_deadline DESC
+		ORDER BY a.auction_deadline 
 	</select>
 
 	<select id="auctionListSelectAmount" resultType="map">
@@ -363,8 +363,7 @@
 		f.product_serial_num =
 		c.product_serial_num
 		WHERE
-		f.product_status ='경매중' and
-		f.product_kind=#{type}
+		f.product_status ='경매중'
 		GROUP BY
 		f.product_serial_num
 	</select>

@@ -14,7 +14,7 @@
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="${cpath }/styles/myCartFundingList.css" />
+<link rel="stylesheet" href="${cpath }/styles/myCartList.css" />
 
 <script type="text/javascript">
 	function myCartFundingList() {
@@ -58,12 +58,18 @@
 					<div class="cartlist2-HAu">
 
 						<div class="auto-group-zfjd-bBb">
-							<div class="auto-group-fj9f-Bb3">
+							
+							<%-- <div> <!-- div class="auto-group-fj9f-Bb3" -->
+								<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}">
 								<img class="vector-6xu" src="./assets/vector-1id.png" />
 								<!--db에서 가져오는 사진으로 바꾸기-->
 								<!-- ${fList.funding_thumb_img_url} -->
-								<div class="auto-group-fj9f-Bb3-bg"></div>
-							</div>
+								<!-- <div class="auto-group-fj9f-Bb3-bg"></div> -->
+							</div> --%>
+							
+							<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}" />
+							<img class="vector-6xu" src="/assets/heart_thub.png" />
+							
 							<p class="item--ixM">${fList.product_name}</p>
 							<div class="minamount-7xZ">
 								<p class="item--rfF">최소금액</p>

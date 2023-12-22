@@ -21,7 +21,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/styles/fundingfinish.css" />
 </head>
-<body>
+<body onbeforeunload="return false;" oncontextmenu="return false">
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage">
 		<div class="fundingfinishtext">펀딩완료</div>
