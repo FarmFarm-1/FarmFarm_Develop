@@ -152,7 +152,10 @@
 	justify-content: space-between;
 }
 
+
 .tit_1 {
+	width: 500px;
+	white-space: normal;
 	font-size: 35px;
 	font-weight: 700;
 	color: #2d2d2d;
@@ -167,6 +170,8 @@
 }
 
 .funding_text {
+	width: 500px;
+	white-space: normal;
 	font-size: 18px;
 	color: #828282;
 	font-weight: 200;
@@ -229,6 +234,7 @@
 	display: flex;
 	align-items: center;
 	margin-bottom: 15px;
+	width: 460px;
 }
 
 .img_wrap img {
@@ -243,12 +249,12 @@
 .farmer_name {
 	font-size: 30px;
 	font-weight: 500;
+	margin-right: auto;
 }
 
 .chat_open img{
 	width:30px;
 	height: 30px;
-	margin-left: 240px;
 }
 
 .funding_info_right .funding_detail>div {
