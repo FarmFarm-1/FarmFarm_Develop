@@ -363,8 +363,7 @@
 		f.product_serial_num =
 		c.product_serial_num
 		WHERE
-		f.product_status ='경매중' and
-		f.product_kind=#{type}
+		f.product_status ='경매중'
 		GROUP BY
 		f.product_serial_num
 	</select>
