@@ -148,7 +148,7 @@ input {
 	grid-template-columns: repeat(3, 30rem);
 	/* gap: 10px; */
 	/* left: -17rem; */
-	left: -23rem;
+	left: -22rem;
 	align-items: center;
 	justify-content: center;
 	position: relative;
