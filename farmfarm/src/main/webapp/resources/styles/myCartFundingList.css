@@ -48,7 +48,7 @@ input {
 
 .mypage--hQ1 .item--oAd {
 	/* margin: 0rem 0rem 2.2rem 0.7rem; */
-	padding-right: 100rem;
+	padding-right: 110rem;
 	font-size: 2.443rem;
 	font-weight: 700;
 	line-height: 1.2575;
@@ -59,7 +59,7 @@ input {
 
 .mypage--hQ1 .auto-group-owjb-tC5 {
 	margin: 2rem 0rem 2rem 0rem;
-	padding-right: 110rem;
+	padding-right: 120rem;
 	height: 4rem;
 	display: flex;
 	column-gap: 2rem;
@@ -125,23 +125,23 @@ input {
 	flex-shrink: 0;
 }
 
-.cart-container {
+/* .cart-container {
 	display: grid;
 	grid-template-columns: repeat(3, calc(33.33% - 50px));
 	gap: 10px;
 	right: 17rem;
-	/* align-items: center; */
-	/* justify-content: center; */
+	align-items: center;
+	justify-content: center;
 	position: relative;
 }
 
 .auto-group-ceto-zXw {
 	margin-right: 25rem;
-	/* width: calc(100% - 41.7647rem); */
+	width: calc(100% - 41.7647rem);
 	height: 27.0476rem;
 	display: flex;
 	align-items: center;
-}
+} */
 
 .mypage--hQ1 .auto-group-ceto-zXw1 {
 	margin-right: 25rem;
@@ -152,7 +152,7 @@ input {
 }
 
 .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu {
-	margin: 0.054rem 0rem 0rem 0rem;
+	margin: 0rem 0rem 3rem 0rem;
 	width: 19.5389rem;
 	height: calc(100% - 0.0542rem);
 	align-items: center;
@@ -296,7 +296,7 @@ input {
 	top: 0;
 	background-size: 120.069% 100%;
 	background-position: -1.4614rem -0rem;
-	background-image: url('../assets/tomatoes-55667411280-bg.png');
+	/* background-image: url('../assets/tomatoes-55667411280-bg.png'); */
 	border-radius: 0.8119rem;
 }
 
@@ -308,7 +308,7 @@ input {
 	vertical-align: top;
 }
 
-.mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .auto-group-zfjd-bBb .auto-group-fj9f-Bb3 .auto-group-fj9f-Bb3-bg
+/* .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .auto-group-zfjd-bBb .auto-group-fj9f-Bb3 .auto-group-fj9f-Bb3-bg
 	{
 	width: 19.0524rem;
 	height: 15.1553rem;
@@ -316,7 +316,7 @@ input {
 	background-image:
 		url('REPLACE_IMAGE:691490cedae8abfa4a69c882398b32848e81fbdd');
 }
-
+ */
 .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER {
 	width: 100%;
 	align-items: center;

@@ -52,18 +52,22 @@
 			<div id="auction" class="filter3-8Vj" onclick="myCartAuctionList()">경매</div>
 		</div>
 
-		<div class="cart-container">
+		<div class="cart-container2">
 			<c:forEach items="${myCartAuctionList }" var="aList">
 				<div class="auto-group-ceto-zXw">
-					<div class="cartlist2-HAu">
+					<div class="cartlist2-HAu1">
 
 						<div class="auto-group-zfjd-bBb">
-							<div class="auto-group-fj9f-Bb3">
+							<!-- <div class="auto-group-fj9f-Bb3">
 								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								<!--db에서 가져오는 사진으로 바꾸기-->
-								<!-- ${aList.auction_thumb_img_url} -->
+								db에서 가져오는 사진으로 바꾸기
+								${aList.auction_thumb_img_url}
 								<div class="auto-group-fj9f-Bb3-bg"></div>
-							</div>
+							</div> -->
+							
+							<img class="auto-group-fj9f-Bb3" src="${aList.funding_thumb_img_url}" />
+							<img class="vector-6xu" src="/assets/heart_thub.png" />
+							
 							<p class="item--ixM">${aList.product_name}</p>
 							<div class="minamount-7xZ">
 								<p class="item--rfF">현 입찰가</p>
