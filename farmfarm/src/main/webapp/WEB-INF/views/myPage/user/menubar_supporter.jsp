@@ -135,6 +135,7 @@
 			}
 		});
 	}
+	
 </script>
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />

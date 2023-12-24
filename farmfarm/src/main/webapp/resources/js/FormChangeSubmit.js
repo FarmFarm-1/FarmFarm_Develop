@@ -12,12 +12,16 @@
        	document.querySelector('.rectangle-97-tDT').style.backgroundColor = '#f6f6f6';
         document.querySelector('.rectangle-97-tDT p').style.color = '#2d2d2d';
         document.querySelector('.rectangle-97-tDT p').style.fontWeight = '700';
+        document.querySelector('.rectangle-97-tDT p').style.left = '20rem';
+        document.querySelector('.rectangle-97-tDT').style.width = '625.879px';
+        document.querySelector('.rectangle-97-tDT').style.left = '29rem';
     	document.getElementById('farmer_email_check').style.visibility = 'hidden';
-
 
         document.querySelector('.group-102-V6m').style.backgroundColor = '#eeeeee';
         document.querySelector('.group-102-V6m p').style.color = '#686868';
         document.querySelector('.group-102-V6m p').style.fontWeight = '400';
+        document.querySelector('.group-102-V6m p').style.left = '6rem';
+        document.querySelector('.group-102-V6m').style.width = '290.241px';
 
     } else if (formId == 'floginForm') {
 		document.getElementById('user_email').style.borderColor = '#9CA3AF';
@@ -30,12 +34,16 @@
         document.querySelector('.group-102-V6m').style.backgroundColor = '#f6f6f6';
         document.querySelector('.group-102-V6m p').style.color = '#2d2d2d';
         document.querySelector('.group-102-V6m p').style.fontWeight = '700';
+        document.querySelector('.group-102-V6m p').style.left = '23rem';
+        document.querySelector('.group-102-V6m').style.width = '625.879px';
 
         
         document.querySelector('.rectangle-97-tDT').style.backgroundColor = '#eeeeee';
         document.querySelector('.rectangle-97-tDT p').style.color = '#686868';
         document.querySelector('.rectangle-97-tDT p').style.fontWeight = '400';
-
+        document.querySelector('.rectangle-97-tDT p').style.left = '4.5rem';
+        document.querySelector('.rectangle-97-tDT').style.width = '290.241px';
+        document.querySelector('.rectangle-97-tDT').style.left = '62.5rem';
     	}
 			  
 			  

@@ -41,11 +41,11 @@
 			<div class="detail_info border_green">
 				<div class="seller">
 					<div class="img_wrap">
-						<img src="" />
+						<img src="${cpath}/assets/farmer_icon.png" />
 					</div>
 					<div class="farmer_name">${fundingInfo.farmer_name }</div>
 					<div class="chat_open">
-						<img src="" />
+						<img src="${cpath}/assets/chat_icon.png" />
 					</div>
 				</div>
 				<div class="funding_detail">

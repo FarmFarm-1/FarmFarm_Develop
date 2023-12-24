@@ -80,7 +80,7 @@ input {
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p45 {
-	width: 45.8rem;
+	width: 61.8rem;
 	height: 13.0963rem;
 	position: absolute;
 	left: 0;
@@ -90,22 +90,22 @@ input {
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p451 {
-	width: 45.8rem;
+	width: 29.8rem;
 	height: 13.0963rem;
 	position: absolute;
 	left: 0;
 	top: 0;
 	background-color: #eeeeee;
 	border-radius: 1.4882rem;
+	display: flex;
+    justify-content: center;
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p45 .item--3b3
 	{
-	width: 29.4rem;
+	width: 61.8rem;
 	height: 3.1rem;
-	position: absolute;
-	left: 4.2rem;
-	top: 3rem;
+	margin-top: 30px;
 	text-align: center;
 	font-size: 2.4556rem;
 	font-weight: 700;
@@ -118,11 +118,10 @@ input {
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-90-p451 .item--3b31
 	{
+	margin-top: 30px;
 	width: 4.5rem;
 	height: 3.1rem;
-	position: absolute;
-	left: 21rem;
-	top: 3rem;
+	
 	text-align: center;
 	font-size: 2.4556rem;
 	font-weight: 400;
@@ -134,10 +133,10 @@ input {
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB {
-	width: 45.8rem;
+	width: 29.8rem;
 	height: 13.0963rem;
 	position: absolute;
-	left: 45.8rem;
+	left: 61.8rem;
 	top: 0;
 	/* border: solid 0.0744rem #d9d9d9; */
 	box-sizing: border-box;
@@ -146,24 +145,24 @@ input {
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB1 {
-	width: 45.8rem;
+	width: 61.8rem;
 	height: 13.0963rem;
 	position: absolute;
-	left: 45.8rem;
+	left: 29.8rem;
 	top: 0;
 	/* border: solid 0.0744rem #d9d9d9; */
 	box-sizing: border-box;
 	background-color: #f6f6f6;
 	border-radius: 1.4882rem;
+	display: flex;
+    justify-content: center;
 }
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-98-XjB .item--MCR
 	{
-	width: 4.5rem;
+	width: 29.8rem;
 	height: 3.1rem;
-	position: absolute;
-	left: 19.5rem;
-	top: 3rem;
+	margin-top: 30px;
 	text-align: center;
 	font-size: 2.4556rem;
 	font-weight: 400;
@@ -177,9 +176,7 @@ input {
 	{
 	width: 29.4rem;
 	height: 3.1rem;
-	position: absolute;
-	left: 7.5rem;
-	top: 3rem;
+	margin-top: 30px;
 	text-align: center;
 	font-size: 2.4556rem;
 	font-weight: 700;
@@ -202,7 +199,7 @@ input {
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-89-trZ .term_status
 	{
 	margin-top: 8rem;
-	margin-left: 15rem;
+	margin-left: 18rem;
 	box-sizing: border-box;
 	width: 65rem;
 	height: 5rem;
@@ -214,11 +211,8 @@ input {
 
 .mainpage--BGh .group-174-idK .auto-group-npnm-LPo .rectangle-89-trZ .term_status .rectangle-93-xV3
 	{
-	width: 32.2944rem;
+	width: 29.4rem;
 	height: 1.1906rem;
-	/* position: absolute; */
-	left: 13.5428rem;
-	top: 16.5193rem;
 	background-color: #f4900c;
 }
 

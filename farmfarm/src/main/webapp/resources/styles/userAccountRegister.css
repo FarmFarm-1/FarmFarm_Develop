@@ -25,9 +25,8 @@
   flex-shrink: 0;
 }
 .accounticon-up9 {
-  margin-right: 6.8rem;
   box-sizing: border-box;
-  padding: 7.137rem 7.238rem 7.238rem 7.138rem;
+  padding: 7.137rem 10.5rem 7.238rem 10.5rem;
   background-color: #f1f1f1;
   border-radius: 0.7431rem;
   flex-shrink: 0;
@@ -45,7 +44,7 @@
   flex-shrink: 0;
 }
 .item--uBs {
-  margin-right: 3.9896rem;
+  margin-right: 1rem;
   display: flex;
   font-size: 1.4337rem;
   font-weight: 400;

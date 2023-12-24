@@ -45,10 +45,25 @@
                 }
                 if (headerSelect === "funding") {
                     menu_funding.style.color = '#2d2d2d';
+                    menu_funding.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-1');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
                 } else if (headerSelect === "auction") {
                     menu_auction.style.color = '#2d2d2d';
+                    menu_auction.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-2');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
                 } else if (headerSelect === "myFarm") {
                     menu_myFarm.style.color = '#2d2d2d';
+                    menu_myFarm.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-3');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
                 }
             });
     function selectMyFarm() {
@@ -79,6 +94,7 @@
             }
         });
     }
+    
 </script>
 <body>
     <div class="header">
@@ -95,14 +111,18 @@
                         <div class="menu_funding">
                             <a id="menu_funding"
                                 onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
+                                
                         </div>
+                        <div class="underbar-1 hidden"></div>
                         <div class="menu_auction">
                             <a id="menu_auction"
                                 onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
                         </div>
+                                <div class="underbar-2 hidden"></div>
                         <div class="menu_myFarm">
                             <a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
                         </div>
+                                <div class="underbar-3 hidden"></div>
                     </div>
                 </div>
                 <div class="header_join_login" id="header_join_login">
