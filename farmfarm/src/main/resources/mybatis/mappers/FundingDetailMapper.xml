@@ -72,7 +72,7 @@
 		select count(*)
 		from user_cart
 		where
-		product_serial_num=#{product_serial_num}
+		product_serial_num = #{product_serial_num}
 	</select>
 
 	<select id="myBookmarkShow" parameterType="hashMap"
@@ -141,5 +141,16 @@
 		#{user_serial_num}
 		AND product_serial_num = #{product_serial_num}
 	</update>
+	
+	<select id="checkFundingPossibility" parameterType="map" resultType="int">
+		SELECT 
+	    CASE 
+	        WHEN (SELECT SUM(user_funding_pct) + #{pay} 
+	              FROM funding_history 
+	              WHERE product_serial_num = #{product_serial_num}) > 100 
+	        THEN 0
+	        ELSE 1
+	    END
+	</select>
 
 </mapper>

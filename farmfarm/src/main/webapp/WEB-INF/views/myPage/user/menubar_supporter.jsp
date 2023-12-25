@@ -27,15 +27,32 @@
 <script type="text/javascript">
 	let serial_num = "${sessionScope.serial_num}";
 	var check = "${check}";
-
 	$(function() {
 		showNavBar();
-
+		
 		if (check == "point") {
 			usedFarmMoney();
 		}
+		let directPathVariable = "${path}";
+		if(directPathVariable != "") {
+			immediateAjaxFunc(directPathVariable);
+		}
 	})
-
+	
+	function immediateAjaxFunc(directPathVariable) {
+		console.log(directPathVariable);
+		$.ajax({
+			url:"${cpath}/myPageUser/"+directPathVariable,
+			method:"GET",
+			success: function(res){
+				$("#here").html(res);
+			},
+			error : function(xhr) {
+				location.href="${cpath}/myPageUser";
+			}
+		});
+	}
+	
 	function showNavBar() {
 		$.ajax({
 			url : '/myPageUser/navBarCnt',

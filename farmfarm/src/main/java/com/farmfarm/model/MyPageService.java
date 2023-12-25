@@ -242,4 +242,17 @@ public class MyPageService {
 		return returnMessage;
 	}
 
+	public int checkAccount(String serial_num) {
+		
+		if(serial_num.substring(0,2).equals("us")) {
+			if(myPageDAO.accountExistenceUser(serial_num) != null) {
+				return 1;
+			} else {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
+	}
+
 }

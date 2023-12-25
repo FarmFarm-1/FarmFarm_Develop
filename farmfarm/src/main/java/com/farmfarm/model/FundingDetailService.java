@@ -5,9 +5,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.User_cartVO;
+import com.farmfarm.exception.TransactionException;
 
 @Service
 public class FundingDetailService {
@@ -61,5 +63,27 @@ public class FundingDetailService {
 	
 	public Map<String, Object> sumfunding(String product_serial_num) {
 		return dao.sumfunding(product_serial_num);
+	}
+
+	@Transactional
+	public int fundingConfirm(Map<String, Object> abc) {
+		//current point check
+		int cur_point = dao.pointCheck((String)abc.get("user_serial_num"));
+		if(cur_point - (Integer)abc.get("payMoney") < 0) {
+			throw new TransactionException("notEnoughPoint");
+		}
+		//possibility of participate funding
+		int cur_possibility = dao.checkFundingPossibility(abc);
+		if(cur_possibility == 1) {
+			//funding participate check
+			int cnt = dao.selectcnt(abc);
+			if (cnt > 0) {
+				return dao.updateFunding(abc);
+			} else {
+				return dao.buyFunding(abc);
+			}
+		} else {
+			throw new TransactionException("participateImpossible");
+		}
 	}
 }

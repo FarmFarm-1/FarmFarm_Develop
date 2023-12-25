@@ -95,6 +95,10 @@
         });
     }
     
+    function directLink(path) {
+	   	document.getElementById("pathInput").value = path;
+		document.getElementById("myForm").submit();
+    }
 </script>
 <body>
     <div class="header">
@@ -102,7 +106,7 @@
             <div class="header_main">
                 <div class="header_title_menu">
                     <div class="header_title">
-                        <a onclick="location.href='${cpath}/main'"> <img
+                        <a onclick="location.href='${cpath}/'"> <img
                             class="logo_img" src="${cpath }/assets/logo.png" />
                             <p class="logo_name">팜팜</p>
                         </a>
@@ -140,10 +144,14 @@
                             <p class="new_text">N</p>
                         </div>
                     </div>
-                    <div class="userPoint_div"
-                        onclick="location.href='${cpath}/chargePoints'">
-                        내 팜머니 : <span class="userPoints"></span>p
-                    </div>
+            		
+            		<form id="myForm" action="${cpath}/myPageUser" method="post">
+					    <input type="hidden" name="path" id="pathInput" />
+	                    <div class="userPoint_div"
+	                        onclick="directLink('farmMoneyCharge')">
+	                        내 팜머니 : <span class="userPoints"></span>P
+	                    </div>
+	                </form>    
                 </div>
                 <div class="header_farmer_login" id="header_farmer_login">
                     <div class="messageBox_div2"
