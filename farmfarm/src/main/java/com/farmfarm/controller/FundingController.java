@@ -7,12 +7,17 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.farmfarm.exception.TransactionException;
 import com.farmfarm.model.FundingDetailService;
 import com.farmfarm.model.FundingService;
 import com.farmfarm.model.MyPageService;
@@ -29,7 +34,19 @@ public class FundingController {
 	
 	@Autowired
 	MyPageService myPageService;
-
+	
+	@PostMapping("/checkAccount")
+	@ResponseBody
+	public String checkAccount(HttpSession session) {
+		String serial_num = (String) session.getAttribute("serial_num");
+		int result = myPageService.checkAccount(serial_num);
+		if(result == 1) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
+	
 	@GetMapping("/fundingList")
 	public String showFundingList(Model model, HttpSession session) {
 		String type = null;
@@ -262,6 +279,11 @@ public class FundingController {
 
 		return "funding/fundingDetail";
 	}
+	
+	@ExceptionHandler(TransactionException.class)
+	public ResponseEntity<String> handleAllExceptions(Exception e) {
+	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+	}
 
 	@PostMapping("/fundingBuy")
 	public String showFundingBuy(String product_serial_num, Double pay, int payMoney, Model model,
@@ -275,16 +297,12 @@ public class FundingController {
 
 		return "funding/fundingBuy";
 	}
-
+	
 	@PostMapping("/fundingFinish")
-	public String showFundingFinish(String product_serial_num, Double pay, int payMoney, Model model,
+	@ResponseBody
+	public ResponseEntity<String> fundingProcess(String product_serial_num, Double pay, int payMoney, Model model,
 			HttpSession session) {
-		System.out.println("========================================");
-		System.out.println(pay);
-		System.out.println(payMoney);
-		System.out.println(product_serial_num);
 		
-		Map<String, Object> fundingInfo = (Map<String, Object>) fundingDetailService.fundingInfo(product_serial_num);
 		String user_serial_num = (String) session.getAttribute("serial_num");
 		
 		Map<String, Object> abc = new HashMap<String, Object>();
@@ -292,28 +310,17 @@ public class FundingController {
 		abc.put("product_serial_num", product_serial_num);
 		abc.put("pay", pay);
 		abc.put("payMoney", payMoney);
-		System.out.println(abc);
-
-		Map<String, Object> sumFunding = fundingDetailService.sumfunding(product_serial_num);
-		int sumfundingamount = 0;
-		double sumfundingpct = 0.0;
-		if (sumFunding != null) {
-			if (sumFunding != null && sumFunding.get("sumfundingamount") != null) {
-				sumfundingamount = (int) sumFunding.get("sumfundingamount");
-			}
-			if (sumFunding != null && sumFunding.get("sumfundingpct") != null) {
-				sumfundingpct = (double) sumFunding.get("sumfundingpct");
-			}
-		}
-
-		int cnt = fundingDetailService.selectcnt(abc);
-		if (cnt > 0) {
-			fundingDetailService.updateFunding(abc);
-		} else {
-			fundingDetailService.buyFunding(abc);
-		}
 		
+		try {
+			String result = Integer.toString(fundingDetailService.fundingConfirm(abc));
+			return ResponseEntity.ok(result);
+		} catch (TransactionException e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+		}
+	}
+	
+	@GetMapping("/fundingSuccess")
+	public String showFundingFinish() {
 		return "funding/fundingFinish";
-
 	}
 }

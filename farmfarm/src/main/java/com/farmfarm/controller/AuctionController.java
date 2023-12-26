@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.Auction_historyVO;
-import com.farmfarm.exception.AuctionException;
+import com.farmfarm.exception.TransactionException;
 import com.farmfarm.model.AuctionService;
 import com.farmfarm.model.MyPageService;
 
@@ -32,7 +32,7 @@ public class AuctionController {
 	MyPageService myPageService;
 	
 	//hs code
-	@ExceptionHandler(AuctionException.class)
+	@ExceptionHandler(TransactionException.class)
 	public ResponseEntity<String> handleAllExceptions(Exception e) {
 	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 	}
@@ -80,7 +80,7 @@ public class AuctionController {
 		try {
 			String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
 	        return ResponseEntity.ok(result);
-	    } catch (AuctionException e) {
+	    } catch (TransactionException e) {
 	    	System.out.println(e.getMessage());
 	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
 	    }

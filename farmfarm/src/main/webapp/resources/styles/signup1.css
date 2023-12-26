@@ -61,7 +61,7 @@ input {
 
 .mainpage--1tZ .group-172-CfX .auto-group-bzzh-Xxh {
 	box-sizing: border-box;
-	padding: 5rem 0rem 1rem 40rem;
+	padding: 10rem 0rem 1rem 40rem;
 	width: 100%;
 	align-items: center;
 	display: flex;
@@ -126,7 +126,7 @@ input {
 }
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-90-1YR {
-	width: 45.8rem;
+	width: 61.8rem;
 	height: 13.0963rem;
 	position: absolute;
 	left: 0;
@@ -136,20 +136,24 @@ input {
 }
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-90-1YR1 {
-	width: 45.8rem;
+	display: flex;
+	justify-content: center;
+	width: 29.8rem;
 	height: 13.0963rem;
 	position: absolute;
 	left: 0;
 	top: 0;
 	background-color: #eeeeee;
 	border-radius: 1.4882rem;
+	height: 13.0963rem;
 }
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-90-1YR .item--fWV
 	{
-	width: 29.4rem;
+	
+	width: 61.8rem;
 	height: 3.1rem;
-	position: absolute;
+	margin-top: 30px;
 	left: 4.5rem;
 	top: 2.8rem;
 	text-align: center;
@@ -164,9 +168,9 @@ input {
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-90-1YR1 .item--fWV1
 	{
+	margin-top: 30px;
 	width: 4.5rem;
 	height: 3.1rem;
-	position: absolute;
 	left: 21rem;
 	top: 2.8rem;
 	text-align: center;
@@ -180,21 +184,24 @@ input {
 }
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-97-LKo {
-	width: 45.8rem;
+	width: 29.8rem;
 	height: 13.0963rem;
 	position: absolute;
-	left: 45.8rem;
+	left: 61.8rem;
 	top: 0;
 	/* border: solid 0.0744rem #d9d9d9; */
 	box-sizing: border-box;
 	background-color: #eeeeee;
 	border-radius: 1.4882rem;
 }
+
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-97-LKo1 {
-	width: 45.8rem;
+	display: flex;
+	justify-content: center;
+	width: 61.8rem;
 	height: 13.0963rem;
 	position: absolute;
-	left: 45.8rem;
+	left: 29.8rem;
 	top: 0;
 	/* border: solid 0.0744rem #d9d9d9; */
 	box-sizing: border-box;
@@ -204,25 +211,27 @@ input {
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-97-LKo .item--NnH
 	{
-	width: 4.5rem;
+	margin-top: 29px;
+	width: 29.4rem;
 	height: 3.1rem;
-	position: absolute;
-	left: 19.5rem;
+	/* position: absolute; */
+	left: 7.5rem;
 	top: 2.8rem;
 	text-align: center;
 	font-size: 2.4556rem;
-	font-weight: 400;
+	
 	line-height: 1.2575;
 	color: #686868;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
+	width: 29.4rem;
 }
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-97-LKo1 .item--NnH1
 	{
 	width: 29.4rem;
 	height: 3.1rem;
-	position: absolute;
+	margin-top: 30px;
 	left: 7.5rem;
 	top: 2.8rem;
 	text-align: center;
@@ -272,7 +281,8 @@ input {
 	width: 4.8367rem;
 	height: 4.8367rem;
 	/* position: absolute; */
-	margin-left: -65rem; object-fit : contain;
+	margin-left: -65rem;
+	object-fit: contain;
 	vertical-align: top;
 	object-fit: contain;
 }
@@ -283,7 +293,8 @@ input {
 	height: 4.8367rem;
 	/* position: absolute; */
 	/* top: 14.659rem; */
-	margin-left: 25rem; background-color : #d9d9d9;
+	margin-left: 25rem;
+	background-color: #d9d9d9;
 	border-radius: 2.4184rem;
 	background-color: #d9d9d9;
 }
@@ -312,7 +323,8 @@ input {
 
 .mainpage--1tZ .group-172-CfX .auto-group-pxyy-6gM .rectangle-89-e5b .term_status2
 	{
-	margin-left: 15rem; box-sizing : border-box;
+	margin-left: 15rem;
+	box-sizing: border-box;
 	width: 65rem;
 	height: 5rem;
 	position: relative;
@@ -345,7 +357,8 @@ input {
 	height: 2.9rem;
 	/* position: absolute; */
 	margin-left: 23.5rem;
-	margin-top: 1rem; left : 42rem;
+	margin-top: 1rem;
+	left: 42rem;
 	top: 21rem;
 	text-align: center;
 	font-size: 2.2323rem;
@@ -363,7 +376,8 @@ input {
 	height: 2.9rem;
 	/* position: absolute; */
 	margin-left: 25rem;
-	margin-top: 1rem; left : 74rem;
+	margin-top: 1rem;
+	left: 74rem;
 	top: 21rem;
 	text-align: center;
 	font-size: 2.2323rem;
@@ -439,7 +453,8 @@ input {
 	width: 9.8rem;
 	height: 3.1rem;
 	/* position: absolute; */
-	margin-left: 3rem; left : 16.6426rem;
+	margin-left: 3rem;
+	left: 16.6426rem;
 	top: 41.1247rem;
 	display: flex;
 	align-items: center;
@@ -728,7 +743,7 @@ input {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: solid 0.0744rem #d9d9d9; 
+	border: solid 0.0744rem #d9d9d9;
 	box-sizing: border-box;
 	background-color: #a2a2a3;
 	border-radius: 0.3721rem;

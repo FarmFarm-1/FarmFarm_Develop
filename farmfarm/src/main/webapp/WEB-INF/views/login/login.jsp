@@ -26,6 +26,8 @@
 
 </head>
 <script>
+
+
 	document.addEventListener('keydown', onEnterLogin);
 
 	function onEnterLogin() {
@@ -70,6 +72,8 @@
 			}
 		}
 	}
+	
+	
 </script>
 <body>
 	<jsp:include
@@ -97,7 +101,7 @@
 				</div>
 			</div>
 
-			<div class="auto-group-prd3-k7F">
+			<div class="auto-group-prd3-k7F" style="display: flex;">
 				<div class="rectangle-97-tDT" onclick="showForm('sloginForm')">
 					<p class="item--RMo">서포터로 로그인하기</p>
 				</div>

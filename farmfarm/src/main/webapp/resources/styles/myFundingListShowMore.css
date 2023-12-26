@@ -39,9 +39,8 @@
 
 .accordion {
 	cursor: pointer;
-	padding: 18px;
-	/* width: 100%; */
-	width: 50%;
+	padding: 18px; 
+	width: 100%;
 	min-width: 550px;
 	text-align: left;
 	border: none;
@@ -56,11 +55,13 @@
 	max-height: 0rem;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
-	/* width: 100%; */
-	width: 50%;
+	width: 90%;
+    position: relative;
+    left: 4rem;
 	min-width: 550px;
 	box-sizing: border-box;
 	background-color: #bedab1;
+	border-radius: 1rem;
 }
 
 .panel.is-open {

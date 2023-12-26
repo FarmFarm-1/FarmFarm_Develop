@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -41,11 +41,11 @@
 			<div class="detail_info border_green">
 				<div class="seller">
 					<div class="img_wrap">
-						<img src="" />
+						<img src="${cpath}/assets/farmer_icon.png" />
 					</div>
 					<div class="farmer_name">${fundingInfo.farmer_name }</div>
 					<div class="chat_open">
-						<img src="" />
+						<img src="${cpath}/assets/chat_icon.png" />
 					</div>
 				</div>
 				<div class="funding_detail">
@@ -259,7 +259,7 @@
 						} else {
 							negativePayDiv();
 							payDiv.innerHTML = "";
-						}
+						}	
 					} else {
 						alert("0원 이하는 구매가 불가능합니다.");
 						negativePayDiv();
@@ -303,10 +303,24 @@
 		}
 
 		function submitForm() {
-			var form = document.getElementById("payForm");
-			form.submit();
-		}
-		//================================================================================================
+			$.ajax({
+				url : "${cpath}/funding/checkAccount",
+				method : "post",
+				success: function(res){
+					if (res == "success") {
+						var form = document.getElementById("payForm");
+						form.submit();						
+					} else {
+						alert("계좌를 등록하세요");
+					}
+				},
+				error : function() {
+					alert("다시 시도하세요");
+				}
+			});
+		}	
+		
+		
 		$(".bookmark-btn").click(
 				function() {
 					console.log(serial_num);

@@ -45,17 +45,16 @@
 					</span>
 				</p>
 			</div>
-			<a href="#down"><img class="mingcute-down-line-Pgy"
-				src="${cpath }/assets/down-line.png" /></a>
+			<a href="javascript:void(0);"
+				onclick="scrollToSection('section2-WWh');"><img
+				class="mingcute-down-line-Pgy" src="${cpath }/assets/down-line.png" /></a>
 		</div>
-		<a id="down">
-			<div class="section2-WWh">
-				<p class="item--drD">
-					농작물 펀딩부터 경매까지 한 곳에서 경험하세요. <br /> 팜팜과 함께하는 농작물 펀딩이 <br /> 당신의 자산에
-					새로움을 불어넣습니다.
-				</p>
-			</div>
-		</a>
+		<div class="section2-WWh">
+			<p class="item--drD">
+				농작물 펀딩부터 경매까지 한 곳에서 경험하세요. <br /> 팜팜과 함께하는 농작물 펀딩이 <br /> 당신의 자산에
+				새로움을 불어넣습니다.
+			</p>
+		</div>
 		<div class="section31-oPK">
 			<div class="scroll_on">
 				<p class="item--XKK">신뢰</p>
@@ -153,8 +152,7 @@
 
 			</div>
 			<div class="section52-jjK">
-				<div id="apiChart">
-				</div>
+				<div id="apiChart"></div>
 
 				<div class="section42text-ebP scroll_on">
 					<p class="api-CN1">농산물 실시간 가격 API</p>
@@ -334,8 +332,8 @@
 				</div>
 				<div class="auto-group-jwoo-emb">
 					<p class="item--C2R">내 농작물을 위해 투자금 받고, 대량 판매 해보세요</p>
-					<button onclick="goMypage()"
-						class="section72btn-r6y">내 농장 등록하기</button>
+					<button onclick="goMypage()" class="section72btn-r6y">내 농장
+						등록하기</button>
 				</div>
 			</div>
 		</div>
@@ -343,6 +341,12 @@
 
 
 	<script>
+	
+	function scrollToSection(sectionId) {
+		var elements = document.getElementsByClassName('section2-WWh');
+		var section = elements[0];
+        section.scrollIntoView({ behavior: 'smooth' });
+    }
 	
 	let serial_num = "${sessionScope.serial_num}";
 	
