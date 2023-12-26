@@ -13,12 +13,17 @@
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-	
+
 <link rel="stylesheet" href="./styles/signup2.css" />
 </head>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
 
 <script>
 	document.addEventListener('keydown', onEnterLogin);
@@ -27,7 +32,8 @@
 		var keyCode = window.event.keyCode;
 
 		if (keyCode == 13
-				&& window.getComputedStyle(document.querySelector('#validationModal')).display != 'none') {
+				&& window.getComputedStyle(document
+						.querySelector('#validationModal')).display != 'none') {
 			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
 			document.querySelector('#validationModal').style.display = 'none';
 			event.preventDefault(); // 이벤트 전파 방지
@@ -79,45 +85,49 @@
 
 	function email_check() {
 
-		$.ajax({
-			url : "/emailCheck",
-			type : "POST",
-			data : {
-				"email" : $("#email").val()
-			},
-			success : function(result) {
-				if (result == "") {
-					//인증 번호 전송
-					/* alert('인증번호를 전송했습니다.'); */
-					
-					vModal.style.display = 'flex';
-					//document.getElementById('signUpModal').style.display = 'flex'; //모달을 띄위는 코드
-					/* vModal.textContent = "인증번호를 전송했습니다.";
-					vModal.textContent = "이메일을 확인해주세요."; */
-					
-					document.querySelector('#validationModal .item--MHF').textContent = "인증번호를 전송했습니다.";
-					document.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 확인해주세요.";
+		$
+				.ajax({
+					url : "/emailCheck",
+					type : "POST",
+					data : {
+						"email" : $("#email").val()
+					},
+					success : function(result) {
+						if (result == "") {
+							//인증 번호 전송
+							/* alert('인증번호를 전송했습니다.'); */
 
-					
-					send_cer_num();
-					
-					email_check_boolean = true;
-					
-					check_cer_num_btn.style.display = 'flex';
-					
-				} else {
-					// 모달 출력
-					/* alert('이미 존재하는 이메일입니다.'); */
-					vModal.style.display = 'flex'; //모달을 띄위는 코드
-					
-					document.querySelector('#validationModal .item--MHF').textContent = "이미 존재하는 이메일입니다.";
-					document.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 다시 입력해주세요.";
+							vModal.style.display = 'flex';
+							//document.getElementById('signUpModal').style.display = 'flex'; //모달을 띄위는 코드
+							/* vModal.textContent = "인증번호를 전송했습니다.";
+							vModal.textContent = "이메일을 확인해주세요."; */
 
-					email_check_boolean = false;
+							document
+									.querySelector('#validationModal .item--MHF').textContent = "인증번호를 전송했습니다.";
+							document
+									.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 확인해주세요.";
 
-				}
-			}
-		});
+							send_cer_num();
+
+							email_check_boolean = true;
+
+							check_cer_num_btn.style.display = 'flex';
+
+						} else {
+							// 모달 출력
+							/* alert('이미 존재하는 이메일입니다.'); */
+							vModal.style.display = 'flex'; //모달을 띄위는 코드
+
+							document
+									.querySelector('#validationModal .item--MHF').textContent = "이미 존재하는 이메일입니다.";
+							document
+									.querySelector('#validationModal .id-2-RY1').textContent = "이메일을 다시 입력해주세요.";
+
+							email_check_boolean = false;
+
+						}
+					}
+				});
 
 	}
 
@@ -132,6 +142,7 @@
 			success : function(result) {
 				// 지금 인증번호가 왔는데
 				cerNum = result;
+				console.log(result);
 
 			}
 		});
@@ -141,10 +152,9 @@
 	function check_cer_num() {
 		//const cerNum_check = document.getElementById('cerNum_check_text');
 		var inputCerNum = $("#cerNum").val(); //입력한 인증번호
-		
 
 		if (inputCerNum == cerNum) {
-		
+
 			// 인증 성공 warn text 2 flex
 			//인증성공하면 초로객으로 인증성공 문구 보이게함
 			cerNum_check.style.visibility = 'visible';
@@ -154,23 +164,24 @@
 			allInputCheck();
 		} else {
 			check_cer_num_modal();
-			
+
 		}
 	}
-	
-	function check_cer_num_modal(){
-		$.ajax({
-			url : "/cerNumModal",
-			success : function(responseData) {
 
-				document.querySelector('#validationModal').style.display = 'flex';
+	function check_cer_num_modal() {
+		$
+				.ajax({
+					url : "/cerNumModal",
+					success : function(responseData) {
 
-				document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
-				document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
-				
-				cerNum_check_boolean = false;
-			}
-		});
+						document.querySelector('#validationModal').style.display = 'flex';
+
+						document.querySelector('#validationModal .item--MHF').textContent = "인증을 실패하였습니다.";
+						document.querySelector('#validationModal .id-2-RY1').textContent = "올바른 인증번호를 입력해주세요.";
+
+						cerNum_check_boolean = false;
+					}
+				});
 	}
 
 	function allInputCheck() {
@@ -384,7 +395,6 @@
 							name="passwordCheck" id="passwordCheck" class="group-98-2FX"
 							placeholder="비밀번호를 한번 더 입력해 주세요." required="required" /> <span
 							id="password_check_text2" class="warn_text2"> 비밀번호 일치 </span>
-						<!-- <div class="group-98-2FX">비밀번호를 한번 더 입력해 주세요.</div> -->
 					</div>
 
 					<div class="formpwd-NWR">
@@ -392,17 +402,25 @@
 							<div class="item--dSM">이름</div>
 							<p class="item--9Qh">*</p>
 						</div>
-						<input onkeyup="allInputCheck()" type="text" name="user_name"
-							id="name" class="group-98-g9j" placeholder="이름을 입력해 주세요."
-							required="required" />
+						<div class="auto-group-vdzx-t852">
+							<input onkeyup="allInputCheck()" type="text" name="user_name"
+								id="name" class="group-98-g9j"
+								placeholder="본인인증(계좌인증을 위한 실명조회)을 진행해주세요." required="required"
+								readonly /><input type="button" id="cert_btn" onclick="test()"
+								class="group-96-GeR2" value="본인인증" />
+						</div>
+						<span id="cert" class="warn_text3"> 실명인증성공 </span>
 					</div>
 
 					<div class="auto-group-sgld-ue5">
+
 						<input type="button" onclick="location.href='login'"
 							class="group-100-Q53" value="취소" />
 						<button id="signUpBtn" type="button" onclick="s_signup3()"
 							name="signUpBtn" class="group-99-bQR">가입하기</button>
 					</div>
+
+
 				</form>
 
 			</div>
@@ -412,4 +430,41 @@
 	</div>
 
 </body>
+<script>
+	
+	function test() {
+		
+		var cert = document.getElementById('cert');
+		
+		IMP.init('imp00621658'); // 예: imp00000000
+
+		IMP.certification({ // param
+			pg : 'MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
+			merchant_uid : "ORD20180131-0000011" // 주문 번호
+		}, function(rsp) { // callback
+			if (rsp.success) {
+				console.log('success'); // 이름란에 가져온 실명 넣고 , 비활처리 및 아래 인증확인 초록문구 추가
+				$.ajax({
+					url : "${cpath}/myPageUser/cert",
+					data : {
+						imp_uid : rsp.imp_uid
+					},
+					type : "post",
+					success : function(res) {
+						$('#name').val(res);
+						cert.style.visibility = 'visible';
+						allInputCheck();
+					},
+					error : function(xhr) {
+						console.log('error');
+					}
+				});
+
+			} else {
+				console.log('fail');
+			}
+		});
+
+	}
+</script>
 </html>
