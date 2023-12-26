@@ -302,7 +302,7 @@
 										src="${cpath }/assets/info_accIcon.png" />
 									<div class="item--WCV">결제정보 관리</div>
 								</div>
-								<div class="item--cWR">간편하게 계좌 등록하고, 빠르게 결제하세요!</div>
+								<div class="item--cWR">간편하게 계좌 등록하고, 펀딩에 참여하세요!</div>
 								<button onclick="accountRegister()" class="group--Gay">
 									<div class="item--QhB">계좌 등록</div>
 									<img class="group-uP3" src="${cpath }/assets/right_pushAcc.png" />

@@ -19,6 +19,11 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
+<!-- iamport.payment.js -->
+<script type="text/javascript"
+	src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+
+
 <script>
 	document.addEventListener('keydown', onEnterLogin);
 
@@ -403,9 +408,14 @@
 							<div class="item--dSM">이름</div>
 							<p class="item--9Qh">*</p>
 						</div>
-						<input onkeyup="allInputCheck()" type="text" name="farmer_name"
-							id="name" class="group-98-g9j" placeholder="이름을 입력해 주세요."
-							required="required" />
+						<div class="auto-group-vdzx-t852">
+							<input onkeyup="allInputCheck()" type="text" name="user_name"
+								id="name" class="group-98-g9j"
+								placeholder="본인인증(계좌인증을 위한 실명조회)을 진행해주세요." required="required"
+								readonly /><input type="button" id="cert_btn" onclick="test()"
+								class="group-96-GeR2" value="본인인증" />
+						</div>
+						<span id="cert" class="warn_text3"> 실명인증성공 </span>
 					</div>
 
 					<div class="auto-group-sgld-ue5">
@@ -423,4 +433,41 @@
 	</div>
 
 </body>
+<script>
+	
+	function test() {
+		
+		var cert = document.getElementById('cert');
+		
+		IMP.init('imp00621658'); // 예: imp00000000
+
+		IMP.certification({ // param
+			pg : 'MIIiasTest',//본인인증 설정이 2개이상 되어 있는 경우 필수 
+			merchant_uid : "ORD20180131-0000011" // 주문 번호
+		}, function(rsp) { // callback
+			if (rsp.success) {
+				console.log('success'); // 이름란에 가져온 실명 넣고 , 비활처리 및 아래 인증확인 초록문구 추가
+				$.ajax({
+					url : "${cpath}/myPageUser/cert",
+					data : {
+						imp_uid : rsp.imp_uid
+					},
+					type : "post",
+					success : function(res) {
+						$('#name').val(res);
+						cert.style.visibility = 'visible';
+						allInputCheck();
+					},
+					error : function(xhr) {
+						console.log('error');
+					}
+				});
+
+			} else {
+				console.log('fail');
+			}
+		});
+
+	}
+</script>
 </html>
