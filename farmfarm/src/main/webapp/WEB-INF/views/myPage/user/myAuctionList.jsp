@@ -36,7 +36,10 @@
 
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${aList.auction_thumb_img_url}" />
+					src="${aList.auction_thumb_img_url}"
+					<c:if test="${aList.product_status eq '경매중'}">
+                		onclick="location.href='/auction/auctionDetail?product_serial_num=${fList.product_serial_num}'"
+             		</c:if>/>
 
 				<div class="fundinginfo-B9X">
 					<div class="auto-group-anxd-tCM">
@@ -44,7 +47,18 @@
 						<p class="item--UwF">${aList.farm_name}</p>
 						<div class="auto-group-huhf-zPo">
 							<img class="mdi-location-v2Z" src="./assets/location.png" />
-							<p class="item--3cy">${aList.farm_address}</p>
+							<p class="item--3cy">
+								<c:choose>
+									<c:when
+										test="${not empty aList.farm_address and aList.farm_address.contains('')}">
+										<c:set var="words" value="${aList.farm_address.split(' ')}" />
+										<c:out value="${words[0]} ${words[1]}" />
+									</c:when>
+									<c:otherwise>
+										<c:out value="${aList.farm_address}" />
+									</c:otherwise>
+								</c:choose>
+							</p>
 						</div>
 					</div>
 				</div>
