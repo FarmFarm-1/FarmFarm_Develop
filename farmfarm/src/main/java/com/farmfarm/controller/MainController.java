@@ -45,6 +45,7 @@ public class MainController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
+		session.setAttribute("headerSelect","logout");
 		session.removeAttribute("serial_num");
 		return "loginIndex";
 	}
