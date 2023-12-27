@@ -124,6 +124,7 @@ button:hover {
 				success: function(res){
 					if(res == "success") {
 						alert("계좌 등록이 완료되었습니다.");
+							location.reload();
 					} else {
 						alert("계좌 등록이 실패되었습니다.");
 					}

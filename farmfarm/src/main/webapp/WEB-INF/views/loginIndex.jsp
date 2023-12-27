@@ -25,10 +25,12 @@
 	</form>
 
 	<jsp:include page="header.jsp" />
+	
 
 
 	<!-- front -->
 	<div class="mainpage--A2H scroll_wrap">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="section1-L5B">
 			<div class="pexels-flambo-1112080-1-T3K"></div>
 			<div class="rectangle-208-VVo"></div>
@@ -354,7 +356,7 @@
 		if (serial_num.substring(0, 2) === "FA"){
 			location.href='${cpath}/makeProject'
 		} else {
-			alert("파머 회원으로 로그인 하세요.");
+			showModal_success("WARNING", "파머 회원으로 로그인 하세요.");
 		}
 	}
 	

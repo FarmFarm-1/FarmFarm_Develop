@@ -20,6 +20,7 @@
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<div class="body">
 			<div class="group-156-QXX">
 				<div class="search">

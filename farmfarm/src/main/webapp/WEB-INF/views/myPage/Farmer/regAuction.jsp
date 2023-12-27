@@ -101,10 +101,10 @@
 				}),
 				success : function(response) {
 					if (response === 'success') {
-						alert('상품 경매 등록에 성공했습니다.');
+						showModal_success("등록 결과", "상품 경매 등록에 성공했습니다.");
 						location.href = '/myPageFarmer';
 					} else {
-						alet('등록 실패 ..');
+						showModal_success("등록 실패", "상품을 다시 등록해 주세요.");
 					}
 
 				},
@@ -114,7 +114,7 @@
 			});
 
 		} else {
-			alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+			showModal_success("WARNING", "모든 항목을 필수로 기입하여야 등록 가능합니다.");
 		}
 
 	}
@@ -167,6 +167,7 @@
 
 
 <body>
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<div class="mypage--ro7" onclick="daySet()">
 		<div class="auctionform-YHj">
 			<div class="auto-group-d797-4G5">
