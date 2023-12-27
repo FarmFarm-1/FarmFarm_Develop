@@ -96,6 +96,7 @@
 						</form>
 						<datalist id="paylist"></datalist>
 					</div>
+					<p class="pctText">%</p>
 					<div class="Paydiv" id="Paydiv"></div>
 				</div>
 				<div class="point-show">
@@ -247,12 +248,14 @@
 					if (inputValue >= 0) {
 						if (inputValue != 0) {
 							if (inputValue > end) {
-								showModal("WARNING", "입력하신 값이 최대값을 초과하였습니다. <br> 최대 " + end
-										+ "까지만 입력 가능합니다.");
+								showModal("WARNING",
+										"입력하신 값이 최대값을 초과하였습니다. <br> 최대 " + end
+												+ "까지만 입력 가능합니다.");
 								payInput.value = end;
 							} else if (payInput.value
 									&& inputValue.toFixed(2) != inputValue) {
-								showModal("WARNING", "소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+								showModal("WARNING",
+										"소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
 								payInput.value = inputValue.toFixed(2);
 							}
 							updatePayDiv();
