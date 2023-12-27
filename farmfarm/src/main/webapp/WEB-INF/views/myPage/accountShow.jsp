@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <link rel="stylesheet" href="${cpath}/styles/userAccountShow.css">
 <style>
 * {
@@ -165,7 +166,7 @@ button:hover {
 		document.getElementById(formName).submit();
     }
 </script>
-<form id="accountReloadForm">
+<form id="accountReloadForm" method="post">
 	<input type="hidden" name="path" id="accountPathInput" />
 </form>  
 <div class="accountregis-RDX">
@@ -174,7 +175,44 @@ button:hover {
 	<div class="auto-group-wk5s-tcu">
 		<div class="accountinfohead-yuF">
 			<div class="auto-group-cf2d-vpV">
-				<img class="shcsymbolci-1-fXB" src="/assets/shcsymbolci-1.png" />
+				
+				<c:choose>
+					<c:when test="${account_bank=='농협'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/nh.png" />
+					</c:when>
+					<c:when test="${account_bank=='KB국민은행'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/kbbank.png" />
+					</c:when>
+					<c:when test="${account_bank=='기업은행'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/ibk.png" />
+					</c:when>
+					<c:when test="${account_bank=='우리은행'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/woori.png" />
+					</c:when>
+					<c:when test="${account_bank=='신한은행'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/shinhan.png" />
+					</c:when>
+					<c:when test="${account_bank=='하나은행(서울은행)'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/hana.png" />
+					</c:when>
+					<c:when test="${account_bank=='카카오뱅크'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/kakao.png" />
+					</c:when>
+					<c:when test="${account_bank=='우체국'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/.png" />
+					</c:when>
+					<c:when test="${account_bank=='토스뱅크'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/toss.png" />
+					</c:when>
+					<c:when test="${account_bank=='K뱅크'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/kbank.png" />
+					</c:when>
+					<c:when test="${account_bank=='SC제일은행'}">
+						<img class="shcsymbolci-1-fXB" src="/assets/bankicon/sc.png" />
+					</c:when>
+					<c:otherwise><img class="shcsymbolci-1-fXB" src="/assets/logo_sweetpotato.png" /></c:otherwise>
+				</c:choose>
+				
 				<div class="bank-C1K">${account_bank}</div>
 				<div class="changAccount-btn" onclick="showAccountModal()">계좌 변경</div>
 			</div>
@@ -238,6 +276,7 @@ button:hover {
 					<option value="287">메리츠증권</option>
 					<option value="289">엔에이치투자증권</option>
 					<option value="290">부국증권</option>
+					<option value="92">토스뱅크</option>
 				</select>
 				</div>
 			</div>

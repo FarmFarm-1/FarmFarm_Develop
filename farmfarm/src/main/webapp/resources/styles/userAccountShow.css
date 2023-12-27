@@ -15,7 +15,7 @@
 }
 .auto-group-wk5s-tcu {
   box-sizing: border-box;
-  padding: 1.35rem 1.4rem 0.85rem 1.4rem;
+  padding: 2rem 2rem 2rem 2rem;
   width: 35rem;
   height: 20rem;
   display: flex;
@@ -47,7 +47,6 @@
   display: flex;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 1.2575;
   color: #2d2d2d;
   font-family: Pretendard, 'Source Sans Pro';
   white-space: nowrap;

@@ -165,7 +165,7 @@ button:hover {
 		document.getElementById(formName).submit();
     }
 </script>
-<form id="accountReloadForm">
+<form id="accountReloadForm" method="post">
 	<input type="hidden" name="path" id="accountPathInput" />
 </form>  
 <div id="modalWrap-accountRegister">
@@ -221,6 +221,7 @@ button:hover {
 					<option value="287">메리츠증권</option>
 					<option value="289">엔에이치투자증권</option>
 					<option value="290">부국증권</option>
+					<option value="92">토스뱅크</option>
 				</select>
 				</div>
 			</div>

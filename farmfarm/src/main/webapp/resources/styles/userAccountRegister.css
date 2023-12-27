@@ -30,6 +30,8 @@
   background-color: #f1f1f1;
   border-radius: 0.7431rem;
   flex-shrink: 0;
+  width: 35rem;
+  text-align: center;
 }
 .ic-round-plus-qC1 {
   width: 2.625rem;
