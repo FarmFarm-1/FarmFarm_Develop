@@ -25,6 +25,15 @@
 </head>
 
 <script type="text/javascript">
+	setInterval(function () {
+		$.get("${cpath}/checkUserLoginStatus", function(data) {
+				if(!data.loginStatus) {
+					location.href = "${cpath}/login";
+				}
+			}
+		)
+	},10000);
+
 	let serial_num = "${sessionScope.serial_num}";
 	var check = "${check}";
 	$(function() {

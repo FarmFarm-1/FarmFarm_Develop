@@ -18,7 +18,14 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 
 <script>
-
+	setInterval(function () {
+		$.get("${cpath}/checkFarmerLoginStatus", function(data) {
+				if(!data.loginStatus) {
+					location.href = "${cpath}/login";
+				}
+			}
+		)
+	},10000);
 
 	function updateCultivate(){
 		$.ajax({
@@ -221,7 +228,6 @@ var max_supporter;
 
 window.onload = ()=>{
 	
-	
 	navBarCnt();
 	
 	
@@ -242,6 +248,8 @@ window.onload = ()=>{
 		immediateAjaxFuncFarmer("myProject");
 	}
 }
+
+
 
 function navBarCnt(){
 	// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
