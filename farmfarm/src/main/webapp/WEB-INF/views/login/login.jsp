@@ -80,7 +80,7 @@
 		page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--xA9">
 	
-		<jsp:include page="basicModal.jsp" />
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="group-165-Tpy">
 
 			<div class="auto-group-f5ed-AzH">

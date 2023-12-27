@@ -158,8 +158,7 @@
 <jsp:include
 		page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--2jF">
-		
-		<jsp:include page="basicModal.jsp" />
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 
 		<div class="group">
 			<p class="item--fjb">비밀번호 찾기</p>
