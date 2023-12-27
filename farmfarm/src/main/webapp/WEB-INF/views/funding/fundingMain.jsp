@@ -63,7 +63,6 @@
 
 
 							<div class="img_wrap">
-
 								<img class="corn-36630861280-1-daD"
 									src="${fundingItem.funding_thumb_img_url}" />
 								<div class="${fundingItem.d_day>=0?'active':'overlay'}">펀딩이

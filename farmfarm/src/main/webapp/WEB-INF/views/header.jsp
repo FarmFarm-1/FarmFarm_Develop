@@ -155,6 +155,7 @@
 	                    </div>
 	                </form>    
                 </div>
+                
                 <div class="header_farmer_login" id="header_farmer_login">
                     <div class="messageBox_div2"
                         onclick="location.href='${cpath}/messageBox'">
@@ -166,6 +167,9 @@
                             <p class="new_text2">N</p>
                         </div>
                     </div>
+                    
+                    <p class="flogout" onclick="location.href='${cpath}/logout'">로그아웃</p>
+                    
                     <div class="myProject"
                         onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
                 </div>

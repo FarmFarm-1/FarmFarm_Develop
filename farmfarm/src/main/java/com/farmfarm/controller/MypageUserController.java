@@ -216,6 +216,7 @@ public class MypageUserController {
 		List<MyPageUserAuctionVO> myAuctionList = service.myPageAuctionList(user_serial_num); //내가 경매한 리스트 가져오기
 		System.out.println(myAuctionList);
 		model.addAttribute("myAuctionList", myAuctionList);
+		
 		return "myPage/user/myAuctionList";
 	}
 
@@ -227,6 +228,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
 		System.out.println(myCartFundingList);
 		model.addAttribute("myCartFundingList", myCartFundingList);
+		
 		return "myPage/user/myCartList";
 	}
 
@@ -237,6 +239,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
 		System.out.println(myCartFundingList);
 		model.addAttribute("myCartFundingList", myCartFundingList);
+		
 		return "myPage/user/myCartFundingList";
 	}
 	
@@ -247,6 +250,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartAuctionList = service.myPageCartAuctionList(user_serial_num); //내가 찜한 경매 리스트 모두 가져오기
 		System.out.println(myCartAuctionList);
 		model.addAttribute("myCartAuctionList", myCartAuctionList);
+		
 		return "myPage/user/myCartAuctionList";
 	}
 	
