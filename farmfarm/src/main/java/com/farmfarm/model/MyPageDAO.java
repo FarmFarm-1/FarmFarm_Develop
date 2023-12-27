@@ -85,5 +85,9 @@ public class MyPageDAO {
 	public int registerAccountFarmer(HashMap<String, String> sqlInputData) {
 		return sqlSession.insert(namespace_myPage+"registerAccountFarmer",sqlInputData);
 	}
+	
+	public Farmer_account_historyVO checkAccountForRegisterProduct(String serial_num) {
+		return sqlSession.selectOne(namespace_myPage+"latestAccountSelectFarmer",serial_num);
+	}
 
 }

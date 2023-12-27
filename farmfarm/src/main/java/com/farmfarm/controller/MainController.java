@@ -44,14 +44,16 @@ public class MainController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.removeAttribute("serial_num");
+		session.invalidate();
 		return "loginIndex";
 	}
 
-	@GetMapping("/myPageFarmer")
-	public String showMyFarmFarmer(HttpSession session) {
+	@RequestMapping(value = "/myPageFarmer", method = {RequestMethod.GET, RequestMethod.POST})
+	public String showMyFarmFarmer(HttpSession session, Model model, @RequestParam(name = "path", required = false) String path) {
 		session.setAttribute("headerSelect", "myFarm");
-		session.removeAttribute("MyFarmer");
+		if(path != null) {
+			model.addAttribute("path", path);
+		}
 		return "myPage/Farmer/menubar_farmer";
 	}
 	
@@ -72,11 +74,10 @@ public class MainController {
 		return "/";
 	}
 
-
+	
 	@GetMapping("/makeProject")
 	public String showMakeProject(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
-		session.setAttribute("MyFarmer", "makeProject");
 		return "myPage/Farmer/menubar_farmer";
 	}
 

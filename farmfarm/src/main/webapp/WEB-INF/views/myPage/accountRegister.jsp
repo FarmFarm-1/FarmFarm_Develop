@@ -59,7 +59,7 @@
 	font-family: Pretendard, 'Source Sans Pro';
 	font-size : 15px;
 }
-.detail_tit {
+.bank_detail_tit {
     flex-basis: 150px;
     margin-left: 100px;
     font-size: 20px;
@@ -110,11 +110,12 @@ button:hover {
 		let bank_code = bank_code_tit.options[bank_code_tit.selectedIndex].value;
 		let bank_num = document.querySelector("#bank_num").value.trim();
 		let bank_name_kr = bank_code_tit.options[bank_code_tit.selectedIndex].text;
+		let accountReloadFormURL = document.querySelector("#accountReloadForm");
 		if (bank_num.length == 0) {
 			alert("계좌 번호를 입력하세요");
 		} else {
 			$.ajax({
-				url:"${cpath}/myPageUser/verifyAndRegAccount",
+				url:"${cpath}/mypage/verifyAndRegAccount",
 				type:"POST",
 				data:{
 					"bank_code" : bank_code,
@@ -122,28 +123,57 @@ button:hover {
 					"bank_name_kr" : bank_name_kr
 				},
 				success: function(res){
-					if(res == "success") {
-						alert("계좌 등록이 완료되었습니다.");
+					if(res == "UserSuccess") {
+						accountReloadFormURL.action = "${cpath}/myPageUser";
+						alert("계좌 변경이 완료되었습니다");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
+					} else if(res == "FarmerSuccess") {
+						accountReloadFormURL.action = "${cpath}/myPageFarmer";
+						alert("계좌 변경이 완료되었습니다");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
+					} else if (res == "UserFail") {
+						accountReloadFormURL.action = "${cpath}/myPageUser";
+						alert("계좌 변경에 실패하였습니다");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
+					} else if (res == "FarmerFail") {
+						accountReloadFormURL.action = "${cpath}/myPageFarmer";
+						alert("계좌 변경에 실패하였습니다");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
+					} else if (res == "FarmerNotCoincide") {
+						accountReloadFormURL.action = "${cpath}/myPageFarmer";
+						alert("본인의 계좌만 등록 가능합니다.");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
+					} else if (res == "UserNotCoincide") {
+						accountReloadFormURL.action = "${cpath}/myPageUser";
+						alert("본인의 계좌만 등록 가능합니다.");
+						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else {
-						alert("계좌 등록이 실패되었습니다.");
-					}
-					accountRegister();
+						alert("계좌 변경에 실패하였습니다");
+						location.href = "${cpath}/";
+					}	
 				},
 				error: function(xhr) {
 					alert("계좌 등록이 실패되었습니다.");
-					accountRegister();
+					location.href = "${cpath}/";
 				}
 			});
 		}
-		
 	}
+	
+	function directLinkAtAccount(path, formName, pathVariableId) {
+	   	document.getElementById(pathVariableId).value = path;
+		document.getElementById(formName).submit();
+    }
 </script>
+<form id="accountReloadForm">
+	<input type="hidden" name="path" id="accountPathInput" />
+</form>  
 <div id="modalWrap-accountRegister">
 	<div id="modalContent">
 		<div id="modalBody">
 			<span id="closeBtn-accountRegister" onclick="hideAccountModal()">&times;</span>
 			<div class="content_detail">
-				<div class="detail_tit">은행명</div>
+				<div class="bank_detail_tit">은행명</div>
 				<div class="detail_content">
 					<select id="bank_code_tit">
 					<option value="004">KB국민은행</option>
@@ -195,7 +225,7 @@ button:hover {
 				</div>
 			</div>
 			<div class="content_detail">
-				<div class="detail_tit">계좌번호</div>
+				<div class="bank_detail_tit">계좌번호</div>
 				<div class="detail_content">
 					<input id="bank_num" type="text" required="required" placeholder="계좌번호를 입력하세요" >
 				</div>

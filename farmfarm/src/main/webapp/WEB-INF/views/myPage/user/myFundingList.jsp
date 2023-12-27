@@ -23,10 +23,11 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+let toggleState = {}; //do not delete
+</script>	
 </head>
-
 <body>
-
 	<div class="mypage--Se9">
 		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%>
 		<!-- 모달 -->
@@ -74,76 +75,90 @@
                 		style="background-color: #EF6134;" 
             		</c:if>>
 					${fList.product_status}</div>
-
-				<form action="/myPageUser/myFundingListShowMore" method="post">
-					<input type="hidden" name="product_serial_num"
-						value="${fList.product_serial_num}"> <input type="submit"
+				<input type="hidden" name="product_serial_num"
+					value="${fList.product_serial_num}"> 
+				<input type="hidden" name="product_serial_num"
+						value="${fList.product_serial_num}"> <input type="submit" onclick="show_more_action('${fList.product_serial_num}')"
 						id="${fList.product_serial_num }_submit" style="display: none;">
-
-					<!-- fList.product_status가 "경작중"인 경우에만 더 보기 아이콘 표시 -->
-					<c:if test="${fList.product_status eq '경작중'}">
-						<label for="${fList.product_serial_num }_submit"> <img
-							class="show_more" id="show_more"
-							src="${cpath }/assets/ic-round-plus.png" />
-						</label>
-					</c:if>
-				</form>
-
-				<script type="text/javascript">
-
-        var seriesData${status.index} = [${fList.total_sum_pct}];
-        var options${status.index} = {
-                series: seriesData${status.index},
-                chart: {
-                    height: 150,
-                    width: 150,
-                    type: 'radialBar',
-                },
-                plotOptions: {
-                    radialBar: {
-                        hollow: {
-                            size: '50%',
-                        },
-                        dataLabels: {
-                            showOn: "always",
-                            name: {
-                                show: false,
-                                color: "#64A346",
-                                fontSize: "13px"
-                            },
-                            value: {
-                                offsetY: 8,
-                                color: "#64A346",
-                                fontSize: "16px",
-                                show: true,
-                                fontWeight: "bold",
-                                fontFamily: 'Pretendard, Source Sans Pro'
-                            }
-                        }
-                    },
-                },
-                labels: [],
-                fill: {
-                    colors: ['#64A346'],
-                },
-                stroke: {
-                    lineCap: "round",
-                    width: 2,
-                },
-            };
-
-        
-        
-     	var chart${status.index} = new ApexCharts(document.querySelector("#chart${status.index}"), options${status.index});
-        chart${status.index}.render(); 
-
-</script>
-
+				<!-- fList.product_status가 "경작중"인 경우에만 더 보기 아이콘 표시 -->
+				<c:if test="${fList.product_status eq '경작중'}">
+					<label for="${fList.product_serial_num }_submit"> <img
+						class="show_more" id="show_more_${fList.product_serial_num }"
+						src="${cpath }/assets/ic-round-plus.png" />
+					</label>
+				</c:if>
+				<script>
+				//show_more_action
+				function show_more_action(product_serial_num) {
+					
+					let selected_product_serial_num = product_serial_num;
+					toggleState[selected_product_serial_num] = !toggleState[selected_product_serial_num];
+					if(toggleState[selected_product_serial_num]) {
+						$.ajax({
+							url : "${cpath}/myPageUser/myFundingListShowMore",
+							method : "POST",
+							data : {
+								"product_serial_num" : selected_product_serial_num
+							},
+							success : function(res) {
+								$("#here_"+product_serial_num).html(res);
+								document.getElementById('show_more_' + product_serial_num).setAttribute('src', '${cpath }/assets/tabler_minus.png');
+							}
+						});
+					} else {
+				        $("#here_" + product_serial_num).empty();
+				        document.getElementById('show_more_' + product_serial_num).setAttribute('src', '${cpath }/assets/ic-round-plus.png');
+				    }
+					
+				}
+				
+				var seriesData${status.index} = [${fList.total_sum_pct}];
+				var options${status.index} = {
+					series: seriesData${status.index},
+					chart: {
+					    height: 150,
+					    width: 150,
+					    type: 'radialBar',
+					},
+					plotOptions: {
+					    radialBar: {
+					        hollow: {
+					            size: '50%',
+					        },
+					        dataLabels: {
+					            showOn: "always",
+					            name: {
+					                show: false,
+					                color: "#64A346",
+					                fontSize: "13px"
+					            },
+					            value: {
+					                offsetY: 8,
+					                color: "#64A346",
+					                fontSize: "16px",
+					                show: true,
+					                fontWeight: "bold",
+					                fontFamily: 'Pretendard, Source Sans Pro'
+					            }
+					        }
+					    },
+					},
+					labels: [],
+					fill: {
+					    colors: ['#64A346'],
+					},
+					stroke: {
+					    lineCap: "round",
+					    width: 2,
+					},
+				};
+				
+				var chart${status.index} = new ApexCharts(document.querySelector("#chart${status.index}"), options${status.index});
+				chart${status.index}.render(); 
+				</script>
 			</div>
+			<div id="here_${fList.product_serial_num}" class="here_layout"></div>
 		</c:forEach>
-
 	</div>
-
-
 </body>
 </html>

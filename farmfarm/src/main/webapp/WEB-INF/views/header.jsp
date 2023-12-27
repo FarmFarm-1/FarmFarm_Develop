@@ -90,14 +90,27 @@
                 $(".userPoints").html(userPoint);
             },
             error : function(error) {
-                console.log(error);
             }
         });
     }
     
-    function directLink(path) {
-	   	document.getElementById("pathInput").value = path;
-		document.getElementById("myForm").submit();
+    function directLink(path, formName, pathVariableId) {
+	   	document.getElementById(pathVariableId).value = path;
+		document.getElementById(formName).submit();
+    }
+    function makeProject() {
+    	$.ajax({
+    		url : "${cpath}/myPageFarmer/checkFarmerAccount",
+    		method : "POST",
+    		success: function(res) {
+    			if(res == 'success') {
+    				directLink('makeProject','makeProjectForm', 'makeProjectPathInput');
+    			} else {
+    				alert("계좌 등록 후, 상품 등록이 가능합니다");
+    				directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput');
+    			}
+    		}
+    	});
     }
 </script>
 <body>
@@ -145,10 +158,10 @@
                         </div>
                     </div>
             		
-            		<form id="myForm" action="${cpath}/myPageUser" method="post">
-					    <input type="hidden" name="path" id="pathInput" />
+            		<form id="myFarmMoneyForm" action="${cpath}/myPageUser" method="post">
+					    <input type="hidden" name="path" id="farmMoneyPathInput" />
 	                    <div class="userPoint_div"
-	                        onclick="directLink('farmMoneyCharge')">
+	                        onclick="directLink('farmMoneyCharge','myFarmMoneyForm','farmMoneyPathInput')">
 	                        내 팜머니 : <span class="userPoints"></span>P
 	                    </div>
 	                </form>    
@@ -164,8 +177,14 @@
                             <p class="new_text2">N</p>
                         </div>
                     </div>
-                    <div class="myProject"
-                        onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
+                    <form id="makeProjectForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="makeProjectPathInput" />
+	                    <div class="myProject"
+	                        onclick="makeProject()">나의 프로젝트 만들기</div>
+                    </form>
+                     <form id="regAccountFarmerForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="regAccountPathInput" />
+                    </form>     
                 </div>
             </div>
         </div>

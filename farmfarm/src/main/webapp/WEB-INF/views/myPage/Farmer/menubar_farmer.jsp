@@ -11,19 +11,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mypage/파머/나의프로젝트</title>
-
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
-</head>
 
 <script>
+
+
 	function updateCultivate(){
-		
 		$.ajax({
-			url : "/myPageFarmer/showUpdateCultivate",
+			url : "${cpath}/myPageFarmer/showUpdateCultivate",
 			// data :
 			// 어떤 상품에서 update 누른건지 ?
 			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
@@ -31,15 +30,11 @@
 				$("#here").html(responseData);
 			}
 		});
-		
 	}
-
 	
-
 	function regAuction(){
-		
 		$.ajax({
-			url : "/myPageFarmer/showRegAuction",
+			url : "${cpath}/myPageFarmer/showRegAuction",
 			// data :
 			// 어떤 상품에서 경매등록을 누른건지 ?
 			// 상품 시리얼 넘, 상품명 , 위치, 농장명 넘기삼
@@ -47,47 +42,49 @@
 				$("#here").html(responseData);
 			}
 		});
-		
-		
 	}
+	
 	function profit(){
 		// ajax -> 입급내역 here.html
 		$.ajax({
-			url : "/myPageFarmer/profitShare",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	function chat(){
-		// ajax -> 입급내역 here.html
-		$.ajax({
-			url : "/myPageFarmer/chat",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	function changePw(){
-		$.ajax({
-			url : "/myPageFarmer/changePassword",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	function account(){
-		$.ajax({
-			url : "/myPageFarmer/accountRegister",
+			url : "${cpath}/myPageFarmer/profitShare",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
 		});
 	}
 	
-
+	function chat(){
+		// ajax -> 입급내역 here.html
+		$.ajax({
+			url : "${cpath}/myPageFarmer/chat",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
+	function changePw(){
+		$.ajax({
+			url : "${cpath}/myPageFarmer/changePassword",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
+	function account() {
+		$.ajax({
+			url : "${cpath}/mypage/accountRegister",
+			method: "get",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
+	
 </script>
-
+</head>
 <body>
 	<jsp:include page="${cpath }/WEB-INF/views/header.jsp" />
 	<div class="jw-center">
@@ -236,63 +233,66 @@ window.onload = ()=>{
 	setTimeout(()=>counter($counter_money, max_money),200);
 	setTimeout(()=>counter($counter_supporter, max_supporter),200);
 	
-	
-	var curReq = "${sessionScope.MyFarmer}";
-	if(curReq==""){
-		console.log('그냥접근');
-		f2();
-	}else{
-		console.log('프로젝트로 만들기로 접근')
-		f1();
+	let directPathVariable = "${path}";
+	if (directPathVariable == "makeProject"){
+		immediateAjaxFuncFarmer("regPro");
+	} else if(directPathVariable == "accountRegister") {
+		immediateAjaxFuncMypage("accountRegister");
+	} else {
+		immediateAjaxFuncFarmer("myProject");
 	}
 }
 
-	function navBarCnt(){
-		// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
-		// max_cart, max_money, max_supporter
-		$.ajax({
-			url : "/myPageFarmer/navBarCnt",
-			async : false,
-			success : function(responseData) {
-				max_money = responseData.cntFund
-				max_cart = responseData.cntCart
-				max_supporter = responseData.cntAuction
-				$(".item--ASH").html(responseData.name);
-			}
-		});
+function navBarCnt(){
+	// 이제 여기서 ajax로 가서 찜 건수, 펀딩 모금액 ,경매 참여 인원 가지고 와서 전역변수에 다 저장할거임
+	// max_cart, max_money, max_supporter
+	$.ajax({
+		url : "/myPageFarmer/navBarCnt",
+		async : false,
+		success : function(responseData) {
+			max_money = responseData.cntFund
+			max_cart = responseData.cntCart
+			max_supporter = responseData.cntAuction
+			$(".item--ASH").html(responseData.name);
+		}
+	});
+}
+
+function counter($counter, max){
+	let now = max;
+	const handle = setInterval(() => {
 		
-		
-	}
-	
-	function counter($counter, max){
-		let now = max;
-		const handle = setInterval(() => {
-			
-			$counter.innerHTML = (Math.ceil(max-now)).toLocaleString();
-			if(now<1){
-				clearInterval(handle);
-			}
-			var step = now / 10;
-			now -= step;
-		},30);
-	} 
-	
-	function f2(){
-		$.ajax({
-			url : "/myPageFarmer/myProject",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	
-	function f1(){
-		$.ajax({
-			url : "/myPageFarmer/regPro",
-			success : function(responseData) {
-				$("#here").html(responseData);
-			}
-		});
-	}
-	
+		$counter.innerHTML = (Math.ceil(max-now)).toLocaleString();
+		if(now<1){
+			clearInterval(handle);
+		}
+		var step = now / 10;
+		now -= step;
+	},30);
+} 
+
+function immediateAjaxFuncFarmer(directPathVariable) {
+	$.ajax({
+		url:"${cpath}/myPageFarmer/"+directPathVariable,
+		method:"GET",
+		success: function(res){
+			$("#here").html(res);
+		},
+		error : function(xhr) {
+			location.href="${cpath}/myPageFarmer";
+		}
+	});
+}
+function immediateAjaxFuncMypage(directPathVariable) {
+	$.ajax({
+		url:"${cpath}/mypage/"+directPathVariable,
+		method:"GET",
+		success: function(res){
+			$("#here").html(res);
+		},
+		error : function(xhr) {
+			location.href="${cpath}/";
+		}
+	});
+}
 </script>
