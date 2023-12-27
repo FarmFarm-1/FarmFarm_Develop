@@ -107,7 +107,7 @@
                 <div class="header_title_menu">
                     <div class="header_title">
                         <a onclick="location.href='${cpath}/'"> <img
-                            class="logo_img" src="${cpath }/assets/logo.png" />
+                            class="logo_img" src="${cpath }/assets/logo_sweetpotato.png" />
                             <p class="logo_name">팜팜</p>
                         </a>
                     </div>
@@ -144,6 +144,8 @@
                             <p class="new_text">N</p>
                         </div>
                     </div>
+            		
+            		<p class="logout" onclick="location.href='${cpath}/logout'">로그아웃</p>
             		
             		<form id="myForm" action="${cpath}/myPageUser" method="post">
 					    <input type="hidden" name="path" id="pathInput" />

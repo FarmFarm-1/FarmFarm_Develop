@@ -49,6 +49,7 @@ input {
 }
 
 .mypage--Se9 .item--ydo {
+	margin-top: 30px;
 	margin-bottom: 5.1rem;
 	padding-right: 54rem;
 	font-size: 2.443rem;
@@ -164,6 +165,7 @@ input {
 	/* background-image: url('../assets/tomatoes.png'); */
 	border-radius: 5rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X {
@@ -190,7 +192,8 @@ input {
 	line-height: 1.2575;
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+	white-space: normal;
+    width: 120px;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X .auto-group-anxd-tCM .item--UwF
@@ -201,7 +204,7 @@ input {
 	line-height: 1.2575;
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+	white-space: normal;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X .auto-group-anxd-tCM .auto-group-huhf-zPo
