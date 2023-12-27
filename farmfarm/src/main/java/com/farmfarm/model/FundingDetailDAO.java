@@ -69,4 +69,8 @@ public class FundingDetailDAO {
 	public Map<String, Object> sumfunding(String product_serial_num) {
 	    return sqlSession.selectOne(namespace + "sumfunding", product_serial_num);
 	}
+
+	public int checkFundingPossibility(Map<String, Object> map) {
+		return sqlSession.selectOne(namespace + "checkFundingPossibility", map);
+	}
 }

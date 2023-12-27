@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.farmfarm.dto.Auction_historyVO;
 import com.farmfarm.dto.Crops_quoteVO;
 import com.farmfarm.dto.Farm_and_productVO;
-import com.farmfarm.exception.AuctionException;
+import com.farmfarm.exception.TransactionException;
 
 @Repository
 public class AuctionDAO {
@@ -50,25 +50,25 @@ public class AuctionDAO {
 		map.put("user_point", auction_historyVO.getUser_price());
 		int pointEnoughChk = sqlSession.selectOne(namespace_myPage+"pointCheckForAuction", map);
 		if (pointEnoughChk != 1) {
-			throw new AuctionException("notEnoughPoint");
+			throw new TransactionException("notEnoughPoint");
 		}
 		//최고금액 check
 		int maxAuctionPriceChk = sqlSession.selectOne(namespace_auction+"maxAuctionPriceCheck", auction_historyVO);
 		if (maxAuctionPriceChk != 1) {
-			throw new AuctionException("notMaxAuctionraiser");
+			throw new TransactionException("notMaxAuctionraiser");
 		}
 		
 		//이전 최고금액 입찰자의 상태 변경
 		if((Integer)sqlSession.selectOne(namespace_auction+"selectParticipantCntByPrID",auction_historyVO) > 0 ) {
 			int updateStatusResult = sqlSession.update(namespace_auction+"updateCurMaxPriceStatus", auction_historyVO.getProduct_serial_num());
 			if (updateStatusResult != 1) {
-				throw new AuctionException("notUpdatedAuctionStatus");
+				throw new TransactionException("notUpdatedAuctionStatus");
 			}
 		}
 		
 		int auctionConfirm = sqlSession.insert(namespace_auction+"auctionHistoryInsert", auction_historyVO);
 		if(auctionConfirm != 1) {
-			throw new AuctionException("notInsertCompleted");
+			throw new TransactionException("notInsertCompleted");
 		}
 		
 		return auctionConfirm;

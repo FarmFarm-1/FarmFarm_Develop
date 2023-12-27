@@ -7,9 +7,8 @@
 		$(".inputfarmmoney-zdK").on("input", formattingNum);
 		$(".inputfarmmoney-zdK").on("change", formattingNum);
 		$(".inputfarmmoney-zdK").on("keyup", formattingNum);
+		let chargeAmount = 0;
 	});
-	
-	let chargeAmount = 0;
 	
 	function formattingNum(e) {
     	let input = e.target.value;
@@ -93,10 +92,6 @@
 		} else {
 			showModal("로그인이 필요한 기능입니다","서포터 회원으로 로그인 하세요");
 		}
-	}
-	
-	function KGInipay() {
-		
 	}
 	
 	function setAmount(amount) {

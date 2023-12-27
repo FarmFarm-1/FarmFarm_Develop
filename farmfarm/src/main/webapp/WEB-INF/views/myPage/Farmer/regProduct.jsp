@@ -436,7 +436,7 @@
 					</div>
 					<div class="auto-group-6qqh-ZCy">
 						<div class="group-185-VMX">
-							<input class="rectangle-195-2MT" type="number"></input>
+							<input class="rectangle-195-2MT" type="number" min="0" id="number2"></input>
 						</div>
 						<div class="item--xF7">평</div>
 					</div>
@@ -444,11 +444,11 @@
 				<div class="farmarea-Tn">
 					<div class="auto-group-ztzq-133">
 						<p class="item--jzd">대표자 연락처</p>
-						<p class="item--fdP">전화번호를 입력해주세요.</p>
+						<p class="item--fdP">전화번호를 입력해주세요. <br>('-'제외)</p>
 					</div>
 					<div class="auto-group-6qqh-ZCy">
 						<div class="group-185-VMX">
-							<input class="rectangle-195-2MT" id="phoneNum"></input>
+							<input class="rectangle-195-2MT" id="phoneNum" maxlength=11></input>
 						</div>
 
 					</div>
@@ -465,7 +465,7 @@
 					</div>
 					<div class="targetamountinput-BZ7">
 						<div class="group-185-Jdj">
-							<input class="rectangle-195-G4m" type="number"></input>
+							<input class="rectangle-195-G4m" type="number" min="0" id="number1"></input>
 						</div>
 						<div class="p-ar9">P</div>
 					</div>
@@ -522,5 +522,26 @@
 			warning2.style.display = "none"; // Hide warning if not
 		}
 	}
+</script>
+<script>
+	var num1 = document.getElementById('number1');
+	var num2 = document.getElementById('number2');
+	
+	num1.onkeydown = function(e) {
+	    if(!((e.keyCode > 95 && e.keyCode < 106)
+	      || (e.keyCode > 47 && e.keyCode < 58) 
+	      || e.keyCode == 8)) {
+	        return false;
+	    }
+	}
+	
+	num2.onkeydown = function(e) {
+	    if(!((e.keyCode > 95 && e.keyCode < 106)
+	      || (e.keyCode > 47 && e.keyCode < 58) 
+	      || e.keyCode == 8)) {
+	        return false;
+	    }
+	}
+	
 </script>
 </html>

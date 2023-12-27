@@ -4,22 +4,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 import com.farmfarm.dto.User_account_historyVO;
+import com.farmfarm.model.CertService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.MyPageUserService;
 import com.farmfarm.model.UserNavCntService;
@@ -35,6 +39,9 @@ import com.farmfarm.dto.MyPageUserFundingDetailVO;
 @Controller
 @RequestMapping("/myPageUser")
 public class MypageUserController {
+	
+	@Autowired
+	CertService certService;
 
 	@Autowired
 	MyPageUserService service;
@@ -241,6 +248,16 @@ public class MypageUserController {
 		System.out.println(myCartAuctionList);
 		model.addAttribute("myCartAuctionList", myCartAuctionList);
 		return "myPage/user/myCartAuctionList";
+	}
+	
+	@PostMapping("/cert")
+	@RequestMapping(value="/cert", method=RequestMethod.POST, produces="application/text; charset=UTF-8")
+	@ResponseBody
+	public String cert(@RequestParam("imp_uid") String uid, HttpServletResponse resp) {
+		String result = certService.cert(uid);
+		System.out.println(result);
+		resp.setCharacterEncoding("UTF-8");
+		return result;
 	}
 	
 }

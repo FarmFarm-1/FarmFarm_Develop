@@ -6,16 +6,24 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.farmfarm.model.ChartService;
 import com.farmfarm.model.ScheduledTasksService;
 
 @Controller
 public class MainController {
+	
+	Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	@GetMapping("/")
 	public String showmain(HttpSession session) {
@@ -39,15 +47,6 @@ public class MainController {
 		return "loginIndex";
 	}
 
-
-	@GetMapping("/main")
-	public String showMain(HttpSession session) {
-		session.removeAttribute("headerSelect");
-		return "loginIndex";
-	}
-
-
-	
 	@GetMapping("/myPageFarmer")
 	public String showMyFarmFarmer(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
@@ -55,10 +54,13 @@ public class MainController {
 		return "myPage/Farmer/menubar_farmer";
 	}
 	
-	@GetMapping("/myPageUser")
-	public String showMyPageUser(HttpSession session, Model model) {
+	@RequestMapping(value = "/myPageUser", method = {RequestMethod.GET, RequestMethod.POST})
+	public String showMyPageUser(HttpSession session, Model model, @RequestParam(name = "path", required = false) String path) {
 		session.setAttribute("headerSelect", "myFarm");
 		model.addAttribute("check", "null");
+		if(path != null) {
+			model.addAttribute("path", path);
+		}
 		return "myPage/user/menubar_supporter";
 	}
 

@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="${cpath}/styles/fundingbuy.css" />
 </head>
 <body>
+	<div id="here">
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="body">
 		<div class="mainpage--869">
@@ -66,14 +67,14 @@
 										<div class="line">
 											<div>내 펀딩 비율</div>
 											<div name="pay">${pay }</div>
-											<input type="hidden" value="${pay}" name="pay">
+											<input class="pay" type="hidden" value="${pay}" name="pay">
 										</div>
 										<div class="line">
 											<div>최종 가격</div>
 											<div name="payMoney">${payMoney}</div>
-											<input type="hidden" value="${payMoney}" name="payMoney">
+											<input class="payMoney" type="hidden" value="${payMoney}" name="payMoney">
 										</div>
-										<input type="hidden" id="product_serial_num"
+										<input type="hidden" id="product_serial_num" class="product_serial_num"
 											name="product_serial_num"
 											value="${fundingInfo.product_serial_num}">
 									</form>
@@ -105,8 +106,37 @@
 	</div>
 	<script>
 		function submitForm() {
-			var form = document.getElementById("payForm");
-			form.submit();
+			let pay = document.querySelector(".pay").value;
+			let payMoney = document.querySelector(".payMoney").value;
+			let product_serial_num = document.querySelector(".product_serial_num").value;
+			$.ajax({
+				url: "${cpath}/funding/fundingFinish",
+				method: "POST",
+				data: {
+					"pay" : pay,
+					"payMoney" : payMoney,
+					"product_serial_num" : product_serial_num
+				},
+				success: function(res){
+					if(res == 1) {
+						$.ajax({
+							url : "${cpath}/funding/fundingSuccess",
+							success: function(res){
+								$("#here").html(res);
+							}
+						});
+					} else {
+						alert("펀딩에 실패 하였습니다. 다시 시도해주세요");
+					}
+				},
+				error : function(xhr){s
+					if(xhr.responseText == "notEnoughPoint") {
+						alert("포인트가 부족합니다");
+					} else {
+						alert("펀딩에 실패 하였습니다. 다시 시도해주세요");
+					}
+				}
+			});
 		}
 
 		const checkboxCheckbox1 = document.getElementById("checkbox1");
@@ -124,4 +154,5 @@
 		}
 	</script>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
+	</div>
 </body>
