@@ -5,7 +5,7 @@
 
 <link rel="stylesheet" href="${cpath}/styles/depositList.css" />
 <div class="Content">
-	<div class="content_tit">입금 내역</div>
+	<div class="content_tit">정산 내역</div>
 	<div class="content_little_tit">
 		<div class="content_little_content">프로젝트 정보</div>
 		<div class="content_little_content">정산 일자</div>

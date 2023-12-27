@@ -40,7 +40,20 @@
 					<p class="item--QDj" id="item--QDj${status.index }">${projectItem.farm_name }</p>
 					<div class="auto-group-7bph-j17">
 						<img class="mdi-location-rLd" src="./assets/mdi-location-mMX.png" />
-						<p class="item--b3K" id="item--b3K${status.index }">${projectItem.farm_address }</p>
+						<p class="item--b3K" id="item--b3K${status.index }">
+							<c:choose>
+								<c:when
+									test="${not empty projectItem.farm_address and projectItem.farm_address.contains('')}">
+									<c:set var="words"
+										value="${projectItem.farm_address.split(' ')}" />
+									<c:out value="${words[0]} ${words[1]}" />
+								</c:when>
+								<c:otherwise>
+									<c:out value="${projectItem.farm_address}" />
+								</c:otherwise>
+							</c:choose>
+
+						</p>
 					</div>
 				</div>
 			</div>

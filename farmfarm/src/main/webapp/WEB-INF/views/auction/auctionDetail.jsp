@@ -63,10 +63,14 @@
 									},
 							success: function(res) {
 								if(res == 1) {
-									showModal_success("입찰결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");
+									showModal_success("입찰 결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");	
+									$(".btnOk").click(function() {
+										location.reload();
+									});							
 								} else {
 									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
 								}
+								
 							},
 							error: function(xhr, status, error) {
 								if(xhr.responseText == "notEnoughPoint") {
@@ -300,10 +304,10 @@
 			<div class="frame-layout">
 				<div class="farmerinfo-frame1">
 					<div class="farmerinfo-line1-div">
-						<img class="farmer-image" src="${cpath}/assets/farmerimage.png" />
+						<img class="farmer-image" src="${cpath}/assets/farmer_icon.png" />
 						<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
 					</div>
-					<img class="chaticon-img" src="${cpath}/assets/chaticon.png" />
+					<img class="chaticon-img" src="${cpath}/assets/chat_icon.png" />
 				</div>
 				<div class="frame-layer">
 					<div class="frame-line">

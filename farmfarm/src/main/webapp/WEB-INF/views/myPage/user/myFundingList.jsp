@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-let toggleState = {}; //do not delete
+var toggleState = {}; //do not delete
 </script>	
 </head>
 <body>
@@ -47,8 +48,13 @@ let toggleState = {}; //do not delete
 
 			<div class="fundinglist1-giZ">
 				<img class="tomatoes-55667411280-5Eu"
-					src="${fList.funding_thumb_img_url}" />
-				<!-- 바꿔야함 db에서 가져오는 사진 -->
+					src="${fList.funding_thumb_img_url}"
+					<c:if test="${fList.product_status eq '펀딩진행중'}">
+                		onclick="location.href='/funding/fundingDetail?product_serial_num=${fList.product_serial_num}'"
+             		</c:if> 
+             		<c:if test="${fList.product_status eq '경매중'}">
+                		onclick="location.href='/auction/auctionDetail?product_serial_num=${fList.product_serial_num}'"
+             		</c:if>/>
 
 				<div class="fundinginfo-B9X">
 
@@ -57,7 +63,19 @@ let toggleState = {}; //do not delete
 						<p class="item--UwF">${fList.farm_name}</p>
 						<div class="auto-group-huhf-zPo">
 							<img class="mdi-location-v2Z" src="./assets/location.png" />
-							<p class="item--3cy">${fList.farm_address}</p>
+							<%-- <p class="item--3cy">${fList.farm_address}</p> --%>
+							<p class="item--3cy">
+								<c:choose>
+									<c:when
+										test="${not empty fList.farm_address and fList.farm_address.contains('')}">
+										<c:set var="words" value="${fList.farm_address.split(' ')}" />
+										<c:out value="${words[0]} ${words[1]}" />
+									</c:when>
+									<c:otherwise>
+										<c:out value="${fList.farm_address}" />
+									</c:otherwise>
+								</c:choose>
+							</p>
 						</div>
 					</div>
 				</div>

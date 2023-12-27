@@ -15,7 +15,8 @@ button {
 html {
 	font-size: 62.5%;
 }
-.hidden{
+
+.hidden {
 	display: none;
 }
 
@@ -452,7 +453,7 @@ html {
 }
 /*서포터 인포 right*/
 .info-1Nu {
-	margin: 0rem 0rem 10.329rem 0.1rem;
+	margin: 3rem 0rem 10.329rem 0.1rem;
 	width: calc(100% - 0.1rem);
 	height: 11.6713rem;
 	display: flex;
@@ -760,6 +761,7 @@ html {
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
+
 .item--fRF-1 {
 	width: 39.3rem;
 	height: 1.9rem;
@@ -898,7 +900,8 @@ html {
 	line-height: 1.2575;
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+	white-space: normal;
+	width: 190px;
 }
 
 .myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .item--QDj
@@ -953,8 +956,6 @@ html {
 	flex-shrink: 0;
 }
 
-
-
 .fundingpct-ntV {
 	margin-left: 3.35rem;
 	display: flex;
@@ -995,6 +996,7 @@ html {
 	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
 	flex-shrink: 0;
 }
+
 .myproject-mx9 .fundinglist1-5vD .fundingstate-9cZ-1 {
 	margin: 2rem 0;
 	width: 10.2rem;
@@ -1023,6 +1025,7 @@ html {
 	vertical-align: top;
 	flex-shrink: 0;
 }
+
 .updatebtn-eXF {
 	margin: 2rem 0rem 2rem 2rem;
 	width: 4rem;
@@ -1031,6 +1034,7 @@ html {
 	vertical-align: top;
 	flex-shrink: 0;
 }
+
 .myproject-mx9 .fundinglist2-jKs {
 	margin: 0rem 0.1rem 2.5rem 0rem;
 	box-sizing: border-box;

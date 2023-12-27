@@ -126,14 +126,14 @@
 							}
 						});
 					} else {
-						alert("펀딩에 실패 하였습니다. 다시 시도해주세요");
+						showModal("펀딩 결과","펀딩에 실패 하였습니다. 다시 시도해 주세요");
 					}
 				},
 				error : function(xhr){s
 					if(xhr.responseText == "notEnoughPoint") {
-						alert("포인트가 부족합니다");
+						showModal_success("펀딩 실패","포인트가 부족합니다");
 					} else {
-						alert("펀딩에 실패 하였습니다. 다시 시도해주세요");
+						showModal("펀딩 결과","펀딩에 실패 하였습니다. 다시 시도해 주세요");
 					}
 				}
 			});

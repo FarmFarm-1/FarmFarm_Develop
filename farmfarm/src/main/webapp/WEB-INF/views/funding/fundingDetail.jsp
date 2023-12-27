@@ -20,7 +20,6 @@
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="farmfarm_container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
-		<div class="funding_detail"></div>
 		<div class="funding_info_right">
 			<div class="tit_wrap">
 				<div class="tit_1">${fundingInfo.product_name }</div>
@@ -97,6 +96,7 @@
 						</form>
 						<datalist id="paylist"></datalist>
 					</div>
+					<p class="pctText">%</p>
 					<div class="Paydiv" id="Paydiv"></div>
 				</div>
 				<div class="point-show">
@@ -158,6 +158,7 @@
 					</div>
 				</div>
 			</div>
+
 		</div>
 	</div>
 	<script>
@@ -247,21 +248,23 @@
 					if (inputValue >= 0) {
 						if (inputValue != 0) {
 							if (inputValue > end) {
-								alert("입력하신 값이 최대값을 초과하였습니다. 최대 " + end
-										+ "까지만 입력 가능합니다.");
+								showModal("WARNING",
+										"입력하신 값이 최대값을 초과하였습니다. <br> 최대 " + end
+												+ "까지만 입력 가능합니다.");
 								payInput.value = end;
 							} else if (payInput.value
 									&& inputValue.toFixed(2) != inputValue) {
-								alert("소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
+								showModal("WARNING",
+										"소수점 아래 자릿수는 2자리까지만 입력 가능합니다.");
 								payInput.value = inputValue.toFixed(2);
 							}
 							updatePayDiv();
 						} else {
 							negativePayDiv();
 							payDiv.innerHTML = "";
-						}	
+						}
 					} else {
-						alert("0원 이하는 구매가 불가능합니다.");
+						showModal("WARNING", "0원 이하는 구매가 불가능합니다.");
 						negativePayDiv();
 						payDiv.innerHTML = "";
 					}
@@ -306,10 +309,10 @@
 			$.ajax({
 				url : "${cpath}/funding/checkAccount",
 				method : "post",
-				success: function(res){
+				success : function(res) {
 					if (res == "success") {
 						var form = document.getElementById("payForm");
-						form.submit();						
+						form.submit();
 					} else {
 						alert("계좌를 등록하세요");
 					}
@@ -318,9 +321,8 @@
 					alert("다시 시도하세요");
 				}
 			});
-		}	
-		
-		
+		}
+
 		$(".bookmark-btn").click(
 				function() {
 					console.log(serial_num);

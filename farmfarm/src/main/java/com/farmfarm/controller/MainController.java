@@ -31,14 +31,15 @@ public class MainController {
 		return "loginIndex";
 	}
 
-
 	@GetMapping("/login")
-	public String showLogin() {
+	public String showLogin(HttpSession session) {
+		session.setAttribute("headerSelect","login");
 		return "login/login";
 	}
 
 	@GetMapping("/signup")
-	public String showSignUpIndex() {
+	public String showSignUpIndex(HttpSession session) {
+		session.setAttribute("headerSelect","signup");
 		return "signUp/signupIndex";
 	}
 

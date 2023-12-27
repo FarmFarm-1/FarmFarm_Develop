@@ -94,7 +94,7 @@
 		var funding_deadline = $(".group-185-jW5").val();
 
 		if (warning.style.display == 'flex' || warning2.style.display == 'flex') {
-			alert('날짜 조건을 다시 확인하고 등록 해주세요 !')
+			showModal_success("WARNING", "날짜 조건을 다시 확인하고 등록 해주세요 !");
 		} else {
 
 			if (product_kind != '' && product_name != '' && farm_name != ''
@@ -130,20 +130,20 @@
 					}),
 					success : function(response) {
 						if (response === 'success') {
-							alert('상품 등록에 성공했습니다.');
+							showModal_success("등록 결과", "상품 등록에 성공했습니다.");
 							location.href = '/myPageFarmer';
 						} else {
-							alert('정보를 다시 확인해주세요.');
+							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 						}
 
 					},
 					error : function(error) {
-						alert('정보를 다시 확인해주세요.');
+							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 					}
 				});
 
 			} else {
-				alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+							showModal_success("WARNING", "모든 항목을 필수로 기입하여야 등록 가능합니다.");
 			}
 
 		}
@@ -284,6 +284,7 @@
 
 
 <body onclick="daySet()">
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<div class="mypage--YJR" onclick="daySet()">
 		<div class="insertproject-e37">
 			<div class="auto-group-ovs1-Nzh">
@@ -436,7 +437,7 @@
 					</div>
 					<div class="auto-group-6qqh-ZCy">
 						<div class="group-185-VMX">
-							<input class="rectangle-195-2MT" type="number"></input>
+							<input class="rectangle-195-2MT" type="number" min="0" id="number2"></input>
 						</div>
 						<div class="item--xF7">평</div>
 					</div>
@@ -444,11 +445,11 @@
 				<div class="farmarea-Tn">
 					<div class="auto-group-ztzq-133">
 						<p class="item--jzd">대표자 연락처</p>
-						<p class="item--fdP">전화번호를 입력해주세요.</p>
+						<p class="item--fdP">전화번호를 입력해주세요. <br>('-'제외)</p>
 					</div>
 					<div class="auto-group-6qqh-ZCy">
 						<div class="group-185-VMX">
-							<input class="rectangle-195-2MT" id="phoneNum"></input>
+							<input class="rectangle-195-2MT" id="phoneNum" maxlength=11></input>
 						</div>
 
 					</div>
@@ -465,7 +466,7 @@
 					</div>
 					<div class="targetamountinput-BZ7">
 						<div class="group-185-Jdj">
-							<input class="rectangle-195-G4m" type="number"></input>
+							<input class="rectangle-195-G4m" type="number" min="0" id="number1"></input>
 						</div>
 						<div class="p-ar9">P</div>
 					</div>
@@ -522,5 +523,26 @@
 			warning2.style.display = "none"; // Hide warning if not
 		}
 	}
+</script>
+<script>
+	var num1 = document.getElementById('number1');
+	var num2 = document.getElementById('number2');
+	
+	num1.onkeydown = function(e) {
+	    if(!((e.keyCode > 95 && e.keyCode < 106)
+	      || (e.keyCode > 47 && e.keyCode < 58) 
+	      || e.keyCode == 8)) {
+	        return false;
+	    }
+	}
+	
+	num2.onkeydown = function(e) {
+	    if(!((e.keyCode > 95 && e.keyCode < 106)
+	      || (e.keyCode > 47 && e.keyCode < 58) 
+	      || e.keyCode == 8)) {
+	        return false;
+	    }
+	}
+	
 </script>
 </html>

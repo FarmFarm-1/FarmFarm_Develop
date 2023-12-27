@@ -131,7 +131,6 @@ document.querySelectorAll("#show_more_outer_${product_serial_num} button").forEa
 	button.addEventListener('click', function() {
 		this.classList.toggle('is-open');
 		var content = this.querySelectorAll('.panel');
-		console.log(content);
 		content.forEach(function(panel) {
 			if (panel.style.display === 'none' || !panel.style.display) {
 				panel.style.display = 'flex'; // 클릭했을 때 display를 'flex'로 설정
@@ -142,29 +141,6 @@ document.querySelectorAll("#show_more_outer_${product_serial_num} button").forEa
 	
 	});
 });
-
-
-<%--	
-const cultivateStatus = "${status}";
-console.log(cultivateStatus);
-const stautsArray = [ "경작준비중", "경작중", "수확중", "수확완료" ];
-var accordions = document.getElementsByClassName("accordion");
-
-for (var i = 0; i <= stautsArray.indexOf(cultivateStatus); i++) {
-	accordions[i].onclick = function() {
-		this.classList.toggle('is-open');
-
-		var content = this.nextElementSibling;
-		if (content.style.maxHeight) {
-			// accordion is currently open, so close it
-			content.style.maxHeight = null;
-		} else {
-			// accordion is currently closed, so open it
-			content.style.maxHeight = content.scrollHeight + "rem";
-		}
-	}
-}
---%>
 </script>
 
 </body>

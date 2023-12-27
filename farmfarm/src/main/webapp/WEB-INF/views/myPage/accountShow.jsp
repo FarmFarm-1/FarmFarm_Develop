@@ -169,6 +169,7 @@ button:hover {
 	<input type="hidden" name="path" id="accountPathInput" />
 </form>  
 <div class="accountregis-RDX">
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<p class="item--ykq">나의 계좌</p>
 	<div class="auto-group-wk5s-tcu">
 		<div class="accountinfohead-yuF">
