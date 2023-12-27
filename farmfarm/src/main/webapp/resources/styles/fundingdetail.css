@@ -347,10 +347,16 @@
 	display: flex;
 	align-items: center;
 }
+.pctText{
+	font-family: Inter, 'Source Sans Pro';
+    font-weight: 800;
+    font-size: medium;
+    margin-right: 1rem;
+}
 
 .farmfarm_container .funding_info_right .funding_info_right_bottom .input_group .input_pct
 	{
-	margin-right: 2rem;
+	margin-right: 0.5rem;
 	box-sizing: border-box;
 	width: 30%;
 	height: 100%;
@@ -391,7 +397,7 @@
 	{
 	box-sizing: border-box;
 	padding-top: 10px;
-	width: 65.5%;
+	width: 64.5%;
 	text-align: right;
 	height: 100%;
 	font-size: 1.8218rem;
