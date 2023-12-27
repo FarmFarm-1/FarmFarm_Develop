@@ -323,9 +323,9 @@
 	window.onload = ()=>{
 		var curReq = "${sessionScope.MyUser}";
 		if(curReq=="")
-			f1();
+			myFundingList();
 		
-		function f1(){
+		function myFundingList(){
 			$.ajax({
 				url : "/myPageUser/myFundingList",
 				success : function(responseData) {

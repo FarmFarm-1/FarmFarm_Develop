@@ -60,16 +60,16 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h {
-	margin: 0rem 0rem 0rem 10rem;
+	/* margin: 0rem 0rem 0rem 12rem; */
 	/* width: calc(100% - 10rem); */
-	column-gap: 4rem;
+	column-gap: 5rem;
 	display: flex;
 	align-items: center;
 	/* width: 100%; */
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--CmT {
-	/* margin-left: 17.7rem; */
+	margin-left: 9rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -81,7 +81,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--ufs {
-	/* margin-left: 10rem; */
+	margin-left: 4rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -129,11 +129,11 @@ input {
 }
 
 .mypage--Se9 .fundinglist1-giZ {
-	column-gap: 3.5rem;
+	column-gap: 4.5rem;
 	margin: 2rem 0rem 2rem 0rem;
 	box-sizing: border-box;
-	padding: 0rem 3rem 0rem 3rem;
-	width: 90%;
+	padding: 0rem 0rem 0rem 5rem;
+	width: 99%;
 	height: 12rem;
 	display: flex;
 	align-items: center;
@@ -152,6 +152,7 @@ input {
 	/* background-image: url('../assets/tomatoes.png'); */
 	border-radius: 5rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X {
@@ -178,7 +179,8 @@ input {
 	line-height: 1.2575;
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+	white-space: normal;
+    width: 120px;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X .auto-group-anxd-tCM .item--UwF
@@ -189,7 +191,7 @@ input {
 	line-height: 1.2575;
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
-	white-space: nowrap;
+	white-space: normal;
 }
 
 .mypage--Se9 .fundinglist1-giZ .fundinginfo-B9X .auto-group-anxd-tCM .auto-group-huhf-zPo
