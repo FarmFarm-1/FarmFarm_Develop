@@ -22,6 +22,7 @@
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="auto-group-rv6m-jsK">
 			<div class="auto-group-v9bk-T2d">
 				<p class="item--ZLZ">
@@ -81,7 +82,17 @@
 											<p class="item--Cp5">현 입찰가</p>
 										</div>
 										<div class="auto-group-do49-DjB">
-											<p class="item-10000-aJq"><fmt:formatNumber value="${auctionItem.current_price}" pattern="#,###"/>원</p>
+											<c:choose>
+												<c:when test="${auctionItem.current_price ne null}">
+													<p class="item-10000-aJq"><fmt:formatNumber value="${auctionItem.current_price}" pattern="#,###"/>원</p>
+												</c:when>
+												<c:otherwise>
+													<p class="item-10000-aJq-1">입찰 현황 없음</p>												
+												</c:otherwise>
+											</c:choose>
+										
+										
+											
 										</div>
 									</div>
 									<div class="auto-group-jk2v-Anq">
@@ -153,7 +164,7 @@ function func(product_serial_num, index) {
 		}
 
 	} else {
-		alert("서포터 회원으로 로그인 하세요.");
+		showModal_success("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 	}
 }
 

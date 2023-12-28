@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<title>입금내역</title>
+<title>정산 내역</title>
 <link rel="stylesheet" href="${cpath}/styles/depositList_farmer.css" />
 </head>
 <body>

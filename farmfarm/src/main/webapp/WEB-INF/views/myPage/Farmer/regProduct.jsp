@@ -94,7 +94,7 @@
 		var funding_deadline = $(".group-185-jW5").val();
 
 		if (warning.style.display == 'flex' || warning2.style.display == 'flex') {
-			alert('날짜 조건을 다시 확인하고 등록 해주세요 !')
+			showModal_success("WARNING", "날짜 조건을 다시 확인하고 등록 해주세요 !");
 		} else {
 
 			if (product_kind != '' && product_name != '' && farm_name != ''
@@ -130,20 +130,20 @@
 					}),
 					success : function(response) {
 						if (response === 'success') {
-							alert('상품 등록에 성공했습니다.');
+							showModal_success("등록 결과", "상품 등록에 성공했습니다.");
 							location.href = '/myPageFarmer';
 						} else {
-							alert('정보를 다시 확인해주세요.');
+							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 						}
 
 					},
 					error : function(error) {
-						alert('정보를 다시 확인해주세요.');
+							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 					}
 				});
 
 			} else {
-				alert('모든 항목을 필수로 기입하여야 등록 가능합니다.');
+							showModal_success("WARNING", "모든 항목을 필수로 기입하여야 등록 가능합니다.");
 			}
 
 		}
@@ -284,6 +284,7 @@
 
 
 <body onclick="daySet()">
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 	<div class="mypage--YJR" onclick="daySet()">
 		<div class="insertproject-e37">
 			<div class="auto-group-ovs1-Nzh">

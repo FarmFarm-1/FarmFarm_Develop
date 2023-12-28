@@ -15,8 +15,9 @@
 }
 .auto-group-wk5s-tcu {
   box-sizing: border-box;
-  padding: 1.35rem 1.4rem 0.85rem 1.4rem;
-  width: 23.8rem;
+  padding: 2rem 2rem 2rem 2rem;
+  width: 35rem;
+  height: 20rem;
   display: flex;
   flex-direction: column;
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
@@ -24,15 +25,15 @@
   border-radius: 0.7431rem;
 }
 .accountinfohead-yuF {
-  margin-bottom: 7.7rem;
-  width: 8rem;
+  margin-bottom: 10rem;
   flex-shrink: 0;
 }
 .auto-group-cf2d-vpV {
-  margin: 0rem 1.9rem 0.25rem 0rem;
-  width: calc(100% - 1.9rem);
+  /* margin: 0rem 1.9rem 0.25rem 0rem;
+  width: calc(100% - 1.9rem); */
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 .shcsymbolci-1-fXB {
   margin: 0.1rem 0.493rem 0rem 0rem;
@@ -46,11 +47,23 @@
   display: flex;
   font-size: 1.6rem;
   font-weight: 700;
-  line-height: 1.2575;
   color: #2d2d2d;
   font-family: Pretendard, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+}
+.changAccount-btn {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #7a7a7a;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left : auto;
+  margin-right : 1rem;
+  cursor: pointer;
 }
 .line-56-vxu {
   width: 8rem;
@@ -76,7 +89,7 @@
 .accountnum-bp9 {
   display: flex;
   font-size: 1.6rem;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2575;
   color: #2d2d2d;
   font-family: Pretendard, 'Source Sans Pro';

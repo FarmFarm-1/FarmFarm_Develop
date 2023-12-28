@@ -10,7 +10,7 @@
 
 .modal {
 	z-index:2;
-	position: absolute;
+	/* position: absolute; */
 	display: none;
 	justify-content: center;
 	top: 0;

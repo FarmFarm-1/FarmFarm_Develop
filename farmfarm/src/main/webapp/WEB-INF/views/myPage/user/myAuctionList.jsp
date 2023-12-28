@@ -20,6 +20,7 @@
 
 <body>
 	<div class="mypage--Se9">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<!-- 고정 -->
 		<p class="item--ydo">경매에 참여 내역을 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">

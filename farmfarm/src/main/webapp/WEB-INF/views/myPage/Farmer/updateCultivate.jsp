@@ -73,10 +73,10 @@
 				}),
 				success : function(response) {
 					if (response === 'success') {
-						alert('상품 경작 정보 업데이트 성공');
+						showModal_success("업데이트 결과", "상품 경작 정보 업데이트 성공");
 						location.href = '/myPageFarmer';
 					} else {
-						alet('업데이트 실패 ㅋㅋ');
+						showModal_success("업데이트 실패", "상품 경작 정보 업데이트 실패");
 					}
 
 				},
@@ -86,7 +86,7 @@
 			});
 
 		} else {
-			alert('상태, 이미지, 경작 정보는 필수 입력해야 합니다.');
+			showModal_success("업데이트 실패", "상태, 이미지, 경작 정보는 필수 입력해야 합니다.");
 		}
 
 	}
@@ -165,6 +165,7 @@
 
 <body>
 	<div class="mypage--kNh">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="updateform-BLh">
 			<div class="auto-group-797k-813">
 				<p class="item--rBw">나의 경작 중인 프로젝트</p>

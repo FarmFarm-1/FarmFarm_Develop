@@ -25,6 +25,15 @@
 </head>
 
 <script type="text/javascript">
+	setInterval(function () {
+		$.get("${cpath}/checkUserLoginStatus", function(data) {
+				if(!data.loginStatus) {
+					location.href = "${cpath}/";
+				}
+			}
+		)
+	},10000);
+
 	let serial_num = "${sessionScope.serial_num}";
 	var check = "${check}";
 	$(function() {
@@ -33,14 +42,27 @@
 		if (check == "point") {
 			usedFarmMoney();
 		}
+		
 		let directPathVariable = "${path}";
-		if(directPathVariable != "") {
+		if(directPathVariable == "farmMoneyCharge") {
 			immediateAjaxFunc(directPathVariable);
+		} else if (directPathVariable == "accountRegister") {
+			immediateAjaxFuncMypage("accountRegister");
+		} else if(directPathVariable == "") {
+			myFundingList();
 		}
+		
 	})
+	function myFundingList(){
+		$.ajax({
+			url : "/myPageUser/myFundingList",
+			success : function(responseData) {
+				$("#here").html(responseData);
+			}
+		});
+	}
 	
 	function immediateAjaxFunc(directPathVariable) {
-		console.log(directPathVariable);
 		$.ajax({
 			url:"${cpath}/myPageUser/"+directPathVariable,
 			method:"GET",
@@ -49,6 +71,19 @@
 			},
 			error : function(xhr) {
 				location.href="${cpath}/myPageUser";
+			}
+		});
+	}
+	
+	function immediateAjaxFuncMypage(directPathVariable) {
+		$.ajax({
+			url:"${cpath}/mypage/"+directPathVariable,
+			method:"GET",
+			success: function(res){
+				$("#here").html(res);
+			},
+			error : function(xhr) {
+				location.href="${cpath}/";
 			}
 		});
 	}
@@ -110,7 +145,7 @@
 	}
 	function accountRegister() {
 		$.ajax({
-			url : "${cpath}/myPageUser/accountRegister",
+			url : "${cpath}/mypage/accountRegister",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}
@@ -319,20 +354,4 @@
 		</div>
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
-	<script>
-	window.onload = ()=>{
-		var curReq = "${sessionScope.MyUser}";
-		if(curReq=="")
-			myFundingList();
-		
-		function myFundingList(){
-			$.ajax({
-				url : "/myPageUser/myFundingList",
-				success : function(responseData) {
-					$("#here").html(responseData);
-				}
-			});
-		}
-	}
-	</script>
 </body>
