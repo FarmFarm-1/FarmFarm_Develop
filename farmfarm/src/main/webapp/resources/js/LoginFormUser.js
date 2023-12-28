@@ -6,7 +6,6 @@ function printEmail() {
 	  
 	  	// 입력창의 값이 이메일 형태와 맞지 않게 입력된 경우
 	    if(!isEmail(email.value)){	
-	  		
 	        // 이메일 입력창의 테두리 빨간색으로 변경
 	        email.style.borderColor = '#EF4444';
 	        // 입력창 하단의 경고 텍스트 보이게
