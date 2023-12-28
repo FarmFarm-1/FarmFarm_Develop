@@ -16,97 +16,102 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
-	var curUser = "${sessionScope.serial_num}";
-	var headerSelect = "${sessionScope.headerSelect}";
-	$(window).on(
-			"load",
-			function() {
-				var header_join_login = document
-						.querySelector('#header_join_login');
-				var header_user_login = document
-						.querySelector('#header_user_login');
-				var header_farmer_login = document
-						.querySelector('#header_farmer_login');
-				var menu_funding = document.querySelector('#menu_funding');
-				var menu_auction = document.querySelector('#menu_auction');
-				var menu_myFarm = document.querySelector('#menu_myFarm');
-				if (curUser == "") {
-					//header_join_login 띄움
-					header_join_login.style.display = 'flex';
-				} else {
-					if (curUser.substring(0, 2) === "us") {
-						//header_user_login 띄움
-						header_user_login.style.display = 'flex';
-						showPamMoney();
-					} else if (curUser.substring(0, 2) === "FA") {
-						//header_farmer_login 띄움
-						header_farmer_login.style.display = 'flex';
-					}
-				}
-				
-				
-
-				if (headerSelect === "funding") {
-					menu_funding.style.color = '#2d2d2d';
-					menu_funding.style.fontWeight = '800';
-					var elements = document
-							.getElementsByClassName('underbar-1');
-					if (elements.length > 0) {
-						elements[0].classList.remove('hidden');
-					}
-				} else if (headerSelect === "auction") {
-					menu_auction.style.color = '#2d2d2d';
-					menu_auction.style.fontWeight = '800';
-					var elements = document
-							.getElementsByClassName('underbar-2');
-					if (elements.length > 0) {
-						elements[0].classList.remove('hidden');
-					}
-				} else if (headerSelect === "myFarm") {
-					menu_myFarm.style.color = '#2d2d2d';
-					menu_myFarm.style.fontWeight = '800';
-					var elements = document
-							.getElementsByClassName('underbar-3');
-					if (elements.length > 0) {
-						elements[0].classList.remove('hidden');
-					}
-				}
-			});
-	function selectMyFarm() {
-		var curUser = "${sessionScope.serial_num}";
-		if (curUser == "") {
-			//header_join_login 띄움
-			showModal_success("로그인 해주세요.");
-		} else {
-			if (curUser.substring(0, 2) === "us") {
-				//header_user_login 띄움
-				location.href = '/myPageUser';
-			} else if (curUser.substring(0, 2) === "FA") {
-				//header_farmer_login 띄움
-				location.href = '/myPageFarmer';
-			}
-		}
-	}
-	function showPamMoney() {
-		$.ajax({
-			url : '/myPageUser/navBarCnt',
-			type : 'GET',
-			success : function(response) {
-				let userPoint = response.userPoint.toLocaleString('ko-KR');
-				$(".userPoints").html(userPoint);
-			},
-			error : function(error) {
-				console.log(error);
-			}
-		});
-	}
-
-	function directLink(path) {
-		document.getElementById("pathInput").value = path;
-		document.getElementById("myForm").submit();
-	}
-	
-	
+    var curUser = "${sessionScope.serial_num}";
+    var headerSelect = "${sessionScope.headerSelect}";
+    $(window).on(
+            "load",
+            function() {
+                var header_join_login = document
+                        .querySelector('#header_join_login');
+                var header_user_login = document
+                        .querySelector('#header_user_login');
+                var header_farmer_login = document
+                        .querySelector('#header_farmer_login');
+                var menu_funding = document.querySelector('#menu_funding');
+                var menu_auction = document.querySelector('#menu_auction');
+                var menu_myFarm = document.querySelector('#menu_myFarm');
+                if (curUser == "") {
+                    //header_join_login 띄움
+                    header_join_login.style.display = 'flex';
+                } else {
+                    if (curUser.substring(0, 2) === "us") {
+                        //header_user_login 띄움
+                        header_user_login.style.display = 'flex';
+                        showPamMoney();
+                    } else if (curUser.substring(0, 2) === "FA") {
+                        //header_farmer_login 띄움
+                        header_farmer_login.style.display = 'flex';
+                    }
+                }
+                if (headerSelect === "funding") {
+                    menu_funding.style.color = '#2d2d2d';
+                    menu_funding.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-1');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
+                } else if (headerSelect === "auction") {
+                    menu_auction.style.color = '#2d2d2d';
+                    menu_auction.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-2');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
+                } else if (headerSelect === "myFarm") {
+                    menu_myFarm.style.color = '#2d2d2d';
+                    menu_myFarm.style.fontWeight  = '800';
+                    var elements = document.getElementsByClassName('underbar-3');
+                    if (elements.length > 0) {
+                        elements[0].classList.remove('hidden');
+                    }
+                }
+            });
+    function selectMyFarm() {
+        var curUser = "${sessionScope.serial_num}";
+        if (curUser == "") {
+            //header_join_login 띄움
+            alert('로그인 해주세요.');
+        } else {
+            if (curUser.substring(0, 2) === "us") {
+                //header_user_login 띄움
+                location.href = '/myPageUser';
+            } else if (curUser.substring(0, 2) === "FA") {
+                //header_farmer_login 띄움
+                location.href = '/myPageFarmer';
+            }
+        }
+    }
+    function showPamMoney() {
+        $.ajax({
+            url : '/myPageUser/navBarCnt',
+            type : 'GET',
+            success : function(response) {
+                let userPoint = response.userPoint.toLocaleString('ko-KR');
+                $(".userPoints").html(userPoint);
+            },
+            error : function(error) {
+            }
+        });
+    }
+    
+    function directLink(path, formName, pathVariableId) {
+	   	document.getElementById(pathVariableId).value = path;
+		document.getElementById(formName).submit();
+    }
+    function makeProject() {
+    	$.ajax({
+    		url : "${cpath}/myPageFarmer/checkFarmerAccount",
+    		method : "POST",
+    		success: function(res) {
+    			if(res == 'success') {
+    				directLink('makeProject','makeProjectForm', 'makeProjectPathInput');
+    			} else {
+    				alert("계좌 등록 후, 상품 등록이 가능합니다");
+    				directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput');
+    			}
+    		}
+    	});
+    }
 </script>
 <body>
 	<div class="header">
@@ -156,12 +161,13 @@
 
 					<p class="logout" onclick="location.href='${cpath}/logout'">로그아웃</p>
 
-					<form id="myForm" action="${cpath}/myPageUser" method="post">
-						<input type="hidden" name="path" id="pathInput" />
-						<div class="userPoint_div" onclick="directLink('farmMoneyCharge')">
-							내 팜머니 : <span class="userPoints"></span>P
-						</div>
-					</form>
+					<form id="myFarmMoneyForm" action="${cpath}/myPageUser" method="post">
+					    <input type="hidden" name="path" id="farmMoneyPathInput" />
+	                    <div class="userPoint_div"
+	                        onclick="directLink('farmMoneyCharge','myFarmMoneyForm','farmMoneyPathInput')">
+	                        내 팜머니 : <span class="userPoints"></span>P
+	                    </div>
+	                </form>
 				</div>
 				<div class="header_farmer_login" id="header_farmer_login">
 					<div class="messageBox_div2"
@@ -174,8 +180,14 @@
 							<p class="new_text2">N</p>
 						</div>
 					</div>
-					<div class="myProject"
-						onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
+					<form id="makeProjectForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="makeProjectPathInput" />
+	                    <div class="myProject"
+	                        onclick="makeProject()">나의 프로젝트 만들기</div>
+                    </form>
+                    <form id="regAccountFarmerForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="regAccountPathInput" />
+                    </form>
 				</div>
 			</div>
 		</div>

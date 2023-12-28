@@ -1,6 +1,7 @@
 package com.farmfarm.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,15 +46,21 @@ public class MainController {
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
-		session.setAttribute("headerSelect","logout");
-		session.removeAttribute("serial_num");
-		return "loginIndex";
+		session.invalidate();
+		return "redirect:/";
 	}
 
-	@GetMapping("/myPageFarmer")
-	public String showMyFarmFarmer(HttpSession session) {
+	@RequestMapping(value = "/myPageFarmer", method = {RequestMethod.GET, RequestMethod.POST})
+	public String showMyFarmFarmer(HttpSession session, Model model, @RequestParam(name = "path", required = false) String path) {
 		session.setAttribute("headerSelect", "myFarm");
-		session.removeAttribute("MyFarmer");
+		if(path != null) {
+			model.addAttribute("path", path);
+		}
+
+		String serial_num = (String) session.getAttribute("serial_num");
+		if(serial_num == null || serial_num.substring(0, 2).equals("us")) {
+			return "redirect:/login";
+		}
 		return "myPage/Farmer/menubar_farmer";
 	}
 	
@@ -63,6 +70,10 @@ public class MainController {
 		model.addAttribute("check", "null");
 		if(path != null) {
 			model.addAttribute("path", path);
+		}
+		String serial_num = (String) session.getAttribute("serial_num");
+		if(serial_num == null || serial_num.substring(0, 2).equals("FA")) {
+			return "redirect:/login";
 		}
 		return "myPage/user/menubar_supporter";
 	}
@@ -74,11 +85,10 @@ public class MainController {
 		return "/";
 	}
 
-
+	
 	@GetMapping("/makeProject")
 	public String showMakeProject(HttpSession session) {
 		session.setAttribute("headerSelect", "myFarm");
-		session.setAttribute("MyFarmer", "makeProject");
 		return "myPage/Farmer/menubar_farmer";
 	}
 
@@ -124,6 +134,32 @@ public class MainController {
 		model.addAttribute("cropsKindPriceList", cropsKindPriceList);
 		
 		return "cropsQuote_ajax";
+	}
+	
+	@GetMapping("checkUserLoginStatus")
+	@ResponseBody
+	public Map<String, Boolean> checkUserLoginStatus(HttpSession session) {
+		HashMap<String, Boolean> data = new HashMap<>();
+		String serial_num = (String) session.getAttribute("serial_num");
+		if(serial_num == null || serial_num.substring(0, 2).equals("FA")) {
+			data.put("loginStatus", false);
+		} else {
+			data.put("loginStatus", true);
+		}
+		return data;
+	}
+	
+	@GetMapping("checkFarmerLoginStatus")
+	@ResponseBody
+	public Map<String, Boolean> checkFarmerLoginStatus(HttpSession session) {
+		HashMap<String, Boolean> data = new HashMap<>();
+		String serial_num = (String) session.getAttribute("serial_num");
+		if(serial_num == null || serial_num.substring(0, 2).equals("us")) {
+			data.put("loginStatus", false);
+		} else {
+			data.put("loginStatus", true);
+		}
+		return data;
 	}
 
 }

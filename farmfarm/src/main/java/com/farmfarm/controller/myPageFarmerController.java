@@ -20,28 +20,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-
-import com.farmfarm.dto.Farmer_account_historyVO;
-import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.dto.Auction_reg_infoVO;
 import com.farmfarm.dto.Cultivating_product_detailVO;
 import com.farmfarm.dto.Farm_and_productVO;
-import com.farmfarm.dto.Farmer_account_historyVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
 import com.farmfarm.model.FarmerNavCntService;
 import com.farmfarm.model.FarmersService;
 import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.S3Service;
-
+import com.farmfarm.model.UpdateCulService;
 import com.farmfarm.model.jaehoService;
 import com.farmfarm.model.pwdSha256;
-
-import com.farmfarm.model.UpdateCulService;
-
 import com.farmfarm.model.regProService;
 
 
@@ -289,37 +281,6 @@ public class myPageFarmerController {
 		return "myPage/Farmer/regProduct";
 	}
 	
-	@GetMapping("/accountRegister")
-	public String accountRegister(HttpSession session, Model model) {
-		if(((String)session.getAttribute("serial_num")).substring(0,2).equals("FA")) {
-			HashMap<String, Object> data = myPageService.accountExistence(session);
-			String account_holder = (String)data.get("account_holder");
-			Farmer_account_historyVO vo = (Farmer_account_historyVO)data.get("account_info");
-			if(vo != null) {
-				model.addAttribute("account_holder", account_holder);
-				model.addAttribute("account_bank",vo.getFarmer_bank());
-				model.addAttribute("account_num", vo.getFarmer_account());
-				return "myPage/accountShow";
-			} else {
-				return "myPage/accountRegister";
-			}
-		} else {
-			return "/";
-		}
-	}
-	
-	@PostMapping("/verifyAndRegAccount")
-	@ResponseBody
-	public String verifyAndRegAccount(@RequestParam HashMap<String, String> data, HttpSession session) {
-		String returnMessage = myPageService.verifyAndRegAccount(data, session);
-		logger.warn(returnMessage);
-		if(returnMessage.equals("AccountRegisterSuccess")) {
-			return "success";
-		} else {
-			return "fail";
-		}
-	}
-	
 	@RequestMapping(value = "/regProduct", method = RequestMethod.POST)
 	@ResponseBody
 	public String regPro(HttpServletRequest request, HttpSession session, 
@@ -364,6 +325,17 @@ public class myPageFarmerController {
 			return "fail";
 		}
 		
+	}
+	
+	@ResponseBody
+	@PostMapping("/checkFarmerAccount")
+	public String checkFarmerAccount(HttpSession session) {
+		int result = myPageService.checkAccountForRegisterProduct(session);
+		if(result == 1) {
+			return "success";
+		} else {
+			return "fail";
+		}
 	}
 	
 	

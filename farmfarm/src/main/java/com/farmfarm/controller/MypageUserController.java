@@ -21,18 +21,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
+import com.farmfarm.dto.MyPageUserCartVO;
+import com.farmfarm.dto.MyPageUserFundingDetailVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
-import com.farmfarm.dto.User_account_historyVO;
 import com.farmfarm.model.CertService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.MyPageUserService;
 import com.farmfarm.model.UserNavCntService;
 import com.farmfarm.model.UsersService;
 import com.farmfarm.model.pwdSha256;
-
-
-import com.farmfarm.dto.MyPageUserCartVO;
-import com.farmfarm.dto.MyPageUserFundingDetailVO;
 
 
 
@@ -86,38 +83,6 @@ public class MypageUserController {
 	public HashMap<String, String> farmMoneyChargeCallAPI(Model model, HttpSession session) {
 		HashMap<String, String> data = myPageService.farmMoneyChargeCallAPI(session);
 		return data;
-	}
-
-	@GetMapping("/accountRegister")
-	public String accountRegister(HttpSession session, Model model) {
-		if (((String) session.getAttribute("serial_num")).substring(0, 2).equals("us")) {
-			HashMap<String, Object> data = myPageService.accountExistence(session);
-			String account_holder = (String) data.get("account_holder");
-			User_account_historyVO vo = (User_account_historyVO) data.get("account_info");
-			if (vo != null) {
-				model.addAttribute("account_holder", account_holder);
-				model.addAttribute("account_bank", vo.getUser_bank());
-				model.addAttribute("account_num", vo.getUser_account());
-				;
-				return "myPage/accountShow";
-			} else {
-				return "myPage/accountRegister";
-			}
-		}
-		return "/";
-
-	}
-
-	@PostMapping("/verifyAndRegAccount")
-	@ResponseBody
-	public String verifyAndRegAccount(@RequestParam HashMap<String, String> data, HttpSession session) {
-		String returnMessage = myPageService.verifyAndRegAccount(data, session);
-		logger.warn(returnMessage);
-		if (returnMessage.equals("AccountRegisterSuccess")) {
-			return "success";
-		} else {
-			return "fail";
-		}
 	}
 
 	// 재호
@@ -199,7 +164,7 @@ public class MypageUserController {
 		List<MyPageUserFundingDetailVO> fundingDetail=service.myPageFundingListDetail(product_serial_num);
 		System.out.println(fundingDetail);
 		model.addAttribute("fundingDetail",fundingDetail);
-		
+		model.addAttribute("product_serial_num",product_serial_num);
 		if(fundingDetail.size()!=0) {
 			model.addAttribute("status",fundingDetail.get(0).getCultivate_status());
 		}

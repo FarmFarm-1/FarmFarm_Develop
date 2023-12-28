@@ -64,7 +64,7 @@
 		insert into point_history
 		set
 			user_serial_num = #{user_serial_num},
-			history_content = '포인트구매',
+			history_content = '포인트구매', 
 			amount = #{amount}
 	</insert>
 	
