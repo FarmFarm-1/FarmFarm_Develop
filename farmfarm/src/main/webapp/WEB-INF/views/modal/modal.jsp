@@ -148,12 +148,66 @@
 	border-radius: 1rem;
 	flex-shrink: 0;
 }
+
+.hidden{
+	display: none !important;
+}
+
+.modal_body .btnOk_myproject {
+	cursor: pointer;
+	margin: 2rem 29rem 2rem 29rem;
+	width: 12rem;
+	height: 7rem;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 0.1rem #64a246;
+	box-sizing: border-box;
+	background-color: #64a246;
+	border-radius: 1rem;
+	flex-shrink: 0;
+}
+
+.btnOk_myproject:hover {
+	cursor: pointer;
+	margin: 2rem 29rem 2rem 29rem;
+	width: 12rem;
+	height: 7rem;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 0.1rem #64a246;
+	box-sizing: border-box;
+	background-color: #5C913B;
+	border-radius: 1rem;
+	flex-shrink: 0;
+}
 </style>
 <script>
 	document.addEventListener('keydown', onEnter);
 	document.addEventListener('click', function(event) {
 		if (event.target.matches('.btnOk')) {
 			hideModal();
+		}
+	});
+	document.addEventListener('click', function(event) {
+		if (event.target.matches('.btnOk_myproject')) {
+			hideModal();
+			location.href = '/myPageFarmer';
 		}
 	});
 	/* document.addEventListener('keydown', onEnter);
@@ -176,12 +230,23 @@
 		//location.reload(true); => 경매시 체크해봐야함.
 	}
 	function showModal(title, result) {
+		 $(".btnOk_myproject").addClass('hidden');
 		$(".alertTitle").text(title);
 		$(".alertContent").html(result);
 		document.querySelector('.modal').style.display = 'flex';
 	}
 
 	function showModal_success(title, result) {
+		 $(".btnOk_myproject").addClass('hidden');
+		$(".alertTitle").text(title);
+		$(".alertContent").html(result);
+		if (!result) {
+			document.querySelector('.alertTitle').style.margin = '6rem 0rem 7rem 0rem';
+		}
+		document.querySelector('.modal').style.display = 'flex';
+	}
+	function showModal_myproject(title, result) {
+		 $(".btnOk").addClass('hidden');
 		$(".alertTitle").text(title);
 		$(".alertContent").html(result);
 		if (!result) {
@@ -197,5 +262,6 @@
 		<p class="alertTitle"></p>
 		<p class="alertContent"></p>
 		<button class="btnOk">확인</button>
+		<button class="btnOk_myproject">확인</button>
 	</div>
 </div>
