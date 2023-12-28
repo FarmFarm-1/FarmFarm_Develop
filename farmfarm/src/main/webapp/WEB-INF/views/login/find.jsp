@@ -112,10 +112,12 @@
 			success : function(result) {
 				//alert(result);
 				if(result == "등록되지 않은 이메일입니다."){
+					 $(".btnOk_myproject").addClass('hidden');
 					document.querySelector('#basicModal .alertTitle').textContent = "등록되지 않은 이메일입니다.";
      				document.querySelector('#basicModal .alertContent').textContent = "이메일 정보를 다시 확인해 주세요.";
                     document.querySelector('.modal').style.display='flex';
 				}else{
+					 $(".btnOk_myproject").addClass('hidden');
 					document.querySelector('#basicModal .alertTitle').textContent = "임시비밀번호 발송 완료";
      				document.querySelector('#basicModal .alertContent').textContent = "이메일을 확인하여 로그인 후 비밀번호를 변경해주세요.";
                     document.querySelector('.modal').style.display='flex';
