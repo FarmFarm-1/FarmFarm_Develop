@@ -202,20 +202,11 @@
 	document.addEventListener('click', function(event) {
 		if (event.target.matches('.btnOk')) {
 			hideModal();
-		}
-	});
-	
-	document.addEventListener('click', function(event) {
-		if (event.target.matches('.btnOk_myproject')) {
+		} else if (event.target.matches('.btnOk_myproject')) {
 			hideModal();
 			location.href = '/myPageFarmer';
 		}
 	});
-	/* document.addEventListener('keydown', onEnter);
-	window.onload = function() {
-		document.querySelector('.btnOk').addEventListener('click', hideModal);
-	};
-	 */
 	function onEnter() {
 		var keyCode = window.event.keyCode;
 		if (keyCode == 13
