@@ -6,10 +6,10 @@
 <head>
 <meta charset="utf-8" />
 <%-- <meta http-equiv="refresh" content="3;url=${cpath}/myPageUser"> --%>
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mainpage/펀딩/구매 완료</title>
+<title>팜팜</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />
 <link rel="stylesheet"

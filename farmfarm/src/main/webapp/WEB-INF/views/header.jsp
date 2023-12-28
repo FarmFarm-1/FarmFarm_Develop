@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>FarmFarm Header</title>
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
+<title>팜팜</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
