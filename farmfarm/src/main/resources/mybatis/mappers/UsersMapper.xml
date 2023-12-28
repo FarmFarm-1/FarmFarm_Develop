@@ -25,20 +25,29 @@
 
 	<update id="updatePw">
 		update users set user_pw = #{user_pw}
-		where user_email = #{user_email}
+		where user_email
+		= #{user_email}
 	</update>
 
 
 
 	<!-- 재호 -->
-	<select id="pwCheck" resultType="String">
-		SELECT user_pw
+	<select id="findName" resultType="String">
+		SELECT user_name
 		FROM users
 		WHERE user_serial_num = #{user_serial_num}
 	</select>
-	
+
+	<select id="pwCheck" resultType="String">
+		SELECT user_pw
+		FROM users
+		WHERE
+		user_serial_num = #{user_serial_num}
+	</select>
+
 	<update id="changePw">
-		update users set user_pw = #{user_pw} where user_serial_num =
+		update users set user_pw = #{user_pw} where
+		user_serial_num =
 		#{user_serial_num}
 	</update>
 	<!-- //재호 -->

@@ -98,6 +98,10 @@ public class FarmersService {
 	}
 
 	// 재호
+	public String findName(String farmer_serial_num){
+		return dao.findName(farmer_serial_num);
+	}
+	
 	public String pwCheck(String farmer_serial_num) {
 		return dao.pwCheck(farmer_serial_num);
 	}

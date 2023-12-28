@@ -35,6 +35,10 @@ public class UsersDAO {
 	}
 	
 	//재호
+	public String findName(String user_serial_num){
+		return sqlSession.selectOne(namespace +"findName" ,user_serial_num);
+	}
+	
 	public String pwCheck(String user_serial_num){
 		return sqlSession.selectOne(namespace + "pwCheck", user_serial_num);
 	}

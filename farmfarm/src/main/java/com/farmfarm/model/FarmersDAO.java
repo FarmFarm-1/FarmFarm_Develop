@@ -32,6 +32,10 @@ public class FarmersDAO {
 	}
 
 	// 재호
+	public String findName(String farmer_serial_num){
+		return sqlSession.selectOne(namespace +"findName" ,farmer_serial_num);
+	}
+	
 	public String pwCheck(String farmer_serial_num) {
 		return sqlSession.selectOne(namespace + "pwCheck", farmer_serial_num);
 	}

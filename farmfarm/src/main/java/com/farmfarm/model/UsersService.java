@@ -100,6 +100,10 @@ public class UsersService {
 	}
 	
 	//재호
+	public String findName(String user_serial_num){
+		return dao.findName(user_serial_num);
+	}
+	
 	public String pwCheck(String user_serial_num){
 		return dao.pwCheck(user_serial_num);
 	}

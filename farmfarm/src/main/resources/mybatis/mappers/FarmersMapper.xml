@@ -3,32 +3,43 @@
       PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.farmfarm.FarmersVO">
-	
-	<select id="loginCheck" parameterType="FarmersVO" resultType="String">
-		select * from farmers
-		where farmer_email = #{farmer_email} and farmer_pw = #{farmer_pw}
-	</select>
-	
-	
-	<select id="readMember" resultType="String">
+
+	<select id="loginCheck" parameterType="FarmersVO"
+		resultType="String">
 		select * from farmers
 		where farmer_email = #{farmer_email}
+		and farmer_pw = #{farmer_pw}
 	</select>
-	
-	<update id="updatePw" >
-		update farmers set farmer_pw = #{farmer_pw} where farmer_email = #{farmer_email}
+
+
+	<select id="readMember" resultType="String">
+		select * from farmers
+		where
+		farmer_email = #{farmer_email}
+	</select>
+
+	<update id="updatePw">
+		update farmers set farmer_pw =
+		#{farmer_pw} where farmer_email = #{farmer_email}
 	</update>
 
 
 	<!-- 재호 -->
+	<select id="findName" resultType="String">
+		SELECT farmer_name
+		FROM farmers
+		WHERE farmer_serial_num = #{farmer_serial_num}
+	</select>
+	
 	<select id="pwCheck" resultType="String">
 		SELECT farmer_pw
 		FROM farmers
 		WHERE farmer_serial_num = #{farmer_serial_num}
 	</select>
-	
+
 	<update id="changePw">
-		update farmers set farmer_pw = #{farmer_pw} where farmer_serial_num =
+		update farmers set farmer_pw = #{farmer_pw} where
+		farmer_serial_num =
 		#{farmer_serial_num}
 	</update>
 	<!-- //재호 -->
