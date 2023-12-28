@@ -19,221 +19,219 @@
 <link rel="stylesheet" href="${cpath}/styles/auctionDetail.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="${cpath}/js/auctionDetail.js" type="text/javascript"></script>
-<script type="text/javascript">
-	let serial_num = "${sessionScope.serial_num}";
-	let product_serial_num = "${auctionInfo.product_serial_num}";
-	let user_real_input_price = 0;
-	$(document).ready(function() {	
-		$("#auction-price-input").on("input", pointChk);
-		$("#auction-price-input").on("input", formattingNum);
-		$(".bookmark-layer").click(function() {
-			if(serial_num.substring(0,2) === "us"){
-				let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
-                if (isHeartFilled) {
-                    addToMyCart();
-                    $("#heart-icon").attr("src", "${cpath}/assets/heart_fill.png");
-                } else {
-                    deleteFromMyCart();
-                    $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
-                }
-			} else {
-				showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
-			}
-		});
-		
-		$("#auction-confirm-btn").click(function() {
-			if(serial_num.substring(0,2) === "us"){
-				if(user_real_input_price - ${auctionInfo.starting_price} >= 0) {
-					let max_auction_price = "${maxAndCntInfo.max_auction_price}";
-					if(max_auction_price.length==0) {
-						max_auction_price = Number(0);
-					} else {
-						max_auction_price = Number(${maxAndCntInfo.max_auction_price});
-					}
-					
-					if (user_real_input_price - max_auction_price > 0) {
-						$.ajax({
-							url: "${cpath}/auction/auctionConfirm",
-							type: "POST",
-							data: {
-									"user_serial_num" : serial_num,
-									"user_price" : user_real_input_price,
-									"product_serial_num" : product_serial_num
-									},
-							success: function(res) {
-								if(res == 1) {
-									showModal_success("입찰 결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");	
-									$(".btnOk").click(function() {
-										location.reload();
-									});							
-								} else {
-									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
-								}
-								
-							},
-							error: function(xhr, status, error) {
-								if(xhr.responseText == "notEnoughPoint") {
-									showModal("입찰 결과","포인트가 부족합니다");
-								} else if (xhr.responseText == "notMaxAuctionraiser") {
-									showModal("입찰 결과","최고 입찰 금액이 아닙니다");
-								} else {
-									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
-								}
-							}
-						});
-					} else {
-						showModal("입력 오류","최고 금액 이상으로 입찰하세요");
-					}	
-				}else {
-					showModal("입력 오류","경매 시작 금액 이상으로 입찰하세요.");
-				}	
-			} else {
-				showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
-			}
-		});
-		
-		function pointChk(e) {
-	    	if(serial_num.substring(0,2) === "us"){
-	    		let input = e.target.value;
-		    	if(input.length > 0) {
-		        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
-		        	user_real_input_price = Number(inputNum);
-		        	if ($.isNumeric(inputNum)) {
-		                $.ajax({
-		                	url: "${cpath}/mypage/pointCheck",
-		                	type: "post",
-		                	data: {"inputNum" : inputNum},
-		                	success: function(res) {
-		                		if(res==="disable") {
-		                			$(".point-show").css("visibility", "visible");
-		                		} else {
-		                			$(".point-show").css("visibility", "hidden");
-		                		}
-		                	}
-		                });
-		            }
-		        }
-	    	} else {
-	    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
-	    		e.target.value = "0";
-	    	}
-	    }
+<script>
+let serial_num = "${sessionScope.serial_num}";
+let product_serial_num = "${auctionInfo.product_serial_num}";
+let user_real_input_price = 0;
+$(document).ready(function() {	
+	$("#auction-price-input").on("input", pointChk);
+	$("#auction-price-input").on("input", formattingNum);
+	$(".bookmark-layer").click(function() {
+		if(serial_num.substring(0,2) === "us"){
+			let isHeartFilled = $("#heart-icon").toggleClass("filled").hasClass("filled");
+            if (isHeartFilled) {
+                addToMyCart();
+                $("#heart-icon").attr("src", "${cpath}/assets/heart_fill.png");
+            } else {
+                deleteFromMyCart();
+                $("#heart-icon").attr("src", "${cpath}/assets/heart_empty.png");
+            }
+		} else {
+			showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
+		}
 	});
 	
-	function reloadMyCart() {
-		$.ajax({
-            url: "${cpath}/mypage/reloadCart",
-            type: "post",
-            data : {"product_serial_num" : product_serial_num},
-            success: function(res) {
-            	$("#heart-num").text(res);
-            }
-        });
-	}
+	$("#auction-confirm-btn").click(function() {
+
+		if(serial_num.substring(0,2) === "us"){
+			if(user_real_input_price - ${auctionInfo.starting_price} >= 0) {
+				let max_auction_price = "${maxAndCntInfo.max_auction_price}";
+				if(max_auction_price.length==0) {
+					max_auction_price = Number(0);
+				} else {
+					max_auction_price = Number(${maxAndCntInfo.max_auction_price});
+				}
+				if (user_real_input_price - max_auction_price > 0) {
+					let cal_revenue_pct = ${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount - maxAndCntInfo.max_auction_price)/(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount))*100};
+					$.ajax({
+						url: "${cpath}/auction/auctionConfirm",
+						type: "POST",
+						data: {
+								"user_serial_num" : serial_num,
+								"user_price" : user_real_input_price,
+								"product_serial_num" : product_serial_num
+								},
+						success: function(res) {
+							if(res == 1) {
+								let message = `낙찰시 시세보다 <span style="background-color:lightgreen;">\${cal_revenue_pct.toFixed(2)}% 저렴</span>한 가격으로`
+								+"<br>구매하실 수 있습니다!";
+								showModal_success("입찰 결과",message);	
+								$(".btnOk").click(function() {
+									location.reload();
+								});							
+							} else {
+								showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+							}
+						},
+						error: function(xhr, status, error) {
+							if(xhr.responseText == "notEnoughPoint") {
+								showModal("입찰 결과","포인트가 부족합니다");
+							} else if (xhr.responseText == "notMaxAuctionraiser") {
+								showModal("입찰 결과","최고 입찰 금액이 아닙니다");
+							} else {
+								showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
+							}
+						}
+					});
+				} else {
+					showModal("입력 오류","최고 금액 이상으로 입찰하세요");
+				}	
+			} else {
+				showModal("입력 오류","경매 시작 금액 이상으로 입찰하세요.");
+			}	
+		} else {
+			showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
+		}
+	});
 	
-	function addToMyCart() {
-		$.ajax({
-            url: "${cpath}/mypage/addcart",
-            type: "post",
-            data: {
-                "product_serial_num" : product_serial_num,
-                "user_serial_num" : serial_num
-            },
-            success: function(res) {
-            	reloadMyCart();
-            }
-        });
-	}
-	
-	function deleteFromMyCart() {
-		$.ajax({
-            url: "${cpath}/mypage/deletecart",
-            type: "POST",
-            data: {
-                "product_serial_num" : product_serial_num,
-                "user_serial_num" : serial_num
-            },
-            success: function(res) {
-            	reloadMyCart();
-            }
-        });
-	}
-	
-	function formattingNum(e) {
-    	let input = e.target.value; 
-        if(input.length > 0) {
-        	let num = input.replace(/,/g, ""); // 콤마 제거
-        	if (!$.isNumeric(num)) {
-        		showModal("입력 오류","숫자만 입력하세요.");
-                $(this).val(input.slice(0, -1)); // 마지막 문자 제거
-            } else {
-                $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
-            }
+	function pointChk(e) {
+    	if(serial_num.substring(0,2) === "us"){
+    		let input = e.target.value;
+	    	if(input.length > 0) {
+	        	let inputNum = input.replace(/,/g, ""); // 콤마 제거
+	        	user_real_input_price = Number(inputNum);
+	        	if ($.isNumeric(inputNum)) {
+	                $.ajax({
+	                	url: "${cpath}/mypage/pointCheck",
+	                	type: "post",
+	                	data: {"inputNum" : inputNum},
+	                	success: function(res) {
+	                		if(res==="disable") {
+	                			$(".point-show").css("visibility", "visible");
+	                		} else {
+	                			$(".point-show").css("visibility", "hidden");
+	                		}
+	                	}
+	                });
+	            }
+	        }
+    	} else {
+    		showModal("로그인이 필요한 기능입니다.","서포터 회원으로 로그인 하세요.");
+    		e.target.value = "0";
+    	}
+    }
+});
+
+function reloadMyCart() {
+	$.ajax({
+        url: "${cpath}/mypage/reloadCart",
+        type: "post",
+        data : {"product_serial_num" : product_serial_num},
+        success: function(res) {
+        	$("#heart-num").text(res);
+        }
+    });
+}
+
+function addToMyCart() {
+	$.ajax({
+        url: "${cpath}/mypage/addcart",
+        type: "post",
+        data: {
+            "product_serial_num" : product_serial_num,
+            "user_serial_num" : serial_num
+        },
+        success: function(res) {
+        	reloadMyCart();
+        }
+    });
+}
+
+function deleteFromMyCart() {
+	$.ajax({
+        url: "${cpath}/mypage/deletecart",
+        type: "POST",
+        data: {
+            "product_serial_num" : product_serial_num,
+            "user_serial_num" : serial_num
+        },
+        success: function(res) {
+        	reloadMyCart();
+        }
+    });
+}
+
+function formattingNum(e) {
+	let input = e.target.value; 
+    if(input.length > 0) {
+    	let num = input.replace(/,/g, ""); // 콤마 제거
+    	if (!$.isNumeric(num)) {
+    		showModal("입력 오류","숫자만 입력하세요.");
+            $(this).val(input.slice(0, -1)); // 마지막 문자 제거
+        } else {
+            $(this).val(Number(num).toLocaleString("en")); // 천 단위로 콤마 추가
         }
     }
-	
-	function showChart() {
-    	location.href="${cpath}/chart/area/${auctionInfo.product_kind}";
-    }
-	
-	function showMore() {
-		$(".product-detail-img:not(:first)").toggle();
-	}	
-	
-	/*더보기 이벤트 리스너*/
-	document
-			.addEventListener(
-					'DOMContentLoaded',
-					function() { //DOM 생성 후 이벤트 리스너 등록
-						//더보기 버튼 이벤트 리스너
-						document.querySelector('.btn_open').addEventListener('click',
-								function(e) {
+}
 
-									let classList = document
-											.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
-									let contentHeight = document
-											.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+function showChart() {
+	location.href="${cpath}/chart/area/${auctionInfo.product_kind}";
+}
 
-									// 더보기
-									classList.remove('showstep1');
-									classList.add('showstep2');
+function showMore() {
+	$(".product-detail-img:not(:first)").toggle();
+}	
 
-									document
-											.querySelector('.btn_open').classList
-											.add('hide');
-									document
-											.querySelector('.btn_close').classList
-											.remove('hide');
-									document
-									.querySelector('.gradient').classList
-									.add('hide');
+/*더보기 이벤트 리스너*/
+document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이벤트 리스너 등록
+	//더보기 버튼 이벤트 리스너
+	document.querySelector('.btn_open').addEventListener('click',
+		function(e) {
 
-								});
-						document.querySelector('.btn_close').addEventListener('click',
-										function(e) {
+			let classList = document
+					.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+			let contentHeight = document
+					.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
 
-											let classList = document
-													.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
-											let contentHeight = document
-													.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+			// 더보기
+			classList.remove('showstep1');
+			classList.add('showstep2');
 
-											//접기
-											classList.remove('showstep2');
-											classList.add('showstep1');
-											document
-													.querySelector('.btn_close').classList
-													.add('hide');
-											document
-													.querySelector('.btn_open').classList
-													.remove('hide');
-											document
-											.querySelector('.gradient').classList
-											.remove('hide');
+			document
+					.querySelector('.btn_open').classList
+					.add('hide');
+			document
+					.querySelector('.btn_close').classList
+					.remove('hide');
+			document
+			.querySelector('.gradient').classList
+			.add('hide');
 
-										});
+		});
+	document.querySelector('.btn_close').addEventListener('click',
+		function(e) {
 
-					});
+			let classList = document
+					.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
+			let contentHeight = document
+					.querySelector('.detailinfo > .fd_prostorypic').offsetHeight; //컨텐츠 높이 얻기
+
+			//접기
+			classList.remove('showstep2');
+			classList.add('showstep1');
+			document
+					.querySelector('.btn_close').classList
+					.add('hide');
+			document
+					.querySelector('.btn_open').classList
+					.remove('hide');
+			document
+			.querySelector('.gradient').classList
+			.remove('hide');
+
+		});
+
+});
 </script>
 </head>
 <body>
@@ -415,10 +413,10 @@
 						<c:choose>
 							<c:when test="${maxAndCntInfo.max_auction_price ne null}">
 								<fmt:formatNumber
-									value="${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
+									value="${(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
 					     - maxAndCntInfo.max_auction_price)
-					     /maxAndCntInfo.max_auction_price)}"
-									type="percent" />
+					     /(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount)}"
+									type="percent" pattern="0.00%"/>
 							</c:when>
 							<c:otherwise>
 								<fmt:formatNumber value="0" type="percent" />

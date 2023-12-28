@@ -16,7 +16,7 @@
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-<link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
+<link rel="stylesheet" href="${cpath }/styles/mypage_menubar_user.css" />
 <link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
