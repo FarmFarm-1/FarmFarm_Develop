@@ -196,10 +196,12 @@
 			signUpBtn.disabled = false;
 			signUpBtn.style.backgroundColor = '#64A346';
 			signUpBtn.style.border = 'solid 0.0744rem #64a246';
+			signUpBtn.style.cursor = 'pointer';
 		} else {
 			signUpBtn.disabled = true;
 			signUpBtn.style.backgroundColor = '#a2a2a3';
 			signUpBtn.style.border = 'solid 0.0744rem #a2a2a3';
+			signUpBtn.style.cursor = '';
 		}
 
 	}

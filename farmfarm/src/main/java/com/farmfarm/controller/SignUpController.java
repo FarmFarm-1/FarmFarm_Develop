@@ -89,7 +89,7 @@ public class SignUpController {
 	}
 	
 	@PostMapping("/s_signup3")
-	public String userSignUpPost(String email, String password, String name, HttpServletResponse response) {
+	public String userSignUpPost(Model model,String email, String password, String name, HttpServletResponse response) {
 		System.out.println("user in");
 		
 		UsersVO u = new UsersVO();
@@ -103,6 +103,7 @@ public class SignUpController {
 		int result = sService.userSignUp(u);
 		
 		if(result > 0) {
+			model.addAttribute("signup_name",name);
 			return "signUp/s_signup3";
 		}else {
 			return "redirect:/login";
@@ -111,7 +112,7 @@ public class SignUpController {
 	}
 	
 	@PostMapping("/f_signup3")
-	public String farmerSignUpPost(String email, String password, String name, HttpServletResponse response) {
+	public String farmerSignUpPost(Model model,String email, String password, String name, HttpServletResponse response) {
 		System.out.println("farmer in");
 		
 		FarmersVO f = new FarmersVO();
@@ -125,6 +126,7 @@ public class SignUpController {
 		int result = sService.farmerSignUp(f);
 		
 		if(result > 0) {
+			model.addAttribute("signup_name",name);
 			return "signUp/f_signup3";
 		}else {
 			return "redirect:/login";

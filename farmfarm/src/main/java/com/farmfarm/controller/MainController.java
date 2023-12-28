@@ -31,7 +31,7 @@ public class MainController {
 		session.removeAttribute("headerSelect");
 		return "loginIndex";
 	}
-
+	
 	@GetMapping("/login")
 	public String showLogin(HttpSession session) {
 		session.setAttribute("headerSelect","login");

@@ -20,7 +20,7 @@
 
 <body>
 	<div class="mypage--Se9">
-	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<!-- 고정 -->
 		<p class="item--ydo">경매에 참여 내역을 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">
@@ -39,7 +39,7 @@
 				<img class="tomatoes-55667411280-5Eu"
 					src="${aList.auction_thumb_img_url}"
 					<c:if test="${aList.product_status eq '경매중'}">
-                		onclick="location.href='/auction/auctionDetail?product_serial_num=${fList.product_serial_num}'"
+                		onclick="location.href='/auction/auctionDetail?product_serial_num=${aList.product_serial_num}'"
              		</c:if> />
 
 				<div class="fundinginfo-B9X">
@@ -65,15 +65,17 @@
 				</div>
 
 				<div class="auctiondeadlinegroup-Nj7">
-					<c:set var="days"
-						value="${fn:substringBefore(Math.floor((aList.d_day)/1440), '.')}" />
-					<c:set var="remainingHours"
-						value="${fn:substringBefore(Math.floor(((aList.d_day)%1440) / 60), '.')}" />
-					<c:set var="remainingMinutes" value="${(((aList.d_day)%1440)%60)}" />
+					<c:if test="${aList.product_status eq '경매중'}">
+						<c:set var="days"
+							value="${fn:substringBefore(Math.floor((aList.d_day)/1440), '.')}" />
+						<c:set var="remainingHours"
+							value="${fn:substringBefore(Math.floor(((aList.d_day)%1440) / 60), '.')}" />
+						<c:set var="remainingMinutes" value="${(((aList.d_day)%1440)%60)}" />
 
+						<div class="auctionremaining-VYq">${days}일
+							${remainingHours}시간 ${remainingMinutes}분</div>
+					</c:if>
 
-					<div class="auctionremaining-VYq">${days}일
-						${remainingHours}시간 ${remainingMinutes}분</div>
 					<p class="auctiondeadline-pr1">${aList.auction_deadline} 마감</p>
 				</div>
 

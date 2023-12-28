@@ -15,7 +15,7 @@
 					<div class="logo">
 						<div>
 							<div class="img_wrap">
-								<img src="${cpath }/assets/logo.png" />
+								<img src="${cpath }/assets/logo_sweetpotato.png" />
 							</div>
 							팜팜
 						</div>
@@ -36,13 +36,13 @@
 					<div class="title">ABOUT FARMFARM</div>
 					<ul class="abt_farm">
 						<li>
-							<a href="#">팜팜이란?</a>
+							<a>팜팜이란?</a>
 						</li>
 						<li>
-							<a href="#">새소식</a>
+							<a>새소식</a>
 						</li>
 						<li>
-							<a href="#">커뮤니티파트너</a>
+							<a>커뮤니티파트너</a>
 						</li>
 					</ul>
 				</div>

@@ -55,7 +55,7 @@
 
 					<div class="item--d3T">회원가입 완료</div>
 					<div class="item--hp1">
-						팜린이 님의 <br /> 회원가입이 완료되었습니다.
+						${signup_name}님의 <br /> 회원가입이 완료되었습니다.
 					</div>
 				</div>
 			</div>

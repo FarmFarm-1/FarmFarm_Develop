@@ -83,6 +83,7 @@
   background-color: #ffffff;
   border-radius: 0.3rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .farmmoney-DPb {
   margin: 0rem 0rem 3rem 0rem;
@@ -109,6 +110,7 @@
   border: solid 0.1rem #686868;
   border-radius: 1rem;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 .farmmoneycharge-layout .selected-outline {

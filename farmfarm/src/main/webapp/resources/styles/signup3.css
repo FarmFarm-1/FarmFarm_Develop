@@ -427,4 +427,5 @@ input {
 	background-color: #64a246;
 	border-radius: 0.3721rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
