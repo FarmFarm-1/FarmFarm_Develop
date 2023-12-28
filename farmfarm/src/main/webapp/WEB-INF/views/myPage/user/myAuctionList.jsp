@@ -39,7 +39,7 @@
 				<img class="tomatoes-55667411280-5Eu"
 					src="${aList.auction_thumb_img_url}"
 					<c:if test="${aList.product_status eq '경매중'}">
-                		onclick="location.href='/auction/auctionDetail?product_serial_num=${fList.product_serial_num}'"
+                		onclick="location.href='/auction/auctionDetail?product_serial_num=${aList.product_serial_num}'"
              		</c:if> />
 
 				<div class="fundinginfo-B9X">
