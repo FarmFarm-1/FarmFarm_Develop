@@ -21,7 +21,7 @@
 	setInterval(function () {
 		$.get("${cpath}/checkFarmerLoginStatus", function(data) {
 				if(!data.loginStatus) {
-					location.href = "${cpath}/login";
+					location.href = "${cpath}/";
 				}
 			}
 		)

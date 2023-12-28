@@ -28,7 +28,7 @@
 	setInterval(function () {
 		$.get("${cpath}/checkUserLoginStatus", function(data) {
 				if(!data.loginStatus) {
-					location.href = "${cpath}/login";
+					location.href = "${cpath}/";
 				}
 			}
 		)
