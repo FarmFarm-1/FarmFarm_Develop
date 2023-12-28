@@ -119,7 +119,7 @@
 	
 	<!--  재호 -->
 		<select id="depositList" resultType="map">
-		SELECT fap.product_name, fap.product_regdate , fap.farm_address,
+		SELECT fap.product_name, fap.product_regdate , fap.farm_address, fap.funding_thumb_img_url ,
 		Date(upsh.sharing_date) AS sharing_date, upsh.user_bank,
 		upsh.user_account, upsh.user_profit AS deposit
 		FROM user_profit_sharing_history AS upsh
@@ -129,11 +129,11 @@
 		ah.product_serial_num
 		WHERE upsh.user_serial_num = #{user_serial_num}
 		AND ah.auction_status = 'O'
-		ORDER BY upsh.sharing_date;
+		ORDER BY upsh.sharing_date desc;
 	</select>
 
 	<select id="usedfarmList" resultType="map">
-		SELECT fap.product_name, ph.product_serial_num,
+		SELECT fap.product_name, fap.funding_thumb_img_url , ph.product_serial_num,
 		fap.farm_name, ph.amount, ph.history_content,
 		Date(ph.update_date) AS
 		update_date,
@@ -148,13 +148,14 @@
 		ph.user_serial_num
 		=
 		#{user_serial_num}
-		ORDER BY ph.update_date
+		ORDER BY ph.update_date desc;
 	</select>
 
 	<select id="showSearchDate" resultType="map">
 		SELECT
 		fap.product_name,
 		fap.farm_name,
+		fap.funding_thumb_img_url ,
 		ph.amount,
 		ph.history_content,
 		DATE(ph.update_date) AS
@@ -173,7 +174,7 @@
 		DATE(ph.update_date) BETWEEN #{startDate} AND
 		#{endDate}
 		ORDER BY
-		ph.update_date
+		ph.update_date desc;
 	</select>
 	<!-- //재호 -->
 </mapper>

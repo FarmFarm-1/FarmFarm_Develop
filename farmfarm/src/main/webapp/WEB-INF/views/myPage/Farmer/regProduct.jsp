@@ -504,6 +504,7 @@
 		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
 		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
 		document.getElementById("harvestDate").setAttribute("min", today);
+		document.getElementById("deadline").setAttribute("min", today);
 
 	}
 

@@ -6,7 +6,7 @@
 	<!-- 파머 -->
 	<select id="depositList_farmer" resultType="map">
 		SELECT
-		fap.product_name, fap.product_regdate , fap.farm_address,fpsh.product_serial_num ,
+		fap.product_name, fap.product_regdate , fap.farm_address,fpsh.product_serial_num , fap.funding_thumb_img_url ,
 		Date(fpsh.sharing_date) AS sharing_date, fpsh.farmer_bank,
 		fpsh.farmer_account, fpsh.farmer_profit AS deposit
 		FROM farmer_profit_sharing_history AS fpsh
@@ -19,7 +19,7 @@
 		fpsh.farmer_serial_num = #{farmer_serial_num}
 		AND ah.auction_status =
 		'O'
-		ORDER BY fpsh.sharing_date;
+		ORDER BY fpsh.sharing_date desc;
 	</select>
 	<!-- //파머 -->
 </mapper>

@@ -16,7 +16,7 @@
 		<div class="content_detailall">
 			<div class="content_num">${status.index + 1}</div>
 			<div class="imgclass">
-				<img src="${cpath}/assets/tomatoes-55667411280-VTB.png" />
+				<img src="${pointItem.funding_thumb_img_url }" />
 			</div>
 			<div class="content_detail_firstAll">
 				<div class="content_detail_first">${pointItem.product_name }</div>
