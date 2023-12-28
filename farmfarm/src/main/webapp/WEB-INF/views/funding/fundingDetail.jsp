@@ -226,7 +226,7 @@
 		let product_serial_num = "${fundingInfo.product_serial_num}";
 
 		const start = 0.01;
-		const end = 100 - "${sumfundingpct}";
+		const end = (100 - "${sumfundingpct}").toFixed(2);
 		const datalist = document.getElementById("paylist");
 		const payInput = document.getElementById("pay");
 		const payDiv = document.getElementById("Paydiv");
