@@ -104,7 +104,7 @@
 	
 	<select id="myPageCartAuctionList" parameterType="String"
 		resultType="MyPageUserCartVO">
-		SELECT fap.auction_thumb_img_url, fap.product_name,
+		SELECT fap.product_serial_num, fap.auction_thumb_img_url, fap.product_name,
 		fap.expected_harvest_date,ari.harvest_amount,
 		DATEDIFF(ari.auction_deadline, NOW()) as d_day, psn.max_price AS
 		current_price ,ROUND(IFNULL(psn.cnt,0)) as participants

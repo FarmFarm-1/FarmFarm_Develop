@@ -180,6 +180,9 @@
 							<p class="new_text2">N</p>
 						</div>
 					</div>
+          
+          <p class="flogout" onclick="location.href='${cpath}/logout'">로그아웃</p>
+          
 					<form id="makeProjectForm" action="${cpath}/myPageFarmer" method="post">
 					    <input type="hidden" name="path" id="makeProjectPathInput" />
 	                    <div class="myProject"

@@ -43,34 +43,95 @@
 	}
 </script>
 <script>
-	
+
+/* let serial_num = "${sessionScope.serial_num}"; */
+
+function func(product_serial_num, index) {
+	event.stopPropagation();
+
+	if (serial_num.substring(0, 2) === "us") {
+		let heartIcon = $("#heart-icon-" + index);
+		let isHeartFilledBeforeToggle = heartIcon.hasClass("filled");
+		heartIcon.toggleClass("filled");
+		let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
+		
+	 	if (isHeartFilledBeforeToggle) {
+			heartIcon.attr("src", "${cpath }/assets/heart_white_empty.png");
+			deleteFromMyCart(product_serial_num);
+		} else {
+			heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
+			addToMyCart(product_serial_num);
+		} 
+
+	} /* else {
+		alert("서포터 회원으로 로그인 하세요.");
+	} */
+}
+
+function reloadMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/reloadCart",
+		type : "post",
+		data : {
+			"product_serial_num" : product_serial_num
+		},
+		success : function(res) {
+			$("#heart-num").text(res);
+		}
+	});
+}
+
+function addToMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/addcart",
+		type : "post",
+		data : {
+			"product_serial_num" : product_serial_num,
+			"user_serial_num" : serial_num
+		},
+		success : function(res) {
+			reloadMyCart(product_serial_num);
+		}
+	});
+}
+
+function deleteFromMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/deletecart",
+		type : "POST",
+		data : {
+			"product_serial_num" : product_serial_num,
+			"user_serial_num" : serial_num
+		},
+		success : function(res) {
+			reloadMyCart(product_serial_num);
+		}
+	});
+}
 </script>
 <body>
 	<!-- <h1>펀딩리스트</h1> -->
 	<div id="here2" class="mypage--hQ1">
 		<p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
-			<!-- <div class="filter1-CTf">전체</div> -->
 			<div id="funding" class="filter2-GTX" onclick="myCartFundingList()">펀딩</div>
 			<div id="auction" class="filter3-8Vj" onclick="myCartAuctionList()">경매</div>
 		</div>
 
 		<div class="cart-container">
-			<c:forEach items="${myCartFundingList }" var="fList">
+			<c:forEach items="${myCartFundingList }" var="fList" varStatus="status">
 				<div class="auto-group-ceto-zXw">
-					<div class="cartlist2-HAu">
+					<div class="cartlist2-HAu" onclick="location.href='${cpath}/funding/fundingDetail?product_serial_num=${fList.product_serial_num}';">
 
 						<div class="auto-group-zfjd-bBb">
-						
-							<!-- <div class="auto-group-fj9f-Bb3">
-								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								db에서 가져오는 사진으로 바꾸기
-								${fList.funding_thumb_img_url}
-								<div class="auto-group-fj9f-Bb3-bg"></div>
-							</div> -->
-							
 							<img class="auto-group-fj9f-Bb3" src="${fList.funding_thumb_img_url}" />
-							<img class="vector-6xu" src="/assets/heart_thub.png" />
+							<div class="${fList.d_day>=0?'active':'overlay'}">펀딩이 종료되었습니다</div>
+							
+							<div class="vector-6xu"
+								onclick="func('${fList.product_serial_num }', ${status.index })">
+								<img id="heart-icon-${status.index}" class="heart-icon filled"
+									src="/assets/heart_thub.png" />
+							</div>
 							
 							<p class="item--ixM">${fList.product_name}</p>
 							<div class="minamount-7xZ">
