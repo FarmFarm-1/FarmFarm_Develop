@@ -66,6 +66,7 @@
   font-family: Pretendard, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mingcute-right-line-WBf {
   margin-bottom: 0rem;
@@ -74,4 +75,5 @@
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }

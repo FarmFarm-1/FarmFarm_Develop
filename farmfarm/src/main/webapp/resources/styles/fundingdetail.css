@@ -104,6 +104,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 10rem;
+	cursor: pointer;
 }
 
 .farmfarm_container .funding_info_left .stroymoregroup .grouptext {
@@ -254,6 +255,7 @@
 .chat_open img{
 	width:30px;
 	height: 30px;
+	cursor: pointer;
 }
 
 .funding_info_right .funding_detail>div {

@@ -69,8 +69,8 @@ public class SignUpService {
 		msg +="&nbsp;";
 		msg +="<p style=\"height: 0.1rem; background-color: #d9d9d9; width: 38rem;\"></p>";
 		msg +="<h2 style=\"margin-left: 13rem;\">인증번호 : </h2>";
-		msg +="<h2 style=\"color:#64a246; margin-left: 21rem; position: relative; bottom: 3.2rem;\">" + cerNum + "</h2>";
-		msg +="<p style=\"height: 0.1rem; background-color: #d9d9d9; position: relative; top: -3rem; width: 38rem;\"></p>";
+		msg +="<h2 style=\"position: relative; bottom: 3.2rem; color:#64a246; margin-left: 21rem; \">" + cerNum + "</h2>";
+		msg +="<p style=\"position: relative; top: -3rem; height: 0.1rem; background-color: #d9d9d9; width: 38rem;\"></p>";
 
 		try {
 			HtmlEmail email = new HtmlEmail();

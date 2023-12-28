@@ -219,6 +219,7 @@
 					//&& checkbox4.checked;
 			nextButton.style.backgroundColor = allCheckboxesChecked ? '#64A346'
 					: '#a2a2a3';
+			nextButton.style.cursor = allCheckboxesChecked ? 'pointer' : '';
 			nextButton.disabled = allCheckboxesChecked ? false : true;
 		}
 	</script>
