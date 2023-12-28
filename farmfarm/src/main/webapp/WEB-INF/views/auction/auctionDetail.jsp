@@ -174,8 +174,11 @@
     }
 	
 	function showChart() {
-    	location.href="${cpath}/chart/area/${auctionInfo.product_kind}";
-    }
+    	
+    	 showModalChart("${auctionInfo.product_kind}", "priceList", "dateList"); 
+    } 
+    
+    
 	
 	function showMore() {
 		$(".product-detail-img:not(:first)").toggle();
@@ -240,6 +243,7 @@
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+		<jsp:include page="${cpath}/WEB-INF/views/chart/areaChart.jsp" />
 		<div class="left-div">
 			<img class="product-thum-img"
 				src="${auctionInfo.auction_thumb_img_url }">
