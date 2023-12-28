@@ -130,8 +130,8 @@
 					}),
 					success : function(response) {
 						if (response === 'success') {
-							showModal_success("등록 결과", "상품 등록에 성공했습니다.");
-							location.href = '/myPageFarmer';
+							showModal_myproject("등록 결과", "상품 등록에 성공했습니다.");
+							
 						} else {
 							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 						}
