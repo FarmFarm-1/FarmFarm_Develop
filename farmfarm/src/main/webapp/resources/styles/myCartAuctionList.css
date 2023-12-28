@@ -48,7 +48,7 @@ input {
 
 .mypage--hQ1 .item--oAd {
 	/* margin: 0rem 0rem 2.2rem 0.7rem; */
-	padding-right: 100rem;
+	padding-right: 60rem;
 	font-size: 2.443rem;
 	font-weight: 700;
 	line-height: 1.2575;
@@ -59,7 +59,7 @@ input {
 
 .mypage--hQ1 .auto-group-owjb-tC5 {
 	margin: 2rem 0rem 2rem 0rem;
-	padding-right: 110rem;
+	padding-right: 70rem;
 	height: 4rem;
 	display: flex;
 	column-gap: 2rem;
@@ -113,7 +113,7 @@ input {
 	grid-template-columns: repeat(3, 29rem);
 	/* gap: 10px; */
 	/* left: -17rem; */
-	left: -19rem;
+	left: 1rem;
 	align-items: center;
 	justify-content: center;
 	position: relative;
