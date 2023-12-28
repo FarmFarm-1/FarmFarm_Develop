@@ -204,6 +204,7 @@
 			hideModal();
 		}
 	});
+	
 	document.addEventListener('click', function(event) {
 		if (event.target.matches('.btnOk_myproject')) {
 			hideModal();
