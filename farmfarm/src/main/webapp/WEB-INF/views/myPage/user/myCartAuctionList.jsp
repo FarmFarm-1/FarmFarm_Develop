@@ -42,37 +42,118 @@
 		});
 	}
 </script>
+<script>
+
+/* let serial_num = "${sessionScope.serial_num}"; */
+
+function func(product_serial_num, index) {
+	event.stopPropagation();
+
+	if (serial_num.substring(0, 2) === "us") {
+		let heartIcon = $("#heart-icon-" + index);
+		let isHeartFilledBeforeToggle = heartIcon.hasClass("filled");
+		heartIcon.toggleClass("filled");
+		let isHeartFilledAfterToggle = heartIcon.hasClass("filled");
+		
+	 	if (isHeartFilledBeforeToggle) {
+			heartIcon.attr("src", "${cpath }/assets/heart_white_empty.png");
+			deleteFromMyCart(product_serial_num);
+		} else {
+			heartIcon.attr("src", "${cpath }/assets/heart_thub.png");
+			addToMyCart(product_serial_num);
+		} 
+
+	} /* else {
+		alert("서포터 회원으로 로그인 하세요.");
+	} */
+}
+
+function reloadMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/reloadCart",
+		type : "post",
+		data : {
+			"product_serial_num" : product_serial_num
+		},
+		success : function(res) {
+			$("#heart-num").text(res);
+		}
+	});
+}
+
+function addToMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/addcart",
+		type : "post",
+		data : {
+			"product_serial_num" : product_serial_num,
+			"user_serial_num" : serial_num
+		},
+		success : function(res) {
+			reloadMyCart(product_serial_num);
+		}
+	});
+}
+
+function deleteFromMyCart(product_serial_num) {
+	$.ajax({
+		url : "${cpath}/mypage/deletecart",
+		type : "POST",
+		data : {
+			"product_serial_num" : product_serial_num,
+			"user_serial_num" : serial_num
+		},
+		success : function(res) {
+			reloadMyCart(product_serial_num);
+		}
+	});
+}
+</script>
 <body>
 	<!-- <h1>경매리스트</h1> -->
 	<div id="here2" class="mypage--hQ1">
 		<p class="item--oAd">관심 있는 소식만 모았어요</p>
 		<div class="auto-group-owjb-tC5">
-			<!-- <div class="filter1-CTf">전체</div> -->
 			<div id="funding" class="filter2-GTX" onclick="myCartFundingList()">펀딩</div>
 			<div id="auction" class="filter3-8Vj" onclick="myCartAuctionList()">경매</div>
 		</div>
 
 		<div class="cart-container2">
-			<c:forEach items="${myCartAuctionList }" var="aList">
+			<c:forEach items="${myCartAuctionList }" var="aList"
+				varStatus="status">
 				<div class="auto-group-ceto-zXw">
-					<div class="cartlist2-HAu1">
+					<div class="cartlist2-HAu1" onclick="location.href='${cpath}/auction/auctionDetail?product_serial_num=${aList.product_serial_num}';">
 
 						<div class="auto-group-zfjd-bBb">
-							<!-- <div class="auto-group-fj9f-Bb3">
-								<img class="vector-6xu" src="./assets/vector-1id.png" />
-								db에서 가져오는 사진으로 바꾸기
-								${aList.auction_thumb_img_url}
-								<div class="auto-group-fj9f-Bb3-bg"></div>
-							</div> -->
-							
-							<img class="auto-group-fj9f-Bb3" src="${aList.auction_thumb_img_url}" />
-							<img class="vector-6xu" src="/assets/heart_thub.png" />
-							
+							<img class="auto-group-fj9f-Bb3"
+								src="${aList.auction_thumb_img_url}" />
+							<div class="${aList.d_day>=0?'active':'overlay'}">경매가
+								종료되었습니다</div>
+
+
+							<div class="vector-6xu"
+								onclick="func('${aList.product_serial_num }', ${status.index })">
+								<img id="heart-icon-${status.index}" class="heart-icon filled"
+									src="/assets/heart_thub.png" />
+							</div>
+
+							<!-- <img class="vector-6xu" src="/assets/heart_thub.png" /> -->
+
 							<p class="item--ixM">${aList.product_name}</p>
+							
 							<div class="minamount-7xZ">
 								<p class="item--rfF">현 입찰가</p>
-								<p class="item-13000-BxR">${aList.current_price}원</p>
+								<c:choose>
+									<c:when test="${aList.participants > 0}">
+										<p class="item-13000-BxR">${aList.current_price}원</p>
+									</c:when>
+									<c:when test="${aList.participants == 0}">
+										<p class="item-13000-BxR1">입찰 현황 없음</p>
+									</c:when>
+								</c:choose>
+								
 							</div>
+							
 							<div class="expectedharvest-XUZ">
 								<p class="item--rWq">수확 완료일</p>
 								<p class="item-2023-9-11-n9b">${aList.expected_harvest_date}</p>
@@ -84,9 +165,6 @@
 						</div>
 
 						<div class="cartlistfoot-xER">
-							<!-- <div class="fundingpct-7ND">
-							<div class="rectangle-81-3Wm"></div>
-						</div> -->
 							<div class="auto-group-lfhx-zB7">
 								<p class="item-44--yoj">
 									<span class="item-44--yoj-sub-0">${aList.participants}</span> <span

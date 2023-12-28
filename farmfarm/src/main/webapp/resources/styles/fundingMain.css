@@ -79,6 +79,7 @@ input {
 	font-size: 0;
 	background-color: transparent;
 	border: none;
+	cursor: pointer;
 }
 
 .mainpage--54h {
@@ -204,6 +205,7 @@ input {
 	display: flex;
 	align-items: flex-start;
 	margin-left: 6rem;
+	cursor: pointer;
 }
 
 .mainpage--54h .group-156-QXX .order_container {
@@ -295,6 +297,7 @@ input {
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mainpage--54h .group-156-QXX .auto-group-r77t-U1b .mingcute-right-line-6of
@@ -1873,6 +1876,7 @@ input {
 .mainpage--54h .group-156-QXX .search .searchBtn {
 	background-color: transparent;
 	border: none;
+	cursor: pointer;
 }
 
 .search .searchBtn {
@@ -1911,6 +1915,7 @@ input {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 }
 
 .crop_type_img {
@@ -1945,6 +1950,7 @@ input {
 .funding_item {
 	margin: auto;
 	margin-bottom: 90px;
+	cursor: pointer;
 }
 
 .mainpage--54h .group-156-QXX .item--uPK .corn-36630861280-1-daD {

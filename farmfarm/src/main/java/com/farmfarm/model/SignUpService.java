@@ -3,6 +3,7 @@ package com.farmfarm.model;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.mail.HtmlEmail;
@@ -50,11 +51,26 @@ public class SignUpService {
 		}
 
 		subject = "팜팜 회원가입 인증번호 입니다.";
-		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-		msg += "<h3 style='color: blue;'>";
-		msg += "팜팜 회원가입 인증번호 입니다. 입력후 인증확인을 눌러주세요.</h3>";
-		msg += "<p>인증번호 : ";
-		msg += cerNum + "</p></div>";
+		/*
+		 * msg +=
+		 * "<div align='center' style='border:1px solid black; font-family:verdana'>";
+		 * msg += "<h3 style='color: blue;'>"; msg +=
+		 * "팜팜 회원가입 인증번호 입니다. 입력후 인증확인을 눌러주세요.</h3>"; msg += "<p>인증번호 : "; msg += cerNum
+		 * + "</p></div>";
+		 */
+		
+		msg +="<img style=\"margin-top: 1rem; height:55px;\" src=\"https://farmfarmimagess.s3.ap-northeast-2.amazonaws.com/farmfarmlogo.png\" />";
+		msg +="<h2>팜팜 이메일 인증 안내</h2>";
+		msg +="<p>안녕하세요, 고객님</p>";
+		msg +="&nbsp;";
+		msg +="<p><b>'회원가입'</b>을 위해 이메일 인증을 진행합니다.</p>";
+		msg +="&nbsp;";
+		msg +="<p>아래 발급된 이메일 인증번호를 복사하거나 직접 입력하여 인증을 완료해주세요.</p>";
+		msg +="&nbsp;";
+		msg +="<p style=\"height: 0.1rem; background-color: #d9d9d9; width: 38rem;\"></p>";
+		msg +="<h2 style=\"margin-left: 13rem;\">인증번호 : </h2>";
+		msg +="<h2 style=\"position: relative; bottom: 3.2rem; color:#64a246; margin-left: 21rem; \">" + cerNum + "</h2>";
+		msg +="<p style=\"position: relative; top: -3rem; height: 0.1rem; background-color: #d9d9d9; width: 38rem;\"></p>";
 
 		try {
 			HtmlEmail email = new HtmlEmail();

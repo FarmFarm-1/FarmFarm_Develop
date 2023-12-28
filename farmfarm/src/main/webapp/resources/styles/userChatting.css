@@ -1,0 +1,286 @@
+.farmer_Img img {
+	width: 40px;
+	height: 40px;
+	border-radius: 70%;
+	margin-right: 10px;
+}
+
+.left_new_Img img {
+	width: 9px;
+	height: 9px;
+	border-radius: 10px;
+}
+
+.profileImg img {
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	overflow: hidden;
+}
+
+.yourprofileImg img {
+	width: 23px;
+	height: 23px;
+	border-radius: 50%;
+	border: 1px solid #ddd;
+	overflow: hidden;
+}
+
+.Content {
+	width: 850px;
+	font-family: Pretendard, 'Source Sans Pro';
+}
+
+.content_tit {
+	font-size: 25px;
+	color: #2E2E2E;
+	font-weight: bold;
+	margin-bottom: 50px;
+}
+
+.content_detailAll {
+	box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+	height: calc(100% - 50px);
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+}
+
+.detailAll_left {
+	background-color: #FBFBFB;
+}
+
+.content_detail_top {
+	display: flex;
+	border-bottom: 1px solid #D9D9D9;
+	height: 59.01px
+}
+
+.content_detail_top_left {
+	display: flex;
+	background-color: #FBFBFB;
+	flex-basis: 230px;
+	margin-right: 10px;
+	align-items: center;
+	justify-content: center
+}
+
+.content_detail_top_right {
+	display: flex;
+	align-items: center;
+	margin-left: 25px;
+}
+
+.top_left_one {
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 20px;
+}
+
+.top_left_two {
+	font-size: 15px;
+	color: #3E3E3E;
+}
+
+.detailAll {
+	display: flex;
+	height: 790px;
+}
+
+.detailAll_left {
+	width: 230px;
+}
+
+.detailAll_right {
+	margin-left: 53px;
+	margin-top: auto;
+	padding-bottom: 100px;
+	overflow: auto;
+}
+
+.detail_left {
+	display: flex;
+	align-items: center;
+	padding: 20px;
+}
+
+.left_Big {
+	display: flex;
+	align-items: center;
+}
+
+.chatArea {  
+	flex-grow: 1; 
+	overflow: auto;
+}
+
+.profile_Big_Text {
+	font-size: 15px;
+	font-weight: bold;
+	margin-right: 10px;
+	margin-bottom: 3px;
+}
+
+.profile_Small_Text {
+	font-size: 12px;
+	color: #686868;
+}
+
+.chatdate {
+	width: 510px;
+	height: 40px;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.dateText {
+	font-size: 13px;
+	color: #7A7A7A;
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+}
+
+.dateText::before {
+	content: "";
+	flex-grow: 1;
+	margin: 0px 10px 0px 0px;
+	background-color: #D9D9D9;
+	height: 1px;
+}
+
+.dateText::after {
+	content: "";
+	flex-grow: 1;
+	margin: 0px 0px 0px 10px;
+	background-color: #D9D9D9;
+	height: 1px;
+}
+
+.myChatAll {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+}
+
+.myChat {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin-bottom: 10px;
+}
+
+.Time {
+	margin-top: auto;
+	margin-bottom: 3px;
+	color: #686868;
+}
+
+.myName {
+	font-size: 18px;
+}
+
+.message_background {
+	background-color: #77B255;
+	width: 490px;
+	margin-right: 20px;
+	border-radius: 12px 0px 12px 12px;
+}
+
+.message_container {
+	padding-bottom: 5px;
+	background-color: #fff;
+}
+
+.message {
+	font-weight: 500;
+	font-size: 15px;
+	color: #F7F7F7;
+	padding: 15px 20px 15px 20px;
+	text-align: end;
+	width: 460px;
+	white-space: normal;
+}
+
+.timeSpan {
+	font-size: 10px;
+}
+
+.yourChat_message {
+	padding-bottom: 5px;
+	background-color: #fff;
+}
+
+.yourChatAll {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: white;
+}
+
+.yourChat {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	margin-bottom: 10px;
+}
+
+.yourName {
+	font-size: 18px;
+}
+
+.yourTime {
+	margin-top: auto;
+	margin-bottom: 3px;
+	color: #686868;
+}
+
+.your_message_background {
+	background-color: #F8F8F8;
+	width: 490px;
+	margin-left: 20px;
+	border-radius: 0px 12px 12px 12px;
+}
+
+.your_message {
+	font-size: 15px;
+	color: #2E2E2E;
+	font-weight: 500;
+	padding: 15px 20px 15px 20px;
+}
+
+.InputMessage_background {
+	position: absolute;
+	background-color: #EFF2F5;
+	width: 510px;
+	display: flex;
+	align-items: center;
+	top: 92%;
+	border-radius: 5px;
+}
+
+.InputMessageText {
+	background-color: #EFF2F5;
+	width: 435px;
+	padding: 10px 0px 10px 20px;
+	font-size: 15px;
+	border-radius: 5px;
+}
+
+.InputMessageText::placeholder {
+	color: #A6B0C3;
+}
+
+.EnterBtn {
+	background-color: #77B255;
+	margin-left: auto;
+	margin-right: 15px;
+	border-radius: 5px
+}
+
+button {
+	color: #FFFFFF;
+	padding: 2px 5px 4px 5px;
+}

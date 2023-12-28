@@ -36,11 +36,16 @@ public class UsersService {
 		String msg = "";
 
 		subject = "팜팜 임시 비밀번호 입니다.";
-		msg += "<div align='center' style='border:1px solid black; font-family:verdana'>";
-		msg += "<h3 style='color: blue;'>";
-		msg += vo.getUser_email() + "님의 임시 비밀번호 입니다. 로그인 후 비밀번호를 변경하여 사용하세요.</h3>";
-		msg += "<p>임시 비밀번호 : ";
-		msg += pw + "</p></div>";
+		msg +="<img style=\"margin-top: 1rem; height:55px;\" src=\"https://farmfarmimagess.s3.ap-northeast-2.amazonaws.com/farmfarmlogo.png\" />";
+		msg +="<h2>팜팜 이메일 인증 안내</h2>";
+		msg +="<p>안녕하세요, 고객님</p>";
+		msg +="&nbsp;";
+		msg +="<p>아래 발급된 임시비밀번호를 복사하거나 직접 입력하여 로그인 후 비밀번호를 변경해주세요.</p>";
+		msg +="&nbsp;";
+		msg +="<p style=\"height: 0.1rem; background-color: #d9d9d9; width: 38rem;\"></p>";
+		msg +="<h2 style=\"margin-left: 10rem;\">임시비밀번호 : </h2>";
+		msg +="<h2 style=\"color:#64a246; margin-left: 21rem; position: relative; bottom: 3.2rem;\">" + pw + "</h2>";
+		msg +="<p style=\"height: 0.1rem; background-color: #d9d9d9; position: relative; top: -3rem; width: 38rem;\"></p>";
 
 		// 받는 사람 E-Mail 주소
 		String mail = vo.getUser_email();
@@ -95,6 +100,10 @@ public class UsersService {
 	}
 	
 	//재호
+	public String findName(String user_serial_num){
+		return dao.findName(user_serial_num);
+	}
+	
 	public String pwCheck(String user_serial_num){
 		return dao.pwCheck(user_serial_num);
 	}

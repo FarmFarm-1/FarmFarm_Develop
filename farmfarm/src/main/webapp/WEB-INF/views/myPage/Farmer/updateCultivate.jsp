@@ -73,8 +73,7 @@
 				}),
 				success : function(response) {
 					if (response === 'success') {
-						showModal_success("업데이트 결과", "상품 경작 정보 업데이트 성공");
-						location.href = '/myPageFarmer';
+						showModal_myproject("업데이트 결과", "상품 경작 정보 업데이트 성공");
 					} else {
 						showModal_success("업데이트 실패", "상품 경작 정보 업데이트 실패");
 					}

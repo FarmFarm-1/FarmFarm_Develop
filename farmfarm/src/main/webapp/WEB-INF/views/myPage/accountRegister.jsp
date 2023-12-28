@@ -125,19 +125,19 @@ button:hover {
 				success: function(res){
 					if(res == "UserSuccess") {
 						accountReloadFormURL.action = "${cpath}/myPageUser";
-						alert("계좌 변경이 완료되었습니다");
+						alert("계좌 등록이 완료되었습니다");
 						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else if(res == "FarmerSuccess") {
 						accountReloadFormURL.action = "${cpath}/myPageFarmer";
-						alert("계좌 변경이 완료되었습니다");
+						alert("계좌 등록이 완료되었습니다");
 						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else if (res == "UserFail") {
 						accountReloadFormURL.action = "${cpath}/myPageUser";
-						alert("계좌 변경에 실패하였습니다");
+						alert("계좌 등록에 실패하였습니다");
 						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else if (res == "FarmerFail") {
 						accountReloadFormURL.action = "${cpath}/myPageFarmer";
-						alert("계좌 변경에 실패하였습니다");
+						alert("계좌 등록에 실패하였습니다");
 						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else if (res == "FarmerNotCoincide") {
 						accountReloadFormURL.action = "${cpath}/myPageFarmer";
@@ -148,7 +148,7 @@ button:hover {
 						alert("본인의 계좌만 등록 가능합니다.");
 						directLink('accountRegister','accountReloadForm', 'accountPathInput');
 					} else {
-						alert("계좌 변경에 실패하였습니다");
+						alert("계좌 등록에 실패하였습니다");
 						location.href = "${cpath}/";
 					}	
 				},

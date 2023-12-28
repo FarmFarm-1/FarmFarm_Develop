@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.farmfarm.dto.MyPageUserAuctionVO;
-import com.farmfarm.dto.MyPageUserCartFundingVO;
 import com.farmfarm.dto.MyPageUserFundingVO;
 import com.farmfarm.dto.MyPageUserCartVO;
 import com.farmfarm.dto.MyPageUserFundingDetailVO;

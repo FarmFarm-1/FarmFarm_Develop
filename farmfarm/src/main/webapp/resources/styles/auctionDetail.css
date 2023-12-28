@@ -269,6 +269,7 @@ body {
 	height: 22px;
 	width: 22px;
  	margin-left: 1.5rem;
+ 	cursor: pointer;
 }
 
 .farmer-name-div
@@ -293,6 +294,7 @@ body {
 	position: relative;
 	margin-left: auto;
     margin-right: 2.5rem;
+    cursor: pointer;
 }
 
 .frame-layer {
@@ -460,6 +462,7 @@ body {
 .heart-icon, .heart-icon .filled {
 	margin: 0rem 0rem 0.1rem 0.116rem;
 	height: 2.3rem;
+	cursor: pointer;
 }
 
 .heart-num {
@@ -486,6 +489,7 @@ body {
 	border-color : #64a246;
 	height: calc(100% - 0.0214rem);
 	letter-spacing: 0.3rem;
+	cursor: pointer;
 }
 
 .project_story {
@@ -520,6 +524,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 10rem;
+	cursor: pointer;
 }
 
 .stroymoregroup .grouptext {

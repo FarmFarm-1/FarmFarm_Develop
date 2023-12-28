@@ -8,7 +8,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mypage/파머/내 프로젝트 만들기/상품정보</title>
@@ -130,8 +129,8 @@
 					}),
 					success : function(response) {
 						if (response === 'success') {
-							showModal_success("등록 결과", "상품 등록에 성공했습니다.");
-							location.href = '/myPageFarmer';
+							showModal_myproject("등록 결과", "상품 등록에 성공했습니다.");
+							
 						} else {
 							showModal_success("등록 실패", "정보를 다시 확인해주세요.");
 						}
@@ -505,6 +504,7 @@
 		// new Date(now_utc-timeOff).toISOString()은 '2022-05-11T18:09:38.134Z'를 반환
 		var today = new Date(now_utc - timeOff).toISOString().split("T")[0];
 		document.getElementById("harvestDate").setAttribute("min", today);
+		document.getElementById("deadline").setAttribute("min", today);
 
 	}
 

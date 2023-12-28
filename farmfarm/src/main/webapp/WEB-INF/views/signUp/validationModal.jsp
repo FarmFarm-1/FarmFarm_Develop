@@ -58,6 +58,7 @@
 }
 
 .modal_body .group-108-suo {
+	cursor:pointer;
 	margin: 0rem 0rem 0rem 24.5rem;
 	width: 20rem;
 	height: 8.2572rem;

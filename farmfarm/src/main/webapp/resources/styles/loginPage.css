@@ -34,14 +34,14 @@ input {
 }
 
 .warn_text {
- 	/* �뀓�뒪�듃 �븞蹂댁씠寃� �꽕�젙 */
+ 	/* 占쎈�볩옙�뮞占쎈뱜 占쎈툧癰귣똻�뵠野껓옙 占쎄퐬占쎌젟 */
     visibility: hidden;
 
-	/* �뀓�뒪�듃 �겕湲�, 援듦린, �깋 �꽕�젙 */
+	/* 占쎈�볩옙�뮞占쎈뱜 占쎄쾿疫뀐옙, �뤃�벀由�, 占쎄퉳 占쎄퐬占쎌젟 */
     font-size: 17px;
     font-weight: 700;
     color: #EF4444;
-    /* �뀓�뒪�듃 �쐞, �븘�옒�뿉 �뿬諛� �꽕�젙 */
+    /* 占쎈�볩옙�뮞占쎈뱜 占쎌맄, 占쎈툡占쎌삋占쎈퓠 占쎈연獄쏉옙 占쎄퐬占쎌젟 */
     margin-top : 1rem;
     margin-bottom: 1rem;
   }
@@ -419,7 +419,7 @@ input {
   flex-shrink: 0;
 }
 .mainpage--xA9 .group-165-Tpy .auto-group-gnzh-5Ch .group-99-Rvm {
-  cursor: pointer;
+  /* cursor: pointer; */
   width: 27.3123rem;
   height: 100%;
   text-align: center;

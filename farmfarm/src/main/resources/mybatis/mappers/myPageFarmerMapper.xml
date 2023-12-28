@@ -22,7 +22,7 @@
 		farm_and_product.product_serial_num
 		WHERE farmer_serial_num =#{farmer_serial_num}
 		GROUP BY farm_and_product.product_serial_num
-    
+    	order by farm_and_product.product_regdate desc
 	</select>
 
 </mapper>

@@ -8,7 +8,6 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mypage/파머/나의프로젝트/경매하기</title>
@@ -101,8 +100,7 @@
 				}),
 				success : function(response) {
 					if (response === 'success') {
-						showModal_success("등록 결과", "상품 경매 등록에 성공했습니다.");
-						location.href = '/myPageFarmer';
+						showModal_myproject("등록 결과", "상품 경매 등록에 성공했습니다.");
 					} else {
 						showModal_success("등록 실패", "상품을 다시 등록해 주세요.");
 					}

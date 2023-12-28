@@ -1,5 +1,6 @@
 package com.farmfarm.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -12,14 +13,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.Auction_historyVO;
+import com.farmfarm.dto.Crops_quoteVO;
 import com.farmfarm.exception.TransactionException;
 import com.farmfarm.model.AuctionService;
+import com.farmfarm.model.ChartService;
 import com.farmfarm.model.MyPageService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/auction")
@@ -31,6 +37,9 @@ public class AuctionController {
 	@Autowired
 	MyPageService myPageService;
 	
+	@Autowired
+	ChartService chartService;
+	
 	//hs code
 	@ExceptionHandler(TransactionException.class)
 	public ResponseEntity<String> handleAllExceptions(Exception e) {
@@ -38,7 +47,7 @@ public class AuctionController {
 	}
 
 	@GetMapping("/auctionDetail")
-	public String auctionDetail(String product_serial_num, Model model, HttpSession session) {
+	public String auctionDetail( String product_serial_num, Model model, HttpSession session) {
 		
 		System.out.println("con : "+product_serial_num);
 		
@@ -70,6 +79,32 @@ public class AuctionController {
 		    history.replace("user_name", sb.toString());
 		}
 		model.addAttribute("auctionHistoryInfo", auctionHistoryInfo);
+		
+		
+		//API 차트
+		String productKind = (String)auctionInfo.get("product_kind");
+		List<Crops_quoteVO> cropsInfo= chartService.cropsInfoByKind(productKind);
+		int cropspriceAvg = chartService.cropsPriceAvg(productKind);
+		model.addAttribute("cropspriceAvg",cropspriceAvg);
+		model.addAttribute("crops_kind", cropsInfo.get(0).getCrops_kind());
+	
+		List<Integer> priceList = new ArrayList<>();
+		List<String> dateList = new ArrayList<>();
+		for(Crops_quoteVO vo:chartService.cropsInfoByKind(productKind)) {
+			priceList.add(vo.getCrops_quote());
+			dateList.add(vo.getRegDate().toString());
+		}
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String jsonPriceList = objectMapper.writeValueAsString(priceList);
+			String jsonDateList = objectMapper.writeValueAsString(dateList);
+			model.addAttribute("priceList",jsonPriceList);
+			model.addAttribute("dateList",jsonDateList);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		return "auction/auctionDetail";
 	}
 	

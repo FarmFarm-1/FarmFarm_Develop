@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -66,12 +66,14 @@ public class MypageUserController {
 		return map;
 	}
 	
-	@GetMapping("/chatting")
-	public String Chatting() {
-		return "myPage/user/JHMESSAGE";
+	@RequestMapping(value = "/chatting", method = { RequestMethod.GET })
+	public String chat(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model) {
+		String user_serial_num = (String) session.getAttribute("serial_num");
+		String username = userService.findName(user_serial_num);
+		model.addAttribute("user_serial_num", user_serial_num);
+		model.addAttribute("username", username);
+		return "myPage/user/userChatting";
 	}
-
-	
 
 	@GetMapping("/farmMoneyCharge")
 	public String showChargePoints() {
@@ -181,6 +183,7 @@ public class MypageUserController {
 		List<MyPageUserAuctionVO> myAuctionList = service.myPageAuctionList(user_serial_num); //내가 경매한 리스트 가져오기
 		System.out.println(myAuctionList);
 		model.addAttribute("myAuctionList", myAuctionList);
+		
 		return "myPage/user/myAuctionList";
 	}
 
@@ -192,6 +195,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
 		System.out.println(myCartFundingList);
 		model.addAttribute("myCartFundingList", myCartFundingList);
+		
 		return "myPage/user/myCartList";
 	}
 
@@ -202,6 +206,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartFundingList = service.myPageCartFundingList(user_serial_num); //내가 찜한 펀딩 리스트 모두 가져오기
 		System.out.println(myCartFundingList);
 		model.addAttribute("myCartFundingList", myCartFundingList);
+		
 		return "myPage/user/myCartFundingList";
 	}
 	
@@ -212,6 +217,7 @@ public class MypageUserController {
 		List<MyPageUserCartVO> myCartAuctionList = service.myPageCartAuctionList(user_serial_num); //내가 찜한 경매 리스트 모두 가져오기
 		System.out.println(myCartAuctionList);
 		model.addAttribute("myCartAuctionList", myCartAuctionList);
+		
 		return "myPage/user/myCartAuctionList";
 	}
 	

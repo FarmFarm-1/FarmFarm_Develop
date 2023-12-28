@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FundingList</title>
+<title>팜팜</title>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
@@ -226,7 +227,7 @@
 		let product_serial_num = "${fundingInfo.product_serial_num}";
 
 		const start = 0.01;
-		const end = 100 - "${sumfundingpct}";
+		const end = (100 - "${sumfundingpct}").toFixed(2);
 		const datalist = document.getElementById("paylist");
 		const payInput = document.getElementById("pay");
 		const payDiv = document.getElementById("Paydiv");

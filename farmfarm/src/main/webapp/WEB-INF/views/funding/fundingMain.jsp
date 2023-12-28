@@ -9,11 +9,11 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=5" />
 <meta name="theme-color" content="#000000" />
 
-<title>mainpage/펀딩/로그인 안함</title>
+<title>팜팜</title>
 <link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -64,7 +64,6 @@
 
 
 							<div class="img_wrap">
-
 								<img class="corn-36630861280-1-daD"
 									src="${fundingItem.funding_thumb_img_url}" />
 								<div class="${fundingItem.d_day>=0?'active':'overlay'}">펀딩이

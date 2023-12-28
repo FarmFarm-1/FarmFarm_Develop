@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -271,10 +272,15 @@ public class myPageFarmerController {
 	}
 	//재호
 	
-	@GetMapping(value = "/chat")
-	public String showChat() {
+	@RequestMapping(value = "/chat", method = { RequestMethod.GET })
+	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model) {
+		String farmer_serial_num = (String) session.getAttribute("serial_num");
+		String farmername = fService.findName(farmer_serial_num);
+		model.addAttribute("farmer_serial_num",farmer_serial_num);
+		model.addAttribute("farmername",farmername);
 		return "myPage/Farmer/chat";
 	}
+	
 	
 	@RequestMapping(value = "/regPro", method = RequestMethod.GET)
 	public String showRegPro(HttpServletRequest request, HttpSession session) {
