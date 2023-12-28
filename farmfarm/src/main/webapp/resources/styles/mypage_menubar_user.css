@@ -1,0 +1,1838 @@
+@charset "UTF-8";
+
+.jw-center {
+	width: 1440px;
+	margin: 0 auto;
+	zoom: 1.5;
+}
+
+button {
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+.hidden {
+	display: none;
+}
+
+/*파머 인포*/
+.mydata-xUm {
+	margin-bottom: 5rem;
+	box-sizing: border-box;
+	padding: 3.4rem 0.2rem 3.278rem 3.2rem;
+	height: 19.1rem;
+	display: flex;
+	align-items: center;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	background-color: #f6f6f6;
+	border-radius: 0.868rem;
+	flex-shrink: 0;
+}
+
+.auto-group-v7t1-s5w {
+	margin: 0.478rem 18.4rem 0rem 0rem;
+	width: 20.1rem;
+	flex-shrink: 0;
+}
+/*파머 인포_left*/
+.item--bXj {
+	margin-bottom: 0.3rem;
+	font-size: 2.6rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	margin-top: auto;
+}
+
+.item--KCq {
+	margin-bottom: 2.7rem;
+	display: flex;
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.accountpagebtn-zpm {
+	margin-right: 4.9rem;
+	box-sizing: border-box;
+	padding: 0.5rem 1.5rem 0.5rem 1.2rem;
+	width: calc(100% - 4.9rem);
+	display: flex;
+	align-items: center;
+	background-color: #bdbdbd;
+	border-radius: 1.2rem;
+}
+
+.group-135-hjB {
+	margin: 0.034rem 0.766rem 0rem 0rem;
+	width: 1.7337rem;
+	height: 1.3336rem;
+	position: relative;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.item--RQH {
+	display: flex;
+	font-size: 1.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+/*파머 인포_right*/
+.item--bXj {
+	margin-bottom: 0.3rem;
+	font-size: 2.6rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.item--KCq {
+	margin-bottom: 2.7rem;
+	display: flex;
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.accountpagebtn-zpm {
+	margin-right: 4.9rem;
+	box-sizing: border-box;
+	padding: 0.5rem 3.6rem 0.5rem 1.2rem;
+	width: calc(100% - 4.9rem);
+	display: flex;
+	align-items: center;
+	background-color: #bdbdbd;
+	border-radius: 1.2rem;
+}
+
+.group-135-hjB {
+	margin: 0.034rem 0.766rem 0rem 0rem;
+	width: 1.7337rem;
+	height: 1.3336rem;
+	position: relative;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.item--RQH {
+	display: flex;
+	font-size: 1.8rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+/*파머 인포_right*/
+.info1-ieH {
+	margin-right: 1.9876rem;
+	box-sizing: border-box;
+	padding: 1.159rem 0.58rem 0.86rem 1.077rem;
+	width: 12.0083rem;
+	height: 100%;
+	border: solid 0.0414rem #d9d9d9;
+	background: linear-gradient(180deg, rgba(247, 117, 45, 0.5) -0%,
+		rgba(251, 193, 45, 0.5) 100%);
+	border-radius: 0.7188rem;
+	flex-shrink: 0;
+}
+
+.auto-group-mtnh-Q1K {
+	display: flex;
+	margin-bottom: 0.2766rem;
+	width: 3.3126rem;
+	height: 3.3126rem;
+	object-fit: contain;
+	vertical-align: top;
+}
+
+.item--w1F {
+	margin-bottom: 2.2134rem;
+	display: flex;
+	font-size: 1.2422rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.item-123--re1 {
+	margin-left: 4.9519rem;
+	text-align: right;
+	display: flex;
+	font-size: 2.3188rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	align-items: baseline;
+	justify-content: flex-end;
+}
+
+.item-123--re1-sub-1 {
+	font-size: 1.6563rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+}
+
+.info2-hY9 {
+	margin-right: 1.9876rem;
+	box-sizing: border-box;
+	padding: 1.159rem 0.58rem 0.86rem 1.077rem;
+	width: 19.5rem;
+	height: 100%;
+	border: solid 0.0414rem #d9d9d9;
+	background: linear-gradient(180deg, rgba(100, 162, 70, 0.5) -0%,
+		rgba(255, 244, 0, 0.200000003) 100%);
+	border-radius: 0.7188rem;
+	flex-shrink: 0;
+}
+
+.info3-gwo {
+	margin-right: 1.9876rem;
+	box-sizing: border-box;
+	padding: 1.159rem 0.58rem 0.86rem 1.077rem;
+	width: 12.0083rem;
+	height: 100%;
+	border: solid 0.0414rem #d9d9d9;
+	background: linear-gradient(180deg, rgba(88, 156, 218, 0.6000000238) 0%,
+		rgba(238, 130, 201, 0.400000006) 100%);
+	border-radius: 0.7188rem;
+	flex-shrink: 0;
+}
+/*서포터 네비바*/
+.mypage--Se9 {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	background-color: #ffffff;
+}
+
+.auto-group-wrk9-we5 {
+	/* margin: 0rem 14.998rem 73.767rem 15rem; */
+	width: calc(100% - 29.9984rem);
+	height: 100%;
+	display: flex;
+	/* align-items: center; */
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu {
+	margin-right: 5.2rem;
+	box-sizing: border-box;
+	padding-top: 3rem;
+	width: 23.3rem;
+	/* height: 1200px; */
+	/* height: 100%; */
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	border-right: solid 0.0882rem #d9d9d9;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo {
+	margin: 0rem 2.811rem 1.823rem 0rem;
+	width: 20.4887rem;
+	/* height: 16.0572rem; */
+	border-bottom: solid 0.0868rem #d9d9d9;
+	box-sizing: border-box;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo {
+	box-sizing: border-box;
+	padding: 0rem 7.206rem 1.993rem 7.206rem;
+	width: 100%;
+	height: 15.9704rem;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .auto-group-yaf7-cNq
+	{
+	margin: 0rem 0.26rem 1.562rem 0.26rem;
+	width: calc(100% - 0.5209rem);
+	height: 2.4303rem;
+	text-align: center;
+	font-size: 1.5616rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	letter-spacing: 0.0468rem;
+	color: #f5f5f5;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #2d2d2d;
+	border-radius: 0.4338rem;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .vector-4PF {
+	margin-bottom: 1.9095rem;
+	width: 6.0772rem;
+	height: 6.0757rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH {
+	margin-top: 0.5rem;
+	text-align: center;
+	font-size: 1.5616rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.0468rem;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH-1 {
+	margin-top: 0.5rem;
+	text-align: center;
+	font-size: 1.5616rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.0468rem;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .userinfo .auto-group-autb-WKo .item--ASH-2 {
+	position: relative;
+	display: flex;
+}
+
+.auto-group-wrk9-we5 .menu .logout-QrR {
+	margin: 0rem 2.811rem 6.332rem 0rem;
+	width: 18.926rem;
+	height: 3.2982rem;
+	position: relative;
+	border-radius: 1.5616rem;
+	flex-shrink: 0;
+}
+
+.auto-group-wrk9-we5 .menu .logout-QrR .item--8XX {
+	width: 4.5rem;
+	height: 1.7rem;
+	position: relative;
+	left: 7rem;
+	text-align: right;
+	font-size: 1.3014rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.auto-group-wrk9-we5 .menu .logout-QrR .log-out-1bK {
+	width: 18.926rem;
+	height: 3.2982rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border: solid 0.0868rem #d9d9d9;
+	box-sizing: border-box;
+	border-radius: 1.5616rem;
+}
+
+.menu_cate {
+	margin: 0rem 1.282rem 2.899rem 1.6rem;
+	width: calc(100% - 2.8824rem);
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.cate {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	width: 100%;
+	font-size: 2.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.chat-eEH {
+	margin: 1rem 0rem;
+	box-sizing: border-box;
+	padding: 0.1rem 0rem 0rem 0.313rem;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.humbleicons-chat-nLV {
+	margin: 0rem 1.514rem 0rem 0rem;
+	width: 1.8763rem;
+	height: 1.6674rem;
+	object-fit: contain;
+	vertical-align: middle;
+	flex-shrink: 0;
+}
+
+.item--7Nm {
+	text-align: left;
+	width: 10rem;
+	margin: 0rem 6rem 0rem 0rem;
+	font-size: 1.8rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.group-omP {
+	position: absolute;
+	left: 34rem;
+	width: 2.6045rem;
+	height: 2.6039rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.menuBtn:hover {
+	background-color: #F5F5F5;
+	border-radius: 2px;
+}
+/*서포터 인포 left*/
+.auto-group-sfjb-WBF {
+	/* position: absolute; */
+	left: 45rem;
+	top: 0.8rem;
+	margin: 3rem 0rem 3.933rem 0rem;
+	height: calc(100% - 7.333rem);
+	flex-shrink: 0;
+    width: calc(100% - 28.5rem);
+}
+/*서포터 인포 right*/
+.info-1Nu {
+	margin: 3rem 0rem 10.329rem 0.1rem;
+	width: calc(100% - 0.1rem);
+	height: 11.6713rem;
+	display: flex;
+	align-items: center;
+}
+
+.my-status-RjT {
+	box-sizing: border-box;
+	padding: 1rem 0rem 0rem 0rem;
+	width: 50.2016rem;
+	height: 100%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	border: solid 0.0868rem #d9d9d9;
+	background-color: #ffffff;
+	border-radius: 0.8676rem;
+	flex-shrink: 0;
+}
+
+.auto-group-xwbk-xDb {
+	justify-content: center;
+	margin-bottom: 8px;
+	height: 63px;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+	width: 100%;
+}
+
+.item--GEH {
+	width: 157px;
+	height: calc(100% - 1.0533rem);
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.item--GEH1 {
+	width: 157px;
+	height: calc(100% - 1.0533rem);
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	border-right: 1px solid #F2F2F2;
+	border-left: 1px solid #F2F2F2;
+}
+
+.item--mB3 {
+	margin: auto;
+	text-align: center;
+	font-size: 1.7352rem;
+	font-weight: 300;
+	line-height: 1.2575;
+	color: #3a3a3a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.item-5-U5T {
+	margin: auto;
+	text-align: center;
+	font-size: 1.9954rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #3a3a3a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.line-33-oNd {
+	margin-right: 7.5424rem;
+	width: 0rem;
+	height: 6.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.auto-group-jptk-7g9 {
+	box-sizing: border-box;
+	padding: 0.848rem 0.159rem 0.59rem 1.54rem;
+	width: 100%;
+	height: 3.3rem;
+	display: flex;
+	align-items: center;
+	background-color: #f5f5f5;
+	border-radius: 0 0 0.7808rem 0.7808rem;
+	flex-shrink: 0;
+}
+
+.group-182-duP {
+	margin-right: 10px;
+	/* margin: 0.144rem 1.261rem 0.317rem 0rem; */
+	height: calc(100% - 0.4613rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.group-135-BAD {
+	margin: 0rem 0.77rem 0rem 0rem;
+	width: 1.7281rem;
+	height: 1.66rem;
+	position: relative;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.item--WCV {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3014rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #3a3a3a;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.item--cWR {
+	margin: 0rem 12.687rem 0.125rem 0rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.0411rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #8f8f8f;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.group--Gay {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.item--QhB {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.0411rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.group-uP3 {
+	width: 2.1601rem;
+	height: 2.1613rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+/*팜머니*/
+.pammoneytext-dv5 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+}
+
+.pammoneytext-dv5 {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+}
+
+.item--qmF {
+	text-align: center;
+	font-size: 2.4292rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.pointamount-wpH {
+	margin-top: 0.0864rem;
+	text-align: center;
+	font-size: 2.4292rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.pointamount-wpH-1 {
+	margin-top: 0.0864rem;
+	text-align: center;
+	font-size: 2.4292rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.pointamount-wpH-2 {
+	position: relative;
+	display: flex;
+	margin-inline: auto;
+}
+
+.pointicon-nY5 {
+	margin-right: 2.4659rem;
+	width: 2.9378rem;
+	height: 2.9394rem;
+	text-align: right;
+	font-size: 1.9031rem;
+	font-weight: 400;
+	line-height: 1.2125;
+	color: #2d2d2d;
+	font-family: Inter, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.pammoney-7Rw {
+	margin-right: 4.5261rem;
+	box-sizing: border-box;
+	padding: 4.409rem 2.958rem 4.076rem 2.074rem;
+	width: 30.6739rem;
+	height: 100%;
+	border: solid 0.0868rem #d9d9d9;
+	background-color: #f5f5f5;
+	border-radius: 0.8676rem;
+	flex-shrink: 0;
+}
+
+.pointIcon {
+	width: 2.5rem;
+	margin: 0.3rem 0.6rem 0.4rem 0rem;
+}
+
+/*마이 프로젝트 리스트 jw*/
+.myproject-mx9 {
+	width: 100%;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .auto-group-15mw-HvV {
+	margin: 0rem 16.4rem 5.1rem 0rem;
+	width: calc(100% - 16.4rem);
+	display: flex;
+	align-items: flex-end;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .auto-group-15mw-HvV .item--RG1 {
+	margin-right: 2rem;
+	font-size: 2.443rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .auto-group-15mw-HvV .auctionmessage-iku {
+	margin-bottom: 0.2rem;
+	width: 39.3rem;
+	height: 1.9rem;
+	position: relative;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .auto-group-15mw-HvV .auctionmessage-iku .item--fRF {
+	width: 39.3rem;
+	height: 1.9rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #f40f0f;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.item--fRF-1 {
+	width: 39.3rem;
+	height: 1.9rem;
+	position: absolute;
+	left: 34rem;
+	top: 0;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #f40f0f;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .auto-group-15mw-HvV .auctionmessage-iku .updatebtn-t37 {
+	width: 1.6rem;
+	height: 1.6rem;
+	position: absolute;
+	left: 31.5rem;
+	top: 0.1rem;
+	object-fit: contain;
+	vertical-align: top;
+}
+
+.myproject-mx9 .fundinglistheader-mch {
+	margin: 0rem 3rem 2.2rem 13rem;
+	width: calc(100% - 16.4rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglistheader-mch .item--hFT {
+	margin-right: 17.3rem;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglistheader-mch .item--BwK {
+	margin-right: 11.3rem;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglistheader-mch .item--WTo {
+	margin-right: 8.5rem;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglistheader-mch .item--dHX {
+	margin-right: 7rem;
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglistheader-mch .item--x4u {
+	text-align: center;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #686868;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD {
+	width: 100%;
+	margin: 0rem 0rem 2.5rem 0.1rem;
+	box-sizing: border-box;
+	padding: 1.9rem 2.6rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo {
+	margin: 0.2rem 10rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .tomatoes-55667411280-Jny
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 8.7rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .item--6iq
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: normal;
+	width: 190px;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .item--QDj
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .auto-group-7bph-j17
+	{
+	margin: 0rem 4.1rem 0rem 0.333rem;
+	width: calc(100% - 4.4333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .auto-group-7bph-j17 .mdi-location-rLd
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundinginfo-yVo .auto-group-pee9-aVb .auto-group-7bph-j17 .item--b3K
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundingdate-V8h {
+	margin: 0.2rem 2.75rem 0rem 2.75rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.fundingpct-ntV {
+	margin-left: 3.35rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundingpay-r7f {
+	width: 7rem;
+	margin: 0.2rem 5rem 0rem 4rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundingstate-9cZ {
+	margin: 2rem 0;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #92cb76;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist1-5vD .fundingstate-9cZ-1 {
+	margin: 2rem 0;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #EF6134;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.updatebtn-zrh {
+	margin: 2rem 0rem 2rem 2rem;
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.updatebtn-eXF {
+	margin: 2rem 0rem 2rem 2rem;
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs {
+	margin: 0rem 0.1rem 2.5rem 0rem;
+	box-sizing: border-box;
+	padding: 1.9rem 11.6rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 {
+	margin: 0.2rem 10.1rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .tomatoes-55667411280-xyK
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	background-size: 137.374% 100%;
+	background-position: -2.039rem 0rem;
+	background-image: url('../assets/tomatoes-55667411280-9gR.png');
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 5.3rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj .item--yNd
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj .item--u1P
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj .auto-group-w5yh-zYd
+	{
+	margin-left: 0.3333rem;
+	width: calc(100% - 0.3333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj .auto-group-w5yh-zYd .mdi-location-vhB
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundinginfo-dg9 .auto-group-1ixd-FBj .auto-group-w5yh-zYd .item--4oP
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundingdate-nDb {
+	margin: 0.2rem 5.7rem 0rem 0rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundingpct-tnR {
+	margin-right: 6.1rem;
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-32-zS9.png');
+	border-radius: 0.2rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundingpay-Yc5 {
+	margin: 0.2rem 9.5rem 0rem 0rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist2-jKs .fundingstate-TU9 {
+	margin: 2rem 0;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #ef6033;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT {
+	margin: 0rem 0.1rem 2.5rem 0rem;
+	box-sizing: border-box;
+	padding: 1.9rem 5.1rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT {
+	margin: 0.2rem 6.9rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .tomatoes-55667411280-sAV
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	background-size: 137.374% 100%;
+	background-position: -2.039rem 0rem;
+	background-image: url('../assets/tomatoes-55667411280-t5B.png');
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 8.5rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m .item--3DP
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m .item--k7o
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m .auto-group-pknq-fVf
+	{
+	margin: 0rem 3.9rem 0rem 0.333rem;
+	width: calc(100% - 4.2333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m .auto-group-pknq-fVf .mdi-location-o65
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundinginfo-LRT .auto-group-2cwr-v8m .auto-group-pknq-fVf .item--LLu
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundingdate-Suj {
+	margin: 0.2rem 5.7rem 0rem 0rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundingpct-mx1 {
+	margin-right: 6.5rem;
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-31-RHF.png');
+	border-radius: 0.2rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundingpay-ryT {
+	margin: 0.2rem 9.1rem 0rem 0rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .fundingstate-nMK {
+	margin: 2rem 2.472rem 2rem 0rem;
+	width: 10.2279rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #92cb76;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist3-3BT .updatebtn-zrh {
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h {
+	margin: 0rem 0.1rem 2.5rem 0rem;
+	box-sizing: border-box;
+	padding: 1.9rem 5.1rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh {
+	margin: 0.2rem 6.9rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .tomatoes-55667411280-vds
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	background-size: 137.374% 100%;
+	background-position: -2.039rem 0rem;
+	background-image: url('../assets/tomatoes-55667411280-8o7.png');
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 8.5rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B .item--jrD
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B .item--quF
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B .auto-group-vsfb-mH7
+	{
+	margin: 0rem 3.9rem 0rem 0.333rem;
+	width: calc(100% - 4.2333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B .auto-group-vsfb-mH7 .mdi-location-hRf
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundinginfo-bLh .auto-group-gi7p-D7B .auto-group-vsfb-mH7 .item--e61
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundingdate-9YZ {
+	margin: 0.2rem 5.7rem 0rem 0rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundingpct-sjT {
+	margin-right: 6.5rem;
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-31-XkH.png');
+	border-radius: 0.2rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundingpay-ACm {
+	margin: 0.2rem 9.1rem 0rem 0rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .fundingstate-fQR {
+	margin: 2rem 2.5rem 2rem 0rem;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #92cb76;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist4-J6h .updatebtn-eXF {
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 {
+	margin: 0rem 0.1rem 2.5rem 0rem;
+	box-sizing: border-box;
+	padding: 1.9rem 11.6rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb {
+	margin: 0.2rem 6.9rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .tomatoes-55667411280-9MX
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	background-size: 137.374% 100%;
+	background-position: -2.039rem 0rem;
+	background-image: url('../assets/tomatoes-55667411280-zBf.png');
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 8.5rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK .item--kcD
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK .item--GKf
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK .auto-group-gkih-ar9
+	{
+	margin: 0rem 3.9rem 0rem 0.333rem;
+	width: calc(100% - 4.2333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK .auto-group-gkih-ar9 .mdi-location-Wzh
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundinginfo-cMb .auto-group-cq8d-2RK .auto-group-gkih-ar9 .item--FxH
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundingdate-mvd {
+	margin: 0.2rem 5.7rem 0rem 0rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundingpct-Vbj {
+	margin-right: 4.1rem;
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-31-ZEd.png');
+	border-radius: 0.2rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundingpay-ymo {
+	margin: 0.2rem 6.1rem 0rem 0rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist5-iX7 .fundingstate-gw7 {
+	margin: 2rem 0;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #92cb76;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo {
+	margin-right: 0.1rem;
+	box-sizing: border-box;
+	padding: 1.9rem 11.6rem 1.9rem 2.6rem;
+	height: 11.8rem;
+	display: flex;
+	align-items: center;
+	background-color: #f8f8f8;
+	border-radius: 0.868rem;
+	box-shadow: 0.1rem 0.1rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq {
+	margin: 0.2rem 6.9rem 0.155rem 0rem;
+	height: calc(100% - 0.3551rem);
+	display: flex;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .tomatoes-55667411280-WHs
+	{
+	margin-right: 2.1rem;
+	width: 8.4rem;
+	height: 7.6449rem;
+	position: relative;
+	background-size: 137.374% 100%;
+	background-position: -2.039rem 0rem;
+	background-image: url('../assets/tomatoes-55667411280-iZj.png');
+	border-radius: 3.8224rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH {
+	margin: 0.9rem 0rem 0.845rem 0rem;
+	width: 8.5rem;
+	height: calc(100% - 1.7449rem);
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH .item--uau
+	{
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH .item--R3T
+	{
+	margin-bottom: 0.6333rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH .auto-group-fwrp-wXb
+	{
+	margin: 0rem 3.9rem 0rem 0.333rem;
+	width: calc(100% - 4.2333rem);
+	display: flex;
+	align-items: flex-start;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH .auto-group-fwrp-wXb .mdi-location-fiV
+	{
+	margin-right: 0.3333rem;
+	width: 0.9333rem;
+	height: 1.3333rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundinginfo-yYq .auto-group-pb6d-nWH .auto-group-fwrp-wXb .item--zkm
+	{
+	margin-top: 0.0667rem;
+	font-size: 1.1rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundingdate-usj {
+	margin: 0.2rem 5.7rem 0rem 0rem;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundingpct-eKX {
+	margin-right: 4.1rem;
+	width: 8rem;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #64a246;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url('../assets/ellipse-31-QsX.png');
+	border-radius: 0.2rem;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundingpay-iqB {
+	margin: 0.2rem 6.1rem 0rem 0rem;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 400;
+	line-height: 1.2575;
+	color: #2d2d2d;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.myproject-mx9 .fundinglist6-sVo .fundingstate-FKK {
+	margin: 2rem 0;
+	width: 10.2rem;
+	height: calc(100% - 4rem);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	letter-spacing: 0.12rem;
+	color: rgba(248, 248, 248, 0.9725490212);
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	background-color: #92cb76;
+	border-radius: 2.5rem;
+	box-shadow: 0.2rem 0.2rem 0.4rem rgba(0, 0, 0, 0.25);
+	flex-shrink: 0;
+}

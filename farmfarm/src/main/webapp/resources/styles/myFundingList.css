@@ -39,7 +39,7 @@ input {
 	width: 144rem; 
 } */
 .mypage--Se9 {
-	width: 100%;
+	/* width: 110%; */
 	overflow: hidden;
 	position: relative;
 	align-items: center;
@@ -58,15 +58,17 @@ input {
 	color: #2d2d2d;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
+	align-self: start;
 }
 
 .mypage--Se9 .fundinglistheader-H8h {
-	margin: 0rem 0rem 0rem 7.5rem;
+	margin: 0rem 0rem 0rem 13.2rem;
 	/* width: calc(100% - 10rem); */
 	column-gap: 5rem;
 	display: flex;
 	align-items: center;
 	/* width: 100%; */
+	align-self: start;
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--CmT {
@@ -82,7 +84,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--ufs {
-	/* margin-left: 10rem; */
+    margin-left: 2rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -94,7 +96,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--DwT {
-	/* margin-left: 5rem; */
+	margin-left: -0.5rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -106,7 +108,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--juo {
-	/* margin-left: 3rem; */
+	margin-left: -0.2rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -146,6 +148,7 @@ input {
 	margin: 3rem 0rem 0.3rem 0rem;
 	box-sizing: border-box;
 	padding: 0rem 1.5rem 0rem 1.5rem;
+	/* width: 93%; */
 	width: 100%;
 	height: 12rem;
 	display: flex;
@@ -153,12 +156,14 @@ input {
 	background-color: #f8f8f8;
 	border-radius: 1rem;
 	box-shadow: 0rem 0.3rem 0.4rem 0rem rgba(0, 0, 0, 0.25);
+	align-self: start;
 }
 
 .here_layout {
+	/* width: 93%; */
 	width: 100%;
-	background-color: #ededed;
 	border-radius: 1rem;
+	align-self: start;
 }
 
 .mypage--Se9 .fundinglist1-giZ .tomatoes-55667411280-5Eu {

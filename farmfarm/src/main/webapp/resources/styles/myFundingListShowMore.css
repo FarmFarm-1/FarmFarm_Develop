@@ -44,11 +44,13 @@
 	padding-bottom: 2rem;
     border-radius: 1rem;
 	box-shadow: 0rem 0.3rem 0.4rem 0rem rgba(0, 0, 0, 0.25);
+    width: 100%;
+    background-color: #eee;
 }
 .accordion {
 	cursor: pointer;
 	padding: 18px; 
-	width: 100%;   
+	/* width: 63%;  */
 	text-align: left;
 	border: none;
 	outline: none;
@@ -60,18 +62,18 @@
     transition: 0.4s;
 }
 .panel {
-	padding: 10px 0px 10px 15px;
+	padding: 10px 10px 10px 15px;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
-	width: 90%;
     position: relative;
     left: 2.5rem;
-	box-sizing: border-box;
 	background-color: #bedab1;
 	border-radius: 1rem;
 	margin-bottom: 8px;
 	display: none;
 	flex-direction: column;
+	box-sizing: border-box;
+    width: 94%;
 }
 
 .panel-align {
@@ -145,11 +147,12 @@
 	display: flex;
 	align-items: flex-start;
 	margin: 1rem 0rem;
+	width: 100%;
 }
 
 .wheat-18458351280-gfo {
 	margin: 0rem 1.5rem 0rem 0rem;
-	width: 11rem;
+	width: 9rem;
 	height: 9rem;
 	position: relative;
 	background-size: 137.135% 100%;
@@ -159,47 +162,88 @@
 }
 
 .auto-group-hkbx-LkM {
-	width: 30rem;
-	flex-shrink: 0;
+	width: 79%;
+    margin-left: 1rem;
 }
 
 .auto-group-6tox-hL1 {
-	margin: 0rem 0rem 1rem 0rem;
+	margin: 0rem 0rem 0.5rem 0rem;
 	display: flex;
     align-items: baseline;
 	font-family: Pretendard, 'Source Sans Pro';
 }
 
-.item--E53
-	{
+.optional-opinion-tit {
+	font-family: Pretendard, 'Source Sans Pro';
+	color: #f6f6f6;
+	font-size: 1.3rem;
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+.optional-opinion-val {
+	font-family: Pretendard, 'Source Sans Pro';
+	font-size: 1.3rem;
+	font-weight: 600;
+	color: #717f35;
+	
+}
+.item--E53 {
 	margin-right: 1.2rem;
 	display: flex;
-	font-size: 1.2rem;
-	font-weight: 500;
+	font-size: 1.3rem;
+    font-weight: 400;
 	line-height: 1.2575;
 	color: #f6f6f6;
 	white-space: nowrap;
 	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
+}
+
+.fertil-tit {
+	margin-right: 1rem;
+	display: flex;
+	font-size: 1.3rem;
+    font-weight: 400;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .item-20230915-7uX
 	{
 	display: flex;
 	font-size: 1rem;
-	font-weight: 400;
+    font-weight: 300;
 	line-height: 1.2575;
 	color: #ffffff;
 	white-space: nowrap;
 	flex-shrink: 0;
 	font-family: Pretendard, 'Source Sans Pro';
+	margin-right: 2.5rem;
+}
+
+.fertil-name, .fertil-amount 
+	{
+	display: flex;
+	font-size: 1rem;
+    font-weight: 300;
+	line-height: 1.2575;
+	color: #ffffff;
+	white-space: nowrap;
+	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
+	margin-right: 0.5rem;
 }
 
 .item--pow {
+    width: fit-content;
 	display: flex;
-	font-size: 1.1rem;
+	font-size: 1.3rem;
 	font-weight: 600;
-	line-height: 1.2575;
 	color: #717f35;
 	white-space: nowrap;
 	font-family: Pretendard, 'Source Sans Pro';
+	margin-bottom: 1rem;
 }
