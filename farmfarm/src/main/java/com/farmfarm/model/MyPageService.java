@@ -144,6 +144,7 @@ public class MyPageService {
 			bw.close();
 			int responseCode = conn.getResponseCode();
 			logger.warn(responseCode+"");
+			String serial_num = (String)session.getAttribute("serial_num");
 			if(responseCode == 200) {
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				StringBuilder sb = new StringBuilder();
@@ -189,7 +190,7 @@ public class MyPageService {
 					jsonObj = (JSONObject)jsonParser.parse(sb.toString());
 					String output_bank_holder = (String)((JSONObject)jsonObj.get("response")).get("bank_holder");
 					logger.warn("output_bank_holder>>> "+output_bank_holder);
-					String serial_num = (String)session.getAttribute("serial_num");
+					
 					
 					//account verify
 					HashMap<String, String> sqlInputData = new HashMap<>();
@@ -202,12 +203,12 @@ public class MyPageService {
 							int insertResult = myPageDAO.registerAccountUser(sqlInputData);
 							logger.warn("insertResult>>> "+insertResult);
 							if(insertResult == 1) {
-								returnMessage = "AccountRegisterSuccess";
+								returnMessage = "UserAccountRegisterSuccess";
 							} else {
-								returnMessage = "AccountRegisterFail";
+								returnMessage = "UserAccountRegisterFail";
 							}
 						} else {
-							return "NotCoincide";
+							return "UserNotCoincide";
 						}
 					} else if(serial_num.substring(0,2).equals("FA")){ //farmer
 						String db_farmer_name = myPageDAO.getFarmerInfoForVerifyAccount(serial_num);
@@ -218,25 +219,30 @@ public class MyPageService {
 							int insertResult = myPageDAO.registerAccountFarmer(sqlInputData);
 							logger.warn("insertResult>>> "+insertResult);
 							if(insertResult == 1) {
-								returnMessage = "AccountRegisterSuccess";
+								returnMessage = "FarmerAccountRegisterSuccess";
 							} else {
-								returnMessage = "AccountRegisterFail";
+								returnMessage = "FarmerAccountRegisterFail";
 							}
 						} else {
-							return "NotCoincide";
+							return "FarmerNotCoincide";
 						}
 					} else {
 						return "NotRegisteredPerson";
 					}			
-				} else {
-					logger.warn("parssing error");
-					return "ParssingError";
+				} else { //파싱 에러
+					if(serial_num.substring(0,2).equals("us")) {
+						return "UserAccountRegisterFail";
+					} else if(serial_num.substring(0,2).equals("FA")) {
+						return "FarmerAccountRegisterFail";
+					} else {
+						return "fail";
+					}
 				}
 			}
 			
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
-			returnMessage = "ExceptionError";
+			return "ExceptionError";
 		}
 		
 		return returnMessage;
@@ -253,6 +259,19 @@ public class MyPageService {
 		} else {
 			return 0;
 		}
+	}
+	
+	public int checkAccountForRegisterProduct(HttpSession session) {
+		String serial_num = (String)session.getAttribute("serial_num");
+		if(serial_num != null && serial_num.substring(0, 2).equals("FA")) {
+			Farmer_account_historyVO vo =myPageDAO.checkAccountForRegisterProduct(serial_num);
+			if(vo != null) {
+				return 1;
+			} else {
+				return 0;
+			}
+		}
+		return 0;
 	}
 
 }

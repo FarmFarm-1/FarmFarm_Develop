@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <!DOCTYPE html>
@@ -8,13 +8,13 @@
 <meta charset="UTF-8">
 <title>FarmFarm Header</title>
 <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Inter%3A400" />
+	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath }/styles/header.css" />
 </head>
 <script
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     var curUser = "${sessionScope.serial_num}";
     var headerSelect = "${sessionScope.headerSelect}";
@@ -90,92 +90,111 @@
                 $(".userPoints").html(userPoint);
             },
             error : function(error) {
-                console.log(error);
             }
         });
     }
     
-    function directLink(path) {
-	   	document.getElementById("pathInput").value = path;
-		document.getElementById("myForm").submit();
+    function directLink(path, formName, pathVariableId) {
+	   	document.getElementById(pathVariableId).value = path;
+		document.getElementById(formName).submit();
+    }
+    function makeProject() {
+    	$.ajax({
+    		url : "${cpath}/myPageFarmer/checkFarmerAccount",
+    		method : "POST",
+    		success: function(res) {
+    			if(res == 'success') {
+    				directLink('makeProject','makeProjectForm', 'makeProjectPathInput');
+    			} else {
+    				alert("계좌 등록 후, 상품 등록이 가능합니다");
+    				directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput');
+    			}
+    		}
+    	});
     }
 </script>
 <body>
-    <div class="header">
-        <div class="header_div">
-            <div class="header_main">
-                <div class="header_title_menu">
-                    <div class="header_title">
-                        <a onclick="location.href='${cpath}/'"> <img
-                            class="logo_img" src="${cpath }/assets/logo_sweetpotato.png" />
-                            <p class="logo_name">팜팜</p>
-                        </a>
-                    </div>
-                    <div class="header_menu">
-                        <div class="menu_funding">
-                            <a id="menu_funding"
-                                onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
-                                
-                        </div>
-                        <div class="underbar-1 hidden"></div>
-                        <div class="menu_auction">
-                            <a id="menu_auction"
-                                onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
-                        </div>
-                                <div class="underbar-2 hidden"></div>
-                        <div class="menu_myFarm">
-                            <a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
-                        </div>
-                                <div class="underbar-3 hidden"></div>
-                    </div>
-                </div>
-                <div class="header_join_login" id="header_join_login">
-                    <a onclick="location.href='${cpath}/signup'">회원가입&nbsp;</a> <a
-                        onclick="location.href='${cpath}/login'">로그인</a>
-                </div>
-                <div class="header_user_login" id="header_user_login">
-                    <div class="messageBox_div"
-                        onclick="location.href='${cpath}/messageBox'">
-                        <img class="messageBox_img" src="${cpath }/assets/messageBox.png">
-                        <p class="messageBox_text">쪽지함</p>
-                        <!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
-                        <div class="newMessage" id="newMessage">
-                            <p class="red_rectangle"></p>
-                            <p class="new_text">N</p>
-                        </div>
-                    </div>
-            		
-            		<p class="logout" onclick="location.href='${cpath}/logout'">로그아웃</p>
-            		
-            		<form id="myForm" action="${cpath}/myPageUser" method="post">
-					    <input type="hidden" name="path" id="pathInput" />
+	<div class="header">
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+		<div class="header_div">
+			<div class="header_main">
+				<div class="header_title_menu">
+					<div class="header_title">
+						<a onclick="location.href='${cpath}/'"> <img class="logo_img"
+							src="${cpath }/assets/logo_sweetpotato.png" />
+							<p class="logo_name">팜팜</p>
+						</a>
+					</div>
+					<div class="header_menu">
+						<div class="menu_funding">
+							<a id="menu_funding"
+								onclick="location.href='${cpath}/funding/fundingMain'">펀딩</a>
+
+						</div>
+						<div class="underbar-1 hidden"></div>
+						<div class="menu_auction">
+							<a id="menu_auction"
+								onclick="location.href='${cpath}/auction/auctionMain'">경매</a>
+						</div>
+						<div class="underbar-2 hidden"></div>
+						<div class="menu_myFarm">
+							<a id="menu_myFarm" onclick="selectMyFarm()">마이팜</a>
+						</div>
+						<div class="underbar-3 hidden"></div>
+					</div>
+				</div>
+				<div class="header_join_login" id="header_join_login">
+					<a href="${cpath}/signup" onclick="resetHeaderSelect()">회원가입&nbsp;</a> <a
+						href="${cpath}/login" onclick="resetHeaderSelect()">로그인</a>
+				</div>
+				<div class="header_user_login" id="header_user_login">
+					<div class="messageBox_div"
+						onclick="location.href='${cpath}/messageBox'">
+						<img class="messageBox_img" src="${cpath }/assets/messageBox.png">
+						<p class="messageBox_text">쪽지함</p>
+						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
+						<div class="newMessage" id="newMessage">
+							<p class="red_rectangle"></p>
+							<p class="new_text">N</p>
+						</div>
+					</div>
+
+					<p class="logout" onclick="location.href='${cpath}/logout'">로그아웃</p>
+
+					<form id="myFarmMoneyForm" action="${cpath}/myPageUser" method="post">
+					    <input type="hidden" name="path" id="farmMoneyPathInput" />
 	                    <div class="userPoint_div"
-	                        onclick="directLink('farmMoneyCharge')">
+	                        onclick="directLink('farmMoneyCharge','myFarmMoneyForm','farmMoneyPathInput')">
 	                        내 팜머니 : <span class="userPoints"></span>P
 	                    </div>
-	                </form>    
-                </div>
-                
-                <div class="header_farmer_login" id="header_farmer_login">
-                    <div class="messageBox_div2"
-                        onclick="location.href='${cpath}/messageBox'">
-                        <img class="messageBox_img2" src="${cpath }/assets/messageBox.png">
-                        <p class="messageBox_text2">쪽지함</p>
-                        <!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
-                        <div class="newMessage2" id="newMessage2">
-                            <p class="red_rectangle2"></p>
-                            <p class="new_text2">N</p>
-                        </div>
-                    </div>
-                    
-                    <p class="flogout" onclick="location.href='${cpath}/logout'">로그아웃</p>
-                    
-                    <div class="myProject"
-                        onclick="location.href='${cpath }/makeProject'">나의 프로젝트 만들기</div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="header_line"></div>
+	                </form>
+				</div>
+				<div class="header_farmer_login" id="header_farmer_login">
+					<div class="messageBox_div2"
+						onclick="location.href='${cpath}/messageBox'">
+						<img class="messageBox_img2" src="${cpath }/assets/messageBox.png">
+						<p class="messageBox_text2">쪽지함</p>
+						<!-- 새로운 쪽지가 있으면  newMessage가 보인다.-->
+						<div class="newMessage2" id="newMessage2">
+							<p class="red_rectangle2"></p>
+							<p class="new_text2">N</p>
+						</div>
+					</div>
+          
+          <p class="flogout" onclick="location.href='${cpath}/logout'">로그아웃</p>
+          
+					<form id="makeProjectForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="makeProjectPathInput" />
+	                    <div class="myProject"
+	                        onclick="makeProject()">나의 프로젝트 만들기</div>
+                    </form>
+                    <form id="regAccountFarmerForm" action="${cpath}/myPageFarmer" method="post">
+					    <input type="hidden" name="path" id="regAccountPathInput" />
+                    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="header_line"></div>
 </body>
 </html>

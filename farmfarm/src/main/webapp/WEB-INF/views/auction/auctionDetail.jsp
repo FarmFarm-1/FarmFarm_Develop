@@ -44,7 +44,7 @@
 		
 		$("#auction-confirm-btn").click(function() {
 			if(serial_num.substring(0,2) === "us"){
-				if(user_real_input_price - ${auctionInfo.starting_price * auctionInfo.harvest_amount} >= 0) {
+				if(user_real_input_price - ${auctionInfo.starting_price} >= 0) {
 					let max_auction_price = "${maxAndCntInfo.max_auction_price}";
 					if(max_auction_price.length==0) {
 						max_auction_price = Number(0);
@@ -63,10 +63,14 @@
 									},
 							success: function(res) {
 								if(res == 1) {
-									showModal_success("입찰결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");
+									showModal_success("입찰 결과","낙찰시 시세보다 저렴한 가격으로 구매하실 수 있습니다!");	
+									$(".btnOk").click(function() {
+										location.reload();
+									});							
 								} else {
 									showModal("입찰 결과","입찰에 실패하였습니다. 다시 시도해 주세요");
 								}
+								
 							},
 							error: function(xhr, status, error) {
 								if(xhr.responseText == "notEnoughPoint") {
@@ -280,7 +284,7 @@
 					<div class="paticipant-tag">
 						<p class="participant-cnt">
 							<fmt:formatNumber value="${maxAndCntInfo.participant_cnt}"
-								pattern="#,###.#" />
+								pattern="#,###" />
 						</p>
 						<p class="small-unit">명 참여</p>
 					</div>
@@ -292,7 +296,7 @@
 					<p class="small-unit">최고 입찰가</p>
 					<p class="funding-max-price">
 						<fmt:formatNumber value="${maxAndCntInfo.max_auction_price}"
-							pattern="#,###.#" />
+							pattern="#,###" />
 						원
 					</p>
 				</div>
@@ -300,10 +304,10 @@
 			<div class="frame-layout">
 				<div class="farmerinfo-frame1">
 					<div class="farmerinfo-line1-div">
-						<img class="farmer-image" src="${cpath}/assets/farmerimage.png" />
+						<img class="farmer-image" src="${cpath}/assets/farmer_icon.png" />
 						<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
 					</div>
-					<img class="chaticon-img" src="${cpath}/assets/chaticon.png" />
+					<img class="chaticon-img" src="${cpath}/assets/chat_icon.png" />
 				</div>
 				<div class="frame-layer">
 					<div class="frame-line">
@@ -318,7 +322,7 @@
 						<p class="frame-tit">농장 면적</p>
 						<p class="frame-val">
 							<fmt:formatNumber value="${auctionInfo.farm_square_footage}"
-								pattern="#,###.#" />
+								pattern="#,###" />
 							평
 						</p>
 					</div>
@@ -345,15 +349,15 @@
 					<p class="frame-tit">출하량</p>
 					<p class="frame-val">
 						<fmt:formatNumber value="${auctionInfo.harvest_amount}"
-							pattern="#,###.#" />
+							pattern="#,###" />
 						kg
 					</p>
 				</div>
 				<div class="frame-line">
 					<p class="frame-tit">단위당 단가</p>
 					<p class="frame-val">
-						<fmt:formatNumber value="${auctionInfo.starting_price}"
-							pattern="#,###.#" />
+						<fmt:formatNumber value="${auctionInfo.starting_price / auctionInfo.harvest_amount}"
+							pattern="#,###" />
 						원
 					</p>
 				</div>
@@ -361,8 +365,8 @@
 					<p class="frame-tit">경매 시작가</p>
 					<p class="frame-val">
 						<fmt:formatNumber
-							value="${auctionInfo.starting_price * auctionInfo.harvest_amount}"
-							pattern="#,###.#" />
+							value="${auctionInfo.starting_price}"
+							pattern="#,###" />
 						원
 					</p>
 				</div>
@@ -378,7 +382,7 @@
 					<div class="frame-tit">현재 시세(1kg)</div>
 					<div class="frame-val">
 						<fmt:formatNumber value="${cropsquoteInfo.crops_quote}"
-							pattern="#,###.#" />
+							pattern="#,###" />
 					</div>
 				</div>
 				<div class="frame-line">
@@ -393,7 +397,7 @@
 					<div class="frame-val">
 						<fmt:formatNumber
 							value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}"
-							pattern="#,###.#" />
+							pattern="#,###" />
 					</div>
 				</div>
 				<div class="frame-line">
@@ -402,7 +406,7 @@
 						<fmt:formatNumber
 							value="${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount
 						 - maxAndCntInfo.max_auction_price}"
-							pattern="#,###.#" />
+							pattern="#,###" />
 					</div>
 				</div>
 				<div class="frame-line">
@@ -430,7 +434,7 @@
 						<div class="auction-participant-info">
 							<p class="auction-participant-name">${list.user_name}</p>
 							<p class="auction-participant-val">
-								<fmt:formatNumber value="${list.user_price}" pattern="#,###.#" />
+								<fmt:formatNumber value="${list.user_price}" pattern="#,###" />
 							</p>
 							<p class="auction-participate-date">
 								<fmt:formatDate value="${list.bid_date}" type="date"

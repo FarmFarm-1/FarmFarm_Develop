@@ -22,6 +22,7 @@
 <body>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="mainpage--54h">
+	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="auto-group-rv6m-jsK">
 			<div class="auto-group-v9bk-T2d">
 				<p class="item--ZLZ">
@@ -180,7 +181,7 @@ function func(product_serial_num, index) {
 		}
 
 	} else {
-		alert("서포터 회원으로 로그인 하세요.");
+		showModal_success("로그인이 필요한 기능입니다.", "서포터 회원으로 로그인 하세요.");
 	}
 }
 

@@ -37,36 +37,48 @@
 	border-radius: 30px;
 } */
 
+.show_more_outer {
+	margin-bottom: 0.3rem;
+	flex-direction: column;
+    display: flex;
+	padding-bottom: 2rem;
+    border-radius: 1rem;
+	box-shadow: 0rem 0.3rem 0.4rem 0rem rgba(0, 0, 0, 0.25);
+}
 .accordion {
 	cursor: pointer;
 	padding: 18px; 
-	width: 100%;
-	min-width: 550px;
+	width: 100%;   
 	text-align: left;
 	border: none;
 	outline: none;
-	transition: 0.4s;
-	display: flex;
-	align-items: center;
 }
-
+.button-align {	
+	margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: baseline;
+    transition: 0.4s;
+}
 .panel {
-	padding: 0 18px;
-	max-height: 0rem;
+	padding: 10px 0px 10px 15px;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
 	width: 90%;
     position: relative;
-    left: 4rem;
-	min-width: 550px;
+    left: 2.5rem;
 	box-sizing: border-box;
 	background-color: #bedab1;
 	border-radius: 1rem;
+	margin-bottom: 8px;
+	display: none;
+	flex-direction: column;
 }
 
-.panel.is-open {
+.panel-align {
+	
+}
+.is-open {
 	max-height: 100vh;
-	background-color: #ccc;
 }
 
 .update1icon {
@@ -79,35 +91,34 @@
 	font-size: 1.5rem;
 	font-weight: 700;
 	line-height: 1.2575;
-	color: #7a7a7a;
+	color: #515151;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	background-image: url('../assets/ellipse-33.png');
-	flex-shrink: 0;
+	background-image: url('/assets/ellipse-33.png');
 }
 
 .update1item1 {
 	margin: 0rem 1.2rem 0rem 0rem;
 	display: flex;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	font-weight: 700;
 	line-height: 1.2575;
-	color: #7a7a7a;
+	color: #2c2c2c;
 	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
 
-.panel .auto-group-hs7j-Q45 {
+.auto-group-hs7j-Q45 {
 	margin: 1rem 0rem 1rem 0rem;
 	display: flex;
 	height: 1.5rem;
 }
 
-.panel .auto-group-hs7j-Q45 .item--X8h {
+.item--X8h {
 	margin-right: 1.2rem;
 	display: flex;
 	font-size: 1.2rem;
@@ -115,27 +126,28 @@
 	line-height: 1.2575;
 	color: #f6f6f6;
 	white-space: nowrap;
-	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
-.panel .auto-group-hs7j-Q45 .item--SmT {
+.item--SmT {
 	margin-top: 0.1rem;
 	display: flex;
-	font-size: 1rem;
-	font-weight: 400;
+    font-size: 1.2rem;
+	font-weight: 600;
 	line-height: 1.2575;
-	color: #ffffff;
+	color: #7a7a7a;
 	white-space: nowrap;
 	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
-.panel .auto-group-3qdt-9A5 {
+.auto-group-3qdt-9A5 {
 	display: flex;
 	align-items: flex-start;
 	margin: 1rem 0rem;
 }
 
-.panel .auto-group-3qdt-9A5 .wheat-18458351280-gfo {
+.wheat-18458351280-gfo {
 	margin: 0rem 1.5rem 0rem 0rem;
 	width: 11rem;
 	height: 9rem;
@@ -143,48 +155,51 @@
 	background-size: 137.135% 100%;
 	background-position: -1.7534rem 0rem;
 	border-radius: 0.4871rem;
-	flex-shrink: 0;
+	border: solid 1px white;
 }
 
-.panel .auto-group-3qdt-9A5 .auto-group-hkbx-LkM {
+.auto-group-hkbx-LkM {
 	width: 30rem;
 	flex-shrink: 0;
 }
 
-.panel .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1 {
+.auto-group-6tox-hL1 {
 	margin: 0rem 0rem 1rem 0rem;
 	display: flex;
-	align-items: center;
+    align-items: baseline;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
-.panel .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1 .item--E53
+.item--E53
 	{
 	margin-right: 1.2rem;
 	display: flex;
-	font-size: 1rem;
-	font-weight: 700;
+	font-size: 1.2rem;
+	font-weight: 500;
 	line-height: 1.2575;
 	color: #f6f6f6;
 	white-space: nowrap;
 	flex-shrink: 0;
 }
 
-.panel .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .auto-group-6tox-hL1 .item-20230915-7uX
+.item-20230915-7uX
 	{
 	display: flex;
-	font-size: 0.8rem;
+	font-size: 1rem;
 	font-weight: 400;
 	line-height: 1.2575;
 	color: #ffffff;
 	white-space: nowrap;
 	flex-shrink: 0;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
-.panel .auto-group-3qdt-9A5 .auto-group-hkbx-LkM .item--pow {
+.item--pow {
 	display: flex;
-	font-size: 0.8rem;
-	font-weight: 700;
+	font-size: 1.1rem;
+	font-weight: 600;
 	line-height: 1.2575;
 	color: #717f35;
 	white-space: nowrap;
+	font-family: Pretendard, 'Source Sans Pro';
 }
