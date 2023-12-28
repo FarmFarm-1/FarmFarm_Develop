@@ -60,7 +60,7 @@
 	background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal_body {
+.areaChart_modal_body {
 	position: fixed;
 	top: 50%;
 	width: 1300px;
@@ -90,24 +90,15 @@
 }
 </style>
 <script>
-	document.addEventListener('keydown', onEnter);
-	document.addEventListener('click', function(event) {
+	
+/* 	document.addEventListener('click', function(event) {
 		if (event.target.matches('.close')) {
 			hideModal();
 		}
-	});
+	}); */
 	
-	function onEnter() {
-		var keyCode = window.event.keyCode;
-		if (keyCode == 13
-				&& window.getComputedStyle(document.querySelector('.areaChartModal')).display != 'none') {
-			// 모달이 떠있다면, 먼저 모달을 닫고 함수를 종료
-			document.querySelector('.areaChartModal').style.display = 'none';
-			event.preventDefault(); // 이벤트 전파 방지
-			return;
-		}
-	}
-	function hideModal() {
+	function hideModal2() {
+		console.log("모달 옴");
 		document.querySelector('.areaChartModal').style.display = 'none';
 		//location.reload(true); => 경매시 체크해봐야함.
 	}
@@ -213,9 +204,9 @@
 <body>
 	<div class="areaChartModal" id="basicModal">
 
-		<div class="modal_body">
+		<div class="areaChart_modal_body">
 			<img class="close" src="${cpath}/assets/Xbtn.png"
-				onclick="hideModal()" />
+				onclick="hideModal2()" />
 			<div id="chart"></div>
 		</div>
 	</div>
