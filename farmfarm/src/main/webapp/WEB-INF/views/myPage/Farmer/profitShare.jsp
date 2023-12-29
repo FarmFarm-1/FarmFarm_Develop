@@ -8,9 +8,14 @@
 <head>
 <meta charset="utf-8" />
 <title>정산 내역</title>
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
 <link rel="stylesheet" href="${cpath}/styles/depositList_farmer.css" />
 </head>
 <body>
+<button onclick="topFunction()" id="myBtn1" title="Go to top">Top</button>
 	<div class="Content">
 		<div class="content_tit">입금 내역</div>
 		<div class="content_little_tit">
@@ -46,4 +51,27 @@
 		</c:forEach>
 	</div>
 </body>
+<script>
+
+//Get the button
+var mybutton = document.getElementById("myBtn1");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

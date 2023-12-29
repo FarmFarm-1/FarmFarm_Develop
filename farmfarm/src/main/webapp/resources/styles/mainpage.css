@@ -1407,6 +1407,7 @@ body {
 	background-color: #64a246;
 	border-radius: 0.6022rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mainpage--A2H .section7-f3B .section71-BnD .auto-group-xz1p-Vpq .section71btn-UAy:hover{
@@ -1518,9 +1519,29 @@ body {
 	background-color: #64a246;
 	border-radius: 0.6022rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mainpage--A2H .section7-f3B .section72-7Uq .auto-group-jwoo-emb .section72btn-r6y:hover{
 	background-color: #55893C;
 }
 
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
+}
