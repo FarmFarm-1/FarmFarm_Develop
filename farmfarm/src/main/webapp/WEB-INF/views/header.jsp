@@ -71,7 +71,7 @@
         var curUser = "${sessionScope.serial_num}";
         if (curUser == "") {
             //header_join_login 띄움
-            alert('로그인 해주세요.');
+            showModal_success("로그인이 필요한 기능입니다.");
         } else {
             if (curUser.substring(0, 2) === "us") {
                 //header_user_login 띄움
@@ -107,8 +107,8 @@
     			if(res == 'success') {
     				directLink('makeProject','makeProjectForm', 'makeProjectPathInput');
     			} else {
-    				alert("계좌 등록 후, 상품 등록이 가능합니다");
-    				directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput');
+    				showModal_myproject("WARNING","계좌 등록 후, 상품 등록이 가능합니다");
+    				/* directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput'); */
     			}
     		}
     	});
