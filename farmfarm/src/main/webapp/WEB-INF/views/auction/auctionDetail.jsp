@@ -63,8 +63,13 @@ $(document).ready(function() {
 								},
 						success: function(res) {
 							if(res == 1) {
-								let message = `낙찰시 시세보다 <span style="background-color:lightgreen;">\${cal_revenue_pct.toFixed(2)}% 저렴</span>한 가격으로`
-								+"<br>구매하실 수 있습니다!";
+								let message = "";
+								if(cal_revenue_pct <= 0) {
+									message = "입찰에 성공하였습니다!";
+								}else {
+									message = `낙찰시 시세보다 <span style="background-color:lightgreen;">\${cal_revenue_pct.toFixed(2)}% 저렴</span>한 가격으로`
+										+"<br>구매하실 수 있습니다!";
+								}
 								showModal_success("입찰 결과",message);	
 								$(".btnOk").click(function() {
 									location.reload();
