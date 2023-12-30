@@ -21,6 +21,8 @@ input {
 	justify-content: center;
 	padding: 3rem;
 	background: #F8F8F8;
+	z-index: 100;
+    position: relative;
 }
 .footer .footer_center {
 	width: 144rem;

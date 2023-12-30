@@ -69,7 +69,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--CmT {
-	margin-left: 9rem;
+	margin-left: 7rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -81,7 +81,7 @@ input {
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--ufs {
-	margin-left: 4rem;
+	/* margin-left: 4rem; */
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;
@@ -313,4 +313,23 @@ input {
 .mypage--Se9 .fundinglist1-giZ .item--KJD.failure {
 	background-color: #FDE8E8; 
 	color: #F4440C;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 100rem; 
+  z-index: 99;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
 }

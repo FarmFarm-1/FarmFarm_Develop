@@ -95,7 +95,7 @@
 }
 
 .modal_body .alertContent {
-	margin-bottom: 5rem;
+	margin-bottom: 5rem; 
 	text-align: center;
 	font-size: 3rem;
 	font-weight: bold;
@@ -196,6 +196,51 @@
 	border-radius: 1rem;
 	flex-shrink: 0;
 }
+
+
+.modal_body .btnOk_account {
+	cursor: pointer;
+	margin: 2rem 29rem 2rem 29rem;
+	width: 12rem;
+	height: 7rem;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 0.1rem #64a246;
+	box-sizing: border-box;
+	background-color: #64a246;
+	border-radius: 1rem;
+	flex-shrink: 0;
+}
+
+.btnOk_account:hover {
+	cursor: pointer;
+	margin: 2rem 29rem 2rem 29rem;
+	width: 12rem;
+	height: 7rem;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #f6f6f6;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: solid 0.1rem #64a246;
+	box-sizing: border-box;
+	background-color: #5C913B;
+	border-radius: 1rem;
+	flex-shrink: 0;
+}
 </style>
 <script>
 	document.addEventListener('keydown', onEnter);
@@ -205,6 +250,9 @@
 		} else if (event.target.matches('.btnOk_myproject')) {
 			hideModal();
 			location.href = '/myPageFarmer';
+		} else if (event.target.matches('.btnOk_account')) {
+			hideModal();
+			directLink('accountRegister','regAccountFarmerForm', 'regAccountPathInput');
 		}
 	});
 	function onEnter() {
@@ -223,13 +271,31 @@
 	}
 	function showModal(title, result) {
 		 $(".btnOk_myproject").addClass('hidden');
+		 $(".btnOk_account").addClass('hidden');
+		 $(".btnOk").removeClass('hidden');
 		$(".alertTitle").text(title);
 		$(".alertContent").html(result);
 		document.querySelector('.modal').style.display = 'flex';
 	}
 
 	function showModal_success(title, result) {
+		if (result == 0) {
+			result = null;
+			document.querySelector('.alertTitle').style.margin = '6rem 0rem 7rem 0rem';
+		} else{			
+			document.querySelector('.alertTitle').style.margin = '3rem 0rem 3rem 0rem';
+		}
 		 $(".btnOk_myproject").addClass('hidden');
+		 $(".btnOk_account").addClass('hidden');
+		 $(".btnOk").removeClass('hidden');
+		$(".alertTitle").text(title);
+		$(".alertContent").html(result);
+		document.querySelector('.modal').style.display = 'flex';
+	}
+	function showModal_myproject(title, result) {
+		 $(".btnOk").addClass('hidden');
+		 $(".btnOk_account").addClass('hidden');
+		 $(".btnOk_myproject").removeClass('hidden');
 		$(".alertTitle").text(title);
 		$(".alertContent").html(result);
 		if (!result) {
@@ -237,8 +303,10 @@
 		}
 		document.querySelector('.modal').style.display = 'flex';
 	}
-	function showModal_myproject(title, result) {
+	function showModal_account(title, result) {
 		 $(".btnOk").addClass('hidden');
+		 $(".btnOk_myproject").addClass('hidden');
+		 $(".btnOk_account").removeClass('hidden');
 		$(".alertTitle").text(title);
 		$(".alertContent").html(result);
 		if (!result) {
@@ -255,5 +323,6 @@
 		<p class="alertContent"></p>
 		<button class="btnOk">확인</button>
 		<button class="btnOk_myproject">확인</button>
+		<button class="btnOk_account">확인</button>
 	</div>
 </div>
