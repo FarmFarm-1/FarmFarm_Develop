@@ -359,6 +359,15 @@ input {
 	flex-shrink: 0;
 }
 
+.mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER .fundingpct-7ND
+	{
+	margin: 0rem 0.378rem 0.704rem 0.217rem;
+	width: calc(100% - 0.5947rem);
+	background-color: #d9d9d9;
+	flex-shrink: 0;
+	display: hidden;
+}
+
 .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER .fundingpct-7ND .rectangle-81-3Wm
 	{
 	width: calc(var(--percent)* 1%);
@@ -374,9 +383,17 @@ input {
 	flex-shrink: 0;
 }
 
+.mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER .auto-group-lfhx-zB71
+	{
+	width: 100%;
+	display: none;
+	align-items: center;
+	flex-shrink: 0;
+}
+
 .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER .auto-group-lfhx-zB7 .item-44--yoj
 	{
-	margin-right: 11rem;
+	margin-right: 9.5rem;
 	font-size: 1.0825rem;
 	font-weight: 700;
 	line-height: 1.2125;

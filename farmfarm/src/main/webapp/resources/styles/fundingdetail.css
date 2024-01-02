@@ -487,3 +487,24 @@ a {
 	font-size: 1.8067rem;
 	font-weight: 500;
 }
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  /* right: 30px; */
+  margin-left: 200rem;
+  z-index: 2;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
+}
