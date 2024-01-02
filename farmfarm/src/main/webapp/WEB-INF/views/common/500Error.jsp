@@ -21,7 +21,7 @@
 		<p class="p2">시스템에서 예기치 못한 오류가 발생했습니다.</p>
 		<p class="p2">문제를 해결하기 위해 최선을 다하고 있습니다.</p>
 		<p class="p2">진행중인 사항을 다시 시도하거나, 관리자에게 문의 부탁드립니다.</p>
-		<img class="logo_img" src="${cpath }/assets/logo_sweetpotato.png" />
+		<img class="logo_img1" src="${cpath }/assets/logo_sweetpotato.png" />
 		<p class="p3" onclick="location.href='${cpath}/'">팜팜으로</p>
 	</div>
 
