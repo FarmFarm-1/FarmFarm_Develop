@@ -26,6 +26,6 @@ public class MyPageUserCartVO {
 	int min_amount;
 	int d_day;
 	int current_price;
-	int total_pct;
+	double total_pct;
 	int participants;
 }
