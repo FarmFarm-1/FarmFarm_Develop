@@ -481,7 +481,7 @@
 					<div class="warn-two">펀딩 마감일은 재배 예정일보다 늦을 수 없습니다.</div>
 				</div>
 			</div>
-			<div class="addressbtn-4Z3" onclick="regProduct()">프로젝트 만들기</div>
+			<button class="addressbtn-4Z3" onclick="regProduct()">프로젝트 만들기</button>
 			<p class="item--jE5">상품정보</p>
 			<p class="item--9Zo">펀딩정보</p>
 			<p class="item--S37">농장정보</p>

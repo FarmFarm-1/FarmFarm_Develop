@@ -67,6 +67,7 @@
                     }
                 }
             });
+
     function selectMyFarm() {
         var curUser = "${sessionScope.serial_num}";
         if (curUser == "") {

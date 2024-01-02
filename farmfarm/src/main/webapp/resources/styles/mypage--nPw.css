@@ -14,7 +14,9 @@ ul, li {
 input {
 	border: none;
 }
-
+button:hover {
+	cursor: pointer;
+}
 .mypage--ro7 {
 	zoom: 1.02;
 	width: 100%;
