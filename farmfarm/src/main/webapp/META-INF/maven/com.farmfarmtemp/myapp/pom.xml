@@ -51,6 +51,19 @@
 			<version>1.1.1</version>
 		</dependency>
 
+		<!-- WebSocket -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
 		<!-- SHA 비밀번호 암호화 -->
 		<dependency>
 			<groupId>commons-codec</groupId>

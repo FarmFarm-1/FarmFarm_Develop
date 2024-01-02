@@ -43,9 +43,14 @@
 						<img src="${cpath}/assets/farmer_icon.png" />
 					</div>
 					<div class="farmer_name">${fundingInfo.farmer_name }</div>
-					<div class="chat_open">
-						<img src="${cpath}/assets/chat_icon.png" />
-					</div>
+					<form id="chat_open_form" action="${cpath}/myPageUser"
+						method="post">
+						<input type="hidden" name="farmernum" id="farmernum" value="${fundingInfo.farmer_serial_num}"> 
+						<div class="chat_open">
+							<img src="${cpath}/assets/chat_icon.png" onclick="sendPostRequest()"/>
+						</div>
+					</form>
+
 				</div>
 				<div class="funding_detail">
 					<div>
@@ -162,6 +167,11 @@
 		</div>
 	</div>
 	<script>
+	
+	function sendPostRequest(){
+		document.getElementById("chat_open_form").submit();
+	}
+	
 		/*더보기 이벤트 리스너*/
 		document
 				.addEventListener(

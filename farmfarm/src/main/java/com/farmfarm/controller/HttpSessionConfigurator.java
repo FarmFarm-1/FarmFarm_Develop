@@ -13,20 +13,20 @@ public class HttpSessionConfigurator extends ServerEndpointConfig.Configurator {
     public void modifyHandshake(ServerEndpointConfig sec, HandshakeRequest request, HandshakeResponse response) {
     	HttpSession httpSession = (HttpSession) request.getHttpSession();
     	String serial_num = (String) httpSession.getAttribute("serial_num");
-    	String usernum = "";
-    	String farmernum = "";
+    	String user_serial_num = "";
+    	String farmer_serial_num = "";
 
     	if (serial_num != null) {
     	    if (serial_num.startsWith("us")) {
-    	         usernum = serial_num;
+    	    	user_serial_num = serial_num;
     	    } else if (serial_num.startsWith("FA")) {
-    	         farmernum = serial_num;
+    	    	farmer_serial_num = serial_num;
     	    }
     	} else {
     	    System.out.println("serial_num is null");
     	}
         
-        sec.getUserProperties().put("usernum", usernum);   
-        sec.getUserProperties().put("farmernum", farmernum);   
+        sec.getUserProperties().put("sender_user", user_serial_num);   
+        sec.getUserProperties().put("sender_farmer", farmer_serial_num);   
     }
 }

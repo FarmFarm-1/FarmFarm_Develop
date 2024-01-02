@@ -40,6 +40,7 @@
 		fp.product_serial_num,
 		fp.product_name,
 		fp.product_kind,
+		fm.farmer_serial_num,
 		fm.farmer_name,
 		fp.farm_introduction,
 		fp.farm_name,

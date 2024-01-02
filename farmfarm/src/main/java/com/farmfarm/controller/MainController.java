@@ -65,12 +65,17 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/myPageUser", method = {RequestMethod.GET, RequestMethod.POST})
-	public String showMyPageUser(HttpSession session, Model model, @RequestParam(name = "path", required = false) String path) {
+	public String showMyPageUser(HttpSession session, Model model, @RequestParam(name = "path", required = false) String path,
+			@RequestParam(name = "farmernum", required = false)String farmernum) {
 		session.setAttribute("headerSelect", "myFarm");
 		model.addAttribute("check", "null");
 		if(path != null) {
 			model.addAttribute("path", path);
 		}
+		if(farmernum != null) {
+			model.addAttribute("farmernum",farmernum);
+		}
+		
 		String serial_num = (String) session.getAttribute("serial_num");
 		if(serial_num == null || serial_num.substring(0, 2).equals("FA")) {
 			return "redirect:/login";
