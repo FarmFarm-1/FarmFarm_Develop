@@ -52,7 +52,7 @@ $(document).ready(function() {
 					max_auction_price = Number(${maxAndCntInfo.max_auction_price});
 				}
 				if (user_real_input_price - max_auction_price > 0) {
-					let cal_revenue_pct = ${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount - maxAndCntInfo.max_auction_price)/(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount))*100};
+					let cal_revenue_pct = (${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount} - user_real_input_price)/${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}*100;
 					$.ajax({
 						url: "${cpath}/auction/auctionConfirm",
 						type: "POST",
