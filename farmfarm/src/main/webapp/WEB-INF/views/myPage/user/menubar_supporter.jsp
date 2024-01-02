@@ -43,13 +43,17 @@
 		}
 		
 		let directPathVariable = "${path}";
+		let chatfarmernum = "${farmernum}";
+		
 		if(directPathVariable == "farmMoneyCharge") {
 			immediateAjaxFunc(directPathVariable);
 		} else if (directPathVariable == "accountRegister") {
 			immediateAjaxFuncMypage("accountRegister");
+		} else if(chatfarmernum != "" && chatfarmernum.substring(0,2) == "FA") {
+			ImgChatting(chatfarmernum);
 		} else if(directPathVariable == "") {
 			myFundingList();
-		}
+		} 
 		
 	})
 	function myFundingList(){
@@ -160,14 +164,29 @@
 		});
 	}
 
-	function Chatting() {
+	function ImgChatting(chatfarmernum) {
 		$.ajax({
 			url : "${cpath}/myPageUser/chatting",
+			method : "POST",
+			data : {
+				"chatfarmernum" : chatfarmernum
+			},
 			success : function(res) {
 				$("#here").html(res);
 			}
 		});
 	}
+	
+	
+	function Chatting() {
+		$.ajax({
+			url : "${cpath}/myPageUser/showChatting",
+			success : function(res) {
+				$("#here").html(res);
+			}
+		});
+	}
+	
 
 	function depositList() {
 		$.ajax({

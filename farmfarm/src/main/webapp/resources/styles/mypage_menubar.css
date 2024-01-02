@@ -258,7 +258,7 @@ html {
 
 .auto-group-wrk9-we5 {
 	/* margin: 0rem 14.998rem 73.767rem 15rem; */
-	width: calc(100% - 29.9984rem);
+	/* width: calc(100% - 29.9984rem); */
 	height: 100%;
 	display: flex;
 	/* align-items: center; */
@@ -448,7 +448,7 @@ html {
 
 .group-omP {
 	position: absolute;
-	left: 34rem;
+	left: 30rem;
 	width: 2.6045rem;
 	height: 2.6039rem;
 	object-fit: contain;

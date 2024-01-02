@@ -245,7 +245,10 @@ public class FundingController {
 
 		int fundingInfocnt = fundingDetailService.fundingInfocnt(product_serial_num);
 		model.addAttribute("fundingInfocnt", fundingInfocnt);
-
+		
+		//추가한 부분
+		model.addAttribute("user_serial_num",user_serial_num);
+		
 		if (user_serial_num != null) {
 			if (user_serial_num.substring(0, 2).equals("us")) {
 				int myBookmarkShow = fundingDetailService.myBookmarkShow(product_serial_num, user_serial_num);

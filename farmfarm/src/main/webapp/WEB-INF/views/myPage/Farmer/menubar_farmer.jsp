@@ -64,7 +64,7 @@
 	function chat(){
 		// ajax -> 입급내역 here.html
 		$.ajax({
-			url : "${cpath}/myPageFarmer/chat",
+			url : "${cpath}/myPageFarmer/showChat",
 			success : function(responseData) {
 				$("#here").html(responseData);
 			}

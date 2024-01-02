@@ -18,6 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="farmfarm_container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
@@ -44,9 +45,14 @@
 						<img src="${cpath}/assets/farmer_icon.png" />
 					</div>
 					<div class="farmer_name">${fundingInfo.farmer_name }</div>
-					<div class="chat_open">
-						<img src="${cpath}/assets/chat_icon.png" />
-					</div>
+					<form id="chat_open_form" action="${cpath}/myPageUser"
+						method="post">
+						<input type="hidden" name="farmernum" id="farmernum" value="${fundingInfo.farmer_serial_num}"> 
+						<div class="chat_open">
+							<img src="${cpath}/assets/chat_icon.png" onclick="sendPostRequest()"/>
+						</div>
+					</form>
+
 				</div>
 				<div class="funding_detail">
 					<div>
@@ -163,6 +169,11 @@
 		</div>
 	</div>
 	<script>
+	
+	function sendPostRequest(){
+		document.getElementById("chat_open_form").submit();
+	}
+	
 		/*더보기 이벤트 리스너*/
 		document
 				.addEventListener(
@@ -387,4 +398,27 @@
 	</script>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
+<script>
+
+//Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

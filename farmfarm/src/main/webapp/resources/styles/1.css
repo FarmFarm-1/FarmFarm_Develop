@@ -198,6 +198,7 @@ button:hover {
 	background-color: #f6f6f6;
 	border-radius: 1.5rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mypage--YJR .insertproject-e37 .auto-group-5qos-9Gh .category-FKj .categorychoose-8Xw .status1-WoP
@@ -442,6 +443,7 @@ button:hover {
 	flex-shrink: 0;
 	background-size: cover;
 	background-position: center center;
+	cursor: pointer;
 }
 
 .mypage--YJR .insertproject-e37 .auto-group-5qos-9Gh .projectthubimage-Rem .imageupload-SCV .imageuploadicon-xRj
@@ -536,6 +538,7 @@ button:hover {
 	flex-shrink: 0;
 	background-size: cover;
 	background-position: center center;
+	cursor: pointer;
 }
 
 .mypage--YJR .insertproject-e37 .auto-group-5qos-9Gh .projectimage-WLm .auto-group-xen9-2rq .imageupload-NQu .imageuploadicon-H25
@@ -910,7 +913,7 @@ button:hover {
 	width: 4.9rem;
 	height: 2.6rem;
 	position: absolute;
-	left: 1.3rem;
+	left: 0.5rem;
 	top: 11.5rem;
 	font-size: 2rem;
 	font-weight: 700;
@@ -1227,6 +1230,7 @@ button:hover {
 	background-color: #ffffff;
 	border-radius: 0.1324rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }
 
 .mypage--YJR .insertproject-e37 .auto-group-ujlv-dbb .farmaddress-iTw .auto-group-5dqh-qU1
@@ -1632,7 +1636,7 @@ button:hover {
 
 .mypage--YJR .insertproject-e37 .auto-group-57ch-VuF .auto-group-yjps-hvm .deadline-rHs
 	{
-	margin: 1.4rem 8.3rem 0rem 0rem;
+	margin: 1.4rem 8.7rem 0rem 0rem;
 	display: flex;
 	flex-direction: column;
 	flex-shrink: 0;
@@ -1692,7 +1696,7 @@ button:hover {
 	width: 4.9rem;
 	height: 2.6rem;
 	position: absolute;
-	left: 1.3rem;
+	left: 0.5rem;
 	top: 137rem;
 	font-size: 2rem;
 	font-weight: 700;
@@ -1706,7 +1710,7 @@ button:hover {
 	width: 4.9rem;
 	height: 2.6rem;
 	position: absolute;
-	left: 1.3rem;
+	left: 0.5rem;
 	top: 81rem;
 	font-size: 2rem;
 	font-weight: 700;

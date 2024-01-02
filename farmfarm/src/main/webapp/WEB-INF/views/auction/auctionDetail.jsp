@@ -52,7 +52,7 @@ $(document).ready(function() {
 					max_auction_price = Number(${maxAndCntInfo.max_auction_price});
 				}
 				if (user_real_input_price - max_auction_price > 0) {
-					let cal_revenue_pct = ${((cropsquoteInfo.crops_quote * auctionInfo.harvest_amount - maxAndCntInfo.max_auction_price)/(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount))*100};
+					let cal_revenue_pct = (${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount} - user_real_input_price)/${cropsquoteInfo.crops_quote * auctionInfo.harvest_amount}*100;
 					$.ajax({
 						url: "${cpath}/auction/auctionConfirm",
 						type: "POST",
@@ -241,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 </script>
 </head>
 <body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
@@ -482,4 +483,27 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
+<script>
+
+//Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

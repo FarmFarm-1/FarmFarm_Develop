@@ -151,12 +151,15 @@ function deleteFromMyCart(product_serial_num) {
 							</div>
 						</div>
 
-						<div class="${fList.d_day >= 0 ? 'cartlistfoot-xER':'cartlistfoot-xER1'}">
-							<div class="fundingpct-7ND">
+						<div class="cartlistfoot-xER"> 
+						<%-- <div class="${fList.d_day >= 0 ? 'cartlistfoot-xER':'cartlistfoot-xER1'}"> --%>
+							<!-- <div class="fundingpct-7ND"> -->
+							<div class="${fList.d_day >= 0 ? 'fundingpct-7ND':'fundingpct-7ND1'}"> 
 								<div class="rectangle-81-3Wm"
 									style="--percent: ${fList.total_pct}"></div>
 							</div>
-							<div class="auto-group-lfhx-zB7">
+							<!-- <div class="auto-group-lfhx-zB7"> -->
+							<div class="${fList.d_day >= 0 ? 'auto-group-lfhx-zB7':'auto-group-lfhx-zB71'}">
 								<p class="item-44--yoj">
 									<span class="item-44--yoj-sub-0">${fList.total_pct}</span> <span
 										class="item-44--yoj-sub-1">% 달성</span>

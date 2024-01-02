@@ -19,7 +19,7 @@
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
-}}
+}
 
 * {
 	padding: 0;
