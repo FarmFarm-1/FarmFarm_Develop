@@ -259,8 +259,8 @@
 					<input class="group-185-ut9" type="date" id="deadline"></input>
 				</div>
 			</div>
-			<div class="auctionpushbtn-YgD" onclick="goRegAuction()">경매
-				신청하기</div>
+			<button class="auctionpushbtn-YgD" onclick="goRegAuction()">경매
+				신청하기</button>
 		</div>
 	</div>
 </body>

@@ -37,7 +37,7 @@ input {
 	justify-content: center;
 	padding: 3rem;
 	background: #F8F8F8;
-	z-index: 100;
+	z-index: 2;
     position: relative;
 }
 .footer .footer_center {

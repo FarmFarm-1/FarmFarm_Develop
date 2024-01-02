@@ -108,6 +108,19 @@ function deleteFromMyCart(product_serial_num) {
 		}
 	});
 }
+
+$(document).ready(function() {
+    $('.cartlist2-HAu').on('click', function() {
+    	console.log("headerSelect: " + headerSelect);
+        var menu_funding = document.querySelector('#menu_funding');
+        menu_funding.style.color = '#2d2d2d';
+        menu_funding.style.fontWeight  = '800';
+        var elements = document.getElementsByClassName('underbar-1');
+        if (elements.length > 0) {
+            elements[0].classList.remove('hidden');
+        }
+    });
+});
 </script>
 <body>
 	<!-- <h1>펀딩리스트</h1> -->

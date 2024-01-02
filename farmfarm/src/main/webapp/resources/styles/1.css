@@ -48,7 +48,9 @@ textarea:focus {
 	border-color: #64a246;
 	box-shadow: 0 0 10px #b5dea2;
 }
-
+button:hover {
+	cursor: pointer;
+}
 .mypage--YJR {
 	zoom: 1.02;
 	width: 100%;
@@ -1500,6 +1502,26 @@ textarea:focus {
 	border: solid 0.1rem #64a246;
 	box-sizing: border-box;
 	background-color: #ffffff;
+	border-radius: 0.3rem;
+}
+.mypage--YJR .insertproject-e37 .addressbtn-4Z3:hover {
+	width: 17.6rem;
+	height: 4.3rem;
+	position: absolute;
+	left: 63.9rem;
+	top: 170rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.8983rem;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #ffffff;
+	font-family: Pretendard, 'Source Sans Pro';
+	white-space: nowrap;
+	border: solid 0.1rem #64a246;
+	box-sizing: border-box;
+	background-color: #64a246;
 	border-radius: 0.3rem;
 }
 
