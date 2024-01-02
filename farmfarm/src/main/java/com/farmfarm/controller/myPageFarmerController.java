@@ -21,18 +21,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.farmfarm.dto.Auction_reg_infoVO;
 import com.farmfarm.dto.Cultivating_product_detailVO;
 import com.farmfarm.dto.Farm_and_productVO;
 import com.farmfarm.dto.Funding_reg_infoVO;
+import com.farmfarm.model.ChattingService;
 import com.farmfarm.model.FarmerNavCntService;
 import com.farmfarm.model.FarmersService;
 import com.farmfarm.model.MyPageFarmerService;
 import com.farmfarm.model.MyPageService;
 import com.farmfarm.model.S3Service;
 import com.farmfarm.model.UpdateCulService;
+import com.farmfarm.model.UsersService;
 import com.farmfarm.model.jaehoService;
 import com.farmfarm.model.pwdSha256;
 import com.farmfarm.model.regProService;
@@ -41,6 +44,8 @@ import com.farmfarm.model.regProService;
 @Controller
 @RequestMapping("/myPageFarmer")
 public class myPageFarmerController {
+	@Autowired
+	UsersService usersService;
 	
 	@Autowired
 	FarmersService fService;
@@ -67,6 +72,9 @@ public class myPageFarmerController {
 	
 	@Autowired
 	UpdateCulService ucService;
+	
+	@Autowired
+	ChattingService chattingService;
 	
 	@GetMapping(value = "/navBarCnt")
 	@ResponseBody
@@ -272,14 +280,54 @@ public class myPageFarmerController {
 	}
 	//재호
 	
-	@RequestMapping(value = "/chat", method = { RequestMethod.GET })
-	public String chat (HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model) {
+	//재호	
+	@RequestMapping(value = "/chatting", method = {RequestMethod.POST })
+	public String chatting(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model,
+			@RequestParam(name = "chatusernum", required = false) String chatusernum) {
 		String farmer_serial_num = (String) session.getAttribute("serial_num");
 		String farmername = fService.findName(farmer_serial_num);
-		model.addAttribute("farmer_serial_num",farmer_serial_num);
-		model.addAttribute("farmername",farmername);
+		System.out.println(">>>>>>>>>>>>>>>>" + chatusernum);
+
+		// 채팅방 생성 또는 찾기
+		Map<String, Object> roomParam = new HashMap<>();
+		roomParam.put("chat_user", chatusernum);
+		roomParam.put("chat_farmer", farmer_serial_num);
+		System.out.println("chat_farmer입니다ㅏㅏㅏㅏㅏ");
+
+		Integer checkRoomResult = chattingService.checkroom(roomParam);
+		int chkroom_id = checkRoomResult;
+		roomParam.put("chat_room_id", chkroom_id);
+		List<Map<String, Object>>chkroom_idList = chattingService.checkroomFarmer(farmer_serial_num);
+		System.out.println("chkroomLIST = "+chkroom_idList);
+		
+		System.out.println("CCCCCCCCCCCCCCCCCHHHHHHHHHHHHKKKKKKKKK" + chkroom_id);
+		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
+		String username = usersService.findName(chatusernum);
+		model.addAttribute("chkroom_idList",chkroom_idList);
+		model.addAttribute("chkroom_id", chkroom_id);
+		model.addAttribute("farmer_serial_num", farmer_serial_num);
+		model.addAttribute("user_serial_num", chatusernum);
+		model.addAttribute("username", username);
+		model.addAttribute("chatHistory",chatHistory);
+		model.addAttribute("farmer_name",farmername);
+		System.out.println("CHATHISTORY = "+chatHistory);
 		return "myPage/Farmer/chat";
 	}
+	
+	@RequestMapping(value = "/showChat", method = {RequestMethod.GET })
+	public String showChatting(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model){
+		String farmer_serial_num = (String) session.getAttribute("serial_num");
+		String farmername = fService.findName(farmer_serial_num);
+		
+		List<Map<String, Object>>chkroom_idList = chattingService.checkroomFarmer(farmer_serial_num);
+		System.out.println("chkroomLIST = "+chkroom_idList);
+		
+		model.addAttribute("chkroom_idList",chkroom_idList);
+		model.addAttribute("farmername",farmername);
+		model.addAttribute("farmer_serial_num",farmer_serial_num);
+		return "myPage/Farmer/chatShow";
+	}
+	
 	
 	
 	@RequestMapping(value = "/regPro", method = RequestMethod.GET)

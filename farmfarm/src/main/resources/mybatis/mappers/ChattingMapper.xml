@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.chatting">
+	<insert id="insertChatRoom" parameterType="map"
+		useGeneratedKeys="true" keyProperty="room_id">
+		INSERT INTO
+		chatroom(chat_user,chat_farmer) VALUES(#{chat_user},#{chat_farmer})
+	</insert>
+
+	<insert id="insertChatMessage" parameterType="map">
+		INSERT INTO
+		chatmessage(room_id,content,sender_serial_num)
+		VALUES(#{room_id},#{content},#{sender})
+	</insert>
+
+	<select id="checkroom" parameterType="map" resultType="int">
+		SELECT
+		room_id
+		FROM chatroom
+		WHERE chat_user = #{chat_user} AND chat_farmer =
+		#{chat_farmer}
+	</select>
+
+	<select id="checkroomUser" parameterType="String"
+		resultType="map">
+		SELECT room_id, chat_farmer, farmers.farmer_name
+		FROM chatroom
+		JOIN farmers ON chatroom.chat_farmer = farmers.farmer_serial_num
+		WHERE chat_user = #{chat_user}
+	</select>
+	
+		<select id="checkroomFarmer" parameterType="String"
+		resultType="map">
+		SELECT room_id, chat_user, users.user_name
+		FROM chatroom
+		JOIN users ON chatroom.chat_user = users.user_serial_num
+		WHERE chat_farmer = #{chat_farmer}
+	</select>
+	
+
+	<select id="chatting_history" parameterType="int"
+		resultType="map">
+		SELECT chatmessage.room_id,chatmessage.sender_serial_num,
+		chatmessage.content,DATE(chatmessage.senttime) AS sentdate
+		,DATE_FORMAT(chatmessage.senttime, '%p %h:%i') AS messagetime
+		FROM
+		chatmessage
+		INNER JOIN chatroom
+		ON chatmessage.room_id =
+		chatroom.room_id
+		WHERE chatroom.room_id = #{room_id}
+		ORDER BY
+		chatmessage.senttime ASC
+	</select>
+</mapper>
+
+
