@@ -151,7 +151,7 @@ function deleteFromMyCart(product_serial_num) {
 							</div>
 						</div>
 
-						<div class="cartlistfoot-xER">
+						<div class="${fList.d_day >= 0 ? 'cartlistfoot-xER':'cartlistfoot-xER1'}">
 							<div class="fundingpct-7ND">
 								<div class="rectangle-81-3Wm"
 									style="--percent: ${fList.total_pct}"></div>

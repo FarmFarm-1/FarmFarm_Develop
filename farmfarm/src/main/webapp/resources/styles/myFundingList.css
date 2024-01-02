@@ -356,7 +356,7 @@ input {
   position: fixed;
   bottom: 20px;
   margin-left: 100rem; 
-  z-index: 99;
+  z-index: 2;
   font-size: 15px;
   border: none;
   outline: none;

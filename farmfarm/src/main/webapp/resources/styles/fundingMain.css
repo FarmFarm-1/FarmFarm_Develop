@@ -2072,7 +2072,7 @@ input {
   bottom: 20px;
   /* right: 30px; */
   margin-left: 140rem;
-  z-index: 99;
+  z-index: 2;
   font-size: 18px;
   border: none;
   outline: none;
@@ -2093,7 +2093,7 @@ input {
   /* bottom: 20px; */
   /* right: 30px; */
   margin-left: 92rem;
-  z-index: 99;
+  z-index: 2;
   margin-top: 17rem;
   font-size: 15px;
   border: none;

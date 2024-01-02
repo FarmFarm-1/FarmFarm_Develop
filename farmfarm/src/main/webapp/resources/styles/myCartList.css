@@ -351,6 +351,16 @@ input {
     top: 3rem;
 }
 
+.mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER1 {
+	width: 100%;
+	align-items: center;
+	display: none;
+	flex-direction: column;
+	flex-shrink: 0;
+	position: relative;
+    top: 3rem;
+}
+
 .mypage--hQ1  .auto-group-ceto-zXw .cartlist2-HAu .cartlistfoot-xER .fundingpct-7ND
 	{
 	margin: 0rem 0.378rem 0.704rem 0.217rem;
@@ -456,7 +466,7 @@ input {
   position: fixed;
   bottom: 20px;
   margin-left: 100rem; 
-  z-index: 99;
+  z-index: 2;
   font-size: 15px;
   border: none;
   outline: none;

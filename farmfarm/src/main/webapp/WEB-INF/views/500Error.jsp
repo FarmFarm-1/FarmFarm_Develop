@@ -21,7 +21,7 @@
 		<p class="p2">죄송합니다. 페이지가 작동하지 않습니다.</p>
 		<p class="p2">현재 요청을 처리할 수 없습니다.</p>
 		<p class="p2">HTTP ERROR 500</p>
-		<img class="logo_img" src="${cpath }/assets/logo_sweetpotato.png" />
+		<img class="logo_img1" src="${cpath }/assets/logo_sweetpotato.png" />
 		<p class="p3" onclick="location.href='${cpath}/'">팜팜으로</p>
 	</div>
 

@@ -152,7 +152,7 @@ a:visited {
   position: fixed;
   bottom: 20px;
   margin-left: 90rem; 
-  z-index: 99;
+  z-index: 2;
   font-size: 15px;
   border: none;
   outline: none;
