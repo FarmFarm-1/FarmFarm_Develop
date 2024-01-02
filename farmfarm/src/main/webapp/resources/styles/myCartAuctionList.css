@@ -10,7 +10,7 @@
 }
 
 @font-face {
-	font-family: 'Pretendard-Regular';
+	font-family: 'Pretendard';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
@@ -48,7 +48,7 @@ input {
 
 .mypage--hQ1 .item--oAd {
 	/* margin: 0rem 0rem 2.2rem 0.7rem; */
-	padding-right: 100rem;
+	padding-right: 60rem;
 	font-size: 2.443rem;
 	font-weight: 700;
 	line-height: 1.2575;
@@ -58,8 +58,8 @@ input {
 }
 
 .mypage--hQ1 .auto-group-owjb-tC5 {
-	margin: 2rem 0rem 2rem 0rem;
-	padding-right: 110rem;
+	margin: 2rem 0rem 3rem 0rem;
+	padding-right: 70rem;
 	height: 4rem;
 	display: flex;
 	column-gap: 2rem;
@@ -113,7 +113,7 @@ input {
 	grid-template-columns: repeat(3, 29rem);
 	/* gap: 10px; */
 	/* left: -17rem; */
-	left: -19rem;
+	left: 1rem;
 	align-items: center;
 	justify-content: center;
 	position: relative;
@@ -466,4 +466,23 @@ input {
 	font-family: Pretendard, 'Source Sans Pro';
 	line-height: 1.2125;
 	margin-left: -10px;
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  margin-left: 100rem; 
+  z-index: 99;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
 }

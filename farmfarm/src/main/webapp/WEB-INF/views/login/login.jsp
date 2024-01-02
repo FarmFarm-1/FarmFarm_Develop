@@ -16,13 +16,13 @@
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
-<link rel="stylesheet" href="./styles/loginPage.css" />
+<link rel="stylesheet" href="${cpath}/styles/loginPage.css" />
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="./js/LoginFormFarmer.js"></script>
-<script type="text/javascript" src="./js/LoginFormUser.js"></script>
-<script type="text/javascript" src="./js/FormChangeSubmit.js"></script>
+<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormFarmer.js"></script>
+<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormUser.js"></script>
+<script type="text/javascript" src="https://farmfarm.duckdns.org/js/FormChangeSubmit.js"></script>
 
 </head>
 <script>
@@ -97,7 +97,7 @@
 						<span class="item--C3o-sub-0">팜팜 처음 오셨나요? </span> <span>&nbsp;&nbsp;</span>
 						<span class="item--C3o-sub-1">바로 회원가입하기 </span>
 					</div>
-					<img class="mingcute-right-line-2S9" src="./assets/right-arrow.png" />
+					<img class="mingcute-right-line-2S9" src="${cpath}/assets/right-arrow.png" />
 				</div>
 			</div>
 

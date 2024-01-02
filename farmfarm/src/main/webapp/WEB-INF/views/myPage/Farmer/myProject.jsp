@@ -9,6 +9,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
 <link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 
+<button onclick="topFunction()" id="myBtn1" title="Go to top">Top</button>
 <div class="myproject-mx9">
 	<div class="auto-group-15mw-HvV">
 		<p class="item--RG1">나의 프로젝트를 확인해보세요</p>
@@ -203,3 +204,26 @@
 	</c:forEach>
 </div>
 
+<script>
+
+//Get the button
+var mybutton = document.getElementById("myBtn1");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
