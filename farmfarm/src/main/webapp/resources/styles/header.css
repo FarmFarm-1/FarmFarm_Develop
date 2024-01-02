@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'GmarketSansMedium';
+	font-family: 'Gmarket Sans';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
 		format('woff');
@@ -227,6 +227,7 @@ ul, li {
 }
 
 .header .header_div .header_main .header_join_login a {
+	font-family: Pretendard, 'Source Sans Pro';
 	font-size: 2rem;
 	font-weight: 400;
 	text-decoration: none;

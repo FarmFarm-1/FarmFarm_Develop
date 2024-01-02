@@ -89,7 +89,7 @@ var toggleState = {}; //do not delete
 				</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh"
-					<c:if test="${fList.product_status eq '펀딩실패'}">
+					<c:if test="${fList.product_status eq '펀딩실패' || fList.product_status eq '경매실패'}">
                 		style="background-color: #EF6134;" 
             		</c:if>>
 					${fList.product_status}</div>

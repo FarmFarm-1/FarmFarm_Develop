@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'GmarketSansMedium';
+	font-family: 'Gmarket Sans';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
 		format('woff');
@@ -413,7 +413,7 @@ input {
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-fwnd-MHf .auto-group-ufyr-s17
 	{
-	margin-right: 4rem;
+	margin-right: 3rem;
 	width: 4.3rem;
 	height: 100%;
 	position: relative;
@@ -431,7 +431,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -446,7 +446,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -469,7 +469,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-fwnd-MHf .auto-group-do49-DjB .item-10000-aJq-1
@@ -483,8 +483,9 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #d7503c;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
+	    margin-left: 0.5rem;
 }
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-fwnd-MHf .auto-group-do49-DjB .item-10000-GxM
@@ -498,7 +499,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -514,7 +515,7 @@ input {
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-jk2v-Anq .auto-group-rqmx-fzV
 	{
-	margin-right: 3.2rem;
+	margin-right: 2.5rem;
 	width: 7.3rem;
 	height: 100%;
 	position: relative;
@@ -532,7 +533,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -547,7 +548,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -570,7 +571,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -585,7 +586,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -601,7 +602,7 @@ input {
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-mvny-sMo .auto-group-94eh-nzZ
 	{
-	margin-right: 2.2rem;
+	/* margin-right: 2.2rem; */
 	width: 2.2rem;
 	height: 100%;
 	position: relative;
@@ -619,7 +620,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -634,7 +635,7 @@ input {
 	font-weight: 400;
 	line-height: 1.2125;
 	color: #686868;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -644,6 +645,7 @@ input {
 	height: 100%;
 	position: relative;
 	flex-shrink: 0;
+	margin-left: 2rem;
 }
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-turr-XpR .auto-group-mvny-sMo .auto-group-h2ld-LPo .item-100-TDX
@@ -657,7 +659,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -668,11 +670,12 @@ input {
 	position: absolute;
 	left: 18px;
 	top: 0;
+	margin-left: 1.5rem;
 	font-size: 1.7715rem;
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -687,7 +690,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 }
 
@@ -741,7 +744,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: baseline;
@@ -758,7 +761,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	display: none;
 	align-items: baseline;
@@ -771,13 +774,13 @@ input {
 	margin-right: 4px;
 	line-height: 1.2125;
 	color: #64a246;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	line-height: 1.2125;
 }
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-bgvz-iHs .auto-group-jebp-rQ5 .item-64--o4R .item-64--o4R-sub-1
 	{
-	
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-bgvz-iHs .auto-group-jebp-rQ5 .item-64--uWm
@@ -791,7 +794,7 @@ input {
 	font-weight: 700;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	display: flex;
 	align-items: baseline;
@@ -843,7 +846,7 @@ input {
 	margin-right: 4px;
 	line-height: 1.2125;
 	color: #64a246;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	line-height: 1.2125;
 	margin-left: -10px;
 }
@@ -866,7 +869,7 @@ input {
 	font-weight: 600;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .mainpage--54h .group-156-QXX .group-86-zpV .auto-group-bgvz-iHs .auto-group-kpa5-sM7 .item-15--vih
