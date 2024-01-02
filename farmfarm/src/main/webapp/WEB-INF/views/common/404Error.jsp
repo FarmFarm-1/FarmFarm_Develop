@@ -17,11 +17,11 @@
 <body>
 
 	<div class="container">
-		<p class="p1">500 ERROR</p>
-		<p class="p2">죄송합니다. 페이지가 작동하지 않습니다.</p>
-		<p class="p2">현재 요청을 처리할 수 없습니다.</p>
-		<p class="p2">HTTP ERROR 500</p>
-		<img class="logo_img1" src="${cpath }/assets/logo_sweetpotato.png" />
+		<p class="p1">죄송합니다!</p>
+		<p class="p2">현재 찾을 수 없는 페이지를 요청 하셨습니다.</p>
+		<p class="p2">페이지의 주소가 잘못 입력되었거나,</p>
+		<p class="p2">주소가 변경 혹은 삭제되어 요청하신 페이지를 찾을 수 없습니다.</p>
+		<img class="logo_img" src="${cpath }/assets/logo_sweetpotato.png" />
 		<p class="p3" onclick="location.href='${cpath}/'">팜팜으로</p>
 	</div>
 

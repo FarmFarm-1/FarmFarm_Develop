@@ -249,7 +249,7 @@
 					<textarea class="rectangle-197-TjK" maxlength='100'></textarea>
 				</div>
 			</div>
-			<div class="updatebtn-yBs" onclick="goUpdate()">업데이트</div>
+			<button class="updatebtn-yBs" onclick="goUpdate()">업데이트</button>
 		</div>
 	</div>
 </body>
