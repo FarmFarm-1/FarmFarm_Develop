@@ -49,6 +49,8 @@
 			immediateAjaxFunc(directPathVariable);
 		} else if (directPathVariable == "accountRegister") {
 			immediateAjaxFuncMypage("accountRegister");
+		} else if (directPathVariable == "userChat") {
+			immediateAjaxFunc("showChatting");
 		} else if(chatfarmernum != "" && chatfarmernum.substring(0,2) == "FA") {
 			ImgChatting(chatfarmernum);
 		} else if(directPathVariable == "") {
