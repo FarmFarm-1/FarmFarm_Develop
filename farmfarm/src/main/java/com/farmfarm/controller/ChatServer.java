@@ -29,7 +29,8 @@ public class ChatServer {
 
 	@OnOpen
 	public void handleOpen(Session session) throws IOException {
-
+		String sender_user = (String) session.getUserProperties().get("sender_user");
+		String sender_farmer = (String) session.getUserProperties().get("sender_farmer");
 		String queryString = session.getRequestURI().getQuery();
 		String[] params = queryString.split("&");
 		Map<String, String> paramMap = new HashMap<>();
@@ -69,26 +70,41 @@ public class ChatServer {
 		    historyJsonArray.add(json);
 		}
 		session.getUserProperties().put("jsonhistory", historyJsonArray.toJSONString());
-
-		// 이전 대화 내역을 클라이언트에게 전송 JSON 형식
-		for (Object json : historyJsonArray) {
-		    try {
-		        session.getBasicRemote().sendText(json.toString());
-		    } catch (IOException e) {
-		        e.printStackTrace();
-		    }
-		}
-
-		System.out.println("handleOpen");
-		System.out.println("usernum = " + usernum);
-		System.out.println("farmernum = " + farmernum);
-		System.out.println("chkroomid = " + chkroomid);
-
 		// 사용자와 농민 번호, roomParam을 세션에 저장
 		session.getUserProperties().put("usernum", usernum);
 		session.getUserProperties().put("farmernum", farmernum);
 		session.getUserProperties().put("chkroomid", chkroomid);
-
+	 
+		for (Object json : historyJsonArray) {
+		    try {
+		         session.getBasicRemote().sendText(json.toString());
+		    } catch (IOException e) {
+		       //e.printStackTrace();
+		    }
+		}
+		 	
+		//메시지 읽음 체크를 위한 map 선언
+		Map<String, Object> map_user = new HashMap<>();
+		map_user.put("room_id",chkroomid);
+		map_user.put("sender", farmernum);
+		
+		//만약 유저가 로그인 했으면 파머의 메시지를 읽음처리하는 update문
+		if (sender_user != null && !sender_user.trim().isEmpty()) {
+			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
+		            .updateRead(map_user);
+		}
+		
+		//메시지 읽음 체크를 위한 map 선언
+		Map<String, Object> map_farmer = new HashMap<>();
+		map_farmer.put("room_id",chkroomid);
+		map_farmer.put("sender", usernum);
+		
+		//만약 파머가 로그인 했으면 유저의 메시지를 읽음처리하는 update문
+		if (sender_farmer != null && !sender_farmer.trim().isEmpty()) {
+			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
+		            .updateRead(map_farmer);
+		}
+		
 		List<Session> sessions = roomSessions.getOrDefault(chkroomid, new ArrayList<>());
 		sessions.add(session);
 		roomSessions.put(chkroomid, sessions);
@@ -111,20 +127,15 @@ public class ChatServer {
 
 		String sender_serial_num = "";
 		sender_serial_num = sender_user.equals("") ? farmernum : usernum;
-
-		// sender_serial_num이 비어있지 않은 경우에만 데이터베이스에 저장
-		if (sender_serial_num != null && !sender_serial_num.isEmpty()) {
-			// 채팅 메시지 보내기
-			Map<String, Object> messageParam = new HashMap<>();
-			messageParam.put("room_id", roomId);
-			messageParam.put("content", msg);
-			messageParam.put("sender", sender_serial_num);
-
-			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
-					.insertChatMessage(messageParam);
-		}
+		String readyn = "n"; 
 
 		List<Session> sessions = roomSessions.get(roomId);
+		
+		// 세션 리스트를 확인하여 유저와 파머 모두 접속해 있는지 확인
+		if (sessions != null && sessions.size() == 2) {
+		    readyn = "y"; // 유저와 파머 모두 접속해 있다면 readyn을 'y'로 설정
+		}
+		System.out.println("세션 사이즈는 얼마나 되는가? "+sessions.size());
 		if (sessions != null) {
 			for (Session s : sessions) {
 				try {
@@ -149,6 +160,17 @@ public class ChatServer {
 					e.printStackTrace();
 				}
 			}
+		}
+		// sender_serial_num이 비어있지 않은 경우에만 데이터베이스에 저장
+		if (sender_serial_num != null && !sender_serial_num.isEmpty()) {
+			// 채팅 메시지 보내기
+			Map<String, Object> messageParam = new HashMap<>();
+			messageParam.put("room_id", roomId);
+			messageParam.put("content", msg);
+			messageParam.put("sender", sender_serial_num);
+			messageParam.put("readyn", readyn);
+			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
+			.insertChatMessage(messageParam);
 		}
 	}
 

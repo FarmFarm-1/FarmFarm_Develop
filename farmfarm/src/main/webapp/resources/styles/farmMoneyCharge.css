@@ -83,6 +83,17 @@
   white-space: nowrap;
   flex-shrink: 0;
 }
+
+.farmmoney-title-line {
+    display: flex;
+    align-items: baseline;
+}
+
+.crop-game {
+	margin-left: 1rem;
+	width : 20px;
+	cursor: pointer;
+}
 .farmmoneycharge-layout .auto-group-ubjk-aZb .chargebtn-aLd {
   width: 10.2rem;
   height: calc(100% - 3.1rem);

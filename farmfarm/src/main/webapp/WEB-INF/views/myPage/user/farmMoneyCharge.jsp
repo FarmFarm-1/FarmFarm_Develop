@@ -123,12 +123,20 @@
 	    const ellipseElem = currentElem.querySelector(".ellipse-34-7NV");
 	    ellipseElem.appendChild(newDiv);
 	}
+	
+	function callNodeJsAPI() {
+		showModal_cropgame();
+	}
 </script>
 <jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+<jsp:include page="${cpath}/WEB-INF/views/modal/modal-cropgame.jsp" />
 <!-- html 사용 영역  시작 -->
 <div class="farmmoneycharge-layout">
   <div class="farmmoneyheader-v5j">
-    <p class="item--rVB">팜머니 충전</p>
+  	<div class="farmmoney-title-line">
+	    <p class="item--rVB">팜머니 충전</p>
+    	<img src="/assets/logo_sweetpotato.png" class="crop-game" onclick="callNodeJsAPI()"/>
+  	</div>
     <div class="item--aRB">
    	 팜머니를 충전하면 펀딩과 경매에 참여할 수 있습니다.<br/>얼마를 충전할까요?
     </div>
@@ -209,7 +217,6 @@
     </div>
   </div>
   <div class="farmmoneyfooter-6sF">
-    <img class="line-62-2ku" src="REPLACE_IMAGE:24:10843"/>
     <div class="item--As7">결제된 금액은 팜머니로 충전됩니다. </div>
   </div>
 </div>
