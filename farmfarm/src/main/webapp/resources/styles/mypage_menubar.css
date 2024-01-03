@@ -436,7 +436,7 @@ html {
 .item--7Nm {
 	text-align: left;
 	width: 10rem;
-	margin: 0rem 6rem 0rem 0rem;
+	margin: 0rem 5rem 0rem 0rem;
 	font-size: 1.8rem;
 	font-weight: 400;
 	line-height: 1.2575;
@@ -447,8 +447,8 @@ html {
 }
 
 .group-omP {
-	position: absolute;
-	left: 30rem;
+	position: relative;
+	right: 1rem;
 	width: 2.6045rem;
 	height: 2.6039rem;
 	object-fit: contain;
@@ -1053,6 +1053,17 @@ html {
 	flex-shrink: 0;
 }
 
+.updatebtn-eXF:hover {
+	margin: 2rem 0rem 2rem 2rem;
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+	   background-color: #d7d7d7;
+    border-radius: 2rem;
+}
+
 .myproject-mx9 .fundinglist2-jKs {
 	margin: 0rem 0.1rem 2.5rem 0rem;
 	box-sizing: border-box;
@@ -1373,6 +1384,16 @@ html {
 	object-fit: contain;
 	vertical-align: top;
 	flex-shrink: 0;
+}
+
+.updatebtn-zrh:hover {
+	width: 4rem;
+	height: 4rem;
+	object-fit: contain;
+	vertical-align: top;
+	flex-shrink: 0;
+	background-color: #d7d7d7;
+    border-radius: 2rem;
 }
 
 .myproject-mx9 .fundinglist4-J6h {

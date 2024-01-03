@@ -55,6 +55,16 @@
 	border: none;
 	outline: none;
 }
+.accordion:hover {
+	cursor: pointer;
+	padding: 18px; 
+	/* width: 63%;  */
+	text-align: left;
+	border: none;
+	outline: none;
+	background-color: #E3E3E3;
+	border-radius: 1rem;
+}
 .button-align {	
 	margin-bottom: 1rem;
     display: inline-flex;

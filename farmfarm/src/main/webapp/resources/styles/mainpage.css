@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'GmarketSansMedium';
+	font-family: 'Gmarket Sans';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
 		format('woff');
@@ -19,47 +19,34 @@
 }
 
 /*animation*/
-@
--webkit-keyframes fadein { /* Safari and Chrome */ from { opacity:0;
-	
-}
-
-to {
+@-webkit-keyframes fadein { /* Safari and Chrome */ 
+	from { 
+		opacity:0;
+	}
+	to {
 	opacity: 1;
-}
+	}
 
 }
-@
-keyframes motion { 0% {
+@keyframes motion { 
+	0% {
 	margin-top: 0px;
 	opacity: 0.3;
+	}
+	100% {
+	margin-top:15px;
+	}
 }
 
-100
-%
-{
-margin-top
-:
-15px;
-}
-}
-@
-keyframes bannermove { 0% {
+@keyframes bannermove { 
+	0% {
 	transform: translate(0, 0);
+	}
+	100%{
+	transform:translate(-50%,0);
+	}
 }
 
-100
-%
-{
-transform
-:
-translate(
--50%
-,
-0
-);
-}
-}
 .scroll_wrap {
 	overflow: hidden;
 }
@@ -938,7 +925,7 @@ body {
 
 .mainpage--A2H .section53-DAd .auto-group-pb7b-Xh7 .section53right-e2y .p-p5s-1
 	{
-	font-size: 6.9786rem;
+	font-size: 8rem;
 	font-weight: 700;
 	line-height: 1.2575;
 	letter-spacing: 0.3489rem;

@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png"
+	type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>팜팜</title>
@@ -267,7 +268,8 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 								src="${cpath}/assets/fd_greencheck.png" />
 						</div>
 					</div>
-				</div> <div class="btn_close hide">
+				</div>
+				<div class="btn_close hide">
 					<div class="stroymoregroup">
 						<div class="grouptext">
 							<p class="text">스토리 접기</p>
@@ -299,12 +301,16 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 					</div>
 				</div>
 				<div class="funding-paticipate-info">
-					<p class="small-unit">최고 입찰가</p>
-					<p class="funding-max-price">
-						<fmt:formatNumber value="${maxAndCntInfo.max_auction_price}"
-							pattern="#,###" />
-						원
-					</p>
+					<c:choose>
+						<c:when test="${maxAndCntInfo.max_auction_price ne null}">
+							<p class="small-unit">최고 입찰가</p>
+							<p class="funding-max-price">
+								<fmt:formatNumber value="${maxAndCntInfo.max_auction_price}"
+									pattern="#,###" />
+								원
+							</p>
+						</c:when>
+					</c:choose>
 				</div>
 			</div>
 			<div class="frame-layout">
@@ -362,7 +368,8 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 				<div class="frame-line">
 					<p class="frame-tit">단위당 단가</p>
 					<p class="frame-val">
-						<fmt:formatNumber value="${auctionInfo.starting_price / auctionInfo.harvest_amount}"
+						<fmt:formatNumber
+							value="${auctionInfo.starting_price / auctionInfo.harvest_amount}"
 							pattern="#,###" />
 						원
 					</p>
@@ -370,8 +377,7 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 				<div class="frame-line">
 					<p class="frame-tit">경매 시작가</p>
 					<p class="frame-val">
-						<fmt:formatNumber
-							value="${auctionInfo.starting_price}"
+						<fmt:formatNumber value="${auctionInfo.starting_price}"
 							pattern="#,###" />
 						원
 					</p>
@@ -424,7 +430,7 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 									value="${(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount 
 					     - maxAndCntInfo.max_auction_price)
 					     /(cropsquoteInfo.crops_quote * auctionInfo.harvest_amount)}"
-									type="percent" pattern="0.00%"/>
+									type="percent" pattern="0.00%" />
 							</c:when>
 							<c:otherwise>
 								<fmt:formatNumber value="0" type="percent" />
