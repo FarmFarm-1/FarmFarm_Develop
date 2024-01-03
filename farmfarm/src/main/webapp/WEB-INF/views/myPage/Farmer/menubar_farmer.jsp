@@ -244,6 +244,8 @@ window.onload = ()=>{
 		immediateAjaxFuncFarmer("regPro");
 	} else if(directPathVariable == "accountRegister") {
 		immediateAjaxFuncMypage("accountRegister");
+	} else if(directPathVariable == "farmerChat"){
+		immediateAjaxFuncFarmer("showChat");
 	} else {
 		immediateAjaxFuncFarmer("myProject");
 	}
