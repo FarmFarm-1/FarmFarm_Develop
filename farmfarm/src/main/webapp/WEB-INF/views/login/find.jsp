@@ -5,10 +5,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-<title>findPassword...</title>
+<title>팜팜</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
@@ -95,11 +96,13 @@
 		        login_btn.disabled = false;
 		        login_btn.style.backgroundColor = '#64a246';
 		        login_btn.style.border = 'solid 0.0744rem #64a246';
+		        login_btn.style.cursor = 'pointer';
 		    }
 		    else {        
 		        login_btn.disabled = true;
 		        login_btn.style.backgroundColor = '#a2a2a3';
 		        login_btn.style.border = 'solid 0.0744rem #a2a2a3';
+		        login_btn.style.cursor = '';
 		    }
 		  }
 	function submitEmail(){
@@ -112,10 +115,12 @@
 			success : function(result) {
 				//alert(result);
 				if(result == "등록되지 않은 이메일입니다."){
+					 $(".btnOk_myproject").addClass('hidden');
 					document.querySelector('#basicModal .alertTitle').textContent = "등록되지 않은 이메일입니다.";
      				document.querySelector('#basicModal .alertContent').textContent = "이메일 정보를 다시 확인해 주세요.";
                     document.querySelector('.modal').style.display='flex';
 				}else{
+					 $(".btnOk_myproject").addClass('hidden');
 					document.querySelector('#basicModal .alertTitle').textContent = "임시비밀번호 발송 완료";
      				document.querySelector('#basicModal .alertContent').textContent = "이메일을 확인하여 로그인 후 비밀번호를 변경해주세요.";
                     document.querySelector('.modal').style.display='flex';

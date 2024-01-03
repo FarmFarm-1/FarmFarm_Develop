@@ -39,7 +39,7 @@
 				<div class="content_detail_second">${pointItem.update_time}</div>
 			</div>
 			<div class="productImg">
-				<img src="${cpath}/assets/tomatoes-55667411280-VTB.png"
+				<img src="${pointItem.funding_thumb_img_url}"
 					style="visibility: ${history_content1 ? 'visible' : history_content2 ? 'visible' : 'hidden'}" />
 			</div>
 			<div class="content_detail_secondAll">

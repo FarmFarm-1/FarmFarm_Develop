@@ -37,7 +37,9 @@
 									<div class="item-20230915-7uX">${f.update_date}</div>
 								</div>
 								<div class="item--pow">${f.cultivating_content}</div>
-							</div>	
+								<div class="optional-opinion-tit">추가 사항</div>
+								<div class="optional-opinion-val">${f.etc_content}</div>
+							</div>
 						</div>
 					</div>
 				</c:if>
@@ -63,8 +65,13 @@
 								<div class="auto-group-6tox-hL1">
 									<div class="item--E53">경작중 정보</div>
 									<div class="item-20230915-7uX">${f.update_date}</div>
+									<div class="fertil-tit">비료 사용 정보  : </div>
+									<div class="fertil-name">${f.fertilizer_content},</div>
+									<div class="fertil-amount">${f.fertilizer_amount}kg</div>
 								</div>
 								<div class="item--pow">${f.cultivating_content}</div>
+								<div class="optional-opinion-tit">추가 사항</div>
+								<div class="optional-opinion-val">${f.etc_content}</div>
 							</div>
 						</div>
 					</div>
@@ -91,6 +98,8 @@
 									<div class="item-20230915-7uX">${f.update_date}</div>
 								</div>
 								<div class="item--pow">${f.cultivating_content}</div>
+								<div class="optional-opinion-tit">추가 사항</div>
+								<div class="optional-opinion-val">${f.etc_content}</div>
 							</div>
 						</div>
 					</div>
@@ -118,6 +127,8 @@
 								</div>
 							</div>
 							<div class="item--pow">${f.cultivating_content}</div>
+							<div class="optional-opinion-tit">추가 사항</div>
+							<div class="optional-opinion-val">${f.etc_content}</div>
 						</div>
 					</div>
 				</c:if>

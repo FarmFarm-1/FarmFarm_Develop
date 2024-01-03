@@ -20,7 +20,8 @@
 
 <body>
 	<div class="mypage--Se9">
-	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<!-- 고정 -->
 		<p class="item--ydo">경매에 참여 내역을 확인해보세요.</p>
 		<div class="fundinglistheader-H8h">
@@ -39,7 +40,7 @@
 				<img class="tomatoes-55667411280-5Eu"
 					src="${aList.auction_thumb_img_url}"
 					<c:if test="${aList.product_status eq '경매중'}">
-                		onclick="location.href='/auction/auctionDetail?product_serial_num=${fList.product_serial_num}'"
+                		onclick="location.href='/auction/auctionDetail?product_serial_num=${aList.product_serial_num}'"
              		</c:if> />
 
 				<div class="fundinginfo-B9X">
@@ -65,19 +66,25 @@
 				</div>
 
 				<div class="auctiondeadlinegroup-Nj7">
-					<c:set var="days"
-						value="${fn:substringBefore(Math.floor((aList.d_day)/1440), '.')}" />
-					<c:set var="remainingHours"
-						value="${fn:substringBefore(Math.floor(((aList.d_day)%1440) / 60), '.')}" />
-					<c:set var="remainingMinutes" value="${(((aList.d_day)%1440)%60)}" />
+					<c:if test="${aList.product_status eq '경매중'}">
+						<c:set var="days"
+							value="${fn:substringBefore(Math.floor((aList.d_day)/1440), '.')}" />
+						<c:set var="remainingHours"
+							value="${fn:substringBefore(Math.floor(((aList.d_day)%1440) / 60), '.')}" />
+						<c:set var="remainingMinutes" value="${(((aList.d_day)%1440)%60)}" />
 
+						<div class="auctionremaining-VYq">${days}일
+							${remainingHours}시간 ${remainingMinutes}분</div>
+					</c:if>
 
-					<div class="auctionremaining-VYq">${days}일
-						${remainingHours}시간 ${remainingMinutes}분</div>
 					<p class="auctiondeadline-pr1">${aList.auction_deadline} 마감</p>
 				</div>
 
-				<p class="fundingpay-7WM">${aList.max_user_price}p</p>
+				<p class="fundingpay-7WM">
+					<fmt:formatNumber value="${aList.max_user_price}" type="number"
+						pattern="#,##0" />
+					p
+				</p>
 				<div class="fundingstate-MQh">${aList.product_status}</div>
 				<div
 					class="item--KJD ${aList.product_status eq '경매완료' and aList.auction_status eq 'X' ? 'failure' : ''}"
@@ -107,4 +114,27 @@
 
 	</div>
 </body>
+<script>
+
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

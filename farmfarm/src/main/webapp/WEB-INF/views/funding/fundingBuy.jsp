@@ -8,9 +8,10 @@
 <html>
 <head>
 <meta charset="UTF-8" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mainpage/펀딩/구매 전 확인/버튼비활성</title>
+<title>팜팜</title>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Gmarket+Sans%3A400" />

@@ -18,6 +18,15 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
 @font-face {
 	font-family: 'LINESeedKR-Bd-Regular';
 	src:
@@ -269,6 +278,7 @@ body {
 	height: 22px;
 	width: 22px;
  	margin-left: 1.5rem;
+ 	cursor: pointer;
 }
 
 .farmer-name-div
@@ -293,6 +303,7 @@ body {
 	position: relative;
 	margin-left: auto;
     margin-right: 2.5rem;
+    cursor: pointer;
 }
 
 .chaticon-img:hover{
@@ -464,6 +475,7 @@ body {
 .heart-icon, .heart-icon .filled {
 	margin: 0rem 0rem 0.1rem 0.116rem;
 	height: 2.3rem;
+	cursor: pointer;
 }
 
 .heart-num {
@@ -490,6 +502,7 @@ body {
 	border-color : #64a246;
 	height: calc(100% - 0.0214rem);
 	letter-spacing: 0.3rem;
+	cursor: pointer;
 }
 
 .project_story {
@@ -524,6 +537,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 10rem;
+	cursor: pointer;
 }
 
 .stroymoregroup .grouptext {
@@ -584,4 +598,25 @@ a {
 	position: absolute;
     top: 15rem;
     left: 0;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  /* right: 30px; */
+  margin-left: 200rem;
+  z-index: 2;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
 }

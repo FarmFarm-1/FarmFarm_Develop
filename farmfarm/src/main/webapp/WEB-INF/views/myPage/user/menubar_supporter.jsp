@@ -7,17 +7,16 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mypage/서포터/펀딩한팜</title>
+<title>팜팜</title>
 
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700" />
-<link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
-<link rel="stylesheet" href="${cpath }/styles/myFundingList.css" />
+<link rel="stylesheet" href="${cpath }/styles/mypage_menubar_user.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.0/apexcharts.min.js"></script>
@@ -50,6 +49,8 @@
 			immediateAjaxFunc(directPathVariable);
 		} else if (directPathVariable == "accountRegister") {
 			immediateAjaxFuncMypage("accountRegister");
+		} else if (directPathVariable == "userChat") {
+			immediateAjaxFunc("showChatting");
 		} else if(chatfarmernum != "" && chatfarmernum.substring(0,2) == "FA") {
 			ImgChatting(chatfarmernum);
 		} else if(directPathVariable == "") {
@@ -366,7 +367,9 @@
 
 					</div>
 					<!-- ajax -->
-					<div id="here"></div>
+					<div id="here">
+						
+					</div>
 				</div>
 				<!-- footer -->
 			</div>
@@ -374,3 +377,4 @@
 	</div>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
+</html>

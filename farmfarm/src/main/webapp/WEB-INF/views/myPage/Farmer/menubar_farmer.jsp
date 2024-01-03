@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mypage/파머/나의프로젝트</title>
+<title>팜팜</title>
 <link rel="stylesheet" href="${cpath }/styles/mypage_menubar.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -244,6 +244,8 @@ window.onload = ()=>{
 		immediateAjaxFuncFarmer("regPro");
 	} else if(directPathVariable == "accountRegister") {
 		immediateAjaxFuncMypage("accountRegister");
+	} else if(directPathVariable == "farmerChat"){
+		immediateAjaxFuncFarmer("showChat");
 	} else {
 		immediateAjaxFuncFarmer("myProject");
 	}

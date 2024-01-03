@@ -1,5 +1,23 @@
 @charset "UTF-8";
 
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
 .accountregis-8Q5 {
   width: 23.8rem;
   align-items: center;
@@ -66,6 +84,7 @@
   font-family: Pretendard, 'Source Sans Pro';
   white-space: nowrap;
   flex-shrink: 0;
+  cursor: pointer;
 }
 .mingcute-right-line-WBf {
   margin-bottom: 0rem;
@@ -74,4 +93,5 @@
   object-fit: contain;
   vertical-align: top;
   flex-shrink: 0;
+  cursor: pointer;
 }

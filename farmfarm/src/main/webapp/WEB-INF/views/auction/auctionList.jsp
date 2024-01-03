@@ -3,15 +3,16 @@
 <%@ page session="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="cpath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=5" />
 <meta name="theme-color" content="#000000" />
-<title>mainpage/경매</title>
+<title>팜팜</title>
 <link rel="stylesheet" href="${cpath }/styles/fundingMain.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -21,6 +22,7 @@
 	<div class="mainpage--54h">
 	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="body">
+		<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 			<div class="group-156-QXX">
 				<div class="search">
 					<input id="searchInput" type="text"
@@ -385,5 +387,27 @@
 	</script>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
+<script>
 
+//Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

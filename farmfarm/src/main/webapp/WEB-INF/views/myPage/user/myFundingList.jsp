@@ -8,7 +8,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
 <title>mypage/서포터/펀딩한팜</title>
@@ -30,6 +29,7 @@ var toggleState = {}; //do not delete
 </head>
 <body>
 	<div class="mypage--Se9">
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 		<%-- <jsp:include page="myFundingListShowMore.jsp" /> --%>
 		<!-- 모달 -->
 		<!-- 고정 -->
@@ -89,7 +89,7 @@ var toggleState = {}; //do not delete
 				</p>
 				<p class="fundingmypercent-djb">${fList.user_funding_pct}%</p>
 				<div class="fundingstate-MQh"
-					<c:if test="${fList.product_status eq '펀딩실패'}">
+					<c:if test="${fList.product_status eq '펀딩실패' || fList.product_status eq '경매실패'}">
                 		style="background-color: #EF6134;" 
             		</c:if>>
 					${fList.product_status}</div>
@@ -179,4 +179,27 @@ var toggleState = {}; //do not delete
 		</c:forEach>
 	</div>
 </body>
+<script>
+
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

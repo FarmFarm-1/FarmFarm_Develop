@@ -17,11 +17,20 @@
 }
 
 @font-face {
-	font-family: 'GmarketSansMedium';
+	font-family: 'Gmarket Sans';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
 		format('woff');
 	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
 	font-style: normal;
 }
 
@@ -32,6 +41,10 @@
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
+}
+
+* {
+  font-family: "Pretendard";
 }
 
 .farmfarm_container {
@@ -82,7 +95,7 @@
 	font-weight: 800;
 	line-height: 1.2125;
 	color: #2d2d2d;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	margin-bottom: 1rem;
 }
@@ -104,6 +117,7 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 10rem;
+	cursor: pointer;
 }
 
 .farmfarm_container .funding_info_left .stroymoregroup .grouptext {
@@ -121,7 +135,7 @@
 	font-weight: 800;
 	line-height: 1.2125;
 	color: #64a246;
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
 	white-space: nowrap;
 	flex-shrink: 0;
 }
@@ -254,6 +268,7 @@
 .chat_open img{
 	width:30px;
 	height: 30px;
+	cursor: pointer;
 }
 
 .chat_open img:hover{
@@ -333,10 +348,11 @@
 	color: #fff;
 	background-color: #B7B7B7;
 	border: none;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: bold;
 	border-radius:7px;
 	cursor: default;
+	letter-spacing: 0.3rem;
 }
 
 .funding_info_right_bottom {
@@ -352,7 +368,7 @@
 	align-items: center;
 }
 .pctText{
-	font-family: Inter, 'Source Sans Pro';
+	font-family: Pretendard, 'Source Sans Pro';
     font-weight: 800;
     font-size: medium;
     margin-right: 1rem;
@@ -479,4 +495,25 @@ a {
 	width: 250px;
 	font-size: 1.8067rem;
 	font-weight: 500;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  /* right: 30px; */
+  margin-left: 200rem;
+  z-index: 2;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #686868;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #92cb76;
 }

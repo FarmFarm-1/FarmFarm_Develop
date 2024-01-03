@@ -5,8 +5,9 @@
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FundingList</title>
+<title>팜팜</title>
 <c:set value="${pageContext.request.contextPath}" var="cpath" />
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400%2C500%2C700%2C800" />
@@ -17,6 +18,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="farmfarm_container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
@@ -396,4 +398,27 @@
 	</script>
 	<jsp:include page="${cpath}/WEB-INF/views/footer.jsp" />
 </body>
+<script>
+
+//Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

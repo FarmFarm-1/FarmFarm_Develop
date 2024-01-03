@@ -13,6 +13,7 @@
 
 </head>
 <body>
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<!-- 날짜 -->
 	<div class="content_tit">팜머니 내역</div>
 	<div class="searchDate">
@@ -62,7 +63,7 @@
 					<div class="content_detail_second">${farmlist.update_time}</div>
 				</div>
 				<div class="productImg">
-					<img src="${cpath}/assets/tomatoes-55667411280-VTB.png"
+					<img src="${farmlist.funding_thumb_img_url}"
 						style="visibility: ${history_content1 ? 'visible' : history_content2 ? 'visible' : 'hidden'}" />
 				</div>
 				<div class="content_detail_secondAll">
@@ -89,8 +90,8 @@
 	</div>
 	<!--//Content -->
 	<script>
-		let startDateInput = document.getElementById("startDate");
-		let endDateInput = document.getElementById("endDate");
+		var startDateInput = document.getElementById("startDate");
+		var endDateInput = document.getElementById("endDate");
 	
 		function searchDate() {
 			$.ajax({
@@ -137,4 +138,27 @@
 		});
 	</script>
 </body>
+<script>
+
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
 </html>

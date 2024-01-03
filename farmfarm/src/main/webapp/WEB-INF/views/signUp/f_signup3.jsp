@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png" type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mainpage/회원가입/파머/가입완료</title>
+<title>팜팜</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Inter%3A400" />
 <link rel="stylesheet"
@@ -52,7 +52,7 @@
 
 					<div class="item--d3T">회원가입 완료</div>
 					<div class="item--hp1">
-						팜린이 님의 <br /> 회원가입이 완료되었습니다.
+						${signup_name}님의 <br /> 회원가입이 완료되었습니다.
 					</div>
 				</div>
 			</div>

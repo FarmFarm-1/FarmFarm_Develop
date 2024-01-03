@@ -72,6 +72,10 @@
 			return;
 		}
 		//추가된 부분 끝
+		if (passwdCheck == newPasswd){
+			showModal_success("입력 오류", "현재 비밀번호와 동일하게 변경불가합니다.");
+			return;
+		}
 
 		if (newPasswd != newPasswdCheck) {
 			showModal_success("입력 오류", "비밀번호가 다릅니다.<br>비밀번호를 확인해주세요!");

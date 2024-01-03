@@ -1,3 +1,20 @@
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
 
 html {
 	font-size:62.5%;
@@ -12,6 +29,20 @@ ul, li {
 input {
 	border: none;
 }
+input:focus {
+	outline: none !important;
+	border-color: #64a246;
+	box-shadow: 0 0 10px #b5dea2;
+}
+
+textarea:focus {
+	outline: none !important;
+	border-color: #64a246;
+	box-shadow: 0 0 10px #b5dea2;
+}
+.addressbtn-4Z3:hover {
+	cursor: pointer;
+} 	
 .mypage--kNh {
   zoom: 1.02;
   width: 100%;
@@ -412,14 +443,14 @@ input {
   top: 0.1rem;
   background-color: rgba(248, 248, 248, 0.5);
   border-radius: 1rem;
-}
+}	
 .mypage--kNh .updateform-BLh .auto-group-2fbt-VLh .updatecultivatingcontent-H9P .auto-group-nwyy-Ftq .rectangle-193-VoB {
   width: 30rem;
   height: 5.2rem;
   position: absolute;
   left: 0;
   top: 0;
-  border: solid 0.1rem #64a246;
+  border: solid 0.1rem #d9d9d9;
   box-sizing: border-box;
   border-radius: 1rem;
   padding: 1rem 0.5rem 0.5rem 0.5rem;

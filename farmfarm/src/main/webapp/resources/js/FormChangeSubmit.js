@@ -90,6 +90,9 @@
 	                    location.href = "/"; // 로그인 성공 시 이동할 페이지
 	                }else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
+	                     $(".btnOk_myproject").addClass('hidden');
+	                     $(".btnOk_account").addClass('hidden');
+	                     document.querySelector('.alertTitle').style.margin = '3rem 0rem 3rem 0rem';
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
             			document.querySelector('#basicModal .alertContent').textContent = "ID 또는 패스워드를 다시 확인해 주세요.";            			
 	                    document.querySelector('.modal').style.display='flex';
@@ -119,6 +122,9 @@
 	                    location.href = "/"; // 로그인 성공 시 이동할 페이지
 	                } else {
 	                    // 로그인 실패 시 메시지를 표시하고 페이지에 머무르게 함
+	                     $(".btnOk_myproject").addClass('hidden');
+	                     $(".btnOk_account").addClass('hidden');
+	                     document.querySelector('.alertTitle').style.margin = '3rem 0rem 3rem 0rem';
 	                    document.querySelector('#basicModal .alertTitle').textContent = "로그인에 실패했습니다.";
             			document.querySelector('#basicModal .alertContent').textContent = "ID 또는 패스워드를 다시 확인해 주세요.";
 	                    document.querySelector('.modal').style.display='flex';

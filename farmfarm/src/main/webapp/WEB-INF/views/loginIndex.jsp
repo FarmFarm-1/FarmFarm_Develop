@@ -6,10 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" href="${cpath }/favicon/farmfarmfavicon.png"
+	type="image/x-icon" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#000000" />
-<title>mainpage/첫페이지</title>
+<title>팜팜</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script
@@ -25,12 +26,12 @@
 	</form>
 
 	<jsp:include page="header.jsp" />
-	
 
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 	<!-- front -->
 	<div class="mainpage--A2H scroll_wrap">
-	<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
+		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
 		<div class="section1-L5B">
 			<div class="pexels-flambo-1112080-1-T3K"></div>
 			<div class="rectangle-208-VVo"></div>
@@ -543,6 +544,29 @@ function counter($counter, max) {
         const step = (max - 0.1) / 10;
         now += step;
     }, 80);
+}
+
+</script>
+<script>
+
+//Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 }
 
 </script>

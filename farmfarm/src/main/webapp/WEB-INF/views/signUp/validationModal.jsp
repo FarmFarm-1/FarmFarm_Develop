@@ -4,6 +4,24 @@
 <html>
 <head>
 <style>
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
 .html {
 	zoom: 0.67;
 }
@@ -58,6 +76,7 @@
 }
 
 .modal_body .group-108-suo {
+	cursor:pointer;
 	margin: 0rem 0rem 0rem 24.5rem;
 	width: 20rem;
 	height: 8.2572rem;

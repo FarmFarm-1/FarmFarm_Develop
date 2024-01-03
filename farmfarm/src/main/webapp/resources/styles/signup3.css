@@ -8,7 +8,7 @@
 }
 
 @font-face {
-	font-family: 'Pretendard-Regular';
+	font-family: 'Pretendard';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
@@ -427,4 +427,5 @@ input {
 	background-color: #64a246;
 	border-radius: 0.3721rem;
 	flex-shrink: 0;
+	cursor: pointer;
 }

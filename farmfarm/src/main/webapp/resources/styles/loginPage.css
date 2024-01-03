@@ -8,15 +8,13 @@
 }
 
 @font-face {
-	font-family: 'Pretendard-Regular';
+	font-family: 'Pretendard';
 	src:
 		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
 		format('woff');
 	font-weight: 400;
 	font-style: normal;
 }
-
-
 
 html {
 	font-size:62.5%;
@@ -34,14 +32,14 @@ input {
 }
 
 .warn_text {
- 	/* �뀓�뒪�듃 �븞蹂댁씠寃� �꽕�젙 */
+ 	/* �뜝�럥占쎈낑�삕占쎈츩�뜝�럥諭� �뜝�럥�닱�솻洹ｋ샍占쎈턄�뇦猿볦삕 �뜝�럡�맟�뜝�럩�젧 */
     visibility: hidden;
 
-	/* �뀓�뒪�듃 �겕湲�, 援듦린, �깋 �꽕�젙 */
+	/* �뜝�럥占쎈낑�삕占쎈츩�뜝�럥諭� �뜝�럡苡욜뼨�먯삕, 占쎈쨨占쎈��뵳占�, �뜝�럡�돰 �뜝�럡�맟�뜝�럩�젧 */
     font-size: 17px;
     font-weight: 700;
     color: #EF4444;
-    /* �뀓�뒪�듃 �쐞, �븘�옒�뿉 �뿬諛� �꽕�젙 */
+    /* �뜝�럥占쎈낑�삕占쎈츩�뜝�럥諭� �뜝�럩留�, �뜝�럥�닡�뜝�럩�굥�뜝�럥�뱺 �뜝�럥�뿰�뛾�룊�삕 �뜝�럡�맟�뜝�럩�젧 */
     margin-top : 1rem;
     margin-bottom: 1rem;
   }
@@ -361,7 +359,7 @@ input {
   height: 2.9rem;
   position: absolute;
   left: 73rem;
-  top: 35rem;
+  top: 36rem;
   cursor: pointer;
 }
 .mainpage--xA9 .group-165-Tpy .auto-group-prd3-k7F .group-107-Axu .mingcute-right-line-gwF {
@@ -419,7 +417,7 @@ input {
   flex-shrink: 0;
 }
 .mainpage--xA9 .group-165-Tpy .auto-group-gnzh-5Ch .group-99-Rvm {
-  cursor: pointer;
+  /* cursor: pointer; */
   width: 27.3123rem;
   height: 100%;
   text-align: center;
