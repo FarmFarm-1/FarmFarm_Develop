@@ -286,7 +286,6 @@ public class myPageFarmerController {
 			@RequestParam(name = "chatusernum", required = false) String chatusernum) {
 		String farmer_serial_num = (String) session.getAttribute("serial_num");
 		String farmername = fService.findName(farmer_serial_num);
-		System.out.println(">>>>>>>>>>>>>>>>" + chatusernum);
 
 		// 채팅방 생성 또는 찾기
 		Map<String, Object> roomParam = new HashMap<>();
@@ -298,9 +297,6 @@ public class myPageFarmerController {
 		int chkroom_id = checkRoomResult;
 		roomParam.put("chat_room_id", chkroom_id);
 		List<Map<String, Object>>chkroom_idList = chattingService.checkroomFarmer(farmer_serial_num);
-		System.out.println("chkroomLIST = "+chkroom_idList);
-		
-		System.out.println("CCCCCCCCCCCCCCCCCHHHHHHHHHHHHKKKKKKKKK" + chkroom_id);
 		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
 		String username = usersService.findName(chatusernum);
 		model.addAttribute("chkroom_idList",chkroom_idList);
@@ -310,7 +306,6 @@ public class myPageFarmerController {
 		model.addAttribute("username", username);
 		model.addAttribute("chatHistory",chatHistory);
 		model.addAttribute("farmer_name",farmername);
-		System.out.println("CHATHISTORY = "+chatHistory);
 		return "myPage/Farmer/chat";
 	}
 	

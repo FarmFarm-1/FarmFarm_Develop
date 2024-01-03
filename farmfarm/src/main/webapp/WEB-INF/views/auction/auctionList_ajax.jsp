@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="${cpath}/styles/fundingMain.css" />
@@ -41,7 +42,7 @@
 						<c:choose>
 							<c:when test="${auctionItem.current_price ne null}">
 								<p class="item-10000-aJq">
-									<fmt:formatNumber value="${auctionItem.current_price}" pattern="#,###" />원</p>
+									<fmt:formatNumber value="${auctionItem.current_price}" pattern="#,##0" />원</p>
 							</c:when>
 							<c:otherwise>
 								<p class="item-10000-aJq-1">입찰 현황 없음</p>

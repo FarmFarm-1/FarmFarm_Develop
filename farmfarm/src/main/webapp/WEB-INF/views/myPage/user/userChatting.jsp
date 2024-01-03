@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="cpath" value="${pageContext.request.contextPath }" />
 <link rel="stylesheet" href="${cpath}/styles/userChatting.css" />
 <div class="Content" id="content">
 	<div class="content_tit">쪽지함</div>
 	<div class="content_detailAll">
 		<div class="content_detail_top">
 			<div class="content_detail_top_left">
-				<div class="top_left_one">모든 메시지</div>
-				<div class="top_left_two">읽지 않은 메시지</div>
+				<div class="top_left_one">파머 목록</div>
+<!-- 				<div class="top_left_two">읽지 않은 메시지</div> -->
 			</div>
 			<div class="content_detail_top_right">
 				<div class="farmer_Img">
@@ -32,9 +33,8 @@
 						<div class="chatUser">
 							<div class="left_Big">
 								<div class="profile_Big_Text2" id="${chatroom.chat_farmer}">${chatroom.farmer_name}</div>
-								<div class="left_new_Img">
-									<img src="" />
-								</div>
+								<div class="left_new_Img" <c:if test="${chatroom.unReadMessage == 0}">style="display: none;"</c:if>>
+								${chatroom.unReadMessage}</div>
 							</div>
 						</div>
 					</div>
@@ -100,8 +100,8 @@
 	    var encodedUsernum = encodeURIComponent(usernum);
 	    var encodedFarmernum = encodeURIComponent(farmernum);
 	    var encodedChkroomid = encodeURIComponent(chkroomid);
-	
-	    var url = "ws://192.168.0.139:9090/chatserver?user_serial_num=" + encodedUsernum + "&farmer_serial_num=" 
+	    
+	    var url = "ws://" + location.host + "/chatserver?user_serial_num=" + encodedUsernum + "&farmer_serial_num=" 
 		+ encodedFarmernum + "&chkroom_id=" + encodedChkroomid;
 		ws = new WebSocket(url);
 	
@@ -109,7 +109,6 @@
 	
 	    ws.onopen = function() {
 	        $('#msg').attr('disabled', false);
-	        $('#msg').focus();
 	    };
 	
 	    ws.onclose = function() {
@@ -126,9 +125,7 @@
 	}
 	
 	function handleOnMessage(evt) {
-		console.log('onmessage 실행');
 		let fullMessage = evt.data;
-		console.log("원본 메시지: ", fullMessage); // 원본 메시지 확인
 
 		let sentdate;
 		if (fullMessage.includes('sentdate')) {
@@ -149,11 +146,7 @@
 		    txt = parsedMessage['content'];
 		    messagetime = parsedMessage['messagetime'];
 		}
-
-		console.log("파싱된 sender: ", sender); // 파싱된 sender 확인
-		console.log("파싱된 txt: ", txt); // 파싱된 txt 확인
-		console.log("파싱된 messagetime: ", messagetime); // 파싱된 messagetime 확인
-
+		
 		  if (txt) {
 		    if (sender === usernum) {
 		      print(username, txt,messagetime);
@@ -170,7 +163,6 @@
 	}	
 	
 	function print(username, txt,messagetime) {
-		console.log('print 실행');
 		let temp = '';
 		temp += '<div class="message_container">';
 		temp += '<span class="timeSpan1">' + messagetime + '</span>';
@@ -180,15 +172,16 @@
 		temp += '</div>';
 		temp += '</div>';
 		temp += '</div>';
-		$('#chat').append(temp);
-		setTimeout(function() {
-			$('#chat').scrollTop($('#chat').prop('scrollHeight'));
-		}, 0);
-		lastSender = 'supporter';
+	    $('#chat').append(temp);
+
+	    let elements = document.querySelectorAll(".message_container");
+	    let lastElement = elements[elements.length - 1];
+	    lastElement.scrollIntoView({behavior: "smooth"});
+	    
+	    lastSender = 'supporter';
 	}
 	
 	function printOther(farmername, txt,messagetime) {
-		console.log('printOther 실행');
 		let temp = '';
 		temp += '<div class="yourChat_message">';
 		temp += '<div class="your_message_background">';
@@ -205,18 +198,19 @@
 					+ temp;
 		}
 	
-		$('#chat').append(temp);
-		setTimeout(function() {
-			$('#chat').scrollTop($('#chat').prop('scrollHeight'));
-		}, 0);
-		lastSender = 'farmer';
+	    $('#chat').append(temp);
+
+	    let elements = document.querySelectorAll(".yourChat_message");
+	    let lastElement = elements[elements.length - 1];
+	    lastElement.scrollIntoView({behavior: "smooth"});
+	    
+	    lastSender = 'farmer';
 	}
 	
 	$('#msg').keydown(function() {
 	    if (event.keyCode == 13 && ws.readyState === WebSocket.OPEN) {
 	        ws.send($(this).val());
 	        $('#msg').val('');
-	        $('#msg').focus();
 	    }
 	});
 	
@@ -225,7 +219,6 @@
         if (ws.readyState === WebSocket.OPEN) {
             ws.send($('#msg').val());
             $('#msg').val('');
-            $('#msg').focus();
         }
     });
 	

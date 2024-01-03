@@ -8,8 +8,8 @@
 	<div class="content_detailAll">
 		<div class="content_detail_top">
 			<div class="content_detail_top_left">
-				<div class="top_left_one">모든 메시지</div>
-				<div class="top_left_two">읽지 않은 메시지</div>
+				<div class="top_left_one">파머 목록</div>
+<!-- 				<div class="top_left_two">읽지 않은 메시지</div> -->
 			</div>
 			<div class="content_detail_top_right">
 			</div>
@@ -26,9 +26,9 @@
 						<div class="chatUser">
 							<div class="left_Big">
 								<div class="profile_Big_Text2" id="${chatroom.chat_farmer}">${chatroom.farmer_name}</div>
-								<div class="left_new_Img">
-									<img src="" />
-								</div>
+								<div class="left_new_Img" <c:if test="${chatroom.unReadMessage == 0}">style="display: none;"</c:if>>
+								${chatroom.unReadMessage}</div>
+
 							</div>
 						</div>
 					</div>

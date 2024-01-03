@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: 'GmarketSansMedium';
+	font-family: 'Gmarket Sans';
 	src:
 		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
 		format('woff');
@@ -108,6 +108,7 @@ ul, li {
 	background-color: #ffffff;
 	flex-shrink: 0;
 }
+
 
 .header .header_div .header_main .header_title_menu {
 	/* margin-right: 78.2rem; */
@@ -227,6 +228,7 @@ ul, li {
 }
 
 .header .header_div .header_main .header_join_login a {
+	font-family: Pretendard, 'Source Sans Pro';
 	font-size: 2rem;
 	font-weight: 400;
 	text-decoration: none;
@@ -333,6 +335,40 @@ ul, li {
 	color: #3d3d3d;
 	font-family: Pretendard, 'Source Sans Pro';
 	cursor: pointer;
+}
+.logout {
+	font-size: 1.8776rem;
+	width: 100px;
+	/* display: flex; */
+	left: 23.5rem;
+	position: relative;
+	/* border: 1px solid #64a246; */
+	/* border-radius: 40px; */
+	text-align: center;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #3d3d3d;
+	font-family: Pretendard, 'Source Sans Pro';
+	cursor: pointer;
+	margin-left: 10px;
+}
+.logout:hover {
+	font-size: 1.8776rem;
+	width: 100px;
+	/* display: flex; */
+	left: 23.5rem;
+	position: relative;
+	/* border: 1px solid #64a246; */
+	/* border-radius: 40px; */
+	text-align: center;
+	font-weight: 700;
+	line-height: 1.2575;
+	color: #3d3d3d;
+	font-family: Pretendard, 'Source Sans Pro';
+	cursor: pointer;
+	background-color: #f7f7f7;
+	border-radius: 0.5rem;
+	margin-left: 10px;
 }
 .header .header_div .header_main .header_user_login .userPoint_div {
 	position: relative;

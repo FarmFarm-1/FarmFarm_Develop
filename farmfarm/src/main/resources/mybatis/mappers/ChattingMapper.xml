@@ -49,6 +49,7 @@
 		WHERE
 		cr.chat_user = #{chat_user}
 	</select>
+
 	<select id="checkroomFarmer" parameterType="String"
 		resultType="map">
 		SELECT
@@ -76,6 +77,7 @@
 		WHERE
 		cr.chat_farmer = #{chat_farmer}
 	</select>
+
 	<select id="chatting_history" parameterType="int"
 		resultType="map">
 		SELECT chatmessage.room_id,chatmessage.sender_serial_num,
@@ -90,6 +92,7 @@
 		ORDER BY
 		chatmessage.senttime ASC
 	</select>
+
 	<update id="updateRead" parameterType="map">
 		UPDATE chatmessage SET
 		readyn = 'y'
@@ -97,8 +100,7 @@
 		AND sender_serial_num =
 		#{sender}
 	</update>
-	<!-- <select id="unReadCnt" parameterType="int" resultType="int"> SELECT
-		COUNT(*) FROM chatmessage WHERE readyn = 'n' AND room_id = #{room_id} </select> -->
+
 </mapper>
 
 

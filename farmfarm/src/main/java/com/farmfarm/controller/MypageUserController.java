@@ -79,14 +79,11 @@ public class MypageUserController {
 			@RequestParam(name = "chatfarmernum", required = false) String chatfarmernum) {
 		String user_serial_num = (String) session.getAttribute("serial_num");
 		String username = userService.findName(user_serial_num);
-		System.out.println("!!!!!!!!!!!!!!!!!!!" + user_serial_num);
-		System.out.println(">>>>>>>>>>>>>>>>" + chatfarmernum);
 
 		// 채팅방 생성 또는 찾기
 		Map<String, Object> roomParam = new HashMap<>();
 		roomParam.put("chat_user", user_serial_num);
 		roomParam.put("chat_farmer", chatfarmernum);
-		System.out.println("chat_user입니다ㅏㅏㅏㅏㅏ");
 
 		// 동일한 user_serial_num과 chatfarmernum의 채팅방이 이미 있는지 확인
 		Integer checkRoomResult = chattingService.checkroom(roomParam);
@@ -101,10 +98,16 @@ public class MypageUserController {
 			roomParam.put("chat_room_id", chkroom_id);
 		}
 		List<Map<String, Object>>chkroom_idList = chattingService.checkroomUser(user_serial_num);
-		System.out.println("chkroomLIST = "+chkroom_idList);
-		
-		System.out.println("CCCCCCCCCCCCCCCCCHHHHHHHHHHHHKKKKKKKKK" + chkroom_id);
 		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
+		
+		
+		//메시지 읽음 체크를 위한 map 선언
+		Map<String, Object> map_user = new HashMap<>();
+		map_user.put("room_id",chkroom_id);
+		map_user.put("sender", chatfarmernum);
+		
+		//만약 유저가 로그인 했으면 파머의 메시지를 읽음처리하는 update문
+		chattingService.updateRead(map_user);
 		String farmer_name = farmersService.findName(chatfarmernum);
 		model.addAttribute("chkroom_idList",chkroom_idList);
 		model.addAttribute("chkroom_id", chkroom_id);
@@ -113,7 +116,7 @@ public class MypageUserController {
 		model.addAttribute("username", username);
 		model.addAttribute("chatHistory",chatHistory);
 		model.addAttribute("farmer_name",farmer_name);
-		System.out.println("CHATHISTORY = "+chatHistory);
+
 		return "myPage/user/userChatting";
 	}
 	
@@ -122,9 +125,7 @@ public class MypageUserController {
 		String user_serial_num = (String) session.getAttribute("serial_num");
 		String username = userService.findName(user_serial_num);
 		
-		List<Map<String, Object>>chkroom_idList = chattingService.checkroomUser(user_serial_num);
-		System.out.println("chkroomLIST = "+chkroom_idList);
-		
+		List<Map<String, Object>>chkroom_idList = chattingService.checkroomUser(user_serial_num);	
 		model.addAttribute("chkroom_idList",chkroom_idList);
 		model.addAttribute("username",username);
 		model.addAttribute("user_serial_num",user_serial_num);

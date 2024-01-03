@@ -62,14 +62,14 @@ input {
 .mypage--Se9 .fundinglistheader-H8h {
 	/* margin: 0rem 0rem 0rem 12rem; */
 	/* width: calc(100% - 10rem); */
-	column-gap: 5rem;
+	column-gap: 6rem;
 	display: flex;
 	align-items: center;
 	/* width: 100%; */
 }
 
 .mypage--Se9 .fundinglistheader-H8h .item--CmT {
-	margin-left: 7rem;
+	margin-left: 15rem;
 	text-align: center;
 	font-size: 1.5rem;
 	font-weight: 400;

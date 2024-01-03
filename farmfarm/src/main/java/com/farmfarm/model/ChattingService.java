@@ -35,4 +35,12 @@ public class ChattingService {
 	public List<Map<String, Object>> chatting_history(int room_id) {
 		return chattingdao.chatting_history(room_id);
 	}
+	
+	public int updateRead(Map<String, Object> map) {
+		return chattingdao.updateRead(map);
+	}
+	
+	/*
+	 * public int unReadCnt(int room_id) { return chattingdao.unReadCnt(room_id); }
+	 */
 }
