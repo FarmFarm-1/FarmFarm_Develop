@@ -80,7 +80,11 @@
 					<p class="auctiondeadline-pr1">${aList.auction_deadline} 마감</p>
 				</div>
 
-				<p class="fundingpay-7WM">${aList.max_user_price}p</p>
+				<p class="fundingpay-7WM">
+					<fmt:formatNumber value="${aList.max_user_price}" type="number"
+						pattern="#,##0" />
+					p
+				</p>
 				<div class="fundingstate-MQh">${aList.product_status}</div>
 				<div
 					class="item--KJD ${aList.product_status eq '경매완료' and aList.auction_status eq 'X' ? 'failure' : ''}"

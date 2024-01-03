@@ -640,7 +640,7 @@ body {
 
 .mainpage--A2H .section33-7Mw .item--YCM {
 	margin: 0rem 79rem 6.7rem 0rem;
-	max-width: 25rem;
+	max-width: 27rem;
 	font-size: 3.0531rem;
 	font-weight: 700;
 	line-height: 1.2575;
@@ -961,6 +961,7 @@ body {
 	font-size: medium;
 	margin-right: 0.5rem;
 	color: #999999;
+	cursor: pointer;
 }
 
 .mainpage--A2H .section53-DAd .image-54-g85 {
