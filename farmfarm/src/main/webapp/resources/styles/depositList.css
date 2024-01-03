@@ -32,8 +32,9 @@
 .content_tit {
 	font-size: 25px;
 	color: #3E3E3E;
-	font-weight: bold;
+	font-weight: 700;
 	margin-bottom: 2rem;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .content_detailall {
@@ -105,6 +106,7 @@
 .content_little_tit {
 	display: flex;
 	margin-left: 170px;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .content_little_tit>.content_little_content:nth-child(2) {

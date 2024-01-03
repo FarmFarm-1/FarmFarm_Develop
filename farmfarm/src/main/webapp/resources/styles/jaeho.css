@@ -33,8 +33,9 @@
 .content_tit {
     font-size:25px;
     color: #3E3E3E;
-    font-weight: bold;
+    font-weight: 700;
     margin-bottom: 2rem;
+    font-family: Pretendard, 'Source Sans Pro';
 }
 
 .content_detail {
@@ -47,6 +48,7 @@
     flex-basis: 150px;
     margin-left: 100px;
     font-size: 15px;
+    font-family: Pretendard, 'Source Sans Pro';
 }
 
 .detail_content input{
@@ -55,6 +57,7 @@
 	border-radius: 0.5rem;
 	padding-left: 10px;
 	width: 200px;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 .btn button{
@@ -66,6 +69,7 @@
 	border-radius: 0.5rem;
 	font-size:14px;
 	margin:1.5rem 0rem 0rem 32.15rem;
+	font-family: Pretendard, 'Source Sans Pro';
 }
 
 button:hover {
