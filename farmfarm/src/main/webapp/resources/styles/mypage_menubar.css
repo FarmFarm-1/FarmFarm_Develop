@@ -436,7 +436,7 @@ html {
 .item--7Nm {
 	text-align: left;
 	width: 10rem;
-	margin: 0rem 6rem 0rem 0rem;
+	margin: 0rem 5rem 0rem 0rem;
 	font-size: 1.8rem;
 	font-weight: 400;
 	line-height: 1.2575;
@@ -447,8 +447,8 @@ html {
 }
 
 .group-omP {
-	position: absolute;
-	left: 30rem;
+	position: relative;
+	right: 1rem;
 	width: 2.6045rem;
 	height: 2.6039rem;
 	object-fit: contain;
