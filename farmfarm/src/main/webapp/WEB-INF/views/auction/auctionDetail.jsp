@@ -234,9 +234,13 @@
 										});
 
 					});
+	function sendPostRequest(){
+		document.getElementById("chat_open_form").submit();
+	}
 </script>
 </head>
 <body>
+	<h1>${auctionInfo.farmer_serial_num}</h1>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="container">
 		<jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
@@ -261,7 +265,8 @@
 								src="${cpath}/assets/fd_greencheck.png" />
 						</div>
 					</div>
-				</div> <div class="btn_close hide">
+				</div>
+				<div class="btn_close hide">
 					<div class="stroymoregroup">
 						<div class="grouptext">
 							<p class="text">스토리 접기</p>
@@ -307,7 +312,13 @@
 						<img class="farmer-image" src="${cpath}/assets/farmer_icon.png" />
 						<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
 					</div>
-					<img class="chaticon-img" src="${cpath}/assets/chat_icon.png" />
+					<form id="chat_open_form" action="${cpath}/myPageUser"
+						method="post">
+						<input type="hidden" name="farmernum" id="farmernum"
+							value="${auctionInfo.farmer_serial_num}"> 
+							<img class="chaticon-img" src="${cpath}/assets/chat_icon.png"
+							onclick="sendPostRequest()" />
+					</form>
 				</div>
 				<div class="frame-layer">
 					<div class="frame-line">
@@ -356,7 +367,8 @@
 				<div class="frame-line">
 					<p class="frame-tit">단위당 단가</p>
 					<p class="frame-val">
-						<fmt:formatNumber value="${auctionInfo.starting_price / auctionInfo.harvest_amount}"
+						<fmt:formatNumber
+							value="${auctionInfo.starting_price / auctionInfo.harvest_amount}"
 							pattern="#,###" />
 						원
 					</p>
@@ -364,8 +376,7 @@
 				<div class="frame-line">
 					<p class="frame-tit">경매 시작가</p>
 					<p class="frame-val">
-						<fmt:formatNumber
-							value="${auctionInfo.starting_price}"
+						<fmt:formatNumber value="${auctionInfo.starting_price}"
 							pattern="#,###" />
 						원
 					</p>

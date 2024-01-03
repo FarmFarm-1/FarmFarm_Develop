@@ -24,9 +24,8 @@
 						<div class="chatUser">
 							<div class="left_Big">
 								<div class="profile_Big_Text2" id="${chatroom.chat_user}">${chatroom.user_name}</div>
-								<div class="left_new_Img">
-									<img src="" />
-								</div>
+								<div class="left_new_Img" <c:if test="${chatroom.unReadMessage == 0}">style="display: none;"</c:if>>
+								${chatroom.unReadMessage}</div>
 							</div>
 						</div>
 					</div>

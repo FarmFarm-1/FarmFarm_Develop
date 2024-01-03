@@ -256,6 +256,10 @@
 	height: 30px;
 }
 
+.chat_open img:hover{
+	cursor: pointer;
+}
+
 .funding_info_right .funding_detail>div {
 	display: flex;
 	margin-bottom: 15px;

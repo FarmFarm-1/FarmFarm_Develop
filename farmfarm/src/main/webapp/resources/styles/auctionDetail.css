@@ -295,6 +295,10 @@ body {
     margin-right: 2.5rem;
 }
 
+.chaticon-img:hover{
+	cursor: pointer;
+}
+
 .frame-layer {
 	margin-top : 4rem;  
 }
