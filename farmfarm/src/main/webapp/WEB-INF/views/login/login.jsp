@@ -20,9 +20,9 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormFarmer.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormUser.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/FormChangeSubmit.js"></script>
+<script type="text/javascript" src="${cpath}/js/LoginFormFarmer.js"></script>
+<script type="text/javascript" src="${cpath}/js/LoginFormUser.js"></script>
+<script type="text/javascript" src="${cpath}/js/FormChangeSubmit.js"></script>
 
 </head>
 <script>
