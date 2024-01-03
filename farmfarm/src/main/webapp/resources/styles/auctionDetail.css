@@ -306,6 +306,10 @@ body {
     cursor: pointer;
 }
 
+.chaticon-img:hover{
+	cursor: pointer;
+}
+
 .frame-layer {
 	margin-top : 4rem;  
 }

@@ -11,8 +11,8 @@
 
 	<insert id="insertChatMessage" parameterType="map">
 		INSERT INTO
-		chatmessage(room_id,content,sender_serial_num)
-		VALUES(#{room_id},#{content},#{sender})
+		chatmessage(room_id,content,sender_serial_num,readyn)
+		VALUES(#{room_id},#{content},#{sender},#{readyn})
 	</insert>
 
 	<select id="checkroom" parameterType="map" resultType="int">
@@ -25,20 +25,62 @@
 
 	<select id="checkroomUser" parameterType="String"
 		resultType="map">
-		SELECT room_id, chat_farmer, farmers.farmer_name
-		FROM chatroom
-		JOIN farmers ON chatroom.chat_farmer = farmers.farmer_serial_num
-		WHERE chat_user = #{chat_user}
+		SELECT
+		cr.room_id,
+		cr.chat_farmer,
+		f.farmer_name,
+		COALESCE(cm.unReadCount, 0) AS unReadMessage
+		FROM
+		chatroom cr
+		JOIN
+		farmers f ON cr.chat_farmer = f.farmer_serial_num
+		LEFT JOIN (
+		SELECT
+		room_id,
+		COUNT(*) AS unReadCount
+		FROM
+		chatmessage
+		WHERE
+		readyn = 'n'
+		AND
+		sender_serial_num NOT IN (SELECT chat_user FROM chatroom WHERE
+		sender_serial_num = #{chat_user})
+		GROUP BY
+		room_id
+		) cm ON cr.room_id =
+		cm.room_id
+		WHERE
+		cr.chat_user = #{chat_user}
 	</select>
-	
-		<select id="checkroomFarmer" parameterType="String"
+
+	<select id="checkroomFarmer" parameterType="String"
 		resultType="map">
-		SELECT room_id, chat_user, users.user_name
-		FROM chatroom
-		JOIN users ON chatroom.chat_user = users.user_serial_num
-		WHERE chat_farmer = #{chat_farmer}
+		SELECT
+		cr.room_id,
+		cr.chat_user,
+		u.user_name,
+		COALESCE(cm.unReadCount, 0) AS unReadMessage
+		FROM
+		chatroom cr
+		JOIN
+		users u ON cr.chat_user = u.user_serial_num
+		LEFT JOIN (
+		SELECT
+		room_id,
+		COUNT(*) AS unReadCount
+		FROM
+		chatmessage
+		WHERE
+		readyn = 'n'
+		AND sender_serial_num NOT IN (SELECT chat_farmer FROM chatroom WHERE
+		sender_serial_num = #{chat_farmer})
+		GROUP BY
+		room_id
+		) cm ON cr.room_id = cm.room_id
+		WHERE
+		cr.chat_farmer = #{chat_farmer}
 	</select>
-	
+
 
 	<select id="chatting_history" parameterType="int"
 		resultType="map">
@@ -54,6 +96,17 @@
 		ORDER BY
 		chatmessage.senttime ASC
 	</select>
+
+	<update id="updateRead" parameterType="map">
+		UPDATE chatmessage SET
+		readyn = 'y'
+		WHERE room_id = #{room_id}
+		AND sender_serial_num =
+		#{sender}
+	</update>
+
+	<!-- <select id="unReadCnt" parameterType="int" resultType="int"> SELECT 
+		COUNT(*) FROM chatmessage WHERE readyn = 'n' AND room_id = #{room_id} </select> -->
 </mapper>
 
 

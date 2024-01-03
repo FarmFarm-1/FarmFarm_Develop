@@ -23,10 +23,9 @@
 	margin-right: 10px;
 }
 
-.left_new_Img img {
-	width: 9px;
-	height: 9px;
-	border-radius: 10px;
+.left_new_Img {
+	color: red;
+	font-size: 15px;
 }
 
 .profileImg img {
@@ -91,9 +90,10 @@
 }
 
 .top_left_one {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
-	margin-right: 20px;
+	margin-right: auto;
+	margin-left: 20px;
 }
 
 .top_left_two {

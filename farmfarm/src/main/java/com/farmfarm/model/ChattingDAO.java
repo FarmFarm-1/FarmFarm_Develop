@@ -43,4 +43,14 @@ public class ChattingDAO {
 		return sqlSession.selectList(namespace+"chatting_history", room_id);
 
 	}
+	
+	public int updateRead(Map<String, Object> map) {
+		return sqlSession.update(namespace+"updateRead",map);
+	}
+	
+	/*
+	 * public int unReadCnt(int room_id) { Integer result =
+	 * sqlSession.selectOne(namespace+"unReadCnt",room_id); return (result == null)
+	 * ? 0:result; }
+	 */
 }

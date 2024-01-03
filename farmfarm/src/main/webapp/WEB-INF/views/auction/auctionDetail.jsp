@@ -218,6 +218,10 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 	document.querySelector('.btn_close').addEventListener('click',
 		function(e) {
 
+
+					
+	
+
 			let classList = document
 					.querySelector('.detailinfo').classList; // 더보기 프레임의 클래스 정보 얻기
 			let contentHeight = document
@@ -239,9 +243,14 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 		});
 
 });
+
+function sendPostRequest(){
+		document.getElementById("chat_open_form").submit();
+}
 </script>
 </head>
 <body>
+
 	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 	<jsp:include page="${cpath}/WEB-INF/views/header.jsp" />
 	<div class="container">
@@ -319,7 +328,13 @@ document.addEventListener('DOMContentLoaded', function() { //DOM 생성 후 이�
 						<img class="farmer-image" src="${cpath}/assets/farmer_icon.png" />
 						<div class="farmer-name-div">${auctionInfo.farmer_name}</div>
 					</div>
-					<img class="chaticon-img" src="${cpath}/assets/chat_icon.png" />
+					<form id="chat_open_form" action="${cpath}/myPageUser"
+						method="post">
+						<input type="hidden" name="farmernum" id="farmernum"
+							value="${auctionInfo.farmer_serial_num}"> 
+							<img class="chaticon-img" src="${cpath}/assets/chat_icon.png"
+							onclick="sendPostRequest()" />
+					</form>
 				</div>
 				<div class="frame-layer">
 					<div class="frame-line">
