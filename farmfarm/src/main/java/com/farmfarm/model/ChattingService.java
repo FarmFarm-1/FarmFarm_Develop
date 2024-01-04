@@ -40,7 +40,7 @@ public class ChattingService {
 		return chattingdao.updateRead(map);
 	}
 	
-	/*
-	 * public int unReadCnt(int room_id) { return chattingdao.unReadCnt(room_id); }
-	 */
+	public int exitChatroom(int room_id) {
+		return chattingdao.exitChatroom(room_id);
+	}
 }

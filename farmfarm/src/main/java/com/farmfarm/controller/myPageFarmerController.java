@@ -296,6 +296,16 @@ public class myPageFarmerController {
 		Integer checkRoomResult = chattingService.checkroom(roomParam);
 		int chkroom_id = checkRoomResult;
 		roomParam.put("chat_room_id", chkroom_id);
+		
+		//메시지 읽음 체크를 위한 map 선언
+		Map<String, Object> map_farmer = new HashMap<>();
+		map_farmer.put("room_id",chkroom_id);
+		map_farmer.put("sender", chatusernum);
+		
+		//만약 유저가 로그인 했으면 파머의 메시지를 읽음처리하는 update문
+		chattingService.updateRead(map_farmer);
+		
+		
 		List<Map<String, Object>>chkroom_idList = chattingService.checkroomFarmer(farmer_serial_num);
 		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
 		String username = usersService.findName(chatusernum);

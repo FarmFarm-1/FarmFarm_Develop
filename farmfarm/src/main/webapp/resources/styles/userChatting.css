@@ -86,7 +86,26 @@
 .content_detail_top_right {
 	display: flex;
 	align-items: center;
+	width: 585px;
 	margin-left: 25px;
+	justify-content: space-between
+}
+
+.trp_Text {
+	flex-grow: 1;
+}
+
+.exitChatroom_img {
+	margin-right: 35px;
+}
+
+.exitChatroom_img img {
+	width: 35px;
+	height: 36px;
+}
+
+.exitChatroom_img img:hover {
+	cursor: pointer;
 }
 
 .top_left_one {
@@ -143,7 +162,7 @@
 }
 
 .profile_Big_Text {
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bold;
 	margin-right: 10px;
 	margin-bottom: 3px;
