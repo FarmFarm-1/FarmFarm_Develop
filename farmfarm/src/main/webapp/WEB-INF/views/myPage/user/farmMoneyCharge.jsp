@@ -124,8 +124,26 @@
 	    ellipseElem.appendChild(newDiv);
 	}
 	
-	function callNodeJsAPI() {
-		showModal_cropgame();
+	function callNodeJS() {
+		let url = "";
+		fetch(url)
+		    .then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+				return response.text(); // Response 객체에서 텍스트 내용을 추출합니다.
+			})
+			.then(scriptContent => {
+				const scriptElement = document.createElement('script');
+				scriptElement.type = 'module';
+				scriptElement.textContent = scriptContent;
+				const container = document.getElementById('modal_body_cropgame_import');
+				container.appendChild(scriptElement);
+				showModal_cropgame();
+		    })
+		    .catch(error => {
+		        console.error('Failed to load script:', error);
+		    });
 	}
 </script>
 <jsp:include page="${cpath}/WEB-INF/views/modal/modal.jsp" />
@@ -135,7 +153,6 @@
   <div class="farmmoneyheader-v5j">
   	<div class="farmmoney-title-line">
 	    <p class="item--rVB">팜머니 충전</p>
-    	<img src="/assets/logo_sweetpotato.png" class="crop-game" onclick="callNodeJsAPI()"/>
   	</div>
     <div class="item--aRB">
    	 팜머니를 충전하면 펀딩과 경매에 참여할 수 있습니다.<br/>얼마를 충전할까요?

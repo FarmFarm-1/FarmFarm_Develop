@@ -92,7 +92,7 @@
 }
 
 .btnOk_cropgame:hover {
-	cursor: pointer;
+	/* cursor: pointer; */
 }
 
 .hidden_cropgame {
@@ -121,14 +121,16 @@
 	function hideModal_cropgame() {
 		document.querySelector('.modal_cropgame').style.display = 'none';
 	}
-
+	
+	
 	function showModal_cropgame() {
 		$(".btnOk_cropgame").removeClass('hidden_cropgame');
 		document.querySelector('.modal_cropgame').style.display = 'flex';
 	}
+	
+	
 </script>
 <div class="modal_cropgame">
-	<iframe class="modal_body_cropgame" id="modal_body_cropgame_import"
-		src="http://localhost:5000/"></iframe>
+	<div class="modal_body_cropgame" id="modal_body_cropgame_import"></div>
 	<button class="btnOk_cropgame">X</button>
 </div>
