@@ -97,10 +97,6 @@ public class MypageUserController {
 			chkroom_id = checkRoomResult;
 			roomParam.put("chat_room_id", chkroom_id);
 		}
-		List<Map<String, Object>>chkroom_idList = chattingService.checkroomUser(user_serial_num);
-		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
-		
-		
 		//메시지 읽음 체크를 위한 map 선언
 		Map<String, Object> map_user = new HashMap<>();
 		map_user.put("room_id",chkroom_id);
@@ -108,6 +104,11 @@ public class MypageUserController {
 		
 		//만약 유저가 로그인 했으면 파머의 메시지를 읽음처리하는 update문
 		chattingService.updateRead(map_user);
+		
+		List<Map<String, Object>>chkroom_idList = chattingService.checkroomUser(user_serial_num);
+		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
+		
+		
 		String farmer_name = farmersService.findName(chatfarmernum);
 		model.addAttribute("chkroom_idList",chkroom_idList);
 		model.addAttribute("chkroom_id", chkroom_id);
@@ -122,6 +123,7 @@ public class MypageUserController {
 	
 	@RequestMapping(value = "/showChatting", method = {RequestMethod.GET })
 	public String showChatting(HttpServletRequest req, HttpServletResponse resp, HttpSession session, Model model){
+
 		String user_serial_num = (String) session.getAttribute("serial_num");
 		String username = userService.findName(user_serial_num);
 		
