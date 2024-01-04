@@ -113,7 +113,8 @@ public class AuctionController {
 	@PostMapping("/auctionConfirm")
 	public ResponseEntity<String> auctionConfirm(Auction_historyVO auction_historyVO) {
 		try {
-			String result = Integer.toString(auctionService.auctionConfirm(auction_historyVO));
+			auctionService.auctionConfirm(auction_historyVO);
+			String result = Integer.toString(auctionService.auctionStatusChange(auction_historyVO));
 	        return ResponseEntity.ok(result);
 	    } catch (TransactionException e) {
 	    	System.out.println(e.getMessage());

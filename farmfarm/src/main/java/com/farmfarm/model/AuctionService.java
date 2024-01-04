@@ -35,6 +35,10 @@ public class AuctionService {
 	public int auctionConfirm(Auction_historyVO auction_historyVO) {
 		return dao.auctionConfirm(auction_historyVO);
 	}
+	
+	public int auctionStatusChange(Auction_historyVO auction_historyVO) {
+		return dao.auctionStatusChange(auction_historyVO);
+	}
 
 	//jiwon code
 	// auction
