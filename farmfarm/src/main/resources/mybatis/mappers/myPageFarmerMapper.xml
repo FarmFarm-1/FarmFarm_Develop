@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.myPageFarmer">
+
+	<!-- 마이페이지 파머 프로젝트리스트 -->
+	<select id="selectProjectList" parameterType="String"
+		resultType="map">
+		SELECT farm_and_product.product_serial_num,
+		farm_and_product.product_name,
+		farm_and_product.farm_name,
+		farm_and_product.farm_address,
+		farm_and_product.product_regdate,
+		farm_and_product.product_status,
+		(select SUM(funding_history.user_funding_pct) FROM funding_history WHERE funding_history.product_serial_num = farm_and_product.product_serial_num) as funding_pct,
+		farm_and_product.funding_thumb_img_url,
+		farm_and_product.auction_thumb_img_url,
+		MAX(auction_history.user_price) as max_price
+		FROM farm_and_product
+		LEFT outer JOIN auction_history ON auction_history.product_serial_num =
+		farm_and_product.product_serial_num
+		WHERE farmer_serial_num =#{farmer_serial_num}
+		GROUP BY farm_and_product.product_serial_num
+    	order by farm_and_product.product_regdate desc
+	</select>
+
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.schedule">
+	
+	<insert id="cropsDataInsert" parameterType="java.util.List">
+		insert into crops_quote
+		(crops_kind, crops_quote, regDate)
+		values
+		<foreach collection="list" item="item" separator=",">
+		(#{item.crops_kind}, #{item.crops_quote}, #{item.regDay})
+		</foreach>
+	</insert>
+
+
+</mapper>

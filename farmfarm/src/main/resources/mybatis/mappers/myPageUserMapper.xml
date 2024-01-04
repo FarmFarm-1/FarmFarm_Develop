@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.myPageUser">
+
+	<!-- 마이페이지 서포터 펀딩리스트 -->
+	<select id="myPageFundingList" parameterType="String"
+		resultType="MyPageUserFundingVO">
+		SELECT p.*, h.user_funding_date, h.user_funding_amout,
+		h.user_funding_pct, sh.total_sum_pct
+		FROM farm_and_product p
+		JOIN
+		funding_history h ON(p.product_serial_num=h.product_serial_num)
+		JOIN
+		(SELECT hh.product_serial_num,SUM(hh.user_funding_pct) AS
+		total_sum_pct
+		FROM funding_history hh GROUP BY hh.product_serial_num)
+		sh
+		ON
+		(p.product_serial_num=sh.product_serial_num)
+		WHERE
+		h.user_serial_num=#{user_serial_num}
+		AND
+		p.product_status IN ('펀딩진행중','경작중','경매대기중', '경매중', '정산완료', '펀딩실패', '경매실패')
+		ORDER BY h.user_funding_date desc;
+	</select>
+	
+	<select id="myPageFundingListDetail" parameterType="String"
+		resultType="MyPageUserFundingDetailVO">
+		SELECT * FROM cultivating_product_detail c WHERE
+		c.product_serial_num=#{product_serial_num} ORDER BY c.update_date desc
+	</select>
+
+	<!-- 마이페이지 서포터 경매리스트 -->
+	<select id="myPageAuctionList" parameterType="String"
+		resultType="MyPageUserAuctionVO">
+		SELECT QUERY1.product_serial_num,
+		QUERY1.auction_thumb_img_url,
+		QUERY1.product_name,
+		QUERY1.farm_name,
+		QUERY1.farm_address,
+		QUERY1.auction_deadline,
+		QUERY1.product_status,
+		QUERY2.max_user_price,
+		QUERY1.d_day, QUERY1.auction_status, QUERY1.product_status
+		FROM
+		(SELECT
+		b.product_serial_num, user_serial_num, auction_thumb_img_url,
+		product_name, farm_name,
+		farm_address, auction_deadline,
+		b.product_status, TIMESTAMPDIFF(MINUTE, NOW(),
+		CONCAT(c.auction_deadline, ' 00:00:00')) as d_day, a.auction_status
+		FROM auction_history a
+		INNER JOIN farm_and_product b ON
+		a.product_serial_num =
+		b.product_serial_num
+		INNER JOIN auction_reg_info
+		c ON a.product_serial_num =
+		c.product_serial_num
+		WHERE a.user_serial_num
+		= #{user_serial_num} AND b.product_status IN ('경매중', '경매완료', '정산완료'))
+		AS QUERY1
+		join
+		(SELECT product_serial_num,
+		MAX(user_price) max_user_price
+		FROM auction_history
+		WHERE
+		product_serial_num IN (SELECT
+		product_serial_num FROM auction_history
+		WHERE user_serial_num =
+		#{user_serial_num} )
+		GROUP BY
+		product_serial_num) as QUERY2
+		ON
+		QUERY1.product_serial_num =
+		QUERY2.product_serial_num
+		ORDER BY QUERY1.auction_deadline;
+
+	</select>
+	
+
+	<!-- 마이페이지 서포터 찜하기 -->
+	<select id="myPageCartFundingList" parameterType="String"
+		resultType="MyPageUserCartVO">
+		SELECT fap.product_serial_num,fap.funding_thumb_img_url,
+		fap.product_name, fap.expected_planting_date, fap.farm_square_footage,
+		ROUND(fri.target_total_amount/10000) AS min_amount,
+		DATEDIFF(fri.funding_deadline,NOW()) AS d_day,
+		IFNULL(fh.total,0) AS total_pct
+		FROM user_cart uc JOIN
+		farm_and_product fap USING(product_serial_num)
+		JOIN funding_reg_info
+		fri USING(product_serial_num)
+		left JOIN (SELECT
+		product_serial_num,SUM(user_funding_pct) AS total FROM
+		funding_history
+		GROUP BY product_serial_num) fh
+		USING(product_serial_num)
+		WHERE
+		uc.user_serial_num = #{user_serial_num} AND fap.product_status IN
+		('펀딩진행중','경작중','경매대기중')
+	</select>
+	
+	<select id="myPageCartAuctionList" parameterType="String"
+		resultType="MyPageUserCartVO">
+		SELECT fap.product_serial_num, fap.auction_thumb_img_url, fap.product_name,
+		fap.expected_harvest_date,ari.harvest_amount,
+		DATEDIFF(ari.auction_deadline, NOW()) as d_day, psn.max_price AS
+		current_price ,ROUND(IFNULL(psn.cnt,0)) as participants
+		FROM user_cart uc JOIN farm_and_product fap USING(product_serial_num)
+		JOIN auction_reg_info ari USING(product_serial_num)
+		left JOIN (SELECT product_serial_num,MAX(user_price) max_price,
+		COUNT(product_serial_num) cnt FROM auction_history GROUP BY
+		product_serial_num) psn USING(product_serial_num)
+		WHERE uc.user_serial_num = #{user_serial_num} AND fap.product_status IN
+		('경매중')
+	</select>
+	
+	<!--  재호 -->
+		<select id="depositList" resultType="map">
+		SELECT fap.product_name, fap.product_regdate , fap.farm_address, fap.funding_thumb_img_url ,
+		Date(upsh.sharing_date) AS sharing_date, upsh.user_bank,
+		upsh.user_account, upsh.user_profit AS deposit
+		FROM user_profit_sharing_history AS upsh
+		JOIN farm_and_product fap ON upsh.product_serial_num =
+		fap.product_serial_num
+		left outer JOIN auction_history ah ON upsh.product_serial_num =
+		ah.product_serial_num
+		WHERE upsh.user_serial_num = #{user_serial_num}
+		AND ah.auction_status = 'O'
+		ORDER BY upsh.sharing_date desc;
+	</select>
+
+	<select id="usedfarmList" resultType="map">
+		SELECT fap.product_name, fap.funding_thumb_img_url , ph.product_serial_num,
+		fap.farm_name, ph.amount, ph.history_content,
+		Date(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN farm_and_product fap
+		ON
+		ph.product_serial_num =
+		fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		=
+		#{user_serial_num}
+		ORDER BY ph.update_date desc;
+	</select>
+
+	<select id="showSearchDate" resultType="map">
+		SELECT
+		fap.product_name,
+		fap.farm_name,
+		fap.funding_thumb_img_url ,
+		ph.amount,
+		ph.history_content,
+		DATE(ph.update_date) AS
+		update_date,
+		DATE_FORMAT(ph.update_date, '%H:%i') AS update_time
+		FROM
+		point_history ph
+		LEFT OUTER JOIN
+		farm_and_product fap
+		ON
+		ph.product_serial_num = fap.product_serial_num
+		WHERE
+		ph.user_serial_num
+		= #{user_serial_num}
+		AND
+		DATE(ph.update_date) BETWEEN #{startDate} AND
+		#{endDate}
+		ORDER BY
+		ph.update_date desc;
+	</select>
+	<!-- //재호 -->
+</mapper>

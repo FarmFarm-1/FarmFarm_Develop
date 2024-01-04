@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.Auction">
+
+	<select id="auctionListSelectSupport" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중'
+		GROUP BY
+		f.product_serial_num
+		ORDER BY participants DESC
+	</select>
+
+	<select id="auctionListSelectByTypeSupport"
+		parameterType="string" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM auction_history ah
+		WHERE
+		ah.product_serial_num = f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT
+		COUNT(*) FROM auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중'
+		AND
+		f.product_kind=#{type}
+		GROUP BY
+		f.product_serial_num
+		ORDER BY
+		participants DESC
+
+
+	</select>
+
+	<select id="auctionListSelectClosing" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중' and
+		DATEDIFF(a.auction_deadline, NOW()) >= 0
+
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY a.auction_deadline 
+	</select>
+
+	<select id="auctionListSelectByTypeClosing"
+		parameterType="string" resultType="map">
+
+
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM auction_history ah
+		WHERE
+		ah.product_serial_num = f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT
+		COUNT(*) FROM auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중' and
+		DATEDIFF(a.auction_deadline, NOW()) >= 0 AND
+		f.product_kind=#{type}
+
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY a.auction_deadline 
+	</select>
+
+	<select id="auctionListSelectAmount" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중'
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY a.starting_price DESC
+	</select>
+	<select id="auctionListSelectByTypeAmount"
+		parameterType="string" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM auction_history ah
+		WHERE
+		ah.product_serial_num = f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT
+		COUNT(*) FROM auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중' AND
+		f.product_kind=#{type}
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY
+		a.starting_price DESC
+	</select>
+
+	<select id="auctionListSelectRecent" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중'
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY f.product_serial_num DESC
+	</select>
+	<select id="auctionListSelectByTypeRecent"
+		parameterType="string" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM auction_history ah
+		WHERE
+		ah.product_serial_num = f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT
+		COUNT(*) FROM auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중' and
+		f.product_kind=#{type}
+		GROUP BY
+		f.product_serial_num
+
+		ORDER BY
+		f.product_serial_num DESC
+
+
+	</select>
+
+	<select id="auctionListSelectByType" parameterType="string"
+		resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT
+		MAX(ah.user_price) FROM auction_history ah WHERE
+		ah.product_serial_num
+		= f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT COUNT(*) FROM
+		auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num)
+		as participants,
+		f.auction_thumb_img_url,
+		a.auction_deadline,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중' and f.product_kind=#{type}
+		GROUP BY
+		f.product_serial_num
+	</select>
+
+	<select id="auctionListSelectByTypeAll" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중'
+		GROUP BY
+		f.product_serial_num
+	</select>
+
+	<select id="auctionSearch" parameterType="string"
+		resultType="map">
+
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT
+		MAX(ah.user_price) FROM auction_history ah WHERE
+		ah.product_serial_num
+		= f.product_serial_num) as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW()) as d_day,
+		(SELECT COUNT(*) FROM
+		auction_history ah WHERE ah.product_serial_num =
+		f.product_serial_num)
+		as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num
+		= a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num = c.product_serial_num
+		WHERE
+		f.product_status
+		='경매중' and f.product_name
+		LIKE CONCAT('%', #{input}, '%') OR
+		f.farm_name LIKE
+		CONCAT('%', #{input}, '%')
+		GROUP BY
+		f.product_serial_num
+	</select>
+
+
+	<select id="auctionListSelectHot" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중' AND
+		DATEDIFF(a.auction_deadline, NOW()) >= 0
+		GROUP BY
+		f.product_serial_num
+		ORDER BY
+		current_price DESC LIMIT 6
+	</select>
+
+	<select id="auctionListSelectAll" resultType="map">
+		SELECT
+		f.product_serial_num,
+		f.product_name,
+		(SELECT MAX(ah.user_price) FROM
+		auction_history ah WHERE
+		ah.product_serial_num = f.product_serial_num)
+		as current_price,
+		a.harvest_amount,
+		DATEDIFF(a.auction_deadline, NOW())
+		as d_day,
+		(SELECT COUNT(*) FROM auction_history ah WHERE
+		ah.product_serial_num =
+		f.product_serial_num) as participants,
+		f.auction_thumb_img_url,
+		date_format(max(c.update_date), '%Y-%m-%d') AS
+		harvestEnd
+		FROM
+		farm_and_product f
+		INNER JOIN auction_reg_info a
+		ON
+		f.product_serial_num = a.product_serial_num
+		LEFT OUTER JOIN
+		cultivating_product_detail c
+		ON
+		f.product_serial_num =
+		c.product_serial_num
+		WHERE
+		f.product_status ='경매중' AND
+		DATEDIFF(a.auction_deadline, NOW()) >= 0
+		GROUP BY
+		f.product_serial_num
+	</select>
+
+	<select id="auctionInfo" parameterType="String" resultType="map">
+		SELECT
+		PR.product_serial_num, PR.product_kind, PR.product_name,
+		PR.farmer_phone,
+		PR.farmer_serial_num, PR.farm_name,
+		PR.farm_introduction,
+		PR.farm_square_footage,
+		PR.expected_planting_date, PR.expected_harvest_date,
+		PR.auction_thumb_img_url,
+		PR.auction_product_img_url, PR.farm_address,
+		FA.farmer_email,
+		FA.farmer_name,
+		AU.harvest_amount, AU.starting_price,
+		AU.auction_deadline,
+		CU.update_date,DATEDIFF(AU.auction_deadline,CURDATE()) AS dueDay
+		from
+		farm_and_product AS PR
+		LEFT OUTER JOIN
+		farmers AS FA ON
+		(PR.farmer_serial_num = FA.farmer_serial_num)
+		LEFT OUTER JOIN
+		auction_reg_info AS AU ON (PR.product_serial_num =
+		AU.product_serial_num)
+		LEFT OUTER JOIN
+		cultivating_product_detail AS CU
+		ON (PR.product_serial_num = CU.product_serial_num)
+
+		where
+		PR.product_serial_num = #{product_serial_num}
+		AND
+		PR.product_status='경매중'
+		AND CU.cultivate_status='수확완료'
+	</select>
+
+	<select id="auctionHistorySelectAll" parameterType="String"
+		resultType="map">
+		SELECT
+		A.user_price, A.bid_date, U.user_name
+		FROM
+		auction_history AS A
+		LEFT OUTER JOIN
+		users AS U ON(A.user_serial_num =
+		U.user_serial_num)
+		WHERE
+		product_serial_num = #{product_serial_num}
+		ORDER BY A.user_price DESC
+	</select>
+
+	<select id="maxAndCntAuctionInfo" parameterType="String"
+		resultType="map">
+		SELECT MAX(user_price) AS max_auction_price, COUNT(*) AS
+		participant_cnt
+		FROM auction_history
+		WHERE
+		product_serial_num =
+		#{product_serial_num}
+	</select>
+
+	<select id="maxAuctionPriceCheck"
+		parameterType="Auction_historyVO" resultType="int">
+		<![CDATA[
+		select
+		case
+			when
+				ifnull((SELECT MAX(user_price)
+    			FROM auction_history
+    			where product_serial_num = #{product_serial_num}
+    		    ),0)< #{user_price}
+   		    then 1
+   		    else 0
+		end
+    	]]>
+	</select>
+
+	<insert id="auctionHistoryInsert"
+		parameterType="Auction_historyVO">
+		insert into auction_history
+		(product_serial_num,
+		user_serial_num, user_price)
+		values(#{product_serial_num},
+		#{user_serial_num}, #{user_price})
+	</insert>
+
+	<select id="selectParticipantCntByPrID"
+		parameterType="Auction_historyVO" resultType="int">
+		select count(*)
+		from
+		auction_history
+		where product_serial_num = #{product_serial_num}
+	</select>
+
+	<update id="updateCurMaxPriceStatus"
+		parameterType="Auction_historyVO">
+		update auction_history
+		set auction_status = 'X'
+		where
+		product_serial_num = #{product_serial_num}
+		and auction_status= 'O'
+	</update>
+
+</mapper>

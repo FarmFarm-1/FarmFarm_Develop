@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.chatting">
+	<insert id="insertChatRoom" parameterType="map"
+		useGeneratedKeys="true" keyProperty="room_id">
+		INSERT INTO
+		chatroom(chat_user,chat_farmer) VALUES(#{chat_user},#{chat_farmer})
+	</insert>
+
+	<insert id="insertChatMessage" parameterType="map">
+		INSERT INTO
+		chatmessage(room_id,content,sender_serial_num,readyn)
+		VALUES(#{room_id},#{content},#{sender},#{readyn})
+	</insert>
+
+	<select id="checkroom" parameterType="map" resultType="int">
+		SELECT
+		room_id
+		FROM chatroom
+		WHERE chat_user = #{chat_user} AND chat_farmer =
+		#{chat_farmer}
+	</select>
+
+	<select id="checkroomUser" parameterType="String"
+		resultType="map">
+		SELECT
+		cr.room_id,
+		cr.chat_farmer,
+		f.farmer_name,
+		COALESCE(cm.unReadCount, 0) AS unReadMessage
+		FROM
+		chatroom cr
+		JOIN
+		farmers f ON cr.chat_farmer = f.farmer_serial_num
+		LEFT JOIN (
+		SELECT
+		room_id,
+		COUNT(*) AS unReadCount
+		FROM
+		chatmessage
+		WHERE
+		readyn = 'n'
+		AND
+		sender_serial_num NOT IN (SELECT chat_user FROM chatroom WHERE
+		sender_serial_num = #{chat_user})
+		GROUP BY
+		room_id
+		) cm ON cr.room_id =
+		cm.room_id
+		WHERE
+		cr.chat_user = #{chat_user}
+	</select>
+
+	<select id="checkroomFarmer" parameterType="String"
+		resultType="map">
+		SELECT
+		cr.room_id,
+		cr.chat_user,
+		u.user_name,
+		COALESCE(cm.unReadCount, 0) AS unReadMessage
+		FROM
+		chatroom cr
+		JOIN
+		users u
+		ON cr.chat_user = u.user_serial_num
+		LEFT JOIN (
+		SELECT
+		room_id,
+		COUNT(*)
+		AS unReadCount
+		FROM
+		chatmessage
+		WHERE
+		readyn = 'n'
+		AND sender_serial_num
+		NOT IN (SELECT chat_farmer FROM chatroom WHERE
+		sender_serial_num =
+		#{chat_farmer})
+		GROUP BY
+		room_id
+		) cm ON cr.room_id = cm.room_id
+		WHERE
+		cr.chat_farmer = #{chat_farmer}
+	</select>
+
+
+	<select id="chatting_history" parameterType="int"
+		resultType="map">
+		SELECT chatmessage.room_id,chatmessage.sender_serial_num,
+		chatmessage.content,DATE(chatmessage.senttime) AS sentdate
+		,DATE_FORMAT(chatmessage.senttime, '%p %h:%i') AS messagetime
+		FROM
+		chatmessage
+		INNER JOIN chatroom
+		ON chatmessage.room_id =
+		chatroom.room_id
+		WHERE chatroom.room_id = #{room_id}
+		ORDER BY
+		chatmessage.senttime ASC
+	</select>
+
+	<update id="updateRead" parameterType="map">
+		UPDATE chatmessage SET
+		readyn = 'y'
+		WHERE room_id = #{room_id}
+		AND sender_serial_num =
+		#{sender}
+	</update>
+
+	<delete id="exitChatroom" parameterType="int">
+		DELETE FROM chatroom WHERE room_id = #{room_id}
+	</delete>
+
+	<!-- <select id="unReadCnt" parameterType="int" resultType="int"> SELECT 
+		COUNT(*) FROM chatmessage WHERE readyn = 'n' AND room_id = #{room_id} </select> -->
+</mapper>
+
+

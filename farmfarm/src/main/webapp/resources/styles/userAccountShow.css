@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	src:
+		url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+		format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+.accountregis-RDX {
+  width: 17rem;
+}
+.item--ykq {
+  margin-bottom: 2.8rem;
+  width: 100%;
+  font-size: 2.443rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #2d2d2d;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+}
+.auto-group-wk5s-tcu {
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem 2rem;
+  width: 35rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.25);
+  background-color: #f1f1f1;
+  border-radius: 0.7431rem;
+}
+.accountinfohead-yuF {
+  margin-bottom: 10rem;
+  flex-shrink: 0;
+}
+.auto-group-cf2d-vpV {
+  /* margin: 0rem 1.9rem 0.25rem 0rem;
+  width: calc(100% - 1.9rem); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shcsymbolci-1-fXB {
+  margin: 0.1rem 0.493rem 0rem 0rem;
+  width: 1.7065rem;
+  height: 1.7rem;
+  object-fit: cover;
+  vertical-align: top;
+  flex-shrink: 0;
+}
+.bank-C1K {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2d2d2d;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.changAccount-btn {
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #7a7a7a;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left : auto;
+  margin-right : 1rem;
+  cursor: pointer;
+}
+.line-56-vxu {
+  width: 8rem;
+  height: 0;
+  object-fit: contain;
+  vertical-align: top;
+}
+.accountinfofoot-gx5 {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+.accountname-FkH {
+  margin-bottom: 0.05rem;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2575;
+  color: #2d2d2d;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.accountnum-bp9 {
+  display: flex;
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.2575;
+  color: #2d2d2d;
+  font-family: Pretendard, 'Source Sans Pro';
+  white-space: nowrap;
+  flex-shrink: 0;
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.farmfarm.users">
+
+	<insert id="userpoint" parameterType="map">
+		INSERT INTO point_history
+		(user_serial_num, history_content, amount)
+		VALUES(#{user_serial_num},'펀딩참여', #{pay});
+	</insert>
+
+</mapper>
