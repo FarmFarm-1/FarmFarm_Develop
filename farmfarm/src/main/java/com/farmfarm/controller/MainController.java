@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.farmfarm.model.ChartService;
-import com.farmfarm.model.ScheduledTasksService;
+import com.farmfarm.model.auction.ChartService;
+import com.farmfarm.model.etc.ScheduledTasksService;
 
 @Controller
 public class MainController {

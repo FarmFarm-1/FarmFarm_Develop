@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.farmfarm.model.S3Service;
+import com.farmfarm.model.etc.S3Service;
 
 
 @Controller
