@@ -78,6 +78,7 @@
 </div>
 
 <script>
+	var jsonArr = ${jsonArr};
 	var ws = null;
 	var lastSender = null; // 이전 메시지의 sender를 저장할 변수
 	var lastSentDate = null; // 이전 메시지의 sentdate를 저장할 변수
@@ -87,6 +88,20 @@
 	var farmernum = "${farmer_serial_num}";
 	var chkroomid = "${chkroom_id}";
 
+	
+ 	jsonArr.forEach(function(message) {
+ 		if (lastSentDate !== message.sentdate) {
+			printDate(message.sentdate);
+			lastSentDate = message.sentdate;
+		} 
+	    if (message.sender_serial_num === farmernum) {
+	        print(farmername, message.content, message.messagetime);
+	    } else {
+	        printOther(username, message.content, message.messagetime);
+	    }
+	}); 
+
+	
 	function initWebsocket(usernum, username, farmernum, farmername, chkroomid) {
 		if (ws !== null) {
 			ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
@@ -123,9 +138,7 @@
 	}
 
 	function handleOnMessage(evt) {
-		console.log('onmessage 실행');
 		let fullMessage = evt.data;
-		console.log("원본 메시지: ", fullMessage); // 원본 메시지 확인
 
 		let sentdate;
 		if (fullMessage.includes('sentdate')) {
@@ -147,10 +160,6 @@
 			messagetime = parsedMessage['messagetime'];
 		}
 
-		console.log("파싱된 sender: ", sender); // 파싱된 sender 확인
-		console.log("파싱된 txt: ", txt); // 파싱된 txt 확인
-		console.log("파싱된 messagetime: ", messagetime); // 파싱된 messagetime 확인
-
 		if (txt) {
 			if (sender === farmernum) {
 				print(farmername, txt, messagetime);
@@ -167,7 +176,6 @@
 	}
 
 	function print(farmername, txt, messagetime) {
-		console.log('print 실행');
 		let temp = '';
 		temp += '<div class="message_container">';
 		temp += '<span class="timeSpan1">' + messagetime + '</span>';
@@ -189,7 +197,6 @@
 	}
 
 	function printOther(username, txt, messagetime) {
-		console.log('printOther 실행');
 		let temp = '';
 		temp += '<div class="yourChat_message">';
 		temp += '<div class="your_message_background">';

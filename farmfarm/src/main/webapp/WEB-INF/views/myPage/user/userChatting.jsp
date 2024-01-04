@@ -18,7 +18,7 @@
 				<div class="trp_Text">
 					<div class="profile_Big_Text">${farmer_name }</div>
 				</div>
-<%-- 				<div class="exitChatroom_img">
+				<%-- 				<div class="exitChatroom_img">
 					<img src="${cpath}/assets/exitChatroom.png"
 						onclick="exitChatroom()" />
 				</div> --%>
@@ -42,7 +42,7 @@
 							</div>
 						</div>
 					</div>
-<%-- 					<form id="exitChatroom" action="${cpath}/myPageUser"
+					<%-- 					<form id="exitChatroom" action="${cpath}/myPageUser"
 						method="post">
 						<input type="hidden" name="exit_room_id" id="exit_room_id"
 							value="${chatroom.room_id}">
@@ -90,9 +90,7 @@
 </div>
 
 <script>
-/* 	function exitChatroom() {
-		document.getElementById("exitChatroom").submit();
-	} */
+	var jsonArr = ${jsonArr};
 	var ws = null;
 	var lastSender = null; // 이전 메시지의 sender를 저장할 변수
 	var lastSentDate = null; // 이전 메시지의 sentdate를 저장할 변수
@@ -101,6 +99,18 @@
 	var farmernum = "${farmer_serial_num}";
 	var farmername = "${farmer_name}";
 	var chkroomid = "${chkroom_id}";
+
+ 	jsonArr.forEach(function(message) {
+		if (lastSentDate !== message.sentdate) {
+			printDate(message.sentdate);
+			lastSentDate = message.sentdate;
+		}
+	    if (message.sender_serial_num === usernum) {
+	        print(username, message.content, message.messagetime);
+	    } else {
+	        printOther(farmername, message.content, message.messagetime);
+	    }
+	}); 
 
 	function initWebsocket(usernum, username, farmernum, farmer_name, chkroomid) {
 		if (ws !== null) {
