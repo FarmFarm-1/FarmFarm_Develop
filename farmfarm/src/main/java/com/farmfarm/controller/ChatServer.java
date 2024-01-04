@@ -47,42 +47,11 @@ public class ChatServer {
 		String chkroomIdStr = paramMap.get("chkroom_id");
 		int chkroomid = Integer.parseInt(chkroomIdStr);
 
-		List<Map<String, Object>> history = ApplicationContextProvider.getApplicationContext()
-				.getBean(ChattingService.class).chatting_history(chkroomid);
-
-		// JSON Array로 변환
-		JSONArray historyJsonArray = new JSONArray();
-		for (Map<String, Object> map : history) {
-		    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		    String dateString = format.format(map.get("sentdate"));
-		    map.put("sentdate", dateString);
-
-		    // AM/PM을 오전/오후로 바꾸는 코드
-		    String messagetime = (String) map.get("messagetime");
-		    if (messagetime.startsWith("AM")) {
-		        messagetime = "오전" + messagetime.substring(2);
-		    } else if (messagetime.startsWith("PM")) {
-		        messagetime = "오후" + messagetime.substring(2);
-		    }
-		    map.put("messagetime", messagetime);
-
-		    JSONObject json = new JSONObject(map);
-		    historyJsonArray.add(json);
-		}
-		session.getUserProperties().put("jsonhistory", historyJsonArray.toJSONString());
 		// 사용자와 농민 번호, roomParam을 세션에 저장
 		session.getUserProperties().put("usernum", usernum);
 		session.getUserProperties().put("farmernum", farmernum);
 		session.getUserProperties().put("chkroomid", chkroomid);
 	 
-		for (Object json : historyJsonArray) {
-		    try {
-		         session.getBasicRemote().sendText(json.toString());
-		    } catch (IOException e) {
-		       //e.printStackTrace();
-		    }
-		}
-		 	
 		List<Session> sessions = roomSessions.getOrDefault(chkroomid, new ArrayList<>());
 		sessions.add(session);
 		roomSessions.put(chkroomid, sessions);

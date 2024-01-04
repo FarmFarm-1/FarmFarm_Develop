@@ -3,6 +3,7 @@ package com.farmfarm.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -308,6 +311,35 @@ public class myPageFarmerController {
 		
 		List<Map<String, Object>>chkroom_idList = chattingService.checkroomFarmer(farmer_serial_num);
 		List<Map<String, Object>> chatHistory = (List<Map<String, Object>>)chattingService.chatting_history(chkroom_id);
+		
+		JSONArray jsonArr = new JSONArray();
+		for (Map<String, Object> map : chatHistory) {
+		    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    Object sentdateObj = map.get("sentdate");
+		    String dateString = null;
+		    if (sentdateObj instanceof Date) {
+		        dateString = format.format((Date) sentdateObj);
+		    } else if (sentdateObj instanceof String) {
+		        dateString = (String) sentdateObj;
+		    }
+		    map.put("sentdate", dateString);
+
+		    Object messagetimeObj = map.get("messagetime");
+		    String messagetime = null;
+		    if (messagetimeObj instanceof String) {
+		        messagetime = (String) messagetimeObj;
+		        if (messagetime.startsWith("AM")) {
+		            messagetime = "오전" + messagetime.substring(2);
+		        } else if (messagetime.startsWith("PM")) {
+		            messagetime = "오후" + messagetime.substring(2);
+		        }
+		    }
+		    map.put("messagetime", messagetime);
+
+		    JSONObject json = new JSONObject(map);
+		    jsonArr.add(json);
+		}
+		
 		String username = usersService.findName(chatusernum);
 		model.addAttribute("chkroom_idList",chkroom_idList);
 		model.addAttribute("chkroom_id", chkroom_id);
@@ -315,6 +347,7 @@ public class myPageFarmerController {
 		model.addAttribute("user_serial_num", chatusernum);
 		model.addAttribute("username", username);
 		model.addAttribute("chatHistory",chatHistory);
+		model.addAttribute("jsonArr",jsonArr);
 		model.addAttribute("farmer_name",farmername);
 		return "myPage/Farmer/chat";
 	}
