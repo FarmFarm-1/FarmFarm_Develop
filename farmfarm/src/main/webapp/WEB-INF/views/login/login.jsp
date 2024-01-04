@@ -20,9 +20,9 @@
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormFarmer.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/LoginFormUser.js"></script>
-<script type="text/javascript" src="https://farmfarm.duckdns.org/js/FormChangeSubmit.js"></script>
+<script type="text/javascript" src="${cpath}/js/LoginFormFarmer.js"></script>
+<script type="text/javascript" src="${cpath}/js/LoginFormUser.js"></script>
+<script type="text/javascript" src="${cpath}/js/FormChangeSubmit.js"></script>
 
 </head>
 <script>
@@ -116,16 +116,16 @@
 							<div class="item--DaV">이메일</div>
 						</div>
 						<input type="text" name="user_email" onkeyup='printEmail()'
-							id="user_email" class="group-98-1FT" placeholder="이메일" /> <span
-							id="email_check" class="warn_text"> 유효한 이메일 주소를 입력하세요.</span>
+							id="user_email" class="group-98-1FT" placeholder="이메일" /> 
+						<span id="email_check" class="warn_text"> 유효한 이메일 주소를 입력하세요.</span>
 					</div>
 					<div class="formpwd-Yub">
 						<div class="group-97-EGd">
 							<div class="item--Mc9">비밀번호</div>
 						</div>
 						<input type="password" name="user_pw" onkeyup='printPw()'
-							id="user_pw" class="group-98-vYm" placeholder="비밀번호" /> <span
-							id="pw_check" class="warn_text"> 8~15자 이내로 입력하세요.</span>
+							id="user_pw" class="group-98-vYm" placeholder="비밀번호" /> 
+						<span id="pw_check" class="warn_text"> 8~15자 이내로 입력하세요.</span>
 					</div>
 					<div class="group-107-Axu">
 						<div class="item--CPo"

@@ -83,28 +83,6 @@ public class ChatServer {
 		    }
 		}
 		 	
-		//메시지 읽음 체크를 위한 map 선언
-		Map<String, Object> map_user = new HashMap<>();
-		map_user.put("room_id",chkroomid);
-		map_user.put("sender", farmernum);
-		
-		//만약 유저가 로그인 했으면 파머의 메시지를 읽음처리하는 update문
-		if (sender_user != null && !sender_user.trim().isEmpty()) {
-			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
-		            .updateRead(map_user);
-		}
-		
-		//메시지 읽음 체크를 위한 map 선언
-		Map<String, Object> map_farmer = new HashMap<>();
-		map_farmer.put("room_id",chkroomid);
-		map_farmer.put("sender", usernum);
-		
-		//만약 파머가 로그인 했으면 유저의 메시지를 읽음처리하는 update문
-		if (sender_farmer != null && !sender_farmer.trim().isEmpty()) {
-			ApplicationContextProvider.getApplicationContext().getBean(ChattingService.class)
-		            .updateRead(map_farmer);
-		}
-		
 		List<Session> sessions = roomSessions.getOrDefault(chkroomid, new ArrayList<>());
 		sessions.add(session);
 		roomSessions.put(chkroomid, sessions);

@@ -63,17 +63,21 @@
 		FROM
 		chatroom cr
 		JOIN
-		users u ON cr.chat_user = u.user_serial_num
+		users u
+		ON cr.chat_user = u.user_serial_num
 		LEFT JOIN (
 		SELECT
 		room_id,
-		COUNT(*) AS unReadCount
+		COUNT(*)
+		AS unReadCount
 		FROM
 		chatmessage
 		WHERE
 		readyn = 'n'
-		AND sender_serial_num NOT IN (SELECT chat_farmer FROM chatroom WHERE
-		sender_serial_num = #{chat_farmer})
+		AND sender_serial_num
+		NOT IN (SELECT chat_farmer FROM chatroom WHERE
+		sender_serial_num =
+		#{chat_farmer})
 		GROUP BY
 		room_id
 		) cm ON cr.room_id = cm.room_id
@@ -104,6 +108,10 @@
 		AND sender_serial_num =
 		#{sender}
 	</update>
+
+	<delete id="exitChatroom" parameterType="int">
+		DELETE FROM chatroom WHERE room_id = #{room_id}
+	</delete>
 
 	<!-- <select id="unReadCnt" parameterType="int" resultType="int"> SELECT 
 		COUNT(*) FROM chatmessage WHERE readyn = 'n' AND room_id = #{room_id} </select> -->
