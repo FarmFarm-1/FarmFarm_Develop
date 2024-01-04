@@ -8,8 +8,8 @@
 	<div class="content_detailAll">
 		<div class="content_detail_top">
 			<div class="content_detail_top_left">
-				<div class="top_left_one">모든 메시지</div>
-				<div class="top_left_two">읽지 않은 메시지</div>
+					<div class="top_left_one">유저 목록</div>
+<!-- 				<div class="top_left_two">읽지 않은 메시지</div> -->
 			</div>
 		</div>
 
@@ -19,7 +19,7 @@
 				<c:forEach var="chatroom" items="${chkroom_idList}">
 					<div class="detail_left">
 						<div class="farmer_Img">
-							<img src="${cpath}/assets/-1uw.png" />
+							<img src="${cpath}/assets/farmer_icon.png" />
 						</div>
 						<div class="chatUser">
 							<div class="left_Big">

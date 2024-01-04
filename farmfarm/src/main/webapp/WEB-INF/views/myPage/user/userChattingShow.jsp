@@ -21,7 +21,7 @@
 				<c:forEach var="chatroom" items="${chkroom_idList}">
 					<div class="detail_left">
 						<div class="farmer_Img">
-							<img src="${cpath}/assets/-1uw.png" />
+							<img src="${cpath}/assets/farmer_icon.png" />
 						</div>
 						<div class="chatUser">
 							<div class="left_Big">
