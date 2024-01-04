@@ -201,7 +201,7 @@
 		if (lastSender !== 'farmer') {
 			temp = '<div class="yourChatAll">'
 					+ '<div class="yourChat">'
-					+ '<div class="yourprofileImg"><img src="${cpath}/assets/-1uw.png" /></div>'
+					+ '<div class="yourprofileImg"><img src="${cpath}/assets/farmer_icon.png" /></div>'
 					+ '<div class="yourName">' + username + '</div>' + '</div>'
 					+ temp;
 		}
