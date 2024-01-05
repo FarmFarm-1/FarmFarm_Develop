@@ -100,17 +100,19 @@
 	var farmername = "${farmer_name}";
 	var chkroomid = "${chkroom_id}";
 
- 	jsonArr.forEach(function(message) {
+
+	jsonArr.forEach(function(message) {
 		if (lastSentDate !== message.sentdate) {
 			printDate(message.sentdate);
 			lastSentDate = message.sentdate;
 		}
-	    if (message.sender_serial_num === usernum) {
-	        print(username, message.content, message.messagetime);
-	    } else {
-	        printOther(farmername, message.content, message.messagetime);
-	    }
-	}); 
+		if (message.sender_serial_num === usernum) {
+			print(username, message.content, message.messagetime);
+		} else {
+			printOther(farmername, message.content, message.messagetime);
+		}
+	});
+
 
 	function initWebsocket(usernum, username, farmernum, farmer_name, chkroomid) {
 		if (ws !== null) {
@@ -190,7 +192,7 @@
 		temp += '<div class="message_container">';
 		temp += '<span class="timeSpan1">' + messagetime + '</span>';
 		temp += '<div class="message_background">';
-		temp += '<div class="message">'
+		temp += '<div class="message">';
 		temp += txt;
 		temp += '</div>';
 		temp += '</div>';
@@ -200,10 +202,12 @@
 		let elements = document.querySelectorAll(".message_container");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior : "smooth"
+			behavior: "smooth"
 		});
 
 		lastSender = 'supporter';
+
+		scrollChat();
 	}
 
 	function printOther(farmername, txt, messagetime) {
@@ -217,10 +221,10 @@
 
 		if (lastSender !== 'farmer') {
 			temp = '<div class="yourChatAll">'
-					+ '<div class="yourChat">'
-					+ '<div class="yourprofileImg"><img src="${cpath}/assets/farmer_icon.png" /></div>'
-					+ '<div class="yourName">' + farmername + '</div>'
-					+ '</div>' + temp;
+				+ '<div class="yourChat">'
+				+ '<div class="yourprofileImg"><img src="${cpath}/assets/farmer_icon.png" /></div>'
+				+ '<div class="yourName">' + farmername + '</div>'
+				+ '</div>' + temp;
 		}
 
 		$('#chat').append(temp);
@@ -228,13 +232,15 @@
 		let elements = document.querySelectorAll(".yourChat_message");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior : "smooth"
+			behavior: "smooth"
 		});
 
 		lastSender = 'farmer';
+
+		scrollChat();
 	}
 
-	$('#msg').keydown(function() {
+	$('#msg').keydown(function(event) {
 		if (event.keyCode == 13 && ws.readyState === WebSocket.OPEN) {
 			ws.send($(this).val());
 			$('#msg').val('');
@@ -248,6 +254,11 @@
 			$('#msg').val('');
 		}
 	});
+
+	function scrollChat() {
+		let chatArea = document.querySelector(".chatArea");
+		chatArea.scrollTop = chatArea.scrollHeight;
+	}
 
 	window.onbeforeunload = function() {
 		if (ws !== null) {

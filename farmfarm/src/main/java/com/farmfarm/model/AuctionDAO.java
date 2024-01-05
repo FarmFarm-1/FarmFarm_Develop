@@ -57,7 +57,11 @@ public class AuctionDAO {
 		if (maxAuctionPriceChk != 1) {
 			throw new TransactionException("notMaxAuctionraiser");
 		}
+		return maxAuctionPriceChk;
 		
+	}
+	@Transactional
+	public int auctionStatusChange(Auction_historyVO auction_historyVO) {
 		//이전 최고금액 입찰자의 상태 변경
 		if((Integer)sqlSession.selectOne(namespace_auction+"selectParticipantCntByPrID",auction_historyVO) > 0 ) {
 			int updateStatusResult = sqlSession.update(namespace_auction+"updateCurMaxPriceStatus", auction_historyVO.getProduct_serial_num());
@@ -70,7 +74,7 @@ public class AuctionDAO {
 		if(auctionConfirm != 1) {
 			throw new TransactionException("notInsertCompleted");
 		}
-		
+
 		return auctionConfirm;
 	}
 	

@@ -82,7 +82,6 @@ public class ChatServer {
 		if (sessions != null && sessions.size() == 2) {
 		    readyn = "y"; // 유저와 파머 모두 접속해 있다면 readyn을 'y'로 설정
 		}
-		System.out.println("세션 사이즈는 얼마나 되는가? "+sessions.size());
 		if (sessions != null) {
 			for (Session s : sessions) {
 				try {
