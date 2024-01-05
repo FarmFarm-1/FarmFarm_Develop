@@ -7,8 +7,8 @@
 	<div class="content_detailAll">
 		<div class="content_detail_top">
 			<div class="content_detail_top_left">
-					<div class="top_left_one">유저 목록</div>
-<!-- 				<div class="top_left_two">읽지 않은 메시지</div> -->
+				<div class="top_left_one">유저 목록</div>
+				<!-- 				<div class="top_left_two">읽지 않은 메시지</div> -->
 			</div>
 			<div class="content_detail_top_right">
 				<div class="farmer_Img">
@@ -88,20 +88,18 @@
 	var farmernum = "${farmer_serial_num}";
 	var chkroomid = "${chkroom_id}";
 
-	
- 	jsonArr.forEach(function(message) {
- 		if (lastSentDate !== message.sentdate) {
+	jsonArr.forEach(function(message) {
+		if (lastSentDate !== message.sentdate) {
 			printDate(message.sentdate);
 			lastSentDate = message.sentdate;
-		} 
-	    if (message.sender_serial_num === farmernum) {
-	        print(farmername, message.content, message.messagetime);
-	    } else {
-	        printOther(username, message.content, message.messagetime);
-	    }
-	}); 
+		}
+		if (message.sender_serial_num === farmernum) {
+			print(farmername, message.content, message.messagetime);
+		} else {
+			printOther(username, message.content, message.messagetime);
+		}
+	});
 
-	
 	function initWebsocket(usernum, username, farmernum, farmername, chkroomid) {
 		if (ws !== null) {
 			ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
@@ -190,7 +188,7 @@
 		let elements = document.querySelectorAll(".message_container");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior: "smooth"
+			behavior : "smooth"
 		});
 
 		lastSender = 'farmer';
@@ -220,7 +218,7 @@
 		let elements = document.querySelectorAll(".yourChat_message");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior: "smooth"
+			behavior : "smooth"
 		});
 
 		lastSender = 'supporter';
@@ -247,7 +245,7 @@
 		let chatArea = document.querySelector(".chatArea");
 		chatArea.scrollTop = chatArea.scrollHeight;
 	}
-	
+
 	window.onbeforeunload = function() {
 		if (ws !== null) {
 			ws.close();
@@ -255,40 +253,50 @@
 		}
 	};
 
-	$(document).ready(
-			function() {
-				initWebsocket(usernum, username, farmernum, farmername,
-						chkroomid);
+	(function() {
+		initWebsocket(usernum, username, farmernum, farmername, chkroomid);
+	})();
 
-				$(".profile_Big_Text2").click(
-						function() {
-							var id = $(this).attr('id');
-							if (ws !== null) {
-								ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
-								ws.close();
-								ws = null;
-							}
+	$(function() {
 
-							$('#chat').empty(); // 채팅 내용 초기화
+		$(".menuBtn").on("click", function() {
+			if (ws !== null) {
+				ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
+				ws.close();
+				ws = null;
+			}
+		});
 
-							$.ajax({
-								url : "${cpath}/myPageFarmer/chatting",
-								method : "POST",
-								data : {
-									"chatusernum" : id
-								},
-								success : function(data) {
-									usernum = "${user_serial_num}";
-									username = "${username}";
-									farmernum = "${farmer_serial_num}";
-									farmernum = "${farmer_serial_num}";
-									chkroomid = "${chkroom_id}";
-									$('#content').html(data);
+		$(".profile_Big_Text2").click(
+				function() {
+					var id = $(this).attr('id');
 
-									initWebsocket(usernum, username, farmernum,
-											farmername, chkroomid); // 새로운 웹소켓 연결
-								}
-							});
-						});
-			});
+					if (ws !== null) {
+						ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
+						ws.close();
+						ws = null;
+					}
+
+					$('#chat').empty(); // 채팅 내용 초기화
+
+					$.ajax({
+						url : "${cpath}/myPageFarmer/chatting",
+						method : "POST",
+						data : {
+							"chatusernum" : id
+						},
+						success : function(data) {
+							usernum = "${user_serial_num}";
+							username = "${username}";
+							farmernum = "${farmer_serial_num}";
+							farmernum = "${farmer_serial_num}";
+							chkroomid = "${chkroom_id}";
+							$('#content').html(data);
+
+							initWebsocket(usernum, username, farmernum,
+									farmername, chkroomid); // 새로운 웹소켓 연결
+						}
+					});
+				});
+	});
 </script>

@@ -90,8 +90,8 @@
 </div>
 
 <script>
-	var jsonArr = ${jsonArr};
 	var ws = null;
+	var jsonArr = ${jsonArr};
 	var lastSender = null; // 이전 메시지의 sender를 저장할 변수
 	var lastSentDate = null; // 이전 메시지의 sentdate를 저장할 변수
 	var usernum = "${user_serial_num}";
@@ -265,41 +265,50 @@
 		}
 	};
 
-	$(document).ready(
-			function() {
-				initWebsocket(usernum, username, farmernum, farmername,
-						chkroomid);
+(function () {
+	initWebsocket(usernum, username, farmernum, farmername, chkroomid);
+})();
 
-				$(".profile_Big_Text2").click(
-						function() {
-							var id = $(this).attr('id');
+$(function(){
 
-							if (ws !== null) {
-								ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
-								ws.close();
-								ws = null;
-							}
+	$(".menuBtn").on("click", function(){
+		if (ws !== null) {
+			ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
+			ws.close();
+			ws = null;
+		}
+	});
+	
+	$(".profile_Big_Text2").click(
+		function() {
+		var id = $(this).attr('id');
 
-							$('#chat').empty(); // 채팅 내용 초기화
+		if (ws !== null) {
+			ws.onmessage = null; // 웹소켓 메시지 수신 핸들러 초기화
+			ws.close();
+			ws = null;
+		}
 
-							$.ajax({
-								url : "${cpath}/myPageUser/chatting",
-								method : "POST",
-								data : {
-									"chatfarmernum" : id
-								},
-								success : function(data) {
-									usernum = "${user_serial_num}";
-									username = "${username}";
-									farmernum = "${farmer_serial_num}";
-									farmernum = "${farmer_serial_num}";
-									chkroomid = "${chkroom_id}";
-									$('#content').html(data);
+		$('#chat').empty(); // 채팅 내용 초기화
 
-									initWebsocket(usernum, username, farmernum,
-											farmername, chkroomid); // 새로운 웹소켓 연결
-								}
-							});
-						});
-			});
+		$.ajax({
+			url : "${cpath}/myPageUser/chatting",
+			method : "POST",
+			data : {
+				"chatfarmernum" : id
+			},
+			success : function(data) {
+				usernum = "${user_serial_num}";
+				username = "${username}";
+				farmernum = "${farmer_serial_num}";
+				farmernum = "${farmer_serial_num}";
+				chkroomid = "${chkroom_id}";
+				$('#content').html(data);
+
+				initWebsocket(usernum, username, farmernum,
+						farmername, chkroomid); // 새로운 웹소켓 연결
+			}
+		});
+	});
+});
 </script>
