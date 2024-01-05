@@ -190,10 +190,12 @@
 		let elements = document.querySelectorAll(".message_container");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior : "smooth"
+			behavior: "smooth"
 		});
 
-		lastSender = 'supporter';
+		lastSender = 'farmer';
+
+		scrollChat();
 	}
 
 	function printOther(username, txt, messagetime) {
@@ -205,7 +207,7 @@
 		temp += '</div>';
 		temp += '</div>';
 
-		if (lastSender !== 'farmer') {
+		if (lastSender !== 'supporter') {
 			temp = '<div class="yourChatAll">'
 					+ '<div class="yourChat">'
 					+ '<div class="yourprofileImg"><img src="${cpath}/assets/farmer_icon.png" /></div>'
@@ -218,10 +220,12 @@
 		let elements = document.querySelectorAll(".yourChat_message");
 		let lastElement = elements[elements.length - 1];
 		lastElement.scrollIntoView({
-			behavior : "smooth"
+			behavior: "smooth"
 		});
 
-		lastSender = 'farmer';
+		lastSender = 'supporter';
+
+		scrollChat();
 	}
 
 	$('#msg').keydown(function() {
@@ -239,6 +243,11 @@
 		}
 	});
 
+	function scrollChat() {
+		let chatArea = document.querySelector(".chatArea");
+		chatArea.scrollTop = chatArea.scrollHeight;
+	}
+	
 	window.onbeforeunload = function() {
 		if (ws !== null) {
 			ws.close();
