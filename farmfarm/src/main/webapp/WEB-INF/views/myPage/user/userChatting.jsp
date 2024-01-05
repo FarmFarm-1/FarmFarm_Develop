@@ -100,6 +100,7 @@
 	var farmername = "${farmer_name}";
 	var chkroomid = "${chkroom_id}";
 
+
 	jsonArr.forEach(function(message) {
 		if (lastSentDate !== message.sentdate) {
 			printDate(message.sentdate);
@@ -111,6 +112,7 @@
 			printOther(farmername, message.content, message.messagetime);
 		}
 	});
+
 
 	function initWebsocket(usernum, username, farmernum, farmer_name, chkroomid) {
 		if (ws !== null) {
