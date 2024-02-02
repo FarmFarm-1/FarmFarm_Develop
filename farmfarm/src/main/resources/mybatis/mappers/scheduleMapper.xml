@@ -6,10 +6,10 @@
 	
 	<insert id="cropsDataInsert" parameterType="java.util.List">
 		insert into crops_quote
-		(crops_kind, crops_quote, regDate)
+		(crops_kind, crops_quote, regDate, insertdate)
 		values
 		<foreach collection="list" item="item" separator=",">
-		(#{item.crops_kind}, #{item.crops_quote}, #{item.regDay})
+		(#{item.crops_kind}, #{item.crops_quote}, #{item.regDay}, CURTIME())
 		</foreach>
 	</insert>
 

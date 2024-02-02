@@ -10,4 +10,5 @@ public class Crops_quoteVO {
 	String crops_kind;
 	int crops_quote;
 	Date regDate;
+	Date insertdate;
 }

@@ -19,15 +19,21 @@ import org.json.simple.parser.JSONParser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ScheduledTasksService {
 
 	Logger logger = LoggerFactory.getLogger(ScheduledTasksService.class);
-
-	protected LinkedList<LinkedHashMap<String, String>> cropsQuoteDataFetchAndSaveOrNull() {
+	
+	@Autowired
+	ScheduledTasksDAO dao;
+	
+	@Scheduled(cron = "0 5 0 * * *")
+	protected void cropsQuoteDataFetchAndSaveOrNull() {
 		LinkedList<LinkedHashMap<String, String>> resultData = new LinkedList<>();
+		HttpURLConnection conn = null;
 		try {
 			StringBuilder sb = new StringBuilder();
 			String line;
@@ -41,7 +47,7 @@ public class ScheduledTasksService {
 					+ "&p_cert_id=3836" + "&p_returntype=json";
 
 			URL url = new URL(dailySalesList);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn = (HttpURLConnection) url.openConnection();
 			conn.setInstanceFollowRedirects(true);
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-type", "application/json");
@@ -50,7 +56,7 @@ public class ScheduledTasksService {
 
 			// read API result by line
 			BufferedReader rd;
-			if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+			if (conn.getResponseCode() == 200) {
 				rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 			} else {
 				rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "UTF-8"));
@@ -59,7 +65,6 @@ public class ScheduledTasksService {
 				sb.append(line);
 			}
 			rd.close();
-			conn.disconnect();
 			String result = sb.toString();
 			logger.warn(result);
 
@@ -68,7 +73,8 @@ public class ScheduledTasksService {
 
 			JSONObject jsonObject = (JSONObject)jsonParser.parse(result);
 			if(jsonObject.get("data") instanceof JSONArray) {// 에러코드를 확인해서 처리 -> 오류일 경우 처리
-				return null;
+				logger.warn("fetchData is Null");
+				return;
 			}
 
 			JSONObject data = (JSONObject)jsonObject.get("data");
@@ -161,7 +167,8 @@ public class ScheduledTasksService {
 					if (match) {
 						String priceCheck = (String) cur_jsonObject.get("dpr1");
 						if (priceCheck.equals("-")) {
-							return null;
+							logger.warn("fetchData is Null");
+							return;
 						}
 						LinkedHashMap<String, String> input = new LinkedHashMap<>();
 						input.put("crops_kind", (String) cur_jsonObject.get("item_name"));
@@ -172,12 +179,18 @@ public class ScheduledTasksService {
 					}
 				}
 			}
-
+			dao.cropsDataSave(resultData);
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+			        conn.disconnect();
+			    }
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
-		logger.info(resultData + "");
-		return resultData;
 	}
 	
 	@Autowired
@@ -332,8 +345,7 @@ public class ScheduledTasksService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		logger.warn(resultData+"33333333333333333333333333");
-		sqlSession.insert("com.farmfarm.schedule.cropsDataInsert",resultData);
+		dao.cropsDataSave(resultData);
 	}
 
 }

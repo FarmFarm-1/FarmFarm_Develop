@@ -125,7 +125,7 @@
 		var encodedFarmernum = encodeURIComponent(farmernum);
 		var encodedChkroomid = encodeURIComponent(chkroomid);
 
-		var url = "ws://" + location.host + "/chatserver?user_serial_num="
+		var url = "wss://" + location.host + "/chatserver?user_serial_num="
 				+ encodedUsernum + "&farmer_serial_num=" + encodedFarmernum
 				+ "&chkroom_id=" + encodedChkroomid;
 		ws = new WebSocket(url);
