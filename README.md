@@ -99,6 +99,7 @@
 <img alt="Git" src ="https://img.shields.io/badge/Git-F05032.svg?&style=for-the-badge&logo=Git&logoColor=white"/>
 <img alt="Github" src ="https://img.shields.io/badge/Github-181717.svg?&style=for-the-badge&logo=Github&logoColor=white"/>
 <img alt="Notion" src ="https://img.shields.io/badge/Notion-000000.svg?&style=for-the-badge&logo=Notion&logoColor=white"/>
+<img alt="Google Meet" src ="https://img.shields.io/badge/googlemeet-00897B.svg?&style=for-the-badge&logo=googlemeet&logoColor=white"/>
 </div>
 
  <br/>
