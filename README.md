@@ -53,7 +53,7 @@
       <td align="center"><a href="https://github.com/ksweeni"><br /><sub><b>전화수</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/Han-JB15"><br /><sub><b>배재호</b></sub></a><br /></td>
      <tr/>
-      <td align="center"><a href="https://github.com/mmmmmam"><br /><sub><b>박지은</b></sub></a><br /></td>
+      <td align="center"><a href="https://github.com/wldms819"><br /><sub><b>박지은</b></sub></a><br /></td>
       <td align="center"><a href="https://github.com/purbluue"><br /><sub><b>김지원</b></sub></a><br /></td>
     </tr>
   </tbody>
